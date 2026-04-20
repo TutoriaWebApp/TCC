@@ -1,0 +1,62 @@
+\documentclass[12pt,openright,twoside,a4paper,english,french,spanish]{abntex2}
+\input{fixos/pacotes}
+\input{fixos/comandos}
+\input{fixos/novoscomandos}
+
+\input{editaveis/informacoes}
+\input{fixos/informacoes}
+\input{fixos/setup}
+
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{tabularx}
+
+\begin{document}
+
+\frenchspacing 
+\imprimircapa
+\imprimirfolhaderosto*
+
+\input{fixos/fichacatalografica}
+% \input{editaveis/errata}
+\input{fixos/folhadeaprovacao}
+% \input{editaveis/dedicatoria}
+% \input{editaveis/agradecimentos}
+% \input{editaveis/epigrafe}
+
+% ---------- DESCOMENTE O QUE FOR NESCESSÀRIO
+\input{editaveis/resumo}
+\input{editaveis/abstract}
+\input{fixos/listasautomaticas}
+\input{editaveis/abreviaturas}
+% \input{editaveis/simbolos} % Não utilizamos nenhum simbolo até o momento
+\input{fixos/indiceautomatico}
+
+\textual
+
+\input{editaveis/1-introducao}
+\input{editaveis/2-fundamentacaoteoricos}
+\input{editaveis/3-proposta}
+% \input{editaveis/4-consideracoesfinais}
+%\input{editaveis/aspectosgerais}
+%\input{editaveis/consideracoes}
+
+% --------- MANTENHA COMENTADO
+% \input{editaveis/textoepostexto}
+% \input{editaveis/elementosdotexto}
+% \input{editaveis/elementosdopostexto}
+
+\bookmarksetup{startatroot} 
+
+\postextual
+
+\bibliography{bibliografia}
+
+% ---------- DESCOMENTE APENDICE
+\input{editaveis/apendices}
+
+% \input{editaveis/anexos}
+\printindex
+
+\end{document}
+
