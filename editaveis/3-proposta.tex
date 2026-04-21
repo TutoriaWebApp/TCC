@@ -37,8 +37,7 @@ A pesquisa levantou somente material bibliográfico publicado em livros ou meios
 Para a condução deste trabalho, foi adotada uma Metodologia de Desenvolvimento de Software adaptada, que combina práticas do XP e do \textit{Kanban}. Essa abordagem se deve à realidade da equipe, composta por apenas dois desenvolvedores, para garantir a colaboração e a eficiência do fluxo de trabalho. A seguir, será detalhado cada uma dessas metodologias e as adaptações realizadas para o sucesso do projeto.
 
 \subsubsection[XP]{XP}
-A metodologia XP é uma metodologia ágil de desenvolvimento de software que foca na aplicação de técnicas de programação, comunicação clara, \textit{feedback} constante e no trabalho em equipe \cite{Warden2003}.
-Segundo \citeonline{BeckAndres2004} o que distingue o XP de outras metodologias são os seguintes pontos:
+A metodologia XP é uma abordagem ágil de desenvolvimento de software que envolve um conjunto de regras e práticas constantes no contexto de quatro atividades metodológicas: planejamento, projeto, codificação e testes \cite{pressman2021engenharia}. Segundo \citeonline{BeckAndres2004} o que distingue o XP de outras metodologias são os seguintes pontos:
 
 \begin{itemize}
 
@@ -63,7 +62,7 @@ Foram adaptados os seguintes valores e práticas para o contexto deste trabalho:
 
 \begin{itemize}
     \item \textbf{Comunicação e \textit{Pair Programming}}:
-    Dois desenvolvedores trabalham em conjunto em um único computador. Um escreve o código  enquanto o outro revisa, sugere melhorias e pensa estrategicamente. O papel foi intercalado entre os desenvolvedores, e com uma equipe de dois desenvolvedores, elimina-se a necessidade de uma etapa formal de revisão de código, pois o desenvolvimento conjunto permite comunicação constante, resolução imediata de dúvidas e tomada de decisões em conjunto.
+    Dois desenvolvedores trabalham em conjunto em um único computador. Um escreve o código  enquanto o outro revisa, sugere melhorias e pensa estrategicamente. Isso fornece um mecanismo para solução de problemas em tempo real (duas cabeças normalmente funcionam melhor do que uma) e garantia da qualidade em tempo real (o código é revisto à medida que é criado) \cite{pressman2021engenharia}. O papel foi intercalado entre os desenvolvedores.
 
     \item \textbf{Desenvolvimento Orientado a Testes}:
     A prática de escrever testes automatizados antes de escrever o código funcional que o fará passar nos critérios de aceitação. Os testes automatizados servem como uma documentação do sistema e uma rede de segurança e confiança de que futuras funcionalidades não irão quebrar as funcionalidades já existentes.
@@ -77,14 +76,14 @@ Foram adaptados os seguintes valores e práticas para o contexto deste trabalho:
 
 \subsubsection[Kanban]{Kanban}
 O \textit{Kanban} é uma abordagem que dá suporte a uma metodologia, \textit{framework} ou outra abordagem já existente (no caso deste trabalho, o XP). O \textit{Kanban} tem a intenção de ajudar a gerenciar o trabalho e prestação de serviços ao ponto de atender de maneira consistente as expectativas dos clientes \cite{Bartel2021}.
-Segundo \citeonline{Anderson2010} as práticas do \textit{Kanban} são:
+Segundo \citeonline{pressman2021engenharia} as práticas do \textit{Kanban} são:
 
 \begin{itemize}
-  \item \textbf{Visualizar:} Uma boa visualização para colaboração efetiva e para identificar possíveis melhorias. Visualizar este trabalho e o fluxo dele beneficia a transparência para absorver e processar muita informações num curto espaço de tempo.
+  \item \textbf{Visualizar o fluxo de trabalho no quadro Kanban:} O quadro Kanban é dividido em colunas que representam o estágio de desenvolvimento de cada elemento de funcionalidade do software, que a equipe leva da coluna “por fazer” para a “fazendo” e então para a “feito” à medida que o projeto avança.
   
-  \item \textbf{Limite de Trabalho em Progresso:} Para equilibrar a utilização e garantir o fluxo de trabalho. Sistemas eficazes se concentram mais no fluxo de trabalho. 
+  \item \textbf{Limite de Trabalho em Progresso:} Os desenvolvedores são incentivados a completar a sua tarefa atual antes de iniciarem outra. Isso reduz o tempo de ciclo, melhora a qualidade do trabalho e aumenta a capacidade da equipe de fornecer funcionalidades de software com maior frequência.
   
-  \item \textbf{Gerenciamento de Fluxo:} O objetivo é concluir o trabalho da forma mais contínua e previsível possível, assim como manter um ritmo saudável para os participantes. 
+  \item \textbf{Gerenciamento de Fluxo:} Reduz os desperdícios por meio do entendimento do fluxo de valor atual, pela análise dos pontos em que sofre interrupções, pela definição de mudanças e pela implementação subsequente dessas mudanças. 
 \end{itemize}
 
 \section[Requisitos]{Requisitos}
