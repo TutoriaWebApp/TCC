@@ -452,58 +452,67 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do templa
 
 \section*{USUARIO}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade.\\
-\textbf{Descrição:} Define os dados de um Usuário que será cadastrado. 
+\textbf{Descrição:} Define os dados de um Usuário que será cadastrado.
 
-\begin{table}[h!]
-    \centering
-    \label{tab:usuario-apendice}
-    \resizebox{\linewidth}{!}
-    {% Redimensiona a tabela para caber na largura da página
-    \begin{tabular}{|l|L{5.5cm}|l|l|L{4cm}|}
-        \hline
-        \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
-        \hline
-        usuarioId & chave primária, obrigatório, autoincremento & int & & Número identificador do usuário \\
-        \hline
-        email & único, obrigatório & varchar & 254 & E-mail do usuário \\
-        \hline
-        senha & obrigatório & varchar & 256 & Senha criptografada do usuário \\
-        \hline
-        nomePerfil & obrigatório & varchar & 100 & Nome exibido no perfil do usuário \\
-        \hline
-        cidade & optativo & varchar & 80 & Cidade onde reside o usuário \\
-        \hline
-        estado & optativo & char & 2 & Estado onde reside o usuário \\
-        \hline
-        pontuacao & obrigatório & unsigned int & & Quantidade de pontos obtidos por conquistas do usuário \\
-        \hline
-        urlFoto & obrigatório & varchar & 256 & URL da foto exibida no perfil do usuário \\
-        \hline
-        mediaNotaAprendiz & \begin{tabular}[c]{@{}l@{}}derivado de valores na tabela \\ AVALIACAO\_APRENDIZ e \\ não é armazenado por 3ª \\ Forma Normal\end{tabular} & - & - & Média das avaliações do usuário como aprendiz \\
-        \hline
-    \end{tabular}%
-    }
-\end{table}
+\vspace{0.5cm}
 
+\begin{xltabular}{\linewidth}{|l|>{\hsize=1.3\hsize}X|l|l|>{\hsize=0.7\hsize}X|}    
+    \hline
+    \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
+    \hline
+    \endhead
+
+    usuarioId & chave primária, obrigatório, autoincremento & int & & Número identificador do usuário. \\
+    \hline
+    email & único, obrigatório & varchar & 256 & E-mail do usuário. \\
+    \hline
+    senha & obrigatório & varchar & 256 & Senha criptografada do usuário. \\
+    \hline
+    nomePerfil & obrigatório & varchar & 100 & Nome exibido no perfil do usuário. \\
+    \hline
+    cidade & optativo & varchar & 80 & Cidade onde reside o usuário. \\
+    \hline
+    estado & optativo & char & 2 & Estado onde reside o usuário. \\
+    \hline
+    localizacao & obrigatório, índice espacial & point (SRID 4326) & & Coordenadas geográficas (latitude e longitude) da localização do usuário no sistema WGS 84. \\
+    \hline
+    aniversario & obrigatório & date & & Data de nascimento do usuário. \\
+    \hline
+    sobremim & optativo & varchar & 500 & Texto descritivo sobre o perfil do usuário. \\
+    \hline
+    pontuacao & obrigatório & unsigned int & & Quantidade de pontos obtidos pelo usuário. \\
+    \hline
+    is\_active & optativo & tinyint & 1 & Valor numérico que indica se o usuário é um usuário ativo ou não, sendo 1 o valor para usuário ativo e 0 o valor para usuários não ativos. \\
+    \hline
+    is\_staff & optativo & tinyint & 1 & Valor numérico que indica se o usuário pode acessar a página de administração do Django com sua conta, sendo 1 o valor para verdadeiro e 0 o valor para falso. \\
+    \hline
+    is\_superuser & optativo & tinyint & 1 & Valor numérico que indica se o usuário possui privilégios de administrador, sendo 1 o valor para verdadeiro e 0 o valor para falso. \\
+    \hline
+    data\_joined & optativo & datetime & & Data e horário do momento em que o usuário foi cadastrado. \\
+    \hline
+    last\_login & optativo & datetime & & Data e horário do último \textit{login} do usuário. \\
+    \hline
+    notaAvaliacao & derivado de valores na tabela AVALIACAO\_APRENDIZ e não é armazenado por 3ª Forma Normal &  &  & Média das avaliações do usuário como aprendiz. \\
+    \hline
+\end{xltabular}
+\clearpage
 \section*{TUTOR}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de um Tutor que será cadastrado. 
 
-\begin{table}[h!]
-\centering
-\label{tab:tutor}
-\resizebox{\linewidth}{!}{% Redimensiona a tabela para caber na largura da página
-    \begin{tabular}{|l|L{3cm}|l|l|l|}
-        \hline
+\vspace{0.5cm}
+
+\begin{xltabular}{\linewidth}{|l|>{\hsize=1.3\hsize}X|l|l|>{\hsize=0.7\hsize}X|}    
+    \hline
         \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
         \hline
-        tutorId & chave primária, obrigatório, autoincremento & int & & Número identificador do tutor \\
+        tutorId & chave primária, obrigatório, autoincremento & int & & Número identificador do tutor. \\
         \hline
-        usuarioId & chave estrangeira, obrigatório & int & & Número identificador do usuário \\
+        usuarioId & chave estrangeira, obrigatório & int & & Número identificador do usuário. \\
         \hline
-    \end{tabular}
-}
-\end{table}
+    notaAvaliacao & derivado de valores na tabela AVALIACAO\_TUTOR e não é armazenado por 3ª Forma Normal &  &  & Média das avaliações do usuário como tutor. \\
+        \hline
+\end{xltabular}
 
 \section*{AVALIACAO\_APRENDIZ}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -517,15 +526,23 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do templa
         \hline
         \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
         \hline
-        usuarioId & chave estrangeira, obrigatório & int & & Número identificador do usuário \\
+        avaliacaoAprendizId & obrigatório, autoincremento & int & & Número identificador da avaliação. \\
+        \hline
+        usuarioId & chave estrangeira, obrigatório & int & & Número identificador do aprendiz que foi avaliado. \\
+        \hline
+        sessaoId & chave estrangeira, obrigatório & int & & Número identificador da sessão. \\
         \hline
         nota & obrigatório & int & 1 & Nota fornecida para a avaliação do aprendiz, de 1 a 5. \\
         \hline
         comentario & optativo & varchar & 200 & Comentário fornecido para a avaliação do aprendiz \\
         \hline
+        dataCriacao & obrigatório & datetime & & Data e horário em que foi feita a avaliação. \\
+        \hline
     \end{tabular}
     }
 \end{table}
+
+\clearpage
 
 \section*{AVALIACAO\_TUTOR}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -539,11 +556,17 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do templa
         \hline
         \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
         \hline
-        tutorId & chave estrangeira, obrigatório & int & & Número identificador do tutor \\
+        avaliacaoTutorId & obrigatório, autoincremento & int & & Número identificador da avaliação. \\
+        \hline
+        tutorId & chave estrangeira, obrigatório & int & & Número identificador do tutor que foi avaliado. \\
+        \hline
+        sessaoId & chave estrangeira, obrigatório & int & & Número identificador da sessão. \\
         \hline
         nota & obrigatório & int & 1 & Nota fornecida para a avaliação do aprendiz, de 1 a 5. \\
         \hline
         comentario & optativo & varchar & 200 & Comentário fornecido para a avaliação do aprendiz \\
+        \hline
+        dataCriacao & obrigatório & datetime & & Data e horário em que foi feita a avaliação. \\
         \hline
     \end{tabular}
     }
@@ -560,13 +583,15 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do templa
         \hline
         \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
         \hline
-        areaId & chave primária, obrigatório, autoincremento & int & & Número identificador da área \\
+        areaId & chave primária, obrigatório, autoincremento & int & & Número identificador da área. \\
         \hline
-        nomeArea & único, obrigatório & varchar & 60 & Nome da área de conhecimento \\
+        nomeArea & único, obrigatório & varchar & 60 & Nome da área de conhecimento. \\
         \hline
     \end{tabular}
     }
 \end{table}
+
+\clearpage
 
 \section*{ESPECIALIDADE}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -580,15 +605,43 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do templa
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-especialidadeId & chave primária, obrigatório, autoincremento & int & & Número identificador da especialidade \\
+especialidadeId & chave primária, obrigatório, autoincremento & int & & Número identificador da especialidade. \\
 \hline
-areaId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador da área de conhecimento \\
+areaId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador da área de conhecimento. \\
 \hline
-nomeEspecialidade & chave única composta, obrigatório & varchar & 100 & Nome da especialidade \\
+nomeEspecialidade & chave única composta, obrigatório & varchar & 100 & Nome da especialidade. \\
 \hline
 \end{tabular}
 }
 \end{table}
+
+\section*{AGENDA}
+\noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
+\textbf{Descrição:} Define os dados de uma agenda disponível de um tutor fornecer sessões de tutoria.
+
+\begin{table}[h!]
+\centering
+\label{tab:solicitacao}
+\resizebox{\linewidth}{!}{% Redimensiona a tabela para caber na largura da página
+\begin{tabular}{|l|l|L{3cm}|l|L{3cm}|}
+\hline
+\textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
+\hline
+agendaId & chave primária, obrigatório, autoincremento & int & & Número identificador da agenda. \\
+\hline
+tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor.\\
+\hline
+horarioInicio &  chave única composta, obrigatório & time & & Horário de início para uma sessão de tutoria na agenda. \\
+\hline
+horarioFim & obrigatório & time & & Horário de fim da sessão de tutoria na agenda. \\
+\hline
+dia &  chave única composta, obrigatório & enum('SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM') & & Dia de disponibilidade para uma sessão de tutoria da agenda. \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\clearpage
 
 \section*{CONQUISTA}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -602,25 +655,31 @@ nomeEspecialidade & chave única composta, obrigatório & varchar & 100 & Nome d
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-conquistaId & chave primária, obrigatório, autoincremento & int & & Número identificador da conquista \\
+conquistaId & chave primária, obrigatório, autoincremento & int & & Número identificador da conquista. \\
 \hline
-titulo & único, obrigatório & varchar & 32 & Título da conquista \\
+pontos & obrigatório & int & & Quantidade de pontos que são recompensados ao usuário ao conseguir a conquista. \\
 \hline
-descricao & obrigatório & varchar & 64 & Descrição do que deve ser feito para conseguir a conquista \\
+titulo & único, obrigatório & varchar & 32 & Título da conquista. \\
 \hline
-urlImagem & obrigatório & varchar & 256 & URL da imagem da conquista \\
+descricao & optativo & varchar & 128 & Descrição do que deve ser realizado para conseguir a conquista. \\
 \hline
-pontos & obrigatório & int & & Quantidade de pontos que serão recompensados ao usuário que conseguir a conquista \\
+urlImagem & obrigatório & varchar & 256 & URL da imagem da conquista. \\
+\hline
+tier & obrigatório & enum ('B', 'P', 'O', 'D') & & Classificação da conquista, sendo o valor B para Bronze, P para Prata, O para Ouro e D para Diamante.\\
+\hline
+secreta & obrigatório & boleano & & Valor que indica se a conquista é secreta ou não, sendo \textit{true} para verdadeiro e \textit{false} para falso.\\
+\hline
+pista & optativo & varchar & 64 & Frase sugestiva do que deve ser feito para conseguir uma conquista secreta.\\
 \hline
 \end{tabular}%
 }
 \end{table}
 
+\clearpage
+
 \section*{CHAT}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de um chat de mensagens entre um tutor e um aprendiz que será cadastrado.
-
-\newpage
 
 \begin{table}[h!]
 \centering
@@ -630,11 +689,11 @@ pontos & obrigatório & int & & Quantidade de pontos que serão recompensados ao
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-chatId & chave primária, obrigatório, autoincremento & int & & Número identificador do chat \\
+chatId & chave primária, obrigatório, autoincremento & int & & Número identificador do chat. \\
 \hline
-tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor \\
+tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor. \\
 \hline
-usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do aprendiz \\
+usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do aprendiz. \\
 \hline
 \end{tabular}
 }
@@ -652,23 +711,27 @@ usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Nú
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-chatId & chave estrangeira, obrigatório & int & & Número identificador do chat \\
+mensagemId & chave primária, obrigatório, autoincremento & int & & Número identificador da mensagem. \\
 \hline
-conteudo & obrigatório & varchar & 200 & Conteúdo textual da mensagem \\
+chatId & chave estrangeira, obrigatório & int & & Número identificador do chat. \\
 \hline
-horario & obrigatório & datetime & & Data e horário de envio da mensagem \\
+usuarioId & chave estrangeira, obrigatório & int & & Número identificador do usuário que enviou a mensagem. \\
 \hline
-remetente & obrigatório & enum('TUTOR', 'APRENDIZ') & & Identificador de quem mandou a mensagem no chat \\
+conteudo & obrigatório & varchar & 200 & Conteúdo textual da mensagem. \\
+\hline
+horario & obrigatório & datetime & & Data e horário de envio da mensagem. \\
+\hline
+lida & obrigatório & boleano & & Valor que identifica se a mensagem foi lida pelo destinatário, sendo \textit{true} o valor para verdadeiro e \textit{false} o valor para falso. \\
 \hline
 \end{tabular}
 }
 \end{table}
 
+\clearpage
+
 \section*{SESSAO}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de uma sessão de tutoria disponível na agenda de um tutor que serão cadastrados.
-
-\newpage
 
 \begin{table}[h!]
 \centering
@@ -678,19 +741,29 @@ remetente & obrigatório & enum('TUTOR', 'APRENDIZ') & & Identificador de quem m
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-sessaoId & chave primária, obrigatório, autoincremento & int & & Número identificador da sessão \\
+sessaoId & chave primária, obrigatório, autoincremento & int & & Número identificador da sessão. \\
 \hline
-tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor \\
+usuarioId & chave estrangeira, obrigatório & int & & Número identificador do aprendiz da sessão. \\
 \hline
-dia & chave única composta, obrigatório & enum('SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM') & & Dia disponível na agenda do tutor \\
+tutorId & chave estrangeira, obrigatório & int & & Número identificador do tutor da sessão.\\
 \hline
-horarioInicio & chave única composta, obrigatório & time & & Horário de início de uma sessão de tutoria disponível do tutor \\
+areaId & chave estrangeira, obrigatório & int & & Número identificador da área de conhecimento da sessão.\\
 \hline
-horarioFim & obrigatório & time & & Horário de fim de uma sessão de tutoria disponível do tutor \\
+areaId & chave estrangeira, obrigatório & int & & Número identificador da área de conhecimento da sessão.\\
+\hline
+especialidadeId & chave estrangeira, obrigatório & int & & Número identificador da especialidade de conhecimento da sessão.\\
+\hline
+dataSessao & obrigatório & date & & Data em que ocorreu a sessão.\\
+\hline
+horarioInicio & obrigatório & time & & Horário de início da sessão. \\
+\hline
+horarioFim & obrigatório & time & & Horário de fim da sessão. \\
 \hline
 \end{tabular}
 }
 \end{table}
+
+\clearpage
 
 \section*{SOLICITAÇÃO}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -704,19 +777,31 @@ horarioFim & obrigatório & time & & Horário de fim de uma sessão de tutoria d
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-usuarioId & chave estrangeira, obrigatório & int & & Número identificador do aprendiz \\
+solicitacaoId & chave primária, obrigatório, autoincremento & int & & Número identificador da solicitação. \\
 \hline
-sessaoId & chave estrangeira, obrigatório & int & & Número identificador da sessão \\
+usuarioId & chave estrangeira, obrigatório & int & & Número identificador do aprendiz que realizou a solicitação. \\
 \hline
-dataCriacao & obrigatório & datetime & & Data e horário da solicitação \\
+agendaId & chave estrangeira, obrigatório & int & & Número identificador da agenda do tutor a qual a solicitação foi feita. \\
 \hline
-validade & obrigatório & datetime & & Data e horário de validade da solicitação \\
+areaId & obrigatório & int & & Número identificador da área de conhecimento da solicitação. \\
 \hline
-estado & obrigatório & enum('ACEITO', 'PENDENTE', 'RECUSADO', 'RECORRENTE') & & Estado da solicitação \\
+especialidadeId & chave estrangeira, obrigatório & int & & Número identificador da especialidade de conhecimento da solicitação. \\
+\hline
+dataCriacao & obrigatório & datetime & & Data e horário da solicitação. \\
+\hline
+dataPretendida & obrigatório & date & & Data a qual a solicitação solicita uma sessão. \\
+\hline
+validade & obrigatório & datetime & & Data e horário de validade da solicitação. \\
+\hline
+recorrente & obrigatório & boleano & & Valor que indica se uma solicitação é recorrente, sendo \textit{true} para verdadeiro e \textit{false} para falso. \\
+\hline
+estado & obrigatório & enum('ACEITO', 'PENDENTE', 'RECUSADO', 'RECORRENTE') & & Estado da solicitação. \\
 \hline
 \end{tabular}
 }
 \end{table}
+
+\clearpage
 
 \section*{CONTEM}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento.  \\
@@ -730,9 +815,11 @@ estado & obrigatório & enum('ACEITO', 'PENDENTE', 'RECUSADO', 'RECORRENTE') & &
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-especialidadeId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador da especialidade \\
+contemId & chave primária, obrigatório, autoincremento & int & & Número identificador do relacionamento. \\
 \hline
-tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor \\
+especialidadeId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador da especialidade. \\
+\hline
+tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor. \\
 \hline
 \end{tabular}
 }
@@ -750,9 +837,13 @@ tutorId & chave estrangeira, chave única composta, obrigatório & int & & Núme
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do usuário \\
+consegueId & chave primária, obrigatório, autoincremento & int & & Número identificador do relacionamento. \\
 \hline
-conquistaId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador da conquista \\
+usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do usuário. \\
+\hline
+conquistaId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador da conquista. \\
+\hline
+dataObtido & obrigatório & datetime & & Data e horário em que a conquista foi obtida pelo usuário. \\
 \hline
 \end{tabular}
 }
