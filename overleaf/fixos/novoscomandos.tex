@@ -56,3 +56,34 @@
 }
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\inline}[1]{\mintinline{python}{#1}}
+\newcommand{\inlinecode}[2]{\mintinline{#1}{#2}}
+
+% Cabecalho completo nas paginas em paisagem.
+\newcommand{\numeracaoPaisagem}{%
+  \thispagestyle{empty}%
+  \AddToShipoutPictureFG*{%
+    \AtPageLowerLeft{%
+      \put(\LenToUnit{1.2cm},\LenToUnit{1.8cm}){\rotatebox{90}{\normalfont\fontsize{10}{12}\selectfont\thepage}}%
+      \put(\LenToUnit{1.1cm},\LenToUnit{26cm}){\rotatebox{90}{\normalfont\fontsize{10}{12}\selectfont\itshape SUMÁRIO}}%
+      \put(\LenToUnit{1.55cm},\LenToUnit{1.8cm}){\rotatebox{90}{\rule{25.9cm}{0.2pt}}}%
+    }%
+  }%
+}
+
+\newcommand{\iniciarCabecalhoTabelaPaisagem}{%
+  \pagestyle{empty}%
+  \thispagestyle{empty}%
+  \AddToShipoutPictureFG{%
+    \AtPageLowerLeft{%
+      \put(\LenToUnit{1.2cm},\LenToUnit{1.8cm}){\rotatebox{90}{\normalfont\fontsize{10}{12}\selectfont\thepage}}%
+      \put(\LenToUnit{1.1cm},\LenToUnit{26cm}){\rotatebox{90}{\normalfont\fontsize{10}{12}\selectfont\itshape SUMÁRIO}}%
+      \put(\LenToUnit{1.55cm},\LenToUnit{1.8cm}){\rotatebox{90}{\rule{25.9cm}{0.2pt}}}%
+    }%
+  }%
+}
+\newcommand{\terminarCabecalhoTabelaPaisagem}{%
+  \ClearShipoutPictureFG%
+  \pagestyle{abntheadings}%
+}
