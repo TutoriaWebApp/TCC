@@ -95,7 +95,7 @@ A elicitação de requisitos foi conduzida por meio do método \textit{Lean Ince
 
 \subsection[Personas]{Personas}
 
-As Personas são personagens fictícios criados para representar diferentes tipos de usuários que possam vir a utilizar um serviço, produto ou site. Criar personas ajuda a entender melhor as necessidades, experiências, comportamentos e objetivos do seus usuários \cite{dam2019personas}.
+As Personas são personagens fictícios criados para representar diferentes tipos de usuários que possam vir a utilizar um serviço, produto ou site. Criar personas ajuda a entender melhor as necessidades, experiências, comportamentos e objetivos do seus usuários \cite{dam2025personas}.
 
 Foram criadas duas personas para representar os diferentes perfis de usuários da aplicação: um estudante, que precisa de alguém para o auxiliar no aprendizado de um \textit{hobby}, e um professor particular, que busca expandir sua clientela. No Apêndice \ref{personas} deste trabalho podem ser observadas tais personas. 
 
@@ -155,7 +155,7 @@ A fim de se identificar quais são as funcionalidades e pontos positivos forneci
 
 Através do \textit{benchmarking} foi possível notar funcionalidades em comum, como filtros de pesquisa, sistema de avaliação de tutores e envio de notificações na ocorrência de determinados eventos. Vale notar que o software desenvolvido neste trabalho se destaca dos concorrentes por ser o único que utiliza elementos de gamificação.
 
-\subsection[Histórias de Usuário]{Histórias de Usuário}
+ \subsection[Histórias de Usuário]{Histórias de Usuário}
 \label{historias-usuario}
 
 História de Usuário (do inglês \textit{User Story}, abreviado como US) é uma técnica que
@@ -207,6 +207,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 \item \textbf{CA02}: O software deve gerar um \textit{link} de redefinição de senha que seja único e com tempo de validade limitado.
 
 \item \textbf{CA03}: O software deve enviar um e-mail para o endereço fornecido contendo o \textit{link} de redefinição, caso o e-mail informado pelo usuário corresponda a um e-mail cadastrado no software.
+\label{ca03-us02}
 
 \item \textbf{CA04}: Por razões de segurança, o software deve exibir a mesma mensagem de sucesso na tela (exemplo: ``Se houver uma conta associada a este e-mail, você receberá um \textit{link} para redefinir sua senha.''), independentemente de o e-mail existir ou não na base de dados.
 
@@ -296,7 +297,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{CA02}: Para cada solicitação pendente, o tutor deve ter as opções ``Aceitar'' e ``Recusar''.
 
-\item \textbf{CA03}: Se o tutor ``Aceitar'', o status do horário deve mudar de ``pendente'' para ``confirmado'', e o aprendiz deve ser notificado da confirmação.
+\item \textbf{CA03}: Se o tutor ``Aceitar'', o status da solicitação deve mudar de ``pendente'' para ``confirmado'', e o aprendiz deve ser notificado da confirmação.
 
 \item \textbf{CA04}: Se o tutor ``Recusar'', o agendamento é cancelado, o horário volta a ter o status ``disponível'', e o aprendiz deve ser notificado da recusa.
 
@@ -482,8 +483,9 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 \end{itemize}
 
 \subsection[Requisitos Não Funcionais]{Requisitos Não Funcionais}
+\label{requisitosNaoFuncionais}
 
-Segundo \citeonline{wiegers2023software}, Requisitos Não Funcioanais (RNFs), também conhecidos como requisitos de atributos de qualidade, descrevem várias características de qualidade, serviço ou desempenho que a solução deve possuir. Enquanto os requisitos funcionais focam no comportamento do sistema (o que ele faz), os atributos de qualidade definem propriedades do sistema (o quão bem ele faz). Tais expectativas dos usuários, muitas vezes não declaradas explicitamente, e incluem características como usabilidade e segurança.
+Segundo \citeonline{wiegers2023software}, Requisitos Não Funcionais (RNFs), também conhecidos como requisitos de atributos de qualidade, descrevem várias características de qualidade, serviço ou desempenho que a solução deve possuir. Enquanto os requisitos funcionais focam no comportamento do sistema (o que ele faz), os atributos de qualidade definem propriedades do sistema (o quão bem ele faz). Tais expectativas dos usuários, muitas vezes não declaradas explicitamente, e incluem características como usabilidade e segurança.
 
 Ainda conforme \citeonline{wiegers2023software}, os RNFs são fundamentais porque determinam decisões de arquitetura do software, evitam retrabalho (identificar esses requisitos cedo reduz o risco de ter que realizar modificações caras e invasivas posteriormente no desenvolvimento) e aumentam a satisfação do usuário.
 
@@ -528,7 +530,7 @@ A fim de evitar retrabalho futuro e também para se desenvolver um software mais
 
 \item \textbf{RNF06}: O token deve ter tempo de expiração curto.
 
-\item \textbf{RNF07}: Toda a comunicação entre o \textit{frontend} e o \textit{backend} deve ser realizada exclusivamente via protocolo HTTPS (\textit{Hypertext Transfer Protocol Secure}) para garantir a confidencialidade dos dados em tráfego.
+\item \textbf{RNF07}: Toda a comunicação entre o \textit{frontend} e o \textit{backend} deve ser realizada exclusivamente via protocolo HTTPS (\textit{HyperText Transfer Protocol Secure}) para garantir a confidencialidade dos dados em tráfego.
 
 \end{itemize}
 
@@ -654,7 +656,7 @@ A arquitetura deste projeto pode ser visualizada por meio da Figura \ref{fig:Rep
 
 Esta arquitetura foi projetada para maximizar a eficiência do desenvolvimento, a escalabilidade e a manutenibilidade, adotando padrões distintos e especializados para o \textit{backend} e o \textit{frontend}, com o modelo Cliente-Servidor. 
 
-O \textit{backend} implementa uma variação do padrão \textit{Model-View-Controller} (MVC), conhecida como \textit{Model-View-Serializer} (MVS), utilizando o \textit{framework} Django. O \textit{frontend}, por sua vez, é estruturado como um \textit{Monorepo}, facilitando a gestão e o compartilhamento de código na plataforma Next.js.
+O \textit{backend} implementa uma variação do padrão \textit{Model-View-Controller} (MVC), conhecida como \textit{Model-View-Serializer} (MVS), utilizando o \textit{framework} Django. O \textit{frontend}, por sua vez, é estruturado como um \textit{Monorepo}, facilitando a gestão e o compartilhamento de código na plataforma Next.js. Uma representação visual da arquitetura pode ser observada na Figura \ref{fig:RepresentacaoArquitetura}.
 
 \begin{figure}[h!]
     \centering
@@ -674,13 +676,14 @@ O \textit{backend} é responsável pela lógica de negócio, processamento de da
 
 \textit{Model}: A camada \textit{Model} representa a estrutura dos dados da aplicação. Implementada através das \textit{Models} do Django, ela serve como a única fonte da verdade para os dados. Utilizando o ORM (\textit{Object-Relational Mapping}) integrado do Django, as classes Python são mapeadas diretamente para as tabelas no banco de dados MySQL neste projeto. Toda a lógica de acesso, validação e manipulação dos dados reside aqui.
 
-\textit{View}: Na terminologia do Django, a \textit{View} atua como a \textit{Controller} do padrão MVC clássico. É a camada que processa as requisições HTTP (\textit{Hypertext Transfer Protocol}) recebidas do cliente. Ela contém a lógica de negócio, interage com a \textit{Model} para buscar ou modificar dados e retorna uma resposta HTTP. Para este projeto, será utilizado o \textit{Django Rest Framework} (DRF) para construir as \textit{Views}, que se tornam \textit{endpoints} de uma API, retornando respostas em formato JSON (\textit{JavaScript Object Notation}).
+\textit{View}: Na terminologia do Django, a \textit{View} atua como a \textit{Controller} do padrão MVC clássico. É a camada que processa as requisições HTTP (\textit{HyperText Transfer Protocol}) recebidas do cliente. Ela contém a lógica de negócio, interage com a \textit{Model} para buscar ou modificar dados e retorna uma resposta HTTP. Para este projeto, será utilizado o \textit{Django Rest Framework} (DRF) para construir as \textit{Views}, que se tornam \textit{endpoints} de uma API, retornando respostas em formato JSON (\textit{JavaScript Object Notation}).
 
 \textit{Serializer}: Esta camada corresponde à \textit{View} no padrão MVC. No contexto de uma API, a \textit{view} é uma representação serializada dos dados, geralmente em JSON. O DRF gerencia essa serialização, transformando os objetos complexos da \textit{Model} em um formato que o \textit{frontend} pode facilmente consumir.
 
 Integradas a esta arquitetura, as bibliotecas \textit{Pandas} e \textit{Scikit-learn} são empregadas dentro da camada de lógica de negócio (nas \textit{Views} ou em módulos de serviço por elas invocados) para realizar análises de dados e executar modelos de \textit{machine learning} antes de os dados serem persistidos ou retornados ao cliente. O fluxo de dados no \textit{backend} é, portanto, unidirecional e bem definido: uma requisição chega a uma \textit{View}, que utiliza a \textit{Model} para interagir com o banco de dados e, por fim, formula uma resposta através de um serializador (\textit{Serializer}).
 
 \subsection[Frontend Nextjs]{Frontend Nextjs}
+\label{arquitetura-frontend}
 Para o \textit{frontend} foi adotada uma arquitetura de \textit{Monorepo} (monorepositório), que consiste em gerenciar múltiplos projetos e pacotes em um único repositório de código. Esta abordagem é ideal para escalar a aplicação, promover o reuso de código e simplificar a gestão de dependências.
 
 \textit{Web}: A aplicação principal desenvolvida com Next.js e React. Ela é responsável por toda a interface do usuário, gerenciamento de estado do cliente e consumo da API do \textit{backend}. O TypeScript é utilizado para garantir a segurança de tipos e o Prisma ORM  empregado para gerar tipos TypeScript a partir do esquema da API, garantindo a sincronia entre \textit{frontend} e \textit{backend}.
@@ -710,12 +713,14 @@ Docker: Toda a infraestrutura da aplicação é encapsulada em contêineres. Uti
 O Diagrama Entidade-Relacionamento (DE-R) é um diagrama que
 representa as entidades do banco de dados (coisas que existem no mundo real e que se deseja armazenar dados), seus atributos (propriedades específicas que descrevem as entidades) e os relacionamentos que existem entre as entidades \cite{elmasri2011sistemas}.
 
-No DE-R, as entidades são representadas por retângulos, os relacionamentos são representados por losangos (e geralmente descritos com um verbo) e atributos são representados por elipses, conectadas por linhas às suas entidades \cite{elmasri2011sistemas}. A Figura \ref{fig:diagrama_DE-R} apresenta o DE-R do projeto.
+No DE-R, as entidades são representadas por retângulos, os relacionamentos são representados por losangos (e geralmente descritos com um verbo) e atributos são representados por elipses, conectadas por linhas às suas entidades \cite{elmasri2011sistemas}. A Figura \ref{fig:diagrama_DE-R} apresenta o DE-R do projeto. Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R.png}.
 
 \clearpage
 
 \begin{landscape}
-    \begin{figure}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
+    \begin{figure}[H]
         \centering
         \caption{Diagrama Entidade-Relacionamento do projeto.} 
         \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DE-R.png}
@@ -734,14 +739,16 @@ No DE-R, as entidades são representadas por retângulos, os relacionamentos sã
 \subsection[Diagrama Lógico de Dados]{Diagrama Lógico de Dados}
 
 O nível lógico de um projeto de banco de dados é uma descrição da base de dados que será implementada no Sistema Gerenciador de Banco de Dados (SGBD). Assim, cada entidade do banco é traduzida para uma tabela, e cada atributo, geralmente, define uma coluna desta tabela. Além disso, definem-se as chaves primárias e chaves estrangeiras,  os tipos de dados de cada coluna, dentre outros
-recursos e restrições relevantes a base de dados que estará sendo implementada \cite{heuser2009projeto}. A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto.
+recursos e restrições relevantes a base de dados que estará sendo implementada \cite{heuser2009projeto}. A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto. Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
 
 Além do DLD e DE-R, foi criado um dicionário de dados da base de dados do software proposto. Um dicionário de dados é a descrição da base de dados, armazenando informações sobre sua estrutura e restrições \cite{elmasri2011sistemas}. No  Apêndice \ref{dicionario-dados} pode ser observado tal dicionário. 
 
 \clearpage
 
 \begin{landscape}
-    \begin{figure}[h!]
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
+    \begin{figure}[H]
         \centering
         \caption{Diagrama Lógico de Dados.} 
         \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DLD_print.png}
@@ -996,6 +1003,8 @@ Conforme mencionado na subseção \ref{metodologia-desenvolvimento}, os ciclos d
 \subsubsection[Plano de Testes]{Plano de Testes}
 \label{sec:PlanoDeTestes}
 
+Testes de software pretendem mostrar que um programa faz o que foi destinado a fazer e descobrir defeitos antes que ele seja colocado em uso \cite{sommerville2011engenharia}.
+
 O plano de testes para o TCC 2 é realizar o TDD (do inglês \textit{Test Driven Development}, Desenvolvimento Orientado a Teste) com uma pirâmide de testes que abrange as funcionalidades descritas na Subseção \ref{historias-usuario}. A abordagem escolhida para o TDD é a Comportamental, que foca a validação apenas nos métodos públicos e fluxos principais. 
 
 O projeto priorizou a validação por comportamento, assegurando que os testes cubram as regras de negócio relevantes e contratos de interface, evitando o acoplamento excessivo aos detalhes de implementação interna.
@@ -1004,22 +1013,22 @@ Os testes contemplam os níveis de teste unitário, teste de integração e test
 
 \begin{itemize}
 
-\item \textbf{Teste Unitários}: Técnica de teste automatizado que verifica as menores partes de um código, como funções ou métodos, isoladamente. O projeto tem uma cobertura de código de 70\% de testes unitários.
+\item \textbf{Teste Unitários}: Segundo \citeonline{sommerville2011engenharia}, trata-se de testar  componentes individuais de um programa, como métodos ou classes, devendo se concentrar em testar a funcionalidade dos objetos e seus métodos. O projeto deve ter uma cobertura de código de 70\% de testes unitários.
 
-\item \textbf{Testes de Integração}: Utilizando abordagem ampla e \textit{Top-Down} de teste de integração, que inicia a validação na camada de interface mais alta (API/\textit{Endpoints}) e segue hierarquicamente até as camadas inferiores de infraestrutura e persistência.
+\item \textbf{Testes de Integração}: Segundo \citeonline{presman2011engenharia}, testam a interação entre componentes de software, no qual um componente deve interagir corretamente com outros para executar uma função. Foram realizados utilizando abordagem ampla e \textit{Top-Down} de teste de integração, que conforme \citeonline{presman2011engenharia}, inicia a validação na camada de interface mais alta (API/\textit{Endpoints}) e segue hierarquicamente até as camadas inferiores de infraestrutura e persistência.
 
 O objetivo é simular o comportamento real de consumo do serviço, garantindo que a comunicação flua corretamente desde a entrada da requisição até a resposta dos componentes externos reais, validando a integridade da pilha completa de execução.
 
 % Verifica a comunicação e a interação entre diferentes módulos ou componentes de um software, combinando-os para garantir que funcionem corretamente juntos. Serão executados testes de integração em todos os endpoints. Os testes unitários serão responsáveis por guiar o design da arquitetura interna, validando a existência de classes, métodos e regras de negócio. Enquanto os testes de integração focarão na validação dos \textit{endpoints} das funcionalidades, assegurando que os contratos da API e o fluxo de dados entre os componentes respondam corretamente às requisições.
 
-\item \textbf{Teste E2E}: Simula o fluxo de trabalho de um usuário real com o sistema desenvolvido, para validar a aplicação do início ao fim, garantindo que todos os componentes integrados funcionem corretamente juntos. Foram aplicados testes E2E nas páginas em que haja interação com o usuário, evitando-se as páginas de somente exibição de texto.
+\item \textbf{Teste E2E}: Segundo \citeonline{ibm2025}, simula o fluxo de trabalho de um usuário real com o sistema desenvolvido, para validar a aplicação do início ao fim, garantindo que todos os componentes integrados funcionem corretamente juntos. Foram aplicados testes E2E nas páginas em que haja interação com o usuário, evitando-se as páginas de somente exibição de texto.
 
 \end{itemize}
 
 \subsubsubsection[Ferramentas de Teste]{Ferramentas de Teste}
 \begin{itemize}
     \item \textbf{POSTMAN}: Ferramenta para realização de testes de API.
-    \item \textbf{DjangoUnit}: \textit{Framework} Python utilizado para teste unitários na \textit{Framework} Django.
+    \item \textbf{DjangoUnit}: \textit{Framework} Python utilizado para teste unitários no \textit{Framework} Django.
     \item \textbf{Robot}: \textit{Framework} Python utilizada para testes E2E em aplicações web.
 \end{itemize}
 
