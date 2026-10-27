@@ -7,6 +7,13 @@
 \input{fixos/informacoes}
 \input{fixos/setup}
 
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{xltabular}
+
 \raggedbottom
 
 \begin{document}
@@ -15,7 +22,7 @@
 \imprimircapa
 \imprimirfolhaderosto*
 
-%\input{fixos/fichacatalografica}
+\input{fixos/fichacatalografica}
 % \input{editaveis/errata}
 %\input{fixos/folhadeaprovacao}
 % \input{editaveis/dedicatoria}
@@ -25,8 +32,8 @@
 % ---------- DESCOMENTE O QUE FOR NESCESSÀRIO
 \input{editaveis/resumo}
 \input{editaveis/abstract}
-%\input{fixos/listasautomaticas}
-%\input{editaveis/abreviaturas}
+\input{fixos/listasautomaticas}
+\input{editaveis/abreviaturas}
 % \input{editaveis/simbolos} % Não utilizamos nenhum simbolo até o momento
 \input{fixos/indiceautomatico}
 
