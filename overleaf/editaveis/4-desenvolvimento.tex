@@ -192,7 +192,7 @@ O quadro do Trello exige criação de conta para ser visualizado, e um convite p
 
 A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02, de 08 a 14 de março. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações no \textit{frontend} em 19 de março para inclusão de responsividade para dispositivos móveis, no dia 21 de março para implementar o uso de \textit{Server Actions}, no dia 22 de março para inclusão de um banner informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a LGPD (Lei Geral de Proteção de Dados) e no dia 27 de março para mudança no formulário para utilização das bibliotecas React Hook Form e Zod, que serão explicadas na Subseção \ref{sec:us20}.
 
-No \textit{backend} a autenticação se utiliza de uma classe abstrata do modelo de Usuário do DRF, adaptada e costumizada para as regras de negócios da aplicação. O modelo \inline{UsuarioModel} estende as classes \inline{AbstractBaseUser} e \inline{PermissionMixin}, além de criar um \inline{UsuarioManager} que o DRF utiliza para definir regras de criação, atualização deste Usuário base e também para o \textit{superuser}. Desta forma foi possível aproveitar funções já implementadas no \textit{framework}, como criptografia de senha, registro de \textit{login} e autenticação via JWT, utilizando o pacote do DRF chamado \inline{djangorestframework-simplejwt}.
+No \textit{backend} a autenticação se utiliza de uma classe abstrata do modelo de Usuário do DRF, adaptada e costumizada para as regras de negócios da aplicação. O modelo ``UsuarioModel'' estende as classes ``AbstractBaseUser'' e ``PermissionMixin'', além de criar um ``UsuarioManager'' que o DRF utiliza para definir regras de criação, atualização deste Usuário base e também para o ``superuser''. Desta forma foi possível aproveitar funções já implementadas no \textit{framework}, como criptografia de senha, registro de \textit{login} e autenticação via JWT, utilizando o pacote do DRF chamado ``djangorestframework-simplejwt''.
 
 Conforme mencionado acima, foi realizado a responsividade para dispositivos móveis nesta e nas demais telas e componentes visuais da aplicação. As versões \textit{mobile}, \textit{tablet} e \textit{desktop} da tela podem ser observadas nas Figuras \ref{fig:loginMobile}, \ref{fig:loginTablet} e  \ref{fig:loginDesktop}.
 
@@ -459,7 +459,7 @@ Antes dessa descoberta, os formulários estavam sendo criados com o \textit{hook
 
 Em adição a isso, as validações estavam sendo realizadas com HTML puro, funções de detecção de mudanças do React e uso de condicionais. Diante desses fatores, utilizar as bibliotecas citadas se mostrou uma oportunidade de otimização, melhorando a performance da aplicação e aumentando a manutenibilidade do código, visto que as validações do Zod são mais fáceis de se fazer. Os formulários desenvolvidos até então foram refatorados para usá-las e os formulários novos foram criados utilizando-as.
 
-Durante o desenvolvimento dessa US, os autores tiveram a ideia de adicionar um campo denominado ``Sobre mim'', cuja finalidade é permitir que o usuário insira um texto descritivo sobre si mesmo, que é exibido em sua página de perfil. Para que isso fosse possível, o atributo \inline{sobremim} foi adicionado na tabela \inline{USUARIO} no banco de dados, com limite de até 500 caracteres.
+Durante o desenvolvimento dessa US, os autores tiveram a ideia de adicionar um campo denominado ``Sobre mim'', cuja finalidade é permitir que o usuário insira um texto descritivo sobre si mesmo, que é exibido em sua página de perfil. Para que isso fosse possível, o atributo ``sobremim'' foi adicionado na tabela ``USUARIO'' no banco de dados, com limite de até 500 caracteres.
 
 O desenvolvimento do \textit{backend} enfrentou desafios técnicos relevantes. Inicialmente, o uso do \textit{framework} Django exigiu adaptações arquiteturais, visto que seu comportamento padrão atribui identificadores numéricos automáticos a todas as entidades.
 Além disso, a adoção da classe abstrata de usuário (\textit{AbstractUser}) demandou cuidado extra para assegurar a manutenção e compatibilidade dos atributos e relacionamentos nativos do DRF.
@@ -788,7 +788,7 @@ Durante o desenvolvimento dessa US, os autores implementaram uma melhoria import
 
 Nessa situação o tutor também não consegue apagar todas as áreas e especialidades que possui registradas, pois a aplicação não permite dados parciais como tutor, como ter somente disponibilidade ou ter somente área e especialidade. Portanto, ele continua como tutor até lidar com a solicitação ou até a sessão de tutoria ser feita.
 
-Durante o desenvolvimento desta funcionalidade, foi notado pelo autores a necessidade de fazer uma melhoria na modelagem do banco de dados para melhor atender o gerenciamento de disponibilidades. Inicialmente o banco de dados possuia duas tabelas, \inline{SESSAO} e \inline{SOLICITACAO}, onde foi planejado que o tutor criaria sessões e disponibilizaria os horários na sessão, enquanto o aprendiz iria solicitar participação nela. Entretanto, foi decidido que seria mais eficiente criar a tabela \inline{AGENDA} para conter os registros de disponibilidade do tutor, e somente ao aceitar a solicitação do aluno cria-se a sessão.
+Durante o desenvolvimento desta funcionalidade, foi notado pelo autores a necessidade de fazer uma melhoria na modelagem do banco de dados para melhor atender o gerenciamento de disponibilidades. Inicialmente o banco de dados possuia duas tabelas, ``SESSAO'' e ``SOLICITACAO'', onde foi planejado que o tutor criaria sessões e disponibilizaria os horários na sessão, enquanto o aprendiz iria solicitar participação nela. Entretanto, foi decidido que seria mais eficiente criar a tabela ``AGENDA'' para conter os registros de disponibilidade do tutor, e somente ao aceitar a solicitação do aluno cria-se a sessão.
 
 Não houveram muitas dificuldades técnicas no \textit{frontend} dessas funcionalidades. O maior empecilho foi a criação do elemento visual de disponibilidade, que é um elemento com maior grau de complexidade em questão de lógica, visto que precisa mostrar os sete dias da semana e as disponibilidades de cada dia separadamente.
 
@@ -929,7 +929,7 @@ Os autores optaram por realizar notificações visuais ao invés de e-mails por 
 
 Uma melhoria pensada e realizada durante o desenvolvimento foi a adição de solicitações recorrentes. Os autores julgaram ser uma boa adição à funcionalidade para atender a situação de um usuário que deseja marcar solicitações com o mesmo tutor, nos mesmos dias e horários, evitando que o mesmo realizasse todo o percurso de buscar o tutor e agendar as solicitações para realizar essa ação.
 
-Durante o desenvolvimento dessa funcionalidade foram feitas alterações no banco de dados. Foram acrescentandos os atributos \inline{agendaId}, \inline{areaId}, \inline{especialidadeId}, \inline{recorrente}, \inline{dataPretendida} e \inline{estado} (que é um ENUM que aceita os valores ``ACEITO'', ``PENDENTE'', ``RECUSADO'' e ``RECORRENTE''). Isso foi feito para exibição de informações no \textit{card} de solicitação (área de conhecimento, especialidade, data pretendida e horário da solicitação), para possibilidade da funcionalidade de recorrência e para gerenciamento de estado da solicitação.
+Durante o desenvolvimento dessa funcionalidade foram feitas alterações no banco de dados. Foram acrescentandos os atributos ``agendaId'', ``areaId'', ``especialidadeId'', ``recorrente'', ``dataPretendida'' e ``estado'' (que é um ENUM que aceita os valores ``ACEITO'', ``PENDENTE'', ``RECUSADO'' e ``RECORRENTE''). Isso foi feito para exibição de informações no \textit{card} de solicitação (área de conhecimento, especialidade, data pretendida e horário da solicitação), para possibilidade da funcionalidade de recorrência e para gerenciamento de estado da solicitação.
 
 O desenvolvimento do \textit{backend} enfrentou obstáculos principalmente para estabelecer a nova modelagem do banco de dados, como descrito na Subseção \ref{sec:us05}.
 
@@ -966,7 +966,7 @@ Caso o tutor aceite a solicitação, é registrada uma sessão no banco de dados
 
 Essa forma de notificação, ao invés de notificação por e-mail, ocorreu pelo mesmo motivo já explicado já explicado anteriormente: um aprendiz ou um tutor regularmente ativo na aplicação poderia receber vários e-mails de recusa ou confirmação de sessão, facilmente se tornando um \textit{spam} e prejudicando a experiência do usuário.
 
-Foram realizadas alterações no banco de dados durante o desenvolvimento. A tabela \inline{SESSAO} recebeu os atributos \inline{areaId}, \inline{especialidadeId} e \inline{dataSessao} para exibição das informações da área de conhecimento, especialidade e a data da sessão no \textit{card} dela.
+Foram realizadas alterações no banco de dados durante o desenvolvimento. A tabela ``SESSAO'' recebeu os atributos ``areaId'', ``especialidadeId'' e ``dataSessao'' para exibição das informações da área de conhecimento, especialidade e a data da sessão no \textit{card} dela.
 
 Não houve dificuldades no desenvolvimento no \textit{backend} e \textit{frontend} dessa US.
 
@@ -1127,7 +1127,7 @@ As avaliações podem ser visualizadas em uma seção dedicada à elas na págin
 
 Visando incentivar o engajamento por meio da gamificação, propôs-se um aprimoramento para esta US: a atribuição automática de 50 pontos ao perfil do usuário sempre que este realizar uma avaliação, independentemente se atua como tutor ou aprendiz na sessão avaliada.
 
-Houve uma mudança no banco de dados durante o desenvolvimento dessa funcionalidades: o atributo \inline{comentario} nas tabelas \inline{AVALIACAO_TUTOR} e \inline{AVALIACAO_APRENDIZ} teve seu limite de caracteres aumentado para 200. A justificativa para isso é que 100 caracteres poderiam não ser o suficiente para uma crítica mais aprofundada. Além disso, a fim de se implementar as verificações para tornar uma avaliação pública, foram acrescentados o atributos \inline{sessaoId} e \inline{dataCriacao}, sendo o primeiro usado para verificar se existe a avaliação realizada pelo outro participante da sessão, e o segundo usado para verificar se as 48 horas já se passaram. Foi também acrescentado o atributo \inline{notaAvaliacao} na tabela \inline{TUTOR} para armazenamento da nota média como tutor de um usuário.
+Houve uma mudança no banco de dados durante o desenvolvimento dessa funcionalidades: o atributo ``comentario'' nas tabelas ``AVALIACAO\_TUTOR'' e ``AVALIACAO\_APRENDIZ'' teve seu limite de caracteres aumentado para 200. A justificativa para isso é que 100 caracteres poderiam não ser o suficiente para uma crítica mais aprofundada. Além disso, a fim de se implementar as verificações para tornar uma avaliação pública, foram acrescentados o atributos ``sessaoId'' e ``dataCriacao'', sendo o primeiro usado para verificar se existe a avaliação realizada pelo outro participante da sessão, e o segundo usado para verificar se as 48 horas já se passaram. Foi também acrescentado o atributo ``notaAvaliacao'' na tabela ``TUTOR'' para armazenamento da nota média como tutor de um usuário.
 
 Não houve dificuldades para \textit{backend} e \textit{frontend} dessas funcionalidades.
 
@@ -1396,7 +1396,6 @@ Os títulos foram criados em um arquivo separado, que contém uma lista dos pare
 
 Não houveram dificuldades no desenvolvimento dessas US.
 
-\newpage
 
 \begin{table}
     \centering
@@ -1479,14 +1478,13 @@ O Dicionário de Dados também foi atualizado para incluir essas alterações, a
 \end{landscape}
 \clearpage
 
-\newpage
 \section[Teste de Software]{Teste de Software}
 
 Conforme a Subseção \ref{sec:PlanoDeTestes}, a estratégia de testes para a aplicação proposta consistiu na implementação de testes unitários, de integração e E2E. Essa prática garantiu que novas atualizações ou adições de funcionalidades não quebrariam as regras de negócio já consolidadas, proporcionando um ambiente seguro para o crescimento contínuo do software.
 
 \subsection[Testes Unitários]{Testes Unitários}
 
-Para o desenvolvimento dos testes unitários foram utilizadas ferramentas nativas do DRF, como, por exemplo, \inline{TestCase}, \inline{APITestCase} e \inline{APIClient}. Além destas ferramentas também foi utilizado o pacote \inline{coverage} para gerar o relatório de todos os testes executados.
+Para o desenvolvimento dos testes unitários foram utilizadas ferramentas nativas do DRF, como, por exemplo, ``TestCase'', ``AP`TestCase'' e ```TestCase''. Além destas ferramentas também foi utilizado o pacote ``TestCase'' para gerar o relatório de todos os testes executados.
 
 Os testes desenvolvidos cobriram as principais camadas da arquitetura do sistema, englobando as lógicas do modelo de banco de dados (\textit{Models}), regras de roteamento e requisições HTTP (\textit{Views} e \textit{ViewSet}), serialização de dados (\textit{Serializers}) e utilitários (\textit{Utils}).
 
@@ -1605,7 +1603,6 @@ As 15 falhas relatadas em testes específicos representam validações isoladas 
 
 O repositório com a coleção dos testes de integração feitos no Postman e a análise do Newman podem ser acessados através desse \textit{link}: \url{https://github.com/TutoriaWebApp/Integracao}
 
-\newpage
 
 \begin{figure}[h!]
     \centering
@@ -1625,7 +1622,7 @@ Para realizar a a automação dos testes E2E da aplicação foi utilizado o \tex
 
 A Tabela \ref{tab:robotE2E} apresenta o resumo quantitativo de aprovação e tempo de execução por suíte funcional. Dos 38 cenários executados, todos os 38 foram aprovados com sucesso, atingindo uma taxa de sucesso global de 100\% com tempo total de execução de aproximadamente 22,4 minutos (1.343,9 segundos).
 
-Houveram dificuldades na realização dos testes. O Robot Framework utiliza os atributos \inline{id} dos elementos HTML das páginas para permitir a seleção e interação com os mesmos. Entretanto, esses atributos estavam ausentes nas paǵinas, levando à refatorações para inclusão destes para prosseguimento dos testes.
+Houveram dificuldades na realização dos testes. O Robot Framework utiliza os atributos ``id'' dos elementos HTML das páginas para permitir a seleção e interação com os mesmos. Entretanto, esses atributos estavam ausentes nas paǵinas, levando à refatorações para inclusão destes para prosseguimento dos testes.
 
 O repositório com os arquivos utilizados nos testes pode se acessado através desse \textit{link}: \url{https://github.com/TutoriaWebApp/End2End}.
 

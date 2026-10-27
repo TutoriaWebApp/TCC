@@ -1,7 +1,7 @@
 TARGET = tcc-lucas-e-rodrigo.pdf
 
 BIBTEX = bibtex
-LATEX = lualatex
+LATEX = lualatex -shell-escape
 DVIPS = dvips
 PS2PDF = ps2pdf
 
@@ -19,7 +19,8 @@ EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
 					agradecimentos.tex epigrafe.tex resumo.tex abstract.tex \
 					abreviaturas.tex simbolos.tex \
 					1-introducao.tex 2-fundamentacaoteoricos.tex \
-					3-proposta.tex 4-consideracoesfinais.tex \
+					3-proposta.tex 4-desenvolvimento.tex \
+					5-consideracoesfinais.tex \
 					aspectosgerais.tex consideracoes.tex textoepostexto.tex \
 					elementosdotexto.tex elementosdopostexto.tex \
 					apendices.tex anexos.tex
