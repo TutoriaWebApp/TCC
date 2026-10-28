@@ -862,11 +862,11 @@ dataObtido & obrigatório & datetime & & Data e horário em que a conquista foi 
 % --- Tabelas geradas pelo Django
 % ----------------
 
+\newpage
+
 \section*{django\_migrations}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define quais arquivos \textit{migrations} já foram aplicados na base de dados pelo Django.
-
-\newpage
 
 \begin{table}[h!]
 \centering
@@ -910,11 +910,11 @@ expire\_date & obrigatória & datetime & 6 & Define quando expira a sesão\\
 }
 \end{table}
 
+\newpage
+
 \section*{django\_content\_type}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os indíces dos \textit{models}, que foram definidos na aplicação Django.
-
-\newpage
 
 \begin{table}[h!]
 \centering
@@ -933,6 +933,32 @@ model & obrigatório & varchar & 100 & Define qual o nome do modelo da aplicaç�
 \end{tabular}
 }
 \end{table}
+
+\section*{auth\_permission}
+\noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
+\textbf{Descrição:} Define permissão para um USUARIO autenticado em relação à um \textit{model}.
+
+\begin{table}[h!]
+\centering
+\label{tab:auth_permission}
+\resizebox{\linewidth}{!}{% Redimensiona a tabela para caber na largura da página
+\begin{tabular}{|l|L{3.5cm}|l|l|L{4cm}|}
+\hline
+\textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
+\hline
+id & chave primária, obrigatório & int & & Número identificador do  auth\_permission\\
+\hline
+django\_content\_type & chave estrangeira, obrigatória & int & & Número identificador do django\_content\_type\\
+\hline
+name & obrigatório & varchar & 255 & Define uma descrição para esta permissão, Ex: Adicionar conquista ao usuário\\
+\hline
+codename & obrigatório & datetime & 6 & Define um nome curto para esta permissão, Ex: add\_conquista\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\newpage
 
 \section*{django\_admin\_log}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
@@ -967,30 +993,6 @@ change\_message & opcional & longtext & & Define uma mensagem para este registro
 \end{table}
 
 
-\section*{auth\_permission}
-\noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
-\textbf{Descrição:} Define permissão para um USUARIO autenticado em relação à um \textit{model}.
-
-\begin{table}[h!]
-\centering
-\label{tab:auth_permission}
-\resizebox{\linewidth}{!}{% Redimensiona a tabela para caber na largura da página
-\begin{tabular}{|l|L{3.5cm}|l|l|L{4cm}|}
-\hline
-\textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
-\hline
-id & chave primária, obrigatório & int & & Número identificador do  auth\_permission\\
-\hline
-django\_content\_type & chave estrangeira, obrigatória & int & & Número identificador do django\_content\_type\\
-\hline
-name & obrigatório & varchar & 255 & Define uma descrição para esta permissão, Ex: Adicionar conquista ao usuário\\
-\hline
-codename & obrigatório & datetime & 6 & Define um nome curto para esta permissão, Ex: add\_conquista\\
-\hline
-\end{tabular}
-}
-\end{table}
-
 \section*{auth\_group}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define grupos para USUARIO. Estes grupos podem separar USUARIO por cargo, função ou papel.
@@ -1010,6 +1012,8 @@ name & obrigatório & varchar & 150 & Define o nome do grupo\\
 \end{tabular}
 }
 \end{table}
+
+\newpage
 
 \section*{auth\_group\_permissions}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\

@@ -105,7 +105,7 @@ Segundo \citeonline{benchmarking}, \textit{benchmarking} é um processo de pesqu
 
 A fim de se identificar quais são as funcionalidades e pontos positivos fornecidos por aplicações concorrentes ao software desenvolvido, foi realizado um \textit{benchmarking} competitivo (caracterizado pelo estudo de concorrentes diretos) de três plataformas: Profes, Superprof e Aloprof. Os resultados podem ser visualizados na Tabela \ref{tab:benchmarking}.
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{\textit{Benchmarking} das Plataformas.} % Ajustei o título para condizer com o conteúdo (estava "Bugs")
     \label{tab:benchmarking}
@@ -176,7 +176,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{Busca e Recomendação de Tutores - F06}: Essa funcionalidade permite ao aprendiz buscar por tutores em áreas que possui interesse de obter tutoria, recebendo recomendação de tutores pela aplicação.
 
-\item \textbf{Sistema de Gamificação - F07}: Esta funcionalidade engloba todos os elementos de \textit{games} da plataforma, como sistemas de pontos, níveis, conquistas e rankings, visando aumentar o engajamento dos usuários.
+\item \textbf{Sistema de Gamificação - F07}: Esta funcionalidade engloba todos os elementos de \textit{games} da aplicação, como sistemas de pontos, níveis, conquistas e rankings, visando aumentar o engajamento dos usuários.
 
 \end{itemize}
 
@@ -196,7 +196,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \end{itemize}
 
-\item \textbf{F01 - US02}: Eu, como tutor ou aprendiz, desejo recuperar minha senha, para que eu possa voltar a acessar a plataforma.
+\item \textbf{F01 - US02}: Eu, como tutor ou aprendiz, desejo recuperar minha senha, para que eu possa voltar a acessar a aplicação.
 
 \begin{itemize}
 
@@ -223,7 +223,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{CA03}: A nova senha deve ser igual em ambas as inserções.
 
-\item \textbf{CA04}: A nova senha deve atender aos critérios de segurança da plataforma (exemplo: mínimo de 8 caracteres, contendo pelo menos uma letra maiúscula e um número).
+\item \textbf{CA04}: A nova senha deve atender aos critérios de segurança da aplicação (exemplo: mínimo de 8 caracteres, contendo pelo menos uma letra maiúscula e um número).
 
 \item \textbf{CA05}: Após a alteração bem-sucedida, o sistema deve exibir uma mensagem de confirmação para o usuário.
 
@@ -474,7 +474,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{CA07}: Se não existirem tutores elegíveis para o ranking de uma área, o software deverá exibir uma mensagem informativa, como ``Ainda não há tutores classificados para esta área''.
 
-\item \textbf{CA08}: Os dados do ranking devem ser atualizados a cada 24 horas para refletir as novas atividades na plataforma.
+\item \textbf{CA08}: Os dados do ranking devem ser atualizados a cada 24 horas para refletir as novas atividades na aplicação.
 
 \end{itemize}
 
@@ -654,7 +654,7 @@ A arquitetura deste projeto pode ser visualizada por meio da Figura \ref{fig:Rep
 
 Esta arquitetura foi projetada para maximizar a eficiência do desenvolvimento, a escalabilidade e a manutenibilidade, adotando padrões distintos e especializados para o \textit{backend} e o \textit{frontend}, com o modelo Cliente-Servidor. 
 
-O \textit{backend} implementa uma variação do padrão \textit{Model-View-Controller} (MVC), conhecida como \textit{Model-View-Serializer} (MVS), utilizando o \textit{framework} Django. O \textit{frontend}, por sua vez, é estruturado como um \textit{Monorepo}, facilitando a gestão e o compartilhamento de código na plataforma Next.js. Uma representação visual da arquitetura pode ser observada na Figura \ref{fig:RepresentacaoArquitetura}.
+O \textit{backend} implementa uma variação do padrão \textit{Model-View-Controller} (MVC), conhecida como \textit{Model-View-Serializer} (MVS), utilizando o \textit{framework} Django. O \textit{frontend}, por sua vez, é estruturado como um \textit{Monorepo}, facilitando a gestão e o compartilhamento de código na aplicação Next.js. Uma representação visual da arquitetura pode ser observada na Figura \ref{fig:RepresentacaoArquitetura}.
 
 \begin{figure}[h!]
     \centering
@@ -845,7 +845,7 @@ As atividades presentes na Figura \ref{fig:metodologiaTCC1} são descritas a seg
 
 \item \textbf{Elaborar proposta de solução}: apresentar a proposta de software a ser desenvolvida na primeira etapa do TCC;
 
-\item \textbf{Desenvolver simulação da solução}: desenvolver parcialmente algumas funcionalidades do software proposto a fim de validar a viabilidade da arquitetura proposta, disponível no Apêndice X;
+\item \textbf{Desenvolver simulação da solução}: desenvolver parcialmente algumas funcionalidades do software proposto a fim de validar a viabilidade da arquitetura proposta, disponível no Apêndice \ref{simulacao};
 
 \item \textbf{Escrever considerações finais}: elaborar de maneira sucinta e objetiva o que foi alcançado com a proposta de trabalho (TCC1);
 
@@ -1033,9 +1033,7 @@ O objetivo é simular o comportamento real de consumo do serviço, garantindo qu
 \subsubsubsection[Classificação de Bugs]{Classificação de Bugs}
 Os \textit{bugs} estão classificados com as seguintes severidades descritas na Tabela \ref{tab:classificacao-bugs}.
 
-\newpage
-
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption{Classificação dos \textit{Bugs}.}
     \label{tab:classificacao-bugs}

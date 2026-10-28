@@ -145,6 +145,7 @@ Essa mudança na arquitetura causou a criação da pasta \textit{actions} dentro
 \end{figure}
 
 \section[Desenvolvimento da Aplicação]{Desenvolvimento da Aplicação}
+\label{sec:desenvolvimento}
 
 Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US entre \textit{backend} e \textit{frontend}, sendo criadas as tarefas de cada área para cada US no Trello, conforme pode ser observado nas Figuras \ref{fig:trelloFront} e \ref{fig:trelloBack}.
 
@@ -198,7 +199,7 @@ Conforme mencionado acima, foi realizado a responsividade para dispositivos móv
 
 A partir de página de \textit{Login} foi implementada uma otimização na forma de renderização das telas utilizando-se \textit{Server Components} e \textit{Client Components}. \textit{Server Components} são componentes de UI renderizados no servidor e enviados ao cliente (navegador) \cite{nextjs2026components}. \textit{Client Components} são componentes de UI renderizados no cliente, sendo recomendados quando se deseja interatividade com o usuário \cite{nextjs2026components}.
 
-Utilizar \textit{Server Components} resulta em benefícios para o usuário, pois reduz o tempo de carregamento da página ao enviar HTML estático para o cliente, evitando o envio de código JavaScript para a renderização de componentes visuais. A estratégia utilizada pelos autores foi colocar o máximo possível de elementos de UI como \textit{Server Components}, deixando apenas partes interativas como \textit{Client Components}. No \textit{login}, a maior parte da página é \textit{Server Component}, sendo apenas o formulário de \textit{login} um \textit{Client Component}.
+Utilizar \textit{Server Components} resulta em benefícios para o usuário, pois reduz o tempo de carregamento da página ao enviar HTML (\textit{HyperText Markup Language}) estático para o cliente, evitando o envio de código JavaScript para a renderização de componentes visuais. A estratégia utilizada pelos autores foi colocar o máximo possível de elementos de UI como \textit{Server Components}, deixando apenas partes interativas como \textit{Client Components}. No \textit{login}, a maior parte da página é \textit{Server Component}, sendo apenas o formulário de \textit{login} um \textit{Client Component}.
 
 \clearpage
 
@@ -634,7 +635,7 @@ Antes da página ser apresentada ao usuário, é feita uma requisição ao \text
 
 A página apresenta os campos preenchidos com os dados retornados pelo \textit{backend}, permitindo a alteração dos mesmos. Novamente, as APIs do IBGE são utilizadas para seleção de cidade e estado.
 
-Durante o desenvolvimento do \textit{backend} ocorreu o contratempo de distinguir os dados retornados de um usuário autenticado na plataforma em relação aos dados expostos de usuários externos. Para solucionar tal desafio, foi necessário implementar \textit{Serializers} distintos para cada contexto de acesso. Essa separação de responsabilidades contribuiu para o padrão arquitetural e construção e escalabilidade da API para funcionalidades desenvolvidas posteriormente.
+Durante o desenvolvimento do \textit{backend} ocorreu o contratempo de distinguir os dados retornados de um usuário autenticado na aplicação em relação aos dados expostos de usuários externos. Para solucionar tal desafio, foi necessário implementar \textit{Serializers} distintos para cada contexto de acesso. Essa separação de responsabilidades contribuiu para o padrão arquitetural e construção e escalabilidade da API para funcionalidades desenvolvidas posteriormente.
 
 Houve uma dificuldade no desenvolvimento do \textit{frontend} dessa funcionalidade. O CA04 exige que as alterações sejam refletidas imediatamente no perfil do usuário. Entretanto, a foto de perfil não estava sendo alterada na página de perfil após sua substituição. Após investigação, foi descoberto que isso se devia ao fato do navegador fazer \textit{cache} da imagem. Como ambas as imagens estavam compartilhando o mesmo nome no \textit{data lake} e no dado retornado pela requisição do \textit{backend}, o navegador assumia que não havia alterações e não buscava a nova foto.
 
@@ -1072,7 +1073,7 @@ Assim que o usuário faz \textit{login} na aplicação, é feita uma requisiçã
 
 Para forçar o usuário a realizar a avaliação, a \textit{modal} não apresenta botão ou ícone para ser fechada, e clicar fora dela também não a fecha. Assim que uma sessão é avaliada, a próxima é exibida para avaliação logo em seguida. O usuário somente consegue utilizar a aplicação após avaliar todas as sessões pendentes.
 
-As avaliações podem ser visualizadas em uma seção dedicada à elas na página de perfil, localizada na parte inferior. Caso um usuário seja tutor na plataforma é possível visualizar tanto avaliações como aprendiz como quanto tutor, sendo possível filtrar e ordenar os resultados. Caso um usuário não tenha redigido um comentário, o texto ``O usuário não escreveu comentário para essa avaliação'' é exibido. A seção de avaliações pode ser observada na Figura \ref{fig:secaoAvaliacoes}. Vale notar que, seguindo o CA05, a avaliação só se torna visível para o outro participante (e no perfil público dele) após ele também ter feito a avaliação sobre o usuário nessa sessão ou após um prazo de 48 horas ter passado (o que ocorrer primeiro).
+As avaliações podem ser visualizadas em uma seção dedicada à elas na página de perfil, localizada na parte inferior. Caso um usuário seja tutor na aplicação é possível visualizar tanto avaliações como aprendiz como quanto tutor, sendo possível filtrar e ordenar os resultados. Caso um usuário não tenha redigido um comentário, o texto ``O usuário não escreveu comentário para essa avaliação'' é exibido. A seção de avaliações pode ser observada na Figura \ref{fig:secaoAvaliacoes}. Vale notar que, seguindo o CA05, a avaliação só se torna visível para o outro participante (e no perfil público dele) após ele também ter feito a avaliação sobre o usuário nessa sessão ou após um prazo de 48 horas ter passado (o que ocorrer primeiro).
 
 \begin{landscape}
     \setlength{\oddsidemargin}{\evensidemargin}
@@ -1161,6 +1162,18 @@ Essa requisição se difere da requisição mencionada na Subseção \ref{sec:us
 
 A arquitetura inicial do módulo de mensagens passou por reestruturações técnicas relevantes. A principal alteração consistiu na substituição do uso de \textit{Enums} para a identificação do remetente, adotando-se, em seu lugar, o relacionamento direto por meio do \textit{id} do usuário que originou a ação. Além disso, introduziu-se um atributo booleano na entidade de mensagem com o propósito de indicar de forma explícita se o conteúdo já foi visualizado pelo destinatário.
 
+Houveram dificuldades no desenvolvimento dessa US, sendo a mais difícil de ser completada de toda a aplicação. Isso se deve ao fato de nenhum dos autores possuírem experiência prévia no desenvolvimento uma comunicação por mensagens.
+
+No \textit{frontend} houveram dúvidas de como obter o histórico de mensagens da comunicação, visto que carregar todas as mensagens em uma única requisição poderia torná-la lenta, além de ineficiente, visto que o usuário poderia estar interessado em ler apenas as mensagens mais recentes. Após pesquisa, foi adotada a solução de paginar o \textit{endpoint GET} de mensagens de uma comunicação específica, de modo a trazer as mais recentes primeiro e, caso o usuário role o histórico para cima, novas requisições serem feitas, trazendo as mensagens mais antigas.
+
+Outra dúvida foi como obter as mensagens enviadas pelos usuários enquanto ambos estão com a comunicação selecionada, a fim de, de fato, se obter uma interação. A solução foi usar a citada requisição para se obter as mensagens em um intervalo de 2 segundos. Esse intervalo foi considerado ideal pois permite um carregamento rápido de mensagens ao mesmo tempo que não é curto o suficiente para sobrecarregar o servidor do \textit{backend}.
+
+Outra dificuldade foi na obtenção de mensagens de outras comunicações fora a selecionada, e como indicar isso visualmente para o usuário. Para isso feita a alteração no banco de dados para a inclusão do atributo de indicação de leitura, e a criação de um \textit{endpoint PATCH} para alteração do valor entre verdadeiro e falso. Dessa forma, foi possível fazer a indicação visual de novas mensagens com os ícones nos \textit{cards} das comunicações.
+
+No \textit{backend} não houve dificuldades, além das refatorações que ocorreram devido a novas propostas de melhorias de regras de negócios e arquitetura realizada pelos autores.
+
+Vale notar que as notificações de mensagens não lidas trata-se de uma melhoria nessa US, visto que não estava presente nos critérios de aceitação da mesma.
+
 \begin{landscape}
     \setlength{\oddsidemargin}{\evensidemargin}
     \numeracaoPaisagem
@@ -1194,18 +1207,6 @@ A arquitetura inicial do módulo de mensagens passou por reestruturações técn
     \end{figure}
 \end{landscape}
 \clearpage
-
-Houveram dificuldades no desenvolvimento dessa US, sendo a mais difícil de ser completada de toda a aplicação. Isso se deve ao fato de nenhum dos autores possuírem experiência prévia no desenvolvimento uma comunicação por mensagens.
-
-No \textit{frontend} houveram dúvidas de como obter o histórico de mensagens da comunicação, visto que carregar todas as mensagens em uma única requisição poderia torná-la lenta, além de ineficiente, visto que o usuário poderia estar interessado em ler apenas as mensagens mais recentes. Após pesquisa, foi adotada a solução de paginar o \textit{endpoint GET} de mensagens de uma comunicação específica, de modo a trazer as mais recentes primeiro e, caso o usuário role o histórico para cima, novas requisições serem feitas, trazendo as mensagens mais antigas.
-
-Outra dúvida foi como obter as mensagens enviadas pelos usuários enquanto ambos estão com a comunicação selecionada, a fim de, de fato, se obter uma interação. A solução foi usar a citada requisição para se obter as mensagens em um intervalo de 2 segundos. Esse intervalo foi considerado ideal pois permite um carregamento rápido de mensagens ao mesmo tempo que não é curto o suficiente para sobrecarregar o servidor do \textit{backend}.
-
-Outra dificuldade foi na obtenção de mensagens de outras comunicações fora a selecionada, e como indicar isso visualmente para o usuário. Para isso feita a alteração no banco de dados para a inclusão do atributo de indicação de leitura, e a criação de um \textit{endpoint PATCH} para alteração do valor entre verdadeiro e falso. Dessa forma, foi possível fazer a indicação visual de novas mensagens com os ícones nos \textit{cards} das comunicações.
-
-No \textit{backend} não houve dificuldades, além das refatorações que ocorreram devido a novas propostas de melhorias de regras de negócios e arquitetura realizada pelos autores.
-
-Vale notar que as notificações de mensagens não lidas trata-se de uma melhoria nessa US, visto que não estava presente nos critérios de aceitação da mesma.
 
 \subsection[Funcionalidade 6: Busca e Recomendação de Tutores]{Funcionalidade 6: Busca e Recomendação de Tutores}
 
@@ -1263,12 +1264,12 @@ Depois começa-se a etapa de filtragem baseada em conteúdo. Esta etapa calcula 
 \begin{itemize}
     \item O sistema monta um vetor de interesse partindo do zero. O interesse do usuário ``aumenta'' (ganha \textit{boosts}) conforme ações declaradas: receber peso +10.0 se solicitou a especialidade exata, e +2.0 em todos os subtópicos se pediu apenas a área;
     \item O motor consulta o histórico passado de sessões, atribuindo bônus adicionais caso ele já tenha cursado especialidades específicas;
-    \item A \textbf{Similaridade de Cosseno} cruza esse vetor de interesse com as características \textit{One-Hot} do tutor, gerando uma nota inicial (\texttt{content\_score}). Ela ainda recebe um incremento caso o tutor resida na mesma cidade (+3.0) ou estado (+1.0), além de bônus atrelados às pontuações nativas da plataforma.
+    \item A \textbf{Similaridade de Cosseno} cruza esse vetor de interesse com as características \textit{One-Hot} do tutor, gerando uma nota inicial (\texttt{content\_score}). Ela ainda recebe um incremento caso o tutor resida na mesma cidade (+3.0) ou estado (+1.0), além de bônus atrelados às pontuações nativas da aplicação.
 \end{itemize}
 
 Logo após essa etapa inicia-se a filtragem colaborativa, em que a lógica infere a nota que o usuário daria ao tutor baseado no que usuários de perfis semelhantes pensam:
 \begin{itemize}
-    \item Monta-se uma \textbf{Matriz de Correlação Usuário-Item} coletando todas as avaliações (\texttt{AvaliacaoTutorModel}) na plataforma;
+    \item Monta-se uma \textbf{Matriz de Correlação Usuário-Item} coletando todas as avaliações (\texttt{AvaliacaoTutorModel}) na aplicação;
     \item Uma Similaridade de Cosseno identifica os "10 usuários mais parecidos" com o aluno. Realiza-se, então, uma média ponderada das avaliações desses ``vizinhos próximos'';
     \item Há tratamento de ``Início Frio`'' (\textit{Cold Start}): se for um usuário recém-criado, a predição adota a média universal daquele tutor.
 \end{itemize}
@@ -1316,7 +1317,7 @@ O desenvolvimento do \textit{frontend} começou com a página de conquistas e os
 
 Após todas as imagens serem geradas e redimensionadas para uma resolução menor, o desenvolvimento foi retomado, sendo implementado o evento de desbloqueio das conquistas, bem como uma notificação visual para quando esse evento ocorre, que é acompanhado de um efeito sonoro tocado pelo navegador. A página de conquistas e a notificação podem ser observadas nas Figuras \ref{fig:paginaConquistas} e \ref{fig:notificacaoConquista}.
 
-Os autores buscaram diversificar os objetivos das conquistas, buscando envolver todas as atividades possíveis dentro da plataforma e tanto no papel de tutor como no papel de aprendiz. Como exemplos, pode-se citar conquistas cujo desbloqueio são enviar mensagem para tutores, conseguir alcançar determinados níveis, conseguir uma avaliação nota 5 como tutor e aprendiz e realizar um determinado número de sessões.
+Os autores buscaram diversificar os objetivos das conquistas, buscando envolver todas as atividades possíveis dentro da aplicação e tanto no papel de tutor como no papel de aprendiz. Como exemplos, pode-se citar conquistas cujo desbloqueio são enviar mensagem para tutores, conseguir alcançar determinados níveis, conseguir uma avaliação nota 5 como tutor e aprendiz e realizar um determinado número de sessões.
 
 Duas evoluções que os autores pensaram e implementaram para essa US durante o desenvolvimento foram a criação de classificações para as conquistas, cujo critério é a dificuldade de sua obtenção, e a criação de conquistas secretas, cujos \textit{cards}, diferentes das outras conquistas, não possui uma descrição do que deve ser feito para serem obtidas, e sim uma pista sugestiva. Quando são desbloquadas, o \textit{card} se torna o de uma conquista normal, exibindo o título, classificação, pontuação e descrição. \textit{Cards} de conquistas secretas podem ser observados na Figura \ref{fig:conquistaSecreta}.
 
@@ -1396,6 +1397,7 @@ Os títulos foram criados em um arquivo separado, que contém uma lista dos pare
 
 Não houveram dificuldades no desenvolvimento dessas US.
 
+\newpage
 
 \begin{table}
     \centering
@@ -1593,7 +1595,7 @@ As taxas de cobertura reduzidas em arquivos específicos, como certas \textit{Vi
 
 Para a elaboração e execução dos testes de integração foi utilizada a plataforma Postman, para a construção das coleções de requisições, em conjunto com a ferramenta de linha de comando Newman, para a execução automatizada e geração do relatório.
 
-Os testes desenvolvidos abrangeram as principais rotas da API da aplicação, simulando fluxos práticos de interação do usuário e englobando funcionalidades de autenticação (\textit{Login}, \textit{Log out} e Redefinição de Senha), gerenciamento de cadastros (Cadastrar Usuário e Perfil Logado), além das lógicas de negócio associadas à interação na plataforma, como fluxos de Sessão e Solicitar Sessão.
+Os testes desenvolvidos abrangeram as principais rotas da API da aplicação, simulando fluxos práticos de interação do usuário e englobando funcionalidades de autenticação (\textit{Login}, \textit{Log out} e Redefinição de Senha), gerenciamento de cadastros (Cadastrar Usuário e Perfil Logado), além das lógicas de negócio associadas à interação na aplicação, como fluxos de Sessão e Solicitar Sessão.
 
 Conforme os dados gerados pelo \textit{dashboard} do relatório Newman na Figura \ref{fig:newman}, a coleção efetuou um total de 74 requisições HTTP, avaliando um total de 147 asserções (\textit{assertions}) globais. O ambiente de testes simulado também demonstrou um tempo total de execução de 16,3 segundos, com um excelente tempo médio de resposta de 145ms por requisição.
 
@@ -1603,8 +1605,9 @@ As 15 falhas relatadas em testes específicos representam validações isoladas 
 
 O repositório com a coleção dos testes de integração feitos no Postman e a análise do Newman podem ser acessados através desse \textit{link}: \url{https://github.com/TutoriaWebApp/Integracao}
 
+\newpage
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \caption{Newman Summary Report.} 
     \includegraphics[width=1.1\textwidth, height=0.7\textheight, keepaspectratio]{figuras/NewmanSummaryReport.png}
@@ -1689,7 +1692,7 @@ O repositório com os arquivos utilizados nos testes pode se acessado através d
 \subsection{Teste de Usabilidade}
 Esta seção descreve o roteiro estruturado para a execução dos testes de usabilidade com usuários e seus resultados. O objetivo foi validar a interface, a experiência de navegação e a eficácia das funcionalidades da aplicação. Os cenários foram divididos de acordo com as jornadas dos dois principais papéis na aplicação: o aprendiz e o tutor.
 
-Para cada cenário de teste no roteiro foi descrito a ação que o usuário deveria realizar. Ao final, o usuário que realizou o teste de usabilidade preencheu um formulário demonstrando sua experiência ao utilizar a plataforma, respondendo qual foi o nível de dificuldade para a realização de ação em escala de Likert, onde 1 é muito difícil e 5 é muito fácil. Além disso, os participantes também puderam escrever suas opiniões sobre cada atividade e também sobre e experiência em geral.
+Para cada cenário de teste no roteiro foi descrito a ação que o usuário deveria realizar. Ao final, o usuário que realizou o teste de usabilidade preencheu um formulário demonstrando sua experiência ao utilizar a aplicação, respondendo qual foi o nível de dificuldade para a realização de ação em escala de Likert, onde 1 é muito difícil e 5 é muito fácil. Além disso, os participantes também puderam escrever suas opiniões sobre cada atividade e também sobre a experiência em geral.
 
 Os testes envolveram usuários de perfis diferentes, com idades variando entre 25 a 60 anos e com graus diferentes de conforto no uso de dispositivos móveis e computadores. Foram testados tanto a versão \textit{mobile} quanto a versão para computador da aplicação. Vale notar que uma das usuárias que participou dos testes se encaixa relativamente bem no perfil de público-alvo de tutor da aplicação. Trata-se de uma enfermeira que, ocasionalmente, para complementar a renda, fornece aulas como professora de sua área de atuação em faculdades particulares.
 
@@ -1697,10 +1700,10 @@ Os testes foram realizados no ambiente de \textit{deploy} da aplicação, cujo a
 
 \vspace{1cm}
 
-\subsubsection{Roteiro de Testes: Perfil Aprendiz}
+\subsubsection{Roteiro de Testes}
 
 \begin{itemize}[label=\textbullet]
-    \item \textbf{Cenário 1 - Criação de Conta}:\\Acessar a página inicial da plataforma e realizar a criação de uma conta como Aprendiz, preenchendo os dados obrigatórios;
+    \item \textbf{Cenário 1 - Criação de Conta}:\\Acessar a página inicial da aplicação e realizar a criação de uma conta como Aprendiz, preenchendo os dados obrigatórios;
     \item \textbf{Cenário 2 - \textit{Log In}}:\\Realizar \textit{login} na aplicação utilizando o e-mail e a senha cadastrados;
     \item \textbf{Cenário 3 - Editar Perfil}:\\Acessar o perfil e editar as informações básicas, realizando o \textit{upload} de uma nova foto;
     \item \textbf{Cenário 4 - Buscar um tutor}:\\Navegar para página de buscar tutor, interagir com os filtros (ou não) e buscar um tutor;
@@ -1714,6 +1717,8 @@ Os testes foram realizados no ambiente de \textit{deploy} da aplicação, cujo a
 \subsubsection{Resultados}
 
 Os resultados obtidos no teste de usabilidade podem ser acessados na planilha \url{https://docs.google.com/spreadsheets/d/1-73uolTNyJ7tUU6MZw_W3RiTKJKs0r3aSjvvVR3ttgM/edit?usp=sharing}. A média aritmética de dificuldade para realização de cada cenário pode ser observada na Tabela \ref{tab:resultados-usabilidade}.
+
+\newpage
 
 \begin{table}
     \centering
@@ -1786,7 +1791,7 @@ Diante dos resultados e \textit{feedbacks} recebidos, os autores realizaram melh
 
 Análise estática trata-se da análise do código-fonte sem sua execução, permitindo detecção de erros de sintaxe, semântica e estrutura \cite{pressman2021engenharia}.
 
-Para assegurar a qualidade, a segurança e a manutenibilidade do código-fonte, a plataforma SonarCloud foi adotada para realizar a análise estática contínua tanto do \textit{backend} quanto do \textit{frontend} da aplicação.
+Para assegurar a qualidade, a segurança e a manutenibilidade do código-fonte, a aplicação SonarCloud foi adotada para realizar a análise estática contínua tanto do \textit{backend} quanto do \textit{frontend} da aplicação.
 
 Na primeira análise, cujos resultados podem ser observados na Figura \ref{fig:analise-1}, foram identificados alguns débitos técnicos e vulnerabilidades.
 Destacaram-se, neste momento inicial, a classificação "E" no quesito de segurança para o repositório do \textit{backend} e a classificação "D" em confiabilidade para o \textit{frontend}.
@@ -1807,7 +1812,7 @@ A partir da revisão minuciosa dos \textit{logs} e dos relatórios de apontament
 
 Os erros apresentados no \textit{backend} em sua maioria eram em dependências de instalação, tanto no ``requirements.txt'' do Python quanto na inicialização do Docker com perfil \textit{root}. Além disso, também foi reportado que um dos arquivos de \textit{script} SQL (\textit{Structured Query Language}) possuia muitos comandos repetidos.
 
-Os erros apresentados no \textit{frontend} em sua maioria eram a falta do retorno \textit{void} na chamada de funções assíncronas e o uso da tag HTML (\textit{HyperText Markup Language}) \textit{label} sem associação com campos de \textit{input} de formulários. O erro de segurança era a falta de uma configuração no arquivo Docker do \textit{frontend}, o que causava a execução de scripts antecipadamente.
+Os erros apresentados no \textit{frontend} em sua maioria eram a falta do retorno \textit{void} na chamada de funções assíncronas e o uso da tag HTML \textit{label} sem associação com campos de \textit{input} de formulários. O erro de segurança era a falta de uma configuração no arquivo Docker do \textit{frontend}, o que causava a execução de scripts antecipadamente.
 
 Após as correções, ambos os repositórios atingiram o status de aprovação geral, zerando as vulnerabilidades de segurança e alcançando a classificação máxima ``A'' nos pilares de segurança e confiabilidade.
 
