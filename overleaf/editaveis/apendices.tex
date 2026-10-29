@@ -27,7 +27,7 @@ Carlos é uma pessoa muito esforçada e que se empenha no que faz. Entretanto, s
 \item \textbf{Acompanhamento Personalizado}: Precisa de alguém que possa dar \textit{feedback} direto e corrigir erros práticos (como a posição das mãos ao tocar o
 violão).
 
-\item \textbf{Flexibilidade de Horários}: Por ter uma agenda muito ocupada, precisa que suas aulam possam ser marcadas em horários específicos, geralmente à noite.
+\item \textbf{Flexibilidade de Horários}: Por ter uma agenda muito ocupada, precisa que suas aulas possam ser marcadas em horários específicos, geralmente à noite.
 
 \item \textbf{Indicação de Confiança}: Precisa de uma fonte confiável para encontrar um professor confiável e competente, pois não possui indicações de amigos ou familiares.
 
@@ -109,7 +109,7 @@ A Figura \ref{fig:login} apresenta a interface de usuário para a ação do \tex
 
 \begin{figure}[h!]
     \centering
-    \caption{Mensagem de erro de autenticacação.} 
+    \caption{Mensagem de erro de autenticação.} 
     \includegraphics[width=0.99\textwidth]{figuras/login-erro.png}
 
 
@@ -152,7 +152,7 @@ A Figura \ref{fig:tutores} apresenta a tela de tutores, que exibe tutores e suas
     \label{fig:tutores}
 \end{figure}
 
-Ao clicar no botão para solicitar uma sessão, abre-se uma janela em que são exibidos os horários disponíveis na agenda do tutor, conforme aprensentado pela Figura \ref{fig:sessoes}.
+Ao clicar no botão para solicitar uma sessão, abre-se uma janela em que são exibidos os horários disponíveis na agenda do tutor, conforme apresentado pela Figura \ref{fig:sessoes}.
 
 \newpage
 
@@ -626,7 +626,7 @@ nomeEspecialidade & chave única composta, obrigatório & varchar & 100 & Nome d
 
 \section*{AGENDA}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
-\textbf{Descrição:} Define os dados de uma agenda disponível de um tutor fornecer sessões de tutoria.
+\textbf{Descrição:} Define os dados de uma agenda disponível de um tutor para fornecer sessões de tutoria.
 
 \begin{table}[h!]
 \centering
@@ -676,7 +676,7 @@ urlImagem & obrigatório & varchar & 256 & URL da imagem da conquista. \\
 \hline
 tier & obrigatório & enum ('B', 'P', 'O', 'D') & & Classificação da conquista, sendo o valor B para Bronze, P para Prata, O para Ouro e D para Diamante.\\
 \hline
-secreta & obrigatório & boleano & & Valor que indica se a conquista é secreta ou não, sendo \textit{true} para verdadeiro e \textit{false} para falso.\\
+secreta & obrigatório & booleano & & Valor que indica se a conquista é secreta ou não, sendo \textit{true} para verdadeiro e \textit{false} para falso.\\
 \hline
 pista & optativo & varchar & 64 & Frase sugestiva do que deve ser feito para conseguir uma conquista secreta.\\
 \hline
@@ -730,7 +730,7 @@ conteudo & obrigatório & varchar & 200 & Conteúdo textual da mensagem. \\
 \hline
 horario & obrigatório & datetime & & Data e horário de envio da mensagem. \\
 \hline
-lida & obrigatório & boleano & & Valor que identifica se a mensagem foi lida pelo destinatário, sendo \textit{true} o valor para verdadeiro e \textit{false} o valor para falso. \\
+lida & obrigatório & booleano & & Valor que identifica se a mensagem foi lida pelo destinatário, sendo \textit{true} o valor para verdadeiro e \textit{false} o valor para falso. \\
 \hline
 \end{tabular}
 }
@@ -774,7 +774,7 @@ horarioFim & obrigatório & time & & Horário de fim da sessão. \\
 
 \clearpage
 
-\section*{SOLICITAÇÃO}
+\section*{SOLICITACAO}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de uma solicitação de sessão de tutoria realizada por um aprendiz que será cadastrada.
 
@@ -802,7 +802,7 @@ dataPretendida & obrigatório & date & & Data a qual a solicitação solicita um
 \hline
 validade & obrigatório & datetime & & Data e horário de validade da solicitação. \\
 \hline
-recorrente & obrigatório & boleano & & Valor que indica se uma solicitação é recorrente, sendo \textit{true} para verdadeiro e \textit{false} para falso. \\
+recorrente & obrigatório & booleano & & Valor que indica se uma solicitação é recorrente, sendo \textit{true} para verdadeiro e \textit{false} para falso. \\
 \hline
 estado & obrigatório & enum('ACEITO', 'PENDENTE', 'RECUSADO', 'RECORRENTE') & & Estado da solicitação. \\
 \hline
@@ -890,7 +890,7 @@ applied & obrigatório & datetime & 6 & Define em que data foi aplicado o \texti
 
 \section*{django\_sessions}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
-\textbf{Descrição:} Define dados relacionado à \textit{login} de sessão do USUARIO.
+\textbf{Descrição:} Define dados relacionado ao \textit{login} de sessão do USUARIO.
 
 \begin{table}[h!]
 \centering
@@ -904,7 +904,7 @@ id & chave primária, obrigatório & varchar & 40 & Token identificador do  djan
 \hline
 session\_data & obrigatório & longtext & & Define metadados da sessão\\
 \hline
-expire\_date & obrigatória & datetime & 6 & Define quando expira a sesão\\
+expire\_date & obrigatória & datetime & 6 & Define quando expira a sessão\\
 \hline
 \end{tabular}
 }
@@ -914,7 +914,7 @@ expire\_date & obrigatória & datetime & 6 & Define quando expira a sesão\\
 
 \section*{django\_content\_type}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
-\textbf{Descrição:} Define os indíces dos \textit{models}, que foram definidos na aplicação Django.
+\textbf{Descrição:} Define os índices dos \textit{models}, que foram definidos na aplicação Django.
 
 \begin{table}[h!]
 \centering
@@ -974,7 +974,7 @@ codename & obrigatório & datetime & 6 & Define um nome curto para esta permiss�
 \hline
 id & chave primária, obrigatório & int & & Número identificador do  django\_admin\_log\\
 \hline
-usuarioId & chave estrangeira, obrigatória & int & & Número identificador do USUARIO\\
+usuarioId & chave estrangeira, obrigatória & int & & Número identificador do usuário\\
 \hline
 djngo\_content\_type & chave estrangeira, obrigatória & int & & Número identificador do django\_content\_type\\
 \hline
@@ -1051,7 +1051,7 @@ auth\_group\_id & chave estrangeira, obrigatório & int & & Número identificado
 \hline
 id & chave primária, obrigatório & bigint & & Número identificador do  USUARIO\_groups\\
 \hline
-usuarioId & chave estrangeira, obrigatória & int & & Número identificador do USUARIO\\
+usuarioId & chave estrangeira, obrigatória & int & & Número identificador do usuário\\
 \hline
 auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificador do auth\_group\\
 \hline
@@ -1071,9 +1071,9 @@ auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificado
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-id & chave primária, obrigatório & bigint & & Número identificador do  USUARIO\_groups\\
+id & chave primária, obrigatório & bigint & & Número identificador do  USUARIO\_permissions\\
 \hline
-usuarioId & chave estrangeira, obrigatória & int & & Número identificador do USUARIO\\
+usuarioId & chave estrangeira, obrigatória & int & & Número identificador do usuário\\
 \hline
 auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificador do auth\_group\\
 \hline

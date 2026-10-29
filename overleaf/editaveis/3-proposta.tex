@@ -1,15 +1,15 @@
 \chapter[Metodologia]{Metodologia}
 \label{cap:metodologia}
-Este capítulo irá abordar a metodologia utilizada no desenvolvimento deste trabalho, discorrendo sobre as metodologias de pesquisa e desenvolvimento, requisitos, arquitetura, ferramentas tecnológicas, cronograma de atividades e a simulação realizada para validação da arquitetura, disponível no Apêndice X.
+Este capítulo irá abordar a metodologia utilizada no desenvolvimento deste trabalho, discorrendo sobre as metodologias de pesquisa e desenvolvimento, requisitos, arquitetura, ferramentas tecnológicas, cronograma de atividades e a simulação realizada para validação da arquitetura, disponível no Apêndice \ref{simulacao}.
 
 \section[Metodologias]{Metodologias}
 \label{sec:metodologia-proposta}
 \subsection[Metodologia de Pesquisa]{Metodologia de Pesquisa}
-Conforme descrito na Seção \ref{sec:metodologia}, uma metodologia de pesquisa pode ser classificada com relação à sua abordagem, natureza, objetivo e procedimentos. Cada umas dessas características da pesquisa realizada neste trabalho é descrita a seguir.
+Conforme descrito na Seção \ref{sec:metodologia}, uma metodologia de pesquisa pode ser classificada com relação à sua abordagem, natureza, objetivo e procedimentos. Cada uma dessas características da pesquisa realizada neste trabalho é descrita a seguir.
 
 \subsubsection[Abordagem da Pesquisa]{Abordagem da Pesquisa}
 
-A pesquisa qualitativa se preocupa com o aprofundamento da compreensão de um grupo social, buscando explicar o por quê das coisas, sem se preocupar com representativades numéricas, e sim com aspectos da realidade que não podem ser quantificados, como significados, motivos, aspirações, crenças, valores e atitudes \cite{gerhardt2009metodos}.
+A pesquisa qualitativa se preocupa com o aprofundamento da compreensão de um grupo social, buscando explicar o porquê das coisas, sem se preocupar com representatividades numéricas, e sim com aspectos da realidade que não podem ser quantificados, como significados, motivos, aspirações, crenças, valores e atitudes \cite{gerhardt2009metodos}.
 
 Tendo em vista que a pesquisa realizada foi feita com o objetivo de se compreender o que é gamificação, sistemas de recomendação e o potencial da aprendizagem quando se aprende com uma pessoa mais experiente em uma área do saber, a abordagem da pesquisa se qualifica como qualitativa.
 
@@ -27,7 +27,7 @@ A pesquisa objetivou encontrar referências bibliográficas para levantar a hip�
 
 \subsubsection[Procedimento da Pesquisa]{Procedimento da Pesquisa}
 
-A pesquisa bibliográfica é feita a partir do levantamento de referências teóricas já analisadas e publicadas por meios escritos e eletrônicos, como livros, artígos científicos e páginas de \textit{websites} \cite{gerhardt2009metodos}. Embora em quase todos os estudos seja exigido algum tipo de trabalho dessa natureza, a pesquisa bibliográfica é desenvolvida exclusivamente a partir de fontes bibliográficas. A principal vantagem dessa pesquisa reside no fato de permitir ao investigador a cobertura de uma gama de fenômenos muito mais ampla do que aquela que poderia pesquisar diretamente \cite{gil2002elaborar}.
+A pesquisa bibliográfica é feita a partir do levantamento de referências teóricas já analisadas e publicadas por meios escritos e eletrônicos, como livros, artigos científicos e páginas de \textit{websites} \cite{gerhardt2009metodos}. Embora em quase todos os estudos seja exigido algum tipo de trabalho dessa natureza, a pesquisa bibliográfica é desenvolvida exclusivamente a partir de fontes bibliográficas. A principal vantagem dessa pesquisa reside no fato de permitir ao investigador a cobertura de uma gama de fenômenos muito mais ampla do que aquela que poderia pesquisar diretamente \cite{gil2002elaborar}.
 
 A pesquisa levantou somente material bibliográfico publicado em livros ou meios eletrônicos, se baseando unicamente em fontes desse tipo para coletar informações.
 
@@ -483,7 +483,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 \subsection[Requisitos Não Funcionais]{Requisitos Não Funcionais}
 \label{requisitosNaoFuncionais}
 
-Segundo \citeonline{wiegers2023software}, Requisitos Não Funcionais (RNFs), também conhecidos como requisitos de atributos de qualidade, descrevem várias características de qualidade, serviço ou desempenho que a solução deve possuir. Enquanto os requisitos funcionais focam no comportamento do sistema (o que ele faz), os atributos de qualidade definem propriedades do sistema (o quão bem ele faz). Tais expectativas dos usuários, muitas vezes não declaradas explicitamente, e incluem características como usabilidade e segurança.
+Segundo \citeonline{wiegers2023software}, Requisitos Não Funcionais (RNFs), também conhecidos como requisitos de atributos de qualidade, descrevem várias características de qualidade, serviço ou desempenho que a solução deve possuir. Enquanto os requisitos funcionais focam no comportamento do sistema (o que ele faz), os atributos de qualidade definem propriedades do sistema (o quão bem ele faz). Tais expectativas dos usuários, muitas vezes não declaradas explicitamente, incluem características como usabilidade e segurança.
 
 Ainda conforme \citeonline{wiegers2023software}, os RNFs são fundamentais porque determinam decisões de arquitetura do software, evitam retrabalho (identificar esses requisitos cedo reduz o risco de ter que realizar modificações caras e invasivas posteriormente no desenvolvimento) e aumentam a satisfação do usuário.
 
@@ -524,11 +524,11 @@ A fim de evitar retrabalho futuro e também para se desenvolver um software mais
 
 \item \textbf{RNF04}: O software deve criptografar a senha dos usuários com algoritmos de hash;
 
-\item \textbf{RNF05}: O software deve utilizar o padrão OAuth2 / JWT (\textit{JSON Web Tokens}) para autenticação na API (\textit{Application Programming Interface});
+\item \textbf{RNF05}: O software deve utilizar o padrão OAuth2 / \textit{JSON Web Tokens} (JWT) para autenticação na \textit{Application Programming Interface} (API);
 
 \item \textbf{RNF06}: O token deve ter tempo de expiração curto.
 
-\item \textbf{RNF07}: Toda a comunicação entre o \textit{frontend} e o \textit{backend} deve ser realizada exclusivamente via protocolo HTTPS (\textit{HyperText Transfer Protocol Secure}) para garantir a confidencialidade dos dados em tráfego.
+\item \textbf{RNF07}: Toda a comunicação entre o \textit{frontend} e o \textit{backend} deve ser realizada exclusivamente via protocolo \textit{HyperText Transfer Protocol Secure} (HTTPS) para garantir a confidencialidade dos dados em tráfego.
 
 \end{itemize}
 
@@ -672,9 +672,9 @@ O \textit{backend} implementa uma variação do padrão \textit{Model-View-Contr
 \subsection [Backend Django]{Backend Django}
 O \textit{backend} é responsável pela lógica de negócio, processamento de dados e persistência, seguindo a arquitetura MVS do Django, que promove uma clara separação de responsabilidades.
 
-\textit{Model}: A camada \textit{Model} representa a estrutura dos dados da aplicação. Implementada através das \textit{Models} do Django, ela serve como a única fonte da verdade para os dados. Utilizando o ORM (\textit{Object-Relational Mapping}) integrado do Django, as classes Python são mapeadas diretamente para as tabelas no banco de dados MySQL neste projeto. Toda a lógica de acesso, validação e manipulação dos dados reside aqui.
+\textit{Model}: A camada \textit{Model} representa a estrutura dos dados da aplicação. Implementada através das \textit{Models} do Django, ela serve como a única fonte da verdade para os dados. Utilizando o \textit{Object-Relational Mapping} (ORM) integrado do Django, as classes Python são mapeadas diretamente para as tabelas no banco de dados MySQL neste projeto. Toda a lógica de acesso, validação e manipulação dos dados reside aqui.
 
-\textit{View}: Na terminologia do Django, a \textit{View} atua como a \textit{Controller} do padrão MVC clássico. É a camada que processa as requisições HTTP (\textit{HyperText Transfer Protocol}) recebidas do cliente. Ela contém a lógica de negócio, interage com a \textit{Model} para buscar ou modificar dados e retorna uma resposta HTTP. Para este projeto, será utilizado o \textit{Django Rest Framework} (DRF) para construir as \textit{Views}, que se tornam \textit{endpoints} de uma API, retornando respostas em formato JSON (\textit{JavaScript Object Notation}).
+\textit{View}: Na terminologia do Django, a \textit{View} atua como a \textit{Controller} do padrão MVC clássico. É a camada que processa as requisições \textit{HyperText Transfer Protocol} (HTTP) recebidas do cliente. Ela contém a lógica de negócio, interage com a \textit{Model} para buscar ou modificar dados e retorna uma resposta HTTP. Para este projeto, será utilizado o \textit{Django Rest Framework} (DRF) para construir as \textit{Views}, que se tornam \textit{endpoints} de uma API, retornando respostas em formato \textit{JavaScript Object Notation} (JSON).
 
 \textit{Serializer}: Esta camada corresponde à \textit{View} no padrão MVC. No contexto de uma API, a \textit{view} é uma representação serializada dos dados, geralmente em JSON. O DRF gerencia essa serialização, transformando os objetos complexos da \textit{Model} em um formato que o \textit{frontend} pode facilmente consumir.
 
@@ -684,7 +684,7 @@ Integradas a esta arquitetura, as bibliotecas \textit{Pandas} e \textit{Scikit-l
 \label{arquitetura-frontend}
 Para o \textit{frontend} foi adotada uma arquitetura de \textit{Monorepo} (monorepositório), que consiste em gerenciar múltiplos projetos e pacotes em um único repositório de código. Esta abordagem é ideal para escalar a aplicação, promover o reuso de código e simplificar a gestão de dependências.
 
-\textit{Web}: A aplicação principal desenvolvida com Next.js e React. Ela é responsável por toda a interface do usuário, gerenciamento de estado do cliente e consumo da API do \textit{backend}. O TypeScript é utilizado para garantir a segurança de tipos e o Prisma ORM  empregado para gerar tipos TypeScript a partir do esquema da API, garantindo a sincronia entre \textit{frontend} e \textit{backend}.
+\textit{Web}: A aplicação principal desenvolvida com Next.js e React. Ela é responsável por toda a interface do usuário, gerenciamento de estado do cliente e consumo da API do \textit{backend}. O TypeScript é utilizado para garantir a segurança de tipos.
 
 \textit{Packages}: Contém códigos que são compartilhados entre as diferentes páginas.
 
@@ -737,7 +737,7 @@ No DE-R, as entidades são representadas por retângulos, os relacionamentos sã
 \subsection[Diagrama Lógico de Dados]{Diagrama Lógico de Dados}
 
 O nível lógico de um projeto de banco de dados é uma descrição da base de dados que será implementada no Sistema Gerenciador de Banco de Dados (SGBD). Assim, cada entidade do banco é traduzida para uma tabela, e cada atributo, geralmente, define uma coluna desta tabela. Além disso, definem-se as chaves primárias e chaves estrangeiras,  os tipos de dados de cada coluna, dentre outros
-recursos e restrições relevantes a base de dados que estará sendo implementada \cite{heuser2009projeto}. A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto. Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
+recursos e restrições relevantes a base de dados que estará sendo implementada \cite{heuser2009projeto}. A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto. Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
 
 Além do DLD e DE-R, foi criado um dicionário de dados da base de dados do software proposto. Um dicionário de dados é a descrição da base de dados, armazenando informações sobre sua estrutura e restrições \cite{elmasri2011sistemas}. No  Apêndice \ref{dicionario-dados} pode ser observado tal dicionário. 
 
@@ -1003,7 +1003,7 @@ Conforme mencionado na subseção \ref{metodologia-desenvolvimento}, os ciclos d
 
 Testes de software pretendem mostrar que um programa faz o que foi destinado a fazer e descobrir defeitos antes que ele seja colocado em uso \cite{sommerville2011engenharia}.
 
-O plano de testes para o TCC 2 é realizar o TDD (do inglês \textit{Test Driven Development}, Desenvolvimento Orientado a Teste) com uma pirâmide de testes que abrange as funcionalidades descritas na Subseção \ref{historias-usuario}. A abordagem escolhida para o TDD é a Comportamental, que foca a validação apenas nos métodos públicos e fluxos principais. 
+O plano de testes para o TCC 2 é realizar o \textit{Test Driven Development} (TDD) com uma pirâmide de testes que abrange as funcionalidades descritas na Subseção \ref{historias-usuario}. A abordagem escolhida para o TDD é a Comportamental, que foca a validação apenas nos métodos públicos e fluxos principais. 
 
 O projeto priorizou a validação por comportamento, assegurando que os testes cubram as regras de negócio relevantes e contratos de interface, evitando o acoplamento excessivo aos detalhes de implementação interna.
 
