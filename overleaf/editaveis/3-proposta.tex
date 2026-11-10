@@ -1,42 +1,40 @@
 \chapter[Metodologia]{Metodologia}
 \label{cap:metodologia}
-Este capítulo irá abordar a metodologia utilizada no desenvolvimento deste trabalho, discorrendo sobre as metodologias de pesquisa e desenvolvimento, requisitos, arquitetura, ferramentas tecnológicas, cronograma de atividades e a simulação realizada para validação da arquitetura, disponível no Apêndice \ref{simulacao}.
+Este capítulo irá abordar a metodologia utilizada no desenvolvimento deste trabalho, discorrendo sobre as metodologias de pesquisa e desenvolvimento, requisitos, arquitetura, ferramentas tecnológicas e cronograma de atividades e a simulação realizada para validação da arquitetura, disponível no Apêndice \ref{simulacao}.
 
-\section[Metodologias]{Metodologias}
-\label{sec:metodologia-proposta}
-\subsection[Metodologia de Pesquisa]{Metodologia de Pesquisa}
+\section[Metodologia de Pesquisa]{Metodologia de Pesquisa}
 Conforme descrito na Seção \ref{sec:metodologia}, uma metodologia de pesquisa pode ser classificada com relação à sua abordagem, natureza, objetivo e procedimentos. Cada uma dessas características da pesquisa realizada neste trabalho é descrita a seguir.
 
-\subsubsection[Abordagem da Pesquisa]{Abordagem da Pesquisa}
+\subsection[Abordagem da Pesquisa]{Abordagem da Pesquisa}
 
 A pesquisa qualitativa se preocupa com o aprofundamento da compreensão de um grupo social, buscando explicar o porquê das coisas, sem se preocupar com representatividades numéricas, e sim com aspectos da realidade que não podem ser quantificados, como significados, motivos, aspirações, crenças, valores e atitudes \cite{gerhardt2009metodos}.
 
 Tendo em vista que a pesquisa realizada foi feita com o objetivo de se compreender o que é gamificação, sistemas de recomendação e o potencial da aprendizagem quando se aprende com uma pessoa mais experiente em uma área do saber, a abordagem da pesquisa se qualifica como qualitativa.
 
-\subsubsection[Natureza da Pesquisa]{Natureza da Pesquisa}
+\subsection[Natureza da Pesquisa]{Natureza da Pesquisa}
 
 A pesquisa aplicada tem como objetivo gerar conhecimentos para aplicação prática, dirigidos à solução de problemas específicos \cite{gerhardt2009metodos}.
 
 A pesquisa realizada teve o objetivo de obter conhecimentos sobre gamificação, sistemas de recomendação, entre outros conceitos, para a criação de uma aplicação web para mitigação de dificuldades de aprendizagem.
 
-\subsubsection[Objetivo da Pesquisa]{Objetivo da Pesquisa}
+\subsection[Objetivo da Pesquisa]{Objetivo da Pesquisa}
 
 A pesquisa exploratória tem como objetivo proporcionar maior familiaridade com o problema, com a finalidade de torná-lo mais explícito ou de constituir hipóteses. Pode-se dizer que seu objetivo principal é o aprimoramento de ideias ou a descoberta de intuições. Na maioria dos casos envolvem levantamento bibliográfico \cite{gil2002elaborar}.
 
 A pesquisa objetivou encontrar referências bibliográficas para levantar a hipótese do sucesso que a aplicação web desenvolvida poderia alcançar.
 
-\subsubsection[Procedimento da Pesquisa]{Procedimento da Pesquisa}
+\subsection[Procedimento da Pesquisa]{Procedimento da Pesquisa}
 
 A pesquisa bibliográfica é feita a partir do levantamento de referências teóricas já analisadas e publicadas por meios escritos e eletrônicos, como livros, artigos científicos e páginas de \textit{websites} \cite{gerhardt2009metodos}. Embora em quase todos os estudos seja exigido algum tipo de trabalho dessa natureza, a pesquisa bibliográfica é desenvolvida exclusivamente a partir de fontes bibliográficas. A principal vantagem dessa pesquisa reside no fato de permitir ao investigador a cobertura de uma gama de fenômenos muito mais ampla do que aquela que poderia pesquisar diretamente \cite{gil2002elaborar}.
 
 A pesquisa levantou somente material bibliográfico publicado em livros ou meios eletrônicos, se baseando unicamente em fontes desse tipo para coletar informações.
 
-\subsection[Metodologia de Desenvolvimento]{Metodologia de Desenvolvimento}
+\section[Metodologia de Desenvolvimento]{Metodologia de Desenvolvimento}
 \label{metodologia-desenvolvimento}
 
-Para a condução deste trabalho, foi adotada uma Metodologia de Desenvolvimento de Software adaptada, que combina práticas do XP e do \textit{Kanban}. Essa abordagem se deve à realidade da equipe, composta por apenas dois desenvolvedores, para garantir a colaboração e a eficiência do fluxo de trabalho. A seguir, será detalhado cada uma dessas metodologias e as adaptações realizadas para o sucesso do projeto.
+Para a condução deste trabalho, foi adotada uma Metodologia de Desenvolvimento de Software adaptada, que combina práticas do XP e do \textit{Kanban}. Essa abordagem se deve à realidade da equipe, composta por apenas dois desenvolvedores, para garantir a colaboração e a eficiência do fluxo de trabalho. A seguir, será detalhada cada uma dessas metodologias e as adaptações realizadas para o sucesso do projeto.
 
-\subsubsection[XP]{XP}
+\subsection[\textit{eXtreme Programming (XP)}]{\textit{eXtreme Programming (XP)}}
 A metodologia XP é uma abordagem ágil de desenvolvimento de software que envolve um conjunto de regras e práticas constantes no contexto de quatro atividades metodológicas: planejamento, projeto, codificação e testes \cite{pressman2021engenharia}. Segundo \citeonline{BeckAndres2004} o que distingue o XP de outras metodologias são os seguintes pontos:
 
 \begin{itemize}
@@ -68,18 +66,18 @@ Foram adaptados os seguintes valores e práticas para o contexto deste trabalho:
     A prática de escrever testes automatizados antes de escrever o código funcional que o fará passar nos critérios de aceitação. Os testes automatizados servem como uma documentação do sistema e uma rede de segurança e confiança de que futuras funcionalidades não irão quebrar as funcionalidades já existentes.
 
     \item \textbf{\textit{Simple Design}}:
-    O princípio de projetar a solução mais simples que atenda aos requisitos atuais, evitando \textit{overengineering} e complexidade desnecessária.
+    O princípio de projetar a solução mais simples que atenda aos requisitos atuais, evitando desenvolvimento além do estritamente necessário e complexidade desnecessária.
 
     \item \textbf{Entregas Curtas}:
     O ciclo de entregas definido para esse trabalho foi de uma semana. Ao final de cada semana, uma nova versão funcional do software foi gerada. Com a integração contínua simplificada dado o \textit{Pair Programming}, o código foi integrado ao final de cada sessão de trabalho, quando não houve eventualidades, para garantir que a base de código esteja sempre estável e atualizada.
 \end{itemize}
 
-\subsubsection[Kanban]{Kanban}
-O \textit{Kanban} é uma abordagem que dá suporte a uma metodologia, \textit{framework} ou outra abordagem já existente (no caso deste trabalho, o XP). O \textit{Kanban} tem a intenção de ajudar a gerenciar o trabalho e prestação de serviços ao ponto de atender de maneira consistente as expectativas dos clientes \cite{Bartel2021}.
+\subsection[Kanban]{Kanban}
+O \textit{Kanban} é uma abordagem que fornece suporte a uma metodologia, \textit{framework} ou outra abordagem já existente (no caso deste trabalho, o XP). O \textit{Kanban} tem a intenção de ajudar a gerenciar o trabalho e prestação de serviços ao ponto de atender de maneira consistente as expectativas dos clientes \cite{Bartel2021}.
 Segundo \citeonline{pressman2021engenharia} as práticas do \textit{Kanban} são:
 
 \begin{itemize}
-  \item \textbf{Visualizar o fluxo de trabalho no quadro Kanban:} O quadro Kanban é dividido em colunas que representam o estágio de desenvolvimento de cada elemento de funcionalidade do software, que a equipe leva da coluna “por fazer” para a “fazendo” e então para a “feito” à medida que o projeto avança.
+  \item \textbf{Visualizar o fluxo de trabalho no quadro Kanban:} O quadro Kanban é dividido em colunas que representam o estágio de desenvolvimento de cada elemento de funcionalidade do software, em que a equipe acompanha a situação de cada funcionalidade ao longo de seu desenvolvimento.
   
   \item \textbf{Limite de Trabalho em Progresso:} Os desenvolvedores são incentivados a completar a sua tarefa atual antes de iniciarem outra. Isso reduz o tempo de ciclo, melhora a qualidade do trabalho e aumenta a capacidade da equipe de fornecer funcionalidades de software com maior frequência.
   
@@ -95,19 +93,19 @@ A elicitação de requisitos foi conduzida por meio do método \textit{Lean Ince
 
 \subsection[Personas]{Personas}
 
-As Personas são personagens fictícios criados para representar diferentes tipos de usuários que possam vir a utilizar um serviço, produto ou site. Criar personas ajuda a entender melhor as necessidades, experiências, comportamentos e objetivos do seus usuários \cite{dam2025personas}.
+As Personas são personagens fictícios criados para representar diferentes tipos de usuários que possam vir a utilizar um serviço, produto ou \textit{site}. Criar personas ajuda a entender melhor as necessidades, experiências, comportamentos e objetivos do seus usuários \cite{dam2025personas}.
 
-Foram criadas duas personas para representar os diferentes perfis de usuários da aplicação: um estudante, que precisa de alguém para o auxiliar no aprendizado de um \textit{hobby}, e um professor particular, que busca expandir sua clientela. No Apêndice \ref{personas} deste trabalho podem ser observadas tais personas. 
+Foram criadas duas personas para representar os diferentes perfis de usuários da aplicação: um aprendiz, que precisa de alguém para o auxiliar no aprendizado de um \textit{hobby}, e um professor particular, que busca expandir sua clientela. No Apêndice \ref{personas} deste trabalho podem ser observadas as caracterizações destas duas personas que seriam usuárias deste trabalho. 
 
 \subsection[Benchmarking]{Benchmarking}
 
-Segundo \citeonline{benchmarking}, \textit{benchmarking} é um processo de pesquisa contínuo no qual uma organização realiza comparações de seus produtos, processos e práticas com os de concorrentes, com o propósito de aprimoramento organizacional.
+Segundo \citeonline{benchmarking}, \textit{benchmarking} é um processo de pesquisa contínua no qual uma organização realiza comparações de seus produtos, processos e práticas com os de concorrentes, com o propósito de aprimoramento organizacional.
 
-A fim de se identificar quais são as funcionalidades e pontos positivos fornecidos por aplicações concorrentes ao software desenvolvido, foi realizado um \textit{benchmarking} competitivo (caracterizado pelo estudo de concorrentes diretos) de três plataformas: Profes, Superprof e Aloprof. Os resultados podem ser visualizados na Tabela \ref{tab:benchmarking}.
+A fim de se identificar quais são as funcionalidades e pontos positivos fornecidos por aplicações concorrentes ao software desenvolvido, foi realizado um \textit{benchmarking} competitivo (caracterizado pelo estudo de concorrentes diretos) de três plataformas: Profes, Superprof e Aloprof. Os resultados podem ser visualizados na Tabela \ref{tab:benchmarking}, que mostra cada plataforma e as respectivas funcionalidades que oferecem para aprendizes e tutores.
 
 \begin{table}[H]
     \centering
-    \caption{\textit{Benchmarking} das Plataformas.} % Ajustei o título para condizer com o conteúdo (estava "Bugs")
+    \caption{\textit{Benchmarking} das Plataformas indicadas como concorrentes} % Ajustei o título para condizer com o conteúdo (estava "Bugs")
     \label{tab:benchmarking}
     
     % A coluna X ajusta a largura. O comando abaixo define um alinhamento melhor para listas.
@@ -123,7 +121,7 @@ A fim de se identificar quais são as funcionalidades e pontos positivos forneci
             \item Inteligência artificial própria para auxiliar no aprendizado.
             \item Sistema de avaliação de tutores com nota e comentário.
             \item Exibição da quantidade de avaliações, horas aula e exercícios resolvidos no perfil.
-            \item Possibilidade de conversar com o tutor por chat de mensagens.
+            \item Possibilidade de conversar com o tutor por \textit{chat} de mensagens.
             \item Envio de notificações de eventos (mensagem nova, avaliações, etc.).
         \end{itemize}  
         \\
@@ -168,7 +166,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{Gerenciamento de Perfil - F02}: Essa funcionalidade permite ao usuário editar suas informações, assim como apagar seu perfil da aplicação.
 
-\item \textbf{Agendamento de Tutorias - F03}: Essa funcionalidade permite ao aprendiz agendar uma sessão de tutoria com um tutor da aplicação.
+\item \textbf{Agendamento de Tutorias - F03}: Essa funcionalidade permite ao aprendiz agendar uma sessão de tutoria com um tutor na aplicação.
 
 \item \textbf{Sistema de Avaliação - F04}: Permite que aprendizes e tutores forneçam \textit{feedback} mútuo (nota e comentário) após uma sessão de tutoria.
 
@@ -192,7 +190,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{CA02}: Em caso de \textit{login} bem-sucedido, o usuário deve ser redirecionado para a página inicial do software.
 
-\item \textbf{CA03}: Em caso de falha na autenticação por e-mail e senha, o software deve exibir uma mensagem genérica de erro, como ``E-mail ou senha inválidos.'', sem especificar qual dos dois está incorreto por segurança.
+\item \textbf{CA03}: Em caso de falha na autenticação por e-mail e/ou senha, o software deve exibir uma mensagem genérica de erro, como ``E-mail ou senha inválidos.'', sem especificar qual dos dois está incorreto por segurança.
 
 \end{itemize}
 
@@ -426,7 +424,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 
 \item \textbf{CA04}: Caso a conquista tenha sido obtida, a imagem é exibida em cores.
 
-\item \textbf{CA05}: Caso a conquista não tenha sido obtida, a imagem é exibida em tom de cinza.
+\item \textbf{CA05}: Caso a conquista não tenha sido obtida, a imagem é exibida em tons de cinza.
 
 \item \textbf{CA06}: O usuário é notificado ao obter uma conquista.
 
@@ -483,9 +481,7 @@ descreve uma funcionalidade (F) valiosa para um usuário ou comprador de um sist
 \subsection[Requisitos Não Funcionais]{Requisitos Não Funcionais}
 \label{requisitosNaoFuncionais}
 
-Segundo \citeonline{wiegers2023software}, Requisitos Não Funcionais (RNFs), também conhecidos como requisitos de atributos de qualidade, descrevem várias características de qualidade, serviço ou desempenho que a solução deve possuir. Enquanto os requisitos funcionais focam no comportamento do sistema (o que ele faz), os atributos de qualidade definem propriedades do sistema (o quão bem ele faz). Tais expectativas dos usuários, muitas vezes não declaradas explicitamente, incluem características como usabilidade e segurança.
-
-Ainda conforme \citeonline{wiegers2023software}, os RNFs são fundamentais porque determinam decisões de arquitetura do software, evitam retrabalho (identificar esses requisitos cedo reduz o risco de ter que realizar modificações caras e invasivas posteriormente no desenvolvimento) e aumentam a satisfação do usuário.
+Segundo \citeonline{wiegers2023software}, Requisitos Não Funcionais (RNFs), também conhecidos como requisitos de atributos de qualidade, descrevem várias características de qualidade, serviço ou desempenho que a solução deve possuir. Enquanto os requisitos funcionais focam no comportamento do sistema (o que ele faz), os atributos de qualidade definem propriedades do sistema (o quão bem ele faz).
 
 A fim de evitar retrabalho futuro e também para se desenvolver um software mais satisfatório para os usuários, foram elicitados os seguintes RNFs:
 
@@ -549,28 +545,13 @@ A fim de evitar retrabalho futuro e também para se desenvolver um software mais
 \subsection[Priorização dos Requisitos]{Priorização dos Requisitos}
 \label{priorizacao-requisitos}
 
-Segundo \citeonline{wiegers2013software}, em cenários de escassez de recursos, como restrições temporais, a priorização de requisitos torna-se essencial para o planejamento do desenvolvimento. Essa prática visa antecipar a implementação de funcionalidades críticas, maximizando a entrega de valor ao negócio dentro das limitações do projeto. Uma técnica usada para este fim é o método MoSCoW, que categoriza os requisitos em quatro níveis de prioridade:
-
-\begin{itemize}
-
-\item \textbf{\textit{Must}}: o requisito deve ser satisfeito para a solução ser considerada um sucesso.
-
-\item \textbf{\textit{Should}}: o requisito é importante e deve ser incluído na solução se possível, mas não é mandatório para o sucesso.
-
-\item\textbf{\textit{Could}}: é uma funcionalidade desejável, mas que pode ser postergada ou eliminada. É implementada somente quando o tempo e recursos permitirem.
-
-\item \textbf{\textit{Won't}}: indica que o requisito não será implementado no momento, mas poderia ser incluído em uma versão futura do software.
-
-\end{itemize}
+Segundo \citeonline{wiegers2013software}, em cenários de escassez de recursos, como restrições temporais, a priorização de requisitos torna-se essencial para o planejamento do desenvolvimento, visando antecipar a implementação de funcionalidades críticas, maximizando a entrega de valor ao negócio dentro das limitações do projeto. Devido ao elevado número de US e o prazo de um semestre para desenvolvimento da aplicação, foi realizada uma priorização utilizando a técnica MoSCoW, classificando as US por grau de importância para o sucesso da aplicação, resultando na classificação apresentada a seguir:
 
 No contexto deste trabalho, o método MoSCoW foi aplicado para a priorização das US, resultando na classificação apresentada a seguir:
 
-
-
-
 \begin{itemize}
 
-\item \textbf{\textit{Must}}:
+\item \textbf{\textit{Must} (Obrigatório ter)}:
 
 \begin{itemize}
 
@@ -600,7 +581,7 @@ No contexto deste trabalho, o método MoSCoW foi aplicado para a priorização d
 
 \begin{itemize}
 
-\item \textbf{\textit{Should}}:
+\item \textbf{\textit{Should} (Deve ter)}:
 
 \begin{itemize}
 
@@ -620,7 +601,7 @@ No contexto deste trabalho, o método MoSCoW foi aplicado para a priorização d
 
 \begin{itemize}
 
-\item \textbf{\textit{Could}}:
+\item \textbf{\textit{Could} (Poderia ter)}:
 
 \begin{itemize}
 
@@ -636,7 +617,7 @@ No contexto deste trabalho, o método MoSCoW foi aplicado para a priorização d
 
 \begin{itemize}
 
-\item \textbf{\textit{Won't}}:
+\item \textbf{\textit{Won't} (Não terá)}:
 
 \begin{itemize}
 
@@ -645,6 +626,8 @@ No contexto deste trabalho, o método MoSCoW foi aplicado para a priorização d
 \end{itemize}
 
 \end{itemize}
+
+Diante da priorização, foram implementadas todas as US até a classificação \textit{Could}.
 
 
 \section [Arquitetura] {Arquitetura}
@@ -672,21 +655,21 @@ O \textit{backend} implementa uma variação do padrão \textit{Model-View-Contr
 \subsection [Backend Django]{Backend Django}
 O \textit{backend} é responsável pela lógica de negócio, processamento de dados e persistência, seguindo a arquitetura MVS do Django, que promove uma clara separação de responsabilidades.
 
-\textit{Model}: A camada \textit{Model} representa a estrutura dos dados da aplicação. Implementada através das \textit{Models} do Django, ela serve como a única fonte da verdade para os dados. Utilizando o \textit{Object-Relational Mapping} (ORM) integrado do Django, as classes Python são mapeadas diretamente para as tabelas no banco de dados MySQL neste projeto. Toda a lógica de acesso, validação e manipulação dos dados reside aqui.
+\textit{Model}: A camada \textit{Model} representa a estrutura dos dados da aplicação. Implementada através das \textit{Models} do Django, ela serve como a única fonte de verdade para os dados. Utilizando o \textit{Object-Relational Mapping} (ORM) integrado do Django, as classes Python são mapeadas diretamente para as tabelas no sistema gerenciador de banco de dados MySQL neste projeto. Toda a lógica de acesso, validação e manipulação dos dados reside aqui.
 
 \textit{View}: Na terminologia do Django, a \textit{View} atua como a \textit{Controller} do padrão MVC clássico. É a camada que processa as requisições \textit{HyperText Transfer Protocol} (HTTP) recebidas do cliente. Ela contém a lógica de negócio, interage com a \textit{Model} para buscar ou modificar dados e retorna uma resposta HTTP. Para este projeto, será utilizado o \textit{Django Rest Framework} (DRF) para construir as \textit{Views}, que se tornam \textit{endpoints} de uma API, retornando respostas em formato \textit{JavaScript Object Notation} (JSON).
 
 \textit{Serializer}: Esta camada corresponde à \textit{View} no padrão MVC. No contexto de uma API, a \textit{view} é uma representação serializada dos dados, geralmente em JSON. O DRF gerencia essa serialização, transformando os objetos complexos da \textit{Model} em um formato que o \textit{frontend} pode facilmente consumir.
 
-Integradas a esta arquitetura, as bibliotecas \textit{Pandas} e \textit{Scikit-learn} são empregadas dentro da camada de lógica de negócio (nas \textit{Views} ou em módulos de serviço por elas invocados) para realizar análises de dados e executar modelos de \textit{machine learning} antes de os dados serem persistidos ou retornados ao cliente. O fluxo de dados no \textit{backend} é, portanto, unidirecional e bem definido: uma requisição chega a uma \textit{View}, que utiliza a \textit{Model} para interagir com o banco de dados e, por fim, formula uma resposta através de um serializador (\textit{Serializer}).
+Integradas a esta arquitetura, as bibliotecas \textit{Pandas} e \textit{Scikit-learn} são empregadas dentro da camada de lógica de negócio (nas \textit{Views} ou em módulos de serviço por elas invocados) para realizar análises de dados e executar modelos de aprendizado de máquina antes dos dados serem persistidos ou retornados ao cliente. O fluxo de dados no \textit{backend} é, portanto, unidirecional e bem definido: uma requisição chega a uma \textit{View}, que utiliza a \textit{Model} para interagir com o banco de dados e, por fim, formula uma resposta através de um serializador (\textit{Serializer}).
 
 \subsection[Frontend Nextjs]{Frontend Nextjs}
 \label{arquitetura-frontend}
 Para o \textit{frontend} foi adotada uma arquitetura de \textit{Monorepo} (monorepositório), que consiste em gerenciar múltiplos projetos e pacotes em um único repositório de código. Esta abordagem é ideal para escalar a aplicação, promover o reuso de código e simplificar a gestão de dependências.
 
-\textit{Web}: A aplicação principal desenvolvida com Next.js e React. Ela é responsável por toda a interface do usuário, gerenciamento de estado do cliente e consumo da API do \textit{backend}. O TypeScript é utilizado para garantir a segurança de tipos.
+Web: A aplicação principal desenvolvida com Next.js e React. Ela é responsável por toda a interface do usuário, gerenciamento de estado do cliente e consumo da API do \textit{backend}. O TypeScript é utilizado para garantir a segurança de tipos.
 
-\textit{Packages}: Contém códigos que são compartilhados entre as diferentes páginas.
+\textit{Packages}: Contém códigos que são compartilhados entre as diferentes páginas virtuais (web).
 
 UI (\textit{User Interface}): Uma biblioteca de componentes React puros, estilizados com Tailwind CSS (\textit{Cascading Style Sheets}). Manter os componentes em um pacote separado permite seu reuso.
 
@@ -711,7 +694,11 @@ Docker: Toda a infraestrutura da aplicação é encapsulada em contêineres. Uti
 O Diagrama Entidade-Relacionamento (DE-R) é um diagrama que
 representa as entidades do banco de dados (coisas que existem no mundo real e que se deseja armazenar dados), seus atributos (propriedades específicas que descrevem as entidades) e os relacionamentos que existem entre as entidades \cite{elmasri2011sistemas}.
 
-No DE-R, as entidades são representadas por retângulos, os relacionamentos são representados por losangos (e geralmente descritos com um verbo) e atributos são representados por elipses, conectadas por linhas às suas entidades \cite{elmasri2011sistemas}. A Figura \ref{fig:diagrama_DE-R} apresenta o DE-R do projeto. Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R.png}.
+Foi elaborado um DE-R para o banco de dados do projeto, apresentado na Figura \ref{fig:diagrama_DE-R}, em que as entidades estão representadas por retângulos, os atributos delas estão representados por elipses (sendo uma elipse escura a chave primária da entidade), conectados por linhas às entidades, os relacionamentos entre entidades representados por losangos, sendo a cardinalidade (mínino e máximo de participantes) de cada parte do relacionamento exibida no extremo da linha que conecta cada entidadade ao losango, sendo o sentido do relacionamento indicado por uma seta, e uma especialização representada por um triângulo com o indicativo do tipo (P de Parcial).
+
+(Pedir para Rodrigo escrever sobre as tabelas django_sessions e django_migrations)
+
+Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R.png}.
 
 \clearpage
 
@@ -736,10 +723,13 @@ No DE-R, as entidades são representadas por retângulos, os relacionamentos sã
 
 \subsection[Diagrama Lógico de Dados]{Diagrama Lógico de Dados}
 
-O nível lógico de um projeto de banco de dados é uma descrição da base de dados que será implementada no Sistema Gerenciador de Banco de Dados (SGBD). Assim, cada entidade do banco é traduzida para uma tabela, e cada atributo, geralmente, define uma coluna desta tabela. Além disso, definem-se as chaves primárias e chaves estrangeiras,  os tipos de dados de cada coluna, dentre outros
-recursos e restrições relevantes a base de dados que estará sendo implementada \cite{heuser2009projeto}. A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto. Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
+Com base no DE-R proposto, foi elaborado o Diagrama Lógico de Dados (DLD). Segundo \citeonline{heuser2009projeto}, o DLD é uma descrição da base de dados que será implementada no Sistema Gerenciador de Banco de Dados (SGBD), definindo-se os tipos de dados de cada coluna, chaves primárias e estrangeiras, dentre outros recursos. 
 
-Além do DLD e DE-R, foi criado um dicionário de dados da base de dados do software proposto. Um dicionário de dados é a descrição da base de dados, armazenando informações sobre sua estrutura e restrições \cite{elmasri2011sistemas}. No  Apêndice \ref{dicionario-dados} pode ser observado tal dicionário. 
+A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto, em que as entidades estão representadas como tabelas, sendo os atributos contidos dentro delas, os relacionamentos entre entidades representados por linhas que conectam as tabelas, sendo a cardinalidade (mínino e máximo de participantes) de cada parte do relacionamento exibida no extremo da linha que conecta cada entidadade, sendo o sentido do relacionamento indicado por uma seta, chaves primárias representadas por um ícone de chave preta ao lado do atributo, chaves estrangeiras representadas por um ícone de chave verde ao lado do atributo, e chaves únicas (simples e compostas) representadas por um ícone ``U'' azul.
+
+Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
+
+Além do DLD e DE-R, foi criado um Dicionário de Dados da base de dados do software proposto. Um dicionário de dados é a descrição da base de dados, armazenando informações sobre sua estrutura e restrições \cite{elmasri2011sistemas}. No  Apêndice \ref{dicionario-dados} pode ser observado tal dicionário. 
 
 \clearpage
 
@@ -782,13 +772,13 @@ O brModelo é uma ferramenta CASE (\textit{Computer-Aided Software Engineering})
 Para este projeto, a ferramenta foi empregada na elaboração do DE-R e do DLD.
 
 \subsection[Canva]{Canva}
-O Canva é uma plataforma de design gráfico e comunicação visual online que oferece ferramentas para a criação de diversos tipos de conteúdos visuais, como apresentações, infográficos e diagramas \cite{canva2026}.
+O Canva é uma plataforma de design gráfico e comunicação visual on-line que oferece ferramentas para a criação de diversos tipos de conteúdos visuais, como apresentações, infográficos e diagramas \cite{canva2026}.
 
 Neste trabalho, o Canva foi utilizado para a criação do diagrama ilustrativo da arquitetura do projeto.
 
 \subsection[LaTeX e Overleaf]{LaTeX e Overleaf}
 
-O LaTeX é um sistema de preparação de documentos de alta qualidade tipográfica, amplamente utilizado para a produção de documentação técnica e científica, facilitando a gestão de referências bibliográficas e fórmulas matemáticas \cite{latex2026}. O Overleaf, por sua vez, é uma ferramenta de edição e publicação colaborativa online baseada em LaTeX \cite{overleaf2026}.
+O LaTeX é um sistema de preparação de documentos de alta qualidade tipográfica, amplamente utilizado para a produção de documentação técnica e científica, facilitando a gestão de referências bibliográficas e fórmulas matemáticas \cite{latex2026}. O Overleaf, por sua vez, é uma ferramenta de edição e publicação colaborativa on-line baseada em LaTeX \cite{overleaf2026}.
 
 A escolha dessas ferramentas para a escrita desta monografia deve-se à facilidade de formatação conforme as normas acadêmicas, à gestão automatizada de referências e à capacidade de edição simultânea e colaborativa do documento pelos autores.
 
@@ -801,18 +791,18 @@ Aplicativo de mensagens gratuito baseado em nuvem com suporte a chamadas de voz 
 \subsection[LucidChart]{LucidChart}
 O Lucidchart é uma ferramenta baseada na web que auxilia usuários na criação e compartilhamento de fluxogramas, diagramas e mapas mentais profissionais de forma colaborativa \cite{lucidchart}. A plataforma permite a construção visual de processos complexos de maneira intuitiva.
 
-Neste trabalho, o Lucidchart foi utilizado para a elaboração dos diagramas de fluxo de atividades dos processos metodológicos, permitindo a visualização clara das etapas de desenvolvimento do projeto.
+Neste trabalho, o Lucidchart foi utilizado para a elaboração dos diagramas de fluxo de atividades dos processos metodológicos presentes na Subseção \ref{sec:tcc1} e na Subseção \ref{sec:tcc2}, permitindo a visualização clara das etapas de desenvolvimento do projeto.
 
 \section[Processo Metodológico]{Processo Metodológico}
 
-O Trabalho de Conclusão de Curso (TCC) em curso de Engenharia de Software na Universidade de Brasília (UnB) é realizado em duas etapas, denominadas TCC1 e TCC2. No TCC1 o objetivo é buscar o embasamento teórico necessário do projeto, bem como a elaboração de uma proposta de projeto. No TCC2 realiza-se a execução do planejamento elaborado na etapa anterior, consistindo no desenvolvimento completo das funcionalidades do software, na aplicação de testes e, por fim, na análise dos resultados alcançados para averiguar o êxito da solução proposta.
+O Trabalho de Conclusão de Curso (TCC) no curso de Engenharia de Software na Universidade de Brasília (UnB) é realizado em duas etapas, denominadas TCC1 e TCC2. No TCC1 o objetivo é buscar o embasamento teórico necessário do projeto, bem como a elaboração de uma proposta de projeto. No TCC2 realiza-se a execução do planejamento elaborado na etapa anterior, consistindo no desenvolvimento completo das funcionalidades do software, na aplicação de testes e, por fim, na análise dos resultados alcançados para averiguar o êxito da solução proposta.
 
 Com o propósito de definir e acompanhar o processo de desenvolvimento completo do TCC, foi modelado um processo metodológico para cada etapa, apresentados nas Seções \ref{sec:tcc1} e \ref{sec:tcc2}, além dos respectivos cronogramas com suas principais atividades.
 
-\subsection[TCC1]{TCC1}
+\subsection[Trabalho de Conclusão de Curso 1 (TCC1)]{Trabalho de Conclusão de Curso 1 (TCC1)}
 \label{sec:tcc1}
 
-Nesta seção, é detalhado o processo metodológico adotado para a condução da primeira etapa do trabalho (TCC1). O fluxo de atividades realizadas é ilustrado na Figura \ref{fig:metodologiaTCC1}. A seguir, são descritas as atividades que compõem esse fluxo, bem como o cronograma de execução das atividades.
+Nesta seção, é detalhado o processo metodológico adotado para a condução da primeira etapa do trabalho (TCC1). O fluxo de atividades realizadas é ilustrado na Figura \ref{fig:metodologiaTCC1}.
 
 \begin{figure}[h!]
     \centering
