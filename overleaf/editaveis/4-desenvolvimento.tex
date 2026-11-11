@@ -1,137 +1,110 @@
 \chapter[Desenvolvimento]{Desenvolvimento}
 \label{cap:desenvolvimento}
 
-Este capítulo tem como objetivo relatar a implementação da proposta descrita no Capítulo \ref{cap:metodologia} e as atualizações que foram realizadas durante o desenvolvimento.
+Este capítulo tem como objetivo relatar o que aconteceu durante a implementação da proposta descrita no Capítulo \ref{cap:metodologia} (Metodologia) e alguns ajustes e atualizações que foram necessárias durante a fase de desenvolvimento.
 
 \section[Modificações na Arquitetura]{Modificações na Arquitetura}
 \label{sec:modificacoes-arquitetura}
 
-Foram efetuadas mudanças na arquitetura do \textit{frontend} descrita na Subseção \ref{arquitetura-frontend}. Durante o desenvolvimento da US01, os autores notaram uma vulnerabilidade na forma que as requisições ao \textit{backend} estavam sendo realizadas. Ao serem chamadas diretamente pela página, o usuário conseguia ver detalhes sensíveis das requisições no console do navegador: sua \textit{Uniform Resource Locator} (URL) completa, revelando o endereço do \textit{backend}, o corpo da requisição e também sua resposta. Isso pode ser observado nas Figuras \ref{fig:endpointExpostoURL}, \ref{fig:endpointExpostoCorpo} e  \ref{fig:endpointExpostoResposta}.
+Foram efetuadas mudanças na arquitetura do \textit{frontend} descrita na Seção \ref{arquitetura-frontend}. Durante o desenvolvimento da US01, os autores notaram uma vulnerabilidade na forma que as requisições ao \textit{backend} estavam sendo realizadas. Ao serem chamadas diretamente pela página, o usuário conseguia ver detalhes sensíveis das requisições no \textit{console} do navegador: sua \textit{Uniform Resource Locator} (URL) completa, revelando o endereço do \textit{backend}, o corpo da requisição e também sua resposta. A Figura \ref{fig:endpointExpostoURL} mostra a exposição da URL de um \textit{endpoint}.
 
-\clearpage
+\begin{figure}[H]
+    \centering
+    \caption{Exposição da URL completa da requisição ao usuário da nova aplicação.} 
+    \includegraphics[width=\textwidth]{figuras/endpointExpostoURL.png}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Exposição da URL completa da requisição ao usuário.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/endpointExpostoURL.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:endpointExpostoURL}
-    \end{figure}
-\end{landscape}
+    \label{fig:endpointExpostoURL}
+\end{figure}
 
-\clearpage
+A Figura \ref{fig:endpointExpostoCorpo} mostra a exposição do corpo da requisição enviada ao \textit{backend}, revelando o nome dos campos e os valores enviados.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Exposição do corpo da requisição ao usuário.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/endpointExpostoCorpo.png}
+\begin{figure}[H]
+    \centering
+    \caption{Exposição do corpo da requisição ao usuário da nova aplicação.} 
+    \includegraphics[width=0.77\textwidth]{figuras/endpointExpostoCorpo.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:endpointExpostoCorpo}
-    \end{figure}
-\end{landscape}
+    \label{fig:endpointExpostoCorpo}
+\end{figure}
+
+A Figura \ref{fig:endpointExpostoResposta} mostra a exposição da resposta enviada do \textit{backend} ao \textit{frontend} após a realização da requisição, exibindo tanto o campo quanto o valor enviado.
+
+\begin{figure}[H]
+    \centering
+    \caption{Exposição da resposta da requisição ao usuário.} 
+    \includegraphics[width=0.9\textwidth]{figuras/endpointExpostoResposta.png}
 
 
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Exposição da resposta da requisição ao usuário.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/endpointExpostoResposta.png}
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:endpointExpostoResposta}
-    \end{figure}
-\end{landscape}
+    \label{fig:endpointExpostoResposta}
+\end{figure}
 
-Essa vulnerabilidade representava um sério risco à segurança da aplicação, uma vez que usuários maliciosos poderiam usar essas informações para prejudicar o \textit{backend} da aplicação, realizando sucessivas requisições \textit{POST} para sobrecarregar o banco de dados ou requisições \textit{PUT} e \textit{PATCH} para alterar registros do banco.
+Essas exposições representavam um sério risco à segurança da aplicação, uma vez que usuários maliciosos poderiam usar essas informações para prejudicar o \textit{backend} da aplicação, realizando sucessivas requisições \textit{POST} para sobrecarregar o banco de dados ou requisições \textit{PUT} e \textit{PATCH} para alterar registros do banco.
 
 A solução dos autores foi utilizar as \textit{Server Actions} do Next.js. Server Actions são requisições assíncronas que são executadas pelo servidor \cite{nextjs2026}. Essa característica faz com que os \textit{logs} e processamento da requisição sejam realizados inteiramente pelo servidor, retornando apenas o resultado para o cliente (no caso, a página da aplicação).
 
-A arquitetura foi modificada para incluir \textit{Server Actions} intermediárias entre a página e o backend. A página não executa uma requisição diretamente para o \textit{backend}, e sim uma \textit{Server Action} que realiza a requisição e retorna seus resultados para a página. Essa mudança resolveu a vulnerabilidade, visto que as informações sensíveis são ocultadas do console, sendo exibido apenas a própria rota da página atual, os dados enviados (mas sem revelar a estrutura do corpo da requisição) e o código de resultado da \textit{Server Action}. Isso pode ser observado nas Figuras \ref{fig:ocultacaoURL}, \ref{fig:ocultacaoCorpo} e \ref{fig:ocultaçãoResponse}.
+A arquitetura foi modificada para incluir \textit{Server Actions} intermediárias entre a página e o \textit{backend}. A página não executa uma requisição diretamente para o \textit{backend}, e sim uma \textit{Server Action} que realiza a requisição e retorna seus resultados para a página. Essa mudança resolveu a vulnerabilidade, visto que as informações sensíveis são ocultadas do console, sendo exibido apenas a própria rota da página atual, os dados enviados, mas sem revelar a estrutura do corpo da requisição, e o código de resultado da \textit{Server Action}.
 
-\clearpage
+A Figura \ref{fig:ocultacaoURL} mostra a mudança na URL exibida no \textit{console}, em que é exibida a URL da página que está executando a Server Action, e não mais a da requisição.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Ocultação da URL da requisição ao usuário.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/ocultacaoURL.png}
+\begin{figure}[H]
+    \centering
+    \caption{Ocultação da URL da requisição ao usuário.} 
+    \includegraphics[width=\textwidth]{figuras/ocultacaoURL.png}
+
+
+    Fonte: Autoria própria.
     
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:ocultacaoURL}
-    \end{figure}
-\end{landscape}
+    \label{fig:ocultacaoURL}
+\end{figure}
 
-\clearpage
+A Figura \ref{fig:ocultacaoCorpo} mostra como é exibido o corpo da requisição com o uso das Server Actions. Embora o valor dos dados enviados ainda é exibido, o nomes dos campos é ocultado, sendo substituídos por números.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Ocultação do corpo da requisição ao usuário.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/ocultacaoCorpo.png}
+\begin{figure}[H]
+    \centering
+    \caption{Ocultação do corpo da requisição ao usuário.} 
+    \includegraphics[width=0.84\textwidth]{figuras/ocultacaoCorpo.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:ocultacaoCorpo}
-    \end{figure}
-\end{landscape}
+    \label{fig:ocultacaoCorpo}
+\end{figure}
+
+A Figura \ref{fig:ocultaçãoResponse} mostra a mudança na exibição da resposta da requisição, sendo exibido dados da requisição da Server Action, e não mais expondo o que o \textit{backend} enviou.
+
+\begin{figure}[H]
+    \centering
+    \caption{Ocultação do corpo da requisição ao usuário.} 
+    \includegraphics[width=0.84\textwidth]{figuras/ocultaçãoResponse.png}
 
 
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Ocultação da resposta da requisição ao usuário.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/ocultaçãoResponse.png}
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:ocultaçãoResponse}
-    \end{figure}
-\end{landscape}
+    \label{fig:ocultaçãoResponse}
+\end{figure}
 
 Essa mudança na arquitetura causou a criação da pasta \textit{actions} dentro da pasta \textit{services}, de modo que \textit{actions} contém arquivos com as \textit{Server Actions} e \textit{services} contém as funções de requisição ao \textit{backend}. Foi também criada a pasta \textit{types}, que contém interfaces de dados usados no \textit{frontend} da aplicação, como respostas das requisições e estruturas de corpos de requisições. Uma representação visual da arquitetura final pode ser observada na Figura \ref{fig:ArquiteturaFinal}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \caption{Representação Arquitetural Final.} 
     \includegraphics[width=0.70\textwidth]{figuras/Arquitetura Final.png}
@@ -144,6 +117,8 @@ Essa mudança na arquitetura causou a criação da pasta \textit{actions} dentro
     \label{fig:ArquiteturaFinal}
 \end{figure}
 
+As diferenças entre a arquitetura proposta na Seção \ref{arquitetura} é que a antiga arquitetura centralizada todas as funções de chamada ao \textit{backend} na pasta \textit{services}, e não considerava a utilização de Server Actions para a realização de requisições, além de não considerar a criação de uma pasta para armazenamento dos arquivos de interfaces. O restante permaneceu sem alterações.
+
 \section[Desenvolvimento da Aplicação]{Desenvolvimento da Aplicação}
 \label{sec:desenvolvimento}
 
@@ -151,7 +126,7 @@ Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US entr
 
 \clearpage
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \caption{Tarefa de \textit{frontend} no Trello.} 
     \includegraphics[width=0.90\textwidth]{figuras/trelloFront.png}
@@ -163,7 +138,7 @@ Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US entr
     \label{fig:trelloFront}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \caption{Tarefa de \textit{backend} no Trello.} 
     \includegraphics[width=0.90\textwidth]{figuras/trelloBack.png}
@@ -187,160 +162,81 @@ O repositório do \textit{frontend} está disponível no seguinte endereço virt
 
 O quadro do Trello exige criação de conta para ser visualizado, e um convite para sua visualização está disponível no seguinte endereço virtual:  \url{https://trello.com/invite/b/692f73a8eae6979484e7e1e4/ATTI1d25182b917b29f2c5164cd540d66020EE133345/tutoriaweb}.
 
-\subsection[Funcionalidade 1: Autenticação]{Funcionalidade 1: Autenticação}
+%\subsection[Funcionalidade 1: Autenticação]{Funcionalidade 1: Autenticação}
 
-\subsubsection[US01: \textit{Login}]{US01: \textit{Login}}
+%\subsubsection[US01: \textit{Login}]{US01: \textit{Login}}
 
-A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02, de 08 a 14 de março. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações no \textit{frontend} em 19 de março para inclusão de responsividade para dispositivos móveis, no dia 21 de março para implementar o uso de \textit{Server Actions}, no dia 22 de março para inclusão de um banner informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e no dia 27 de março para mudança no formulário para utilização das bibliotecas React Hook Form e Zod, que serão explicadas na Subseção \ref{sec:us20}.
+\subsection[US01: \textit{Login}]{US01: \textit{Login}}
+
+A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02, de 08 a 14 de março. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações no \textit{frontend} em 19 de março para inclusão de responsividade para dispositivos móveis. No dia 21 de março para implementar o uso de \textit{Server Actions}, no dia 22 de março para inclusão de um \textit{banner} informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e no dia 27 de março para mudança no formulário para utilização das bibliotecas React Hook Form e Zod, que serão explicadas na Seção \ref{sec:us20}.
 
 No \textit{backend} a autenticação se utiliza de uma classe abstrata do modelo de Usuário do DRF, adaptada e customizada para as regras de negócios da aplicação. O modelo ``UsuarioModel'' estende as classes ``AbstractBaseUser'' e ``PermissionMixin'', além de criar um ``UsuarioManager'' que o DRF utiliza para definir regras de criação, atualização deste Usuário base e também para o ``superuser''. Desta forma foi possível aproveitar funções já implementadas no \textit{framework}, como criptografia de senha, registro de \textit{login} e autenticação via JWT, utilizando o pacote do DRF chamado ``djangorestframework-simplejwt''.
-
-Conforme mencionado acima, foi realizado a responsividade para dispositivos móveis nesta e nas demais telas e componentes visuais da aplicação. As versões \textit{mobile}, \textit{tablet} e \textit{desktop} da tela podem ser observadas nas Figuras \ref{fig:loginMobile}, \ref{fig:loginTablet} e  \ref{fig:loginDesktop}.
 
 A partir de página de \textit{Login} foi implementada uma otimização na forma de renderização das telas utilizando-se \textit{Server Components} e \textit{Client Components}. \textit{Server Components} são componentes de UI renderizados no servidor e enviados ao cliente (navegador) \cite{nextjs2026components}. \textit{Client Components} são componentes de UI renderizados no cliente, sendo recomendados quando se deseja interatividade com o usuário \cite{nextjs2026components}.
 
 Utilizar \textit{Server Components} resulta em benefícios para o usuário, pois reduz o tempo de carregamento da página ao enviar \textit{HyperText Markup Language} (HTML) estático para o cliente, evitando o envio de código JavaScript para a renderização de componentes visuais. A estratégia utilizada pelos autores foi colocar o máximo possível de elementos de UI como \textit{Server Components}, deixando apenas partes interativas como \textit{Client Components}. No \textit{login}, a maior parte da página é \textit{Server Component}, sendo apenas o formulário de \textit{login} um \textit{Client Component}.
 
-\clearpage
+Conforme mencionado anteriormente, foi realizada a responsividade para dispositivos móveis nesta e nas demais telas e componentes visuais da aplicação, a fim de se adequar o \textit{layout} das páginas da aplicação para diferentes tamanhos de tela. A Figura \ref{fig:loginMobileTablet} mostra a versão \textit{mobile} e \textit{tablet} da página de \textit{login}.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de \textit{Login} em \textit{mobile}.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginMobile.png}
+\begin{figure}[H]
+    \centering
+    \caption{Página de \textit{Login} em \textit{mobile} e \textit{tablet}} 
+    \includegraphics[width=\textwidth]{figuras/loginMobileTablet.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:loginMobile}
-    \end{figure}
-\end{landscape}
+    \label{fig:loginMobileTablet}
+\end{figure}
 
-\clearpage
+A Figura \ref{fig:loginDesktop} mostra a página quando aberta em um \textit{desktop}.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de \textit{Login} em \textit{tablet}.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginTablet.png}
+\begin{figure}[H]
+    \centering
+    \caption{Página de \textit{Login} em \textit{Desktop}.} 
+    \includegraphics[width=\textwidth]{figuras/loginDesktop.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:loginTablet}
-    \end{figure}
-\end{landscape}
+    \label{fig:loginDesktop}
+\end{figure}
 
-
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de \textit{Login} em \textit{Desktop}.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginDesktop.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:loginDesktop}
-    \end{figure}
-\end{landscape}
-
-Atendendo ao RNF 02 descrito na Subseção \ref{requisitosNaoFuncionais}, é feita validação dos campos assim que o usuário começa a preenchê-los. Isso ocorre em todos os outros formulários da aplicação. Na página de \textit{login} especificamente, caso o usuário informe um e-mail com formato inválido, o formulário exibe a mensagem de erro ``E-mail inválido''. Se o usuário informa o e-mail e tenta realizar \textit{login} sem informar a senha, a mensagem ``A senha é obrigatória'' é apresentada. Caso o usuário tente fazer \textit{login} com e-mail ou senha errados, é exibida a mensagem ``Credenciais inválidas'', não sendo informado qual dos campos está incorreto por razões de segurança. Essas mensagens podem ser observadas nas Figuras \ref{fig:loginErroEmail}, \ref{fig:loginErroSenha} e  \ref{fig:loginErroValorErrado}.
+Atendendo ao RNF 02 descrito na Seção \ref{requisitosNaoFuncionais}, foi feita a validação dos campos assim que o usuário começa a preenchê-los. Isso ocorre em todos os outros formulários da aplicação. Na página de \textit{login} especificamente, caso o usuário informe um e-mail com formato inválido, o formulário exibe a mensagem de erro ``E-mail inválido''. Se o usuário informa o e-mail e tenta realizar \textit{login} sem informar a senha, a mensagem ``A senha é obrigatória'' é apresentada. Caso o usuário tente fazer \textit{login} com e-mail ou senha errados, é exibida a mensagem ``Credenciais inválidas'', não sendo informado qual dos campos está incorreto por razões de segurança. Como exemplo, a mensagem de erro para e-mail inválido pode ser observada na Figura \ref{fig:loginErroEmail}.
 
 A aplicação utiliza \textit{cookies} de autenticação em sua navegação. De acordo com \citeonline{ANPDcookies}, a LGPD considera esses \textit{cookies} como necessários,  não exigindo consentimento prévio do usuário e devendo a aplicação apenas informar o usuário sobre a existência e finalidade deles. Para atender esse requisito, é exibido um \textit{banner} informativo na primeira vez que a aplicação é acessada. O \textit{banner} só é removido da tela quando o botão de declaração de ciência é clicado. O \textit{banner} pode ser observado na Figura \ref{fig:loginBanner}.
 
-\clearpage
+\begin{figure}[H]
+    \centering
+    \caption{Mensagem de erro para e-mail inválido.} 
+    \includegraphics[width=\textwidth]{figuras/loginErroEmail.png}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Mensagem de erro para e-mail inválido.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginErroEmail.png}
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:loginErroEmail}
-    \end{figure}
-\end{landscape}
+    \label{fig:loginErroEmail}
+\end{figure}
 
-\clearpage
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Mensagem de erro para senha em branco.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginErroSenha.png}
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Banner} informativo sobre o uso de \textit{cookies}.} 
+    \includegraphics[width=\textwidth]{figuras/loginBanner.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:loginErroSenha}
-    \end{figure}
-\end{landscape}
+    \label{fig:loginBanner}
+\end{figure}
 
-
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Mensagem de erro para valores incorretos.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginErroValorErrado.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:loginErroValorErrado}
-    \end{figure}
-\end{landscape}
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Banner informativo sobre o uso de \textit{cookies}.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/loginBanner.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:loginBanner}
-    \end{figure}
-\end{landscape}
 
 Caso o usuário informe credenciais corretas e faça a requisição, o \textit{backend} recebe os dados e realiza duas verificações: se o e-mail está registrado no banco de dados e se a senha enviada, quando criptografada, coincide com a senha criptografada armazenada com o do registro do e-mail. 
 
-Caso verdadeiro, o \textit{backend} envia os dois \textit{tokens} que são salvos como \textit{cookies} no navegador: um \textit{token} de acesso (\textit{access\_token}), com duração de 20 minutos, e um \textit{token} de renovação (\textit{refresh\_token}), usado para renovar o \textit{token} de acesso, com duração de 2 horas, atendendo ao RNF 05 e ao RNF 06. Dessa maneira, caso o usuário navegue para uma página que exija autenticação ou realize uma requisição, caso o \textit{token} de acesso esteja expirado, o \textit{token} de renovação é usado a operação prossegue normalmente.
+Caso verdadeiro, o \textit{backend} envia os dois \textit{tokens} que são salvos como \textit{cookies} no navegador: um \textit{token} de acesso (\textit{access\_token}), com duração de 20 minutos, e um \textit{token} de renovação (\textit{refresh\_token}), usado para renovar o \textit{token} de acesso, com duração de 2 horas, atendendo ao RNF 05 e ao RNF 06. Dessa maneira, caso o usuário navegue para uma página que exija autenticação ou realize uma requisição, caso o \textit{token} de acesso esteja expirado, o \textit{token} de renovação é usado na operação, que prossegue normalmente.
 
 Caso o \textit{token} de renovação também esteja expirado, o usuário é redirecionado para a página de \textit{login}, mas com uma \textit{modal} informando-o que sua sessão expirou, orientando-o a realizar a conexão na aplicação novamente. A \textit{modal} pode ser observada na Figura \ref{fig:modalTokenExpirado}.
 
