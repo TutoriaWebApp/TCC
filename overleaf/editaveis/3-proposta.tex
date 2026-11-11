@@ -696,28 +696,25 @@ Docker: Toda a infraestrutura da aplicação é encapsulada em contêineres. Uti
 
 % Foi elaborado um DE-R para o banco de dados do projeto, apresentado na Figura \ref{fig:diagrama_DE-R}, em que as entidades estão representadas por retângulos, os atributos delas estão representados por elipses (sendo uma elipse escura a chave primária da entidade), conectados por linhas às entidades, os relacionamentos entre entidades representados por losangos, sendo a cardinalidade (mínino e máximo de participantes) de cada parte do relacionamento exibida no extremo da linha que conecta cada entidadade ao losango, sendo o sentido do relacionamento indicado por uma seta, e uma especialização representada por um triângulo com o indicativo do tipo (P de Parcial).
 
-O Diagrama Entidade-Relacionamento (DE-R) proposto para aplicação em Django REST Framework, estrutura-se em torno do modelo central ``USUARIO'' e de sua especialização ``TUTOR''. A organização do conhecimento é representada pela relação entre ``AREA'' e ``ESPECIALIDADE'', essas associadas ao ``TUTOR'', enquanto o acompanhamento de desempenho e engajamento se dá por meio de ``AVALIACAO_APRENDIZ'', ``AVALIACAO_TUTOR'' e ``CONQUISTA'' (essa vinculada via um relacionamento ``N:N'' para recompensa por pontuação). O fluxo operacional de agendamento de tutorias é intermediado pelas entidades ``SOLICITACAO'' e ``SESSAO'', contando com um canal de comunicação direta feita pelas entidades ``CHAT'' e ``MENSAGEM''. Vale destacar, a infraestrutura da API integra-se perfeitamente à arquitetura do Django ORM ao incorporar as tabelas nativas de controle de acesso, autorização e autidoria, sendo essas ``auth_group'', ``auth_permission'', ``USUARIO_groups'', ``USUARIO_user_permissions'', ``django_content_type'' e ``django_admin_log''
+O Diagrama Entidade-Relacionamento (DE-R) proposto na Figura \ref{fig:diagrama_DE-R} para aplicação em Django REST Framework, estrutura-se em torno do modelo central ``USUARIO''
+e de sua especialização ``TUTOR''. A organização do conhecimento é representada pela relação entre ``AREA'' e ``ESPECIALIDADE'', essas associadas ao ``TUTOR'', enquanto o acompanhamento de desempenho e engajamento se dá por meio de ``AVALIACAO\_APRENDIZ'', ``AVALIACAO\_TUTOR'' e ``CONQUISTA'' (essa vinculada via um relacionamento ``N:N'' para recompensa por pontuação).
+
+O fluxo operacional de agendamento de tutorias é intermediado pelas entidades ``SOLICITACAO'' e ``SESSAO'', contando com um canal de comunicação direta feita pelas entidades ``CHAT'' e ``MENSAGEM''. Vale destacar, a infraestrutura da API integra-se perfeitamente à arquitetura do Django ORM ao incorporar as tabelas nativas de controle de acesso, autorização e autidoria, sendo essas ``auth\_group'', ``auth\_permission'', ``USUARIO\_groups'', ``USUARIO\_user\_permissions'', ``django\_content\_type'' e ``django\_admin\_log''.
 
 Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R.png}.
 
-\clearpage
+\begin{figure}[H]
+    \centering
+    \caption{Diagrama Entidade-Relacionamento do projeto.} 
+    \includegraphics[width=1.05\textwidth, height=0.80\textheight, keepaspectratio]{figuras/DE-R.png}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Diagrama Entidade-Relacionamento do projeto.} 
-        \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DE-R.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:diagrama_DE-R}
-    \end{figure}
-\end{landscape}
+    \label{fig:diagrama_DE-R}
+\end{figure}
 
 \clearpage
 
@@ -727,31 +724,25 @@ Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por es
 
 % A Figura \ref{fig:diagrama_DLD} apresenta o Diagrama Lógico de Dados (DLD) do projeto, em que as entidades estão representadas como tabelas, sendo os atributos contidos dentro delas, os relacionamentos entre entidades representados por linhas que conectam as tabelas, sendo a cardinalidade (mínino e máximo de participantes) de cada parte do relacionamento exibida no extremo da linha que conecta cada entidadade, sendo o sentido do relacionamento indicado por uma seta, chaves primárias representadas por um ícone de chave preta ao lado do atributo, chaves estrangeiras representadas por um ícone de chave verde ao lado do atributo, e chaves únicas (simples e compostas) representadas por um ícone ``U'' azul.
 
-O Diagrama Lógico de Dados (DLD) traduz o modelo conceitual do DE-R em tabelas relacionais prontas para implentação no Django ORM. A especialização entre ``USUARIO'' e ``TUTOR'' é mapeada por uma relação ``1:1'' por meio do atributo ``usuarioId'', enquanto as associações ``N:N'' no modelo conceitual são resolvidas com as tabelas associativas ``consegue'' (vinculada ao sistema de gamificação com ``CONQUISTA'') e ``contem'' (que liga o ``TUTOR'' às opções de ``ESPECIALIDADE'', por sua vez categorizada por ``AREA'').
-A dinâmica operacional de agendamento e comunicação é assegurada pela conexão entre ``SESSAO'' e ``SOLICITACAO'', complmentada pela estrutura de comunicação em tempo real formada por ``CHAT'' e ``MENSAGEM'', com as tabelas ``AVALIACAO_APRENDIZ'' e ``AVALIACAO_TUTOR'' regitrando o histórico de desempenho. Por fim, a persistência das tabelas de regras de negócio integra-se diretamente às tabelas nativas de autenticação, grupos, permissões e sessões e registro de auditoria do Django, como descrito na Seção \ref{sec:DE-R}.
+O Diagrama Lógico de Dados (DLD) na Figura \ref{fig:diagrama_DLD} traduz o modelo conceitual do DE-R em tabelas relacionais prontas para implentação no Django ORM. A especialização entre ``USUARIO'' e ``TUTOR'' é mapeada por uma relação ``1:1'' por meio do atributo ``usuarioId'', enquanto as associações ``N:N'' no modelo conceitual são resolvidas com as tabelas associativas ``consegue'' (vinculada ao sistema de gamificação com ``CONQUISTA'') e ``contem'' (que liga o ``TUTOR'' às opções de ``ESPECIALIDADE'', por sua vez categorizada por ``AREA'').
+A dinâmica operacional de agendamento e comunicação é assegurada pela conexão entre ``SESSAO'' e ``SOLICITACAO'', complmentada pela estrutura de comunicação em tempo real formada por ``CHAT'' e ``MENSAGEM'', com as tabelas ``AVALIACAO\_APRENDIZ'' e ``AVALIACAO\_TUTOR'' regitrando o histórico de desempenho. Por fim, a persistência das tabelas de regras de negócio integra-se diretamente às tabelas nativas de autenticação, grupos, permissões e sessões e registro de auditoria do Django, como descrito na Seção \ref{sec:DE-R}.
 
 Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
 
 Além do DLD e DE-R, foi criado um Dicionário de Dados da base de dados do software proposto. Um dicionário de dados é a descrição da base de dados, armazenando informações sobre sua estrutura e restrições \cite{elmasri2011sistemas}. No  Apêndice \ref{dicionario-dados} pode ser observado tal dicionário. 
 
-\clearpage
+\begin{figure}[H]
+    \centering
+    \caption{Diagrama Lógico de Dados.} 
+    \includegraphics[width=0.94\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DLD_print.png}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Diagrama Lógico de Dados.} 
-        \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DLD_print.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:diagrama_DLD}
-    \end{figure}
-\end{landscape}
+    \label{fig:diagrama_DLD}
+\end{figure}
 
 \clearpage
 
