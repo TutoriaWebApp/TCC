@@ -696,25 +696,30 @@ Docker: Toda a infraestrutura da aplicação é encapsulada em contêineres. Uti
 
 % Foi elaborado um DE-R para o banco de dados do projeto, apresentado na Figura \ref{fig:diagrama_DE-R}, em que as entidades estão representadas por retângulos, os atributos delas estão representados por elipses (sendo uma elipse escura a chave primária da entidade), conectados por linhas às entidades, os relacionamentos entre entidades representados por losangos, sendo a cardinalidade (mínino e máximo de participantes) de cada parte do relacionamento exibida no extremo da linha que conecta cada entidadade ao losango, sendo o sentido do relacionamento indicado por uma seta, e uma especialização representada por um triângulo com o indicativo do tipo (P de Parcial).
 
-O Diagrama Entidade-Relacionamento (DE-R) proposto na Figura \ref{fig:diagrama_DE-R} para aplicação em Django REST Framework, estrutura-se em torno do modelo central ``USUARIO''
-e de sua especialização ``TUTOR''. A organização do conhecimento é representada pela relação entre ``AREA'' e ``ESPECIALIDADE'', essas associadas ao ``TUTOR'', enquanto o acompanhamento de desempenho e engajamento se dá por meio de ``AVALIACAO\_APRENDIZ'', ``AVALIACAO\_TUTOR'' e ``CONQUISTA'' (essa vinculada via um relacionamento ``N:N'' para recompensa por pontuação).
+O Diagrama Entidade-Relacionamento (DE-R) proposto na Figura \ref{fig:diagrama_DE-R} para aplicação em Django REST Framework, estrutura-se em torno do modelo central ``USUARIO'' e de sua especialização ``TUTOR''. A organização do conhecimento é representada pela relação entre ``AREA'' e ``ESPECIALIDADE'', essas associadas ao ``TUTOR'', enquanto o acompanhamento de desempenho e engajamento se dá por meio de ``AVALIACAO\_APRENDIZ'', ``AVALIACAO\_TUTOR'' e ``CONQUISTA'' (essa vinculada via um relacionamento ``N:N'' para recompensa por pontuação).
 
 O fluxo operacional de agendamento de tutorias é intermediado pelas entidades ``SOLICITACAO'' e ``SESSAO'', contando com um canal de comunicação direta feita pelas entidades ``CHAT'' e ``MENSAGEM''. Vale destacar, a infraestrutura da API integra-se perfeitamente à arquitetura do Django ORM ao incorporar as tabelas nativas de controle de acesso, autorização e autidoria, sendo essas ``auth\_group'', ``auth\_permission'', ``USUARIO\_groups'', ``USUARIO\_user\_permissions'', ``django\_content\_type'' e ``django\_admin\_log''.
 
 Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R.png}.
 
-\begin{figure}[H]
-    \centering
-    \caption{Diagrama Entidade-Relacionamento do projeto.} 
-    \includegraphics[width=1.05\textwidth, height=0.80\textheight, keepaspectratio]{figuras/DE-R.png}
+\clearpage
 
-
-    Fonte: Autoria própria.
+\begin{landscape}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
+    \begin{figure}[H]
+        \centering
+        \caption{Diagrama Entidade-Relacionamento do projeto.} 
+        \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DE-R.png}
     
-    \vspace{0.2cm}
+    
+        Fonte: Autoria própria.
         
-    \label{fig:diagrama_DE-R}
-\end{figure}
+        \vspace{0.2cm}
+            
+        \label{fig:diagrama_DE-R}
+    \end{figure}
+\end{landscape}
 
 \clearpage
 
@@ -731,18 +736,24 @@ Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por est
 
 Além do DLD e DE-R, foi criado um Dicionário de Dados da base de dados do software proposto. Um dicionário de dados é a descrição da base de dados, armazenando informações sobre sua estrutura e restrições \cite{elmasri2011sistemas}. No  Apêndice \ref{dicionario-dados} pode ser observado tal dicionário. 
 
-\begin{figure}[H]
-    \centering
-    \caption{Diagrama Lógico de Dados.} 
-    \includegraphics[width=0.94\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DLD_print.png}
+\clearpage
 
-
-    Fonte: Autoria própria.
+\begin{landscape}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
+    \begin{figure}[H]
+        \centering
+        \caption{Diagrama Lógico de Dados.} 
+        \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DLD_print.png}
     
-    \vspace{0.2cm}
+    
+        Fonte: Autoria própria.
         
-    \label{fig:diagrama_DLD}
-\end{figure}
+        \vspace{0.2cm}
+            
+        \label{fig:diagrama_DLD}
+    \end{figure}
+\end{landscape}
 
 \clearpage
 
