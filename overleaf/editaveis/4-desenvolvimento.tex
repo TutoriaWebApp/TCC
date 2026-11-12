@@ -122,11 +122,11 @@ As diferenças entre a arquitetura proposta na Seção \ref{arquitetura} é que 
 \section[Desenvolvimento da Aplicação]{Desenvolvimento da Aplicação}
 \label{sec:desenvolvimento}
 
-Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US, por entre funcionalidades, \textit{backend} e \textit{frontend}, sendo criadas as etiquetas de cada um dessas para cada US no Trello, para ter um acompanhamento visual do progresso de cada etapa da US e funcionalidade, conforme pode ser observado nas etiquetas destacadas nas Figuras \ref{fig:trello}. Além disso também foi definido um acompanhamento por meio de \textit{checklist} disponível nos cards de funcionalidades no quadro ``MVC''.
+Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US, por entre funcionalidades, \textit{backend} e \textit{frontend}, sendo criadas as etiquetas de cada área para cada US no Trello a fim de se ter um acompanhamento visual do progresso de cada etapa das US. Além disso, também foi definido um acompanhamento do progresso das funcionalidades por meio de uma \textit{checklist} nos cards de funcionalidades no quadro ``MVC''. As etiquetas e tarefas no Trello podem ser observadas na Figura \ref{fig:trello}. 
 
 \begin{figure}[H]
     \centering
-    \caption{Tarefa de \textit{frontend} no Trello.} 
+    \caption{Tarefas no Trello.} 
     \includegraphics[width=\textwidth, keepaspectratio]{figuras/trello.png}
 
     Fonte: Autoria própria.
@@ -138,9 +138,9 @@ Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US, por
 
 Foram realizadas reuniões de 19h até 22h de segunda à sexta no Discord para desenvolvimento em conjunto, sendo utilizado o método Pomodoro a fim de se obter melhor produtividade. O método Pomodoro é fundamentado na estratégia que se apoia em períodos de tempo delimitados, nos quais se concentra a atenção na realização de uma determinada atividade, intercalados por intervalos de descanso \cite{rodrigues2023focus}. 
 
-Os períodos de tempo foram definidos em 40 minutos de desenvolvimento e 20 minutos de descanso, sendo considerados ideais baseado em experiências empíricas pelos autores. Considerando o horário de início e término das reuniões, o tempo de desenvolvimento foi de 2 horas por reunião.
+% Os períodos de tempo foram definidos em 40 minutos de desenvolvimento e 20 minutos de descanso, sendo considerados ideais baseado em experiências empíricas pelos autores. Considerando o horário de início e término das reuniões, o tempo de desenvolvimento foi de 2 horas por reunião.
 
-Ocorreram atrasos na entrega de algumas funcionalidades, visto que houveram reuniões exclusivamente utilizadas para correções de \textit{bugs} no código. Entretanto, os autores utilizaram essa metodologia por se adequar à realidade da vida cotidiana dos mesmos, que estagiavam de manhã e frequentavam aulas à tarde. Além disso, os intervalos de descanso possibilitavam voltar ao desenvolvimento com mais foco e energia.
+% Ocorreram atrasos na entrega de algumas funcionalidades, visto que houveram reuniões exclusivamente utilizadas para correções de \textit{bugs} no código. Entretanto, os autores utilizaram essa metodologia por se adequar à realidade da vida cotidiana dos mesmos, que estagiavam de manhã e frequentavam aulas à tarde. Além disso, os intervalos de descanso possibilitavam voltar ao desenvolvimento com mais foco e energia.
 
 O repositório do \textit{backend} elaborado está disponível no endereço virtual: \url{https://github.com/TutoriaWebApp/backend}, enquanto o repositório do \textit{frontend} pode ser acessado no endereço virtual: \url{https://github.com/TutoriaWebApp/frontend}.
 
@@ -243,13 +243,9 @@ O armazenamento dos \textit{tokens} como \textit{cookies}, utilizando o método 
 
 Uma funcionalidade que está relacionada ao \textit{login} e não havia sido listada na Seção \ref{historias-usuario} é a criação de conta, se tornando assim a US20. O desenvolvimento do \textit{backend} iniciou-se com o \textit{endpoint} para criação de usuário em 14 de outubro de 2025, concluindo em 20 de outubro do mesmo ano. Porém, houve refatorações arquiteturais e inclusões posteriores principalmente na semana de 22 a 28 de março de 2026.
 
-O \textit{frontend} da criação de conta começou a ser desenvolvido em 16 de março e foi concluído em 10 de junho. O grande período de desenvolvimento se deve ao fato dessa funcionalidade ter sido feita em paralelo com outras US, que foram se tornando mais prioritárias após a criação de um usuário como aprendiz ter sido concluída, e também ao \textit{backend} dessa funcionalidade ter sido completado em partes, também em paralelo com outras funcionalidades. 
+O \textit{frontend} da criação de conta começou a ser desenvolvido em 16 de março e foi concluído em 10 de junho. O grande período de desenvolvimento se deve ao fato dessa funcionalidade ter sido feita em paralelo com outras US, que foram se tornando mais prioritárias após a criação de um usuário como aprendiz ter sido concluída, e também ao \textit{backend} dessa funcionalidade ter sido completado em partes, em paralelo com outras funcionalidades. 
 
-A página possui duas etapas, sendo a primeira o cadastro de informações comuns à aprendiz e tutores, como foto de perfil, e-mail e senha, e a segunda exclusivamente para cadastro de dados para o perfil como tutor. Caso os dados da segunda etapa também sejam preenchidos, o usuário já é registrado como um tutor assim que o processo é concluído. Ambas as etapas podem ser observadas nas Figura \ref{fig:criarConta1} e Figura \ref{fig:criarConta2}.
-
-No preenchimento de dados de tutor, foi implementada a regra de negócio do usuário obrigatoriamente ter que preencher uma área e especialidade de conhecimento, além de uma disponibilidade, devendo ter ao menos uma área e especialidade e uma disponibilidade para se tornar um tutor. A seleção de disponibilidade apresenta os dias da semana e intervalos de tempo de uma hora, abrangendo os horários de um dia inteiro. Tudo isso é feito através de \textit{modais}, que podem ser observadas nas Figura \ref{fig:modalArea} e  na Figura \ref{fig:modalAgenda}.
-
-\clearpage
+A página possui duas etapas, sendo a primeira o cadastro de informações comuns à aprendiz e tutores, como foto de perfil, e-mail e senha, e a segunda exclusivamente para cadastro de dados para o perfil como tutor. Caso os dados da segunda etapa também sejam preenchidos, o usuário já é registrado como um tutor assim que o processo é concluído. A primeira etapa pode ser observada na Figura \ref{fig:criarConta1}.
 
 \begin{figure}[H]
     \centering
@@ -264,6 +260,8 @@ No preenchimento de dados de tutor, foi implementada a regra de negócio do usu�
     \label{fig:criarConta1}
 \end{figure}
 
+A segunda etapa pode ser parcialmente observada na Figura \ref{fig:criarConta2}, que mostra os botões de adição de área e especialidade.
+
 \begin{figure}[H]
     \centering
     \caption{Etapa de cadastro de informações como tutor.} 
@@ -276,6 +274,8 @@ No preenchimento de dados de tutor, foi implementada a regra de negócio do usu�
         
     \label{fig:criarConta2}
 \end{figure}
+
+No preenchimento de dados de tutor, foi implementada a regra de negócio do usuário obrigatoriamente ter que preencher uma área e especialidade de conhecimento, além de uma disponibilidade, devendo ter ao menos uma área e especialidade e uma disponibilidade para se tornar um tutor. A seleção de disponibilidade apresenta os dias da semana e intervalos de tempo de uma hora, abrangendo os horários de um dia inteiro. Tudo isso é feito através de \textit{modais}. A modal de cadastro de área e especialidade pode ser observada na Figura \ref{fig:modalArea}, que mostra a seleção de uma área e especialidade, enquanto a modal de disponibilidade pode ser observada na Figura \ref{fig:modalAgenda}, que mostra a seleção de um dia e um horário.
 
 \begin{figure}[H]
     \centering
