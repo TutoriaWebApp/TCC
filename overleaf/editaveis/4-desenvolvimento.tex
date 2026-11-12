@@ -224,24 +224,19 @@ Caso verdadeiro, o \textit{backend} envia os dois \textit{tokens} que são salvo
 
 Caso o \textit{token} de renovação também esteja expirado, o usuário é redirecionado para a página de \textit{login}, mas com uma \textit{modal} informando-o que sua sessão expirou, orientando-o a realizar a conexão na aplicação novamente. A \textit{modal} pode ser observada na Figura \ref{fig:modalTokenExpirado}.
 
-O armazenamento dos \textit{tokens} como \textit{cookies}, utilizando o método de \textit{Cookies HttpOnly}, onde o próprio navegador do usuário lê o cabeçalho enviado pelo \textit{backend} e guarda o \textit{cookie} de forma automática e segura, foi a única dificuldade notável no desenvolvimento do \textit{frontend} e \textit{backend}, visto que os autores até então desconheciam como isso era realizado, sendo essa dúvida solucionada através de pesquisas sobre o assunto na Internet.
+O armazenamento dos \textit{tokens} como \textit{cookies}, utilizando o método de \textit{Cookies HttpOnly}, em que o próprio navegador do usuário lê o cabeçalho enviado pelo \textit{backend} e guarda o \textit{cookie} de forma automática e segura, foi a única dificuldade notável no desenvolvimento do \textit{frontend} e \textit{backend}, visto que os autores até então desconheciam como isso era realizado, sendo essa dúvida solucionada através de pesquisas sobre o assunto na Internet.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} informativo sobre a expiração da sessão.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalTokenExpirado.png}
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Modal} informativo sobre a expiração da sessão.} 
+    \includegraphics[width=0.7\textwidth]{figuras/modalTokenExpirado.png}
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:modalTokenExpirado}
-    \end{figure}
-\end{landscape}
+    \label{fig:modalTokenExpirado}
+\end{figure}
 
 \subsection[US20: {Criar Conta}]{US20: Criar Conta}
 \label{sec:us20}
