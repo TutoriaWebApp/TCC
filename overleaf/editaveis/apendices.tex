@@ -2,169 +2,6 @@
 
 % \partanexos
 
-\chapter{Simulação da Arquitetura}
-\label{simulacao}
-
-Com o objetivo de verificação da viabilidade da arquitetura proposta na Seção \ref{arquitetura}, foi realizada uma simulação envolvendo alguns casos de uso da proposta do software. Nesta simulação foram realizadas as conexões entre o \textit{backend}, \textit{frontend} e o banco de dados, bem como a geração das imagens Docker e orquestração com Docker Compose.
-
-A simulação consistiu em satisfazer parcialmente as histórias de usuário US01 (\textit{Login}), US07 (Solicitar Horário) e US16 (Conquistas).
-
-A Figura \ref{fig:login} apresenta a interface de usuário para a ação do \textit{login}, em que é possível ver os campos destinados para o preenchimento de e-mail e senha para autenticação. Caso haja falha na autenticação, é exibida uma mensagem de erro para o usuário, advinda do \textit{backend} e tratada no \textit{frontend}, conforme apresentado na Figura \ref{fig:login-erro}.
-
-\begin{figure}[h!]
-    \centering
-    \caption{Interface de \textit{login}.} 
-    \includegraphics[width=0.99\textwidth]{figuras/login.png}
-    
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:login}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-    \caption{Mensagem de erro de autenticação.} 
-    \includegraphics[width=0.99\textwidth]{figuras/login-erro.png}
-
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:login-erro}
-\end{figure}
-
-\newpage
-
-A Figura \ref{fig:conquistas-bloqueadas} apresenta a tela de conquistas, a qual mostra a lista de conquistas com título, descrição, imagem e a pontuação fornecida ao usuário caso ele a desbloqueie. Conquistas bloqueadas são apresentadas com foto e texto em tom de cinza.
-
-\begin{figure}[h!]
-    \centering
-    \caption{Lista de conquistas.} 
-    \includegraphics[width=0.99\textwidth]{figuras/conquistas-bloqueadas.png}
-
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:conquistas-bloqueadas}
-\end{figure}
-
-A Figura \ref{fig:tutores} apresenta a tela de tutores, que exibe tutores e suas informações, como nome, foto e áreas de conhecimento, além de dois botões interativos para o aprendiz acessar o perfil do tutor e também para solicitar uma sessão de tutoria.
-
-\begin{figure}[h!]
-    \centering
-    \caption{Lista de tutores.} 
-    \includegraphics[width=0.99\textwidth]{figuras/tela-tutores.png}
-
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:tutores}
-\end{figure}
-
-Ao clicar no botão para solicitar uma sessão, abre-se uma janela em que são exibidos os horários disponíveis na agenda do tutor, conforme apresentado pela Figura \ref{fig:sessoes}.
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-    \caption{Interface de agendamento da sessão de tutoria.} 
-    \includegraphics[width=0.99\textwidth]{figuras/sessao.png}
-
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:sessoes}
-\end{figure}
-
-Ao clicar em um horário, a solicitação de tutoria é realizada, a qual o tutor deve aceitar para que seja de fato confirmada. O usuário é notificado da realização da solicitação, conforme a Figura \ref{fig:notificacao-sessao}. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura \ref{fig:notificacao-solitacao}. 
-
-Como esta ação desbloqueia uma conquista, é exibida outra notificação, apresentada pela Figura \ref{fig:notificacao-conquista}. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura \ref{fig:notificacao-conquista-isolada}. 
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-
-    \caption{Notificação de solicitação de tutoria.} 
-    \includegraphics[width=0.99\textwidth]{figuras/notificacao-sessao.png}
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:notificacao-sessao}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-
-    \caption{Janela de notificação de solicitação de tutoria.} 
-    \includegraphics[width=0.75\textwidth]{figuras/notificacao-solitacao.png}
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:notificacao-solitacao}
-\end{figure}
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-
-    \caption{Notificação de desbloqueio da conquista.} 
-    \includegraphics[width=0.99\textwidth]{figuras/notificacao-conquista.png}
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:notificacao-conquista}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
-
-    \caption{Janela de notificação de desbloqueio de conquistas.} 
-    \includegraphics[width=0.75\textwidth]{figuras/notificacao-conquista-isolada.png}
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:notificacao-conquista-isolada}
-\end{figure}
-
-Ao voltar para a tela de conquistas, a conquista desbloqueada é apresentada em cores, conforme mostra a Figura \ref{fig:conquista-liberada}.
-
-\newpage
-
-\begin{figure}[h!]
-    \centering
-    \caption{Conquista desbloqueada.} 
-    \includegraphics[width=0.99\textwidth]{figuras/conquista-liberada.png}
-
-
-    Fonte: Autoria própria.
-    
-    \vspace{0.2cm}
-        
-    \label{fig:conquista-liberada}
-\end{figure}
-
-A simulação tornou possível perceber que a arquitetura proposta consegue realizar a integração entre o \textit{backend} e o \textit{frontend} de forma satisfatória, além de demonstrar a capacidade de realizar consultas e registros na base de dados modelada. Assim, a arquitetura atende as
-necessidades da proposta e é viável para o desenvolvimento do projeto.
-
 \chapter[\textit{Lean Inception}]{\textit{Lean Inception}}
 \label{lean-inception}
 
@@ -445,6 +282,170 @@ Ele sabe que é um bom professor, mas sente que não consegue a visibilidade que
 \textbf{Familiaridade com Tecnologia}
 
 Ricardo é familiarizado com aplicativos e redes sociais, usando constantemente o WhatsApp e o Instagram para comunicação. Utiliza o Zoom e Google Meets para realizar suas aulas online. Sua dificuldade não está em usar essas ferramentas, mas em utilizá-las para marketing e obtenção de novos clientes de forma eficaz.
+
+
+\chapter{Simulação da Arquitetura}
+\label{simulacao}
+
+Com o objetivo de verificação da viabilidade da arquitetura proposta na Seção \ref{arquitetura}, foi realizada uma simulação envolvendo alguns casos de uso da proposta do software. Nesta simulação foram realizadas as conexões entre o \textit{backend}, \textit{frontend} e o banco de dados, bem como a geração das imagens Docker e orquestração com Docker Compose.
+
+A simulação consistiu em satisfazer parcialmente as histórias de usuário US01 (\textit{Login}), US07 (Solicitar Horário) e US16 (Conquistas).
+
+A Figura \ref{fig:login} apresenta a interface de usuário para a ação do \textit{login}, em que é possível ver os campos destinados para o preenchimento de e-mail e senha para autenticação. Caso haja falha na autenticação, é exibida uma mensagem de erro para o usuário, advinda do \textit{backend} e tratada no \textit{frontend}, conforme apresentado na Figura \ref{fig:login-erro}.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Interface de \textit{login}.} 
+    \includegraphics[width=0.99\textwidth]{figuras/login.png}
+    
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:login}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \caption{Mensagem de erro de autenticação.} 
+    \includegraphics[width=0.99\textwidth]{figuras/login-erro.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:login-erro}
+\end{figure}
+
+\newpage
+
+A Figura \ref{fig:conquistas-bloqueadas} apresenta a tela de conquistas, a qual mostra a lista de conquistas com título, descrição, imagem e a pontuação fornecida ao usuário caso ele a desbloqueie. Conquistas bloqueadas são apresentadas com foto e texto em tom de cinza.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Lista de conquistas.} 
+    \includegraphics[width=0.99\textwidth]{figuras/conquistas-bloqueadas.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:conquistas-bloqueadas}
+\end{figure}
+
+A Figura \ref{fig:tutores} apresenta a tela de tutores, que exibe tutores e suas informações, como nome, foto e áreas de conhecimento, além de dois botões interativos para o aprendiz acessar o perfil do tutor e também para solicitar uma sessão de tutoria.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Lista de tutores.} 
+    \includegraphics[width=0.99\textwidth]{figuras/tela-tutores.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:tutores}
+\end{figure}
+
+Ao clicar no botão para solicitar uma sessão, abre-se uma janela em que são exibidos os horários disponíveis na agenda do tutor, conforme apresentado pela Figura \ref{fig:sessoes}.
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \caption{Interface de agendamento da sessão de tutoria.} 
+    \includegraphics[width=0.99\textwidth]{figuras/sessao.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:sessoes}
+\end{figure}
+
+Ao clicar em um horário, a solicitação de tutoria é realizada, a qual o tutor deve aceitar para que seja de fato confirmada. O usuário é notificado da realização da solicitação, conforme a Figura \ref{fig:notificacao-sessao}. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura \ref{fig:notificacao-solitacao}. 
+
+Como esta ação desbloqueia uma conquista, é exibida outra notificação, apresentada pela Figura \ref{fig:notificacao-conquista}. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura \ref{fig:notificacao-conquista-isolada}. 
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+
+    \caption{Notificação de solicitação de tutoria.} 
+    \includegraphics[width=0.99\textwidth]{figuras/notificacao-sessao.png}
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:notificacao-sessao}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+
+    \caption{Janela de notificação de solicitação de tutoria.} 
+    \includegraphics[width=0.75\textwidth]{figuras/notificacao-solitacao.png}
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:notificacao-solitacao}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+
+    \caption{Notificação de desbloqueio da conquista.} 
+    \includegraphics[width=0.99\textwidth]{figuras/notificacao-conquista.png}
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:notificacao-conquista}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+
+    \caption{Janela de notificação de desbloqueio de conquistas.} 
+    \includegraphics[width=0.75\textwidth]{figuras/notificacao-conquista-isolada.png}
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:notificacao-conquista-isolada}
+\end{figure}
+
+Ao voltar para a tela de conquistas, a conquista desbloqueada é apresentada em cores, conforme mostra a Figura \ref{fig:conquista-liberada}.
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \caption{Conquista desbloqueada.} 
+    \includegraphics[width=0.99\textwidth]{figuras/conquista-liberada.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:conquista-liberada}
+\end{figure}
+
+A simulação tornou possível perceber que a arquitetura proposta consegue realizar a integração entre o \textit{backend} e o \textit{frontend} de forma satisfatória, além de demonstrar a capacidade de realizar consultas e registros na base de dados modelada. Assim, a arquitetura atende as
+necessidades da proposta e é viável para o desenvolvimento do projeto.
 
 \chapter{Dicionário de Dados}
 \label{dicionario-dados}
