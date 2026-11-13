@@ -675,9 +675,9 @@ A fim de se averiguar se a arquitetura era válida para a implementação da apl
 
 O Diagrama Entidade-Relacionamento (DE-R) é um diagrama que representa as entidades do banco de dados (coisas que existem no mundo real e que se deseja armazenar dados), seus atributos (propriedades específicas que descrevem as entidades) e os relacionamentos que existem entre as entidades \cite{elmasri2011sistemas}.
 
-(Rodrigo, falar aqui do DE-R, falando que foram mapeadas X entidades, Y relacionamentos, etc.).
+Para atender às demandas da aplicação proposta neste trabalho, elaborou-se o DE-R apresentado na Figura \ref{fig:diagrama_DE-R}, essa destaca 11 entidades, 11 relacionamentos e uma especialização parcial.
 
-Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R.png}.
+Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DE-R_sem_django.png}.
 
 \clearpage
 
@@ -687,7 +687,7 @@ Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por es
     \begin{figure}[H]
         \centering
         \caption{Diagrama Entidade-Relacionamento do projeto.} 
-        \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DE-R.png}
+        \includegraphics[width=1.5\textwidth, height=0.90\textheight, keepaspectratio]{figuras/DE-R_sem_django.png}
     
     
         Fonte: Autoria própria.
@@ -702,13 +702,14 @@ Para melhor visualização, o arquivo de imagem do DE-R pode ser acessado por es
 
 \subsection[Diagrama Lógico de Dados]{Diagrama Lógico de Dados}
 
-Com base no DE-R proposto, foi elaborado o Diagrama Lógico de Dados (DLD). Segundo \citeonline{heuser2009projeto}, o DLD é uma descrição da base de dados que será implementada no Sistema Gerenciador de Banco de Dados (SGBD), definindo-se os tipos de dados de cada coluna, chaves primárias e estrangeiras, dentre outros recursos. 
+O Diagrama Lógico de Dados (DLD) segundo \citeonline{heuser2009projeto} é uma descrição da base de dados que será implementada no Sistema Gerenciador de Banco de Dados (SGBD), definindo-se os tipos de dados de cada coluna, chaves primárias e estrangeiras, dentre outros recursos. 
 
-%O Diagrama Lógico de Dados (DLD) na Figura \ref{fig:diagrama_DLD} traduz o modelo conceitual do DE-R em tabelas relacionais prontas para implentação no Django ORM. A especialização entre ``USUARIO'' e ``TUTOR'' é mapeada por uma relação ``1:1'' por meio do atributo ``usuarioId'', enquanto as associações ``N:N'' no modelo conceitual são resolvidas com as tabelas associativas ``consegue'' (vinculada ao sistema de gamificação com ``CONQUISTA'') e ``contem'' (que liga o ``TUTOR'' às opções de ``ESPECIALIDADE'', por sua vez categorizada por ``AREA'').
+Complementando a modelagem conceitual DE-R, elaborou-se o Diagrama Lógico de Dados (DLD), exibido na Figura \ref{fig:diagrama_DLD}, que traduz as entidades para o nível de implementação relacional e integra as tabelas nativas demandadas pelo \textit{Django REST Framework}.
 
-%A dinâmica operacional de agendamento e comunicação é assegurada pela conexão entre ``SESSAO'' e ``SOLICITACAO'', complmentada pela estrutura de comunicação em tempo real formada por ``CHAT'' e ``MENSAGEM'', com as tabelas ``AVALIACAO\_APRENDIZ'' e ``AVALIACAO\_TUTOR'' regitrando o histórico de desempenho. Por fim, a persistência das tabelas de regras de negócio integra-se diretamente às tabelas nativas de autenticação, grupos, permissões e sessões e registro de auditoria do Django, como descrito na Seção \ref{sec:DE-R}.
+% Definição do que fazem as tabelas do Django (que não deveriam serem apresentadas no DE-R, segundo o Orientador do trabalho)
 
-(Rodrigo, coloque aqui a explicação que o DLD representa o nível de implementação do banco, e por isso foram inseridas tabelas do Django, que são essenciais para que o banco funcione nele. Explique principalmente as tabelas django_sessios e django_migrations, que não tem relação com ninguém)
+Para a gestão de autenticação e controle de permissões na API, o esquema incorpora as tabelas ``auth\_group'', ``USUARIO\_groups'', ``auth\_group\_permissions'', ``auth\_permission'' e ``USUARIO\_user\_permissions''.
+Adicionalmente, o rastreamento de auditoria administrativa, o mapeamento de modelos e o gerenciamento de sessões são realizados por meio das tabelas ``django\_admin\_log'', ``django\_content\_type'' e ``django\_sessions'', por fim a tabela ``django\_migrations'' registra o histórico de evolução e as últimas migrações aplicadas ao banco de dados.
 
 Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_print.png}.
 
