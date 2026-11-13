@@ -122,7 +122,7 @@ As diferenças entre a arquitetura proposta na Seção \ref{arquitetura} é que 
 \section[Desenvolvimento da Aplicação]{Desenvolvimento da Aplicação}
 \label{sec:desenvolvimento}
 
-Durante o desenvolvimento da aplicação, optou-se pela divisão de cada US, por entre funcionalidades, \textit{backend} e \textit{frontend}, sendo criadas as etiquetas de cada área para cada US no Trello a fim de se ter um acompanhamento visual do progresso de cada etapa das US. Além disso, também foi definido um acompanhamento do progresso das funcionalidades por meio de uma \textit{checklist} nos cards de funcionalidades no quadro ``MVC''. As etiquetas e tarefas no Trello podem ser observadas na Figura \ref{fig:trello}. 
+No decorrer do desenvolvimento, foi utilizado o Trello para aplicar a metodologia Kanban no gerenciamento visual das atividades. Cada História de Usuário (US) foi dividada em duas frentes de funcionalidades, \textit{backend} e \textit{frontend}, utilizando etiquetas temáticas para sinalizar o avanço de cada frente de trabalho. E o quadro possui a divisão em colunas entre ``MVC'', ``Backlog'', ``Testes'', ``Implementando'', ``Revisão'' e ``Concluído''. Além disso foram adotadas \textit{checklists} nos cartões na coluna ``MVC'' para rastrear o \textit{status} detalhado das implementações, conforme ilustrado na Figura \ref{fig:trello}. 
 
 \begin{figure}[H]
     \centering
@@ -152,7 +152,7 @@ O quadro do Trello do trabalho exige criação de conta para ser visualizado, po
 
 \subsection[US01: \textit{Login}]{US01: \textit{Login}}
 
-A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02, de 08 a 14 de março. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações no \textit{frontend} em 19 de março para inclusão de responsividade para dispositivos móveis. No dia 21 de março para implementar o uso de \textit{Server Actions}, no dia 22 de março para inclusão de um \textit{banner} informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e no dia 27 de março para mudança no formulário para utilização das bibliotecas React Hook Form e Zod, que serão explicadas na Seção \ref{sec:us20}.
+A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02, de 08 a 14 de março. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações sendo realizadas posteriormente para inclusão de responsividade para dispositivos móveis, uso de \textit{Server Actions}, inclusão de um \textit{banner} informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e para mudança no formulário para utilização das bibliotecas React Hook Form e Zod, que serão explicadas na Seção \ref{sec:us20}.
 
 No \textit{backend} a autenticação se utiliza de uma classe abstrata do modelo de Usuário do DRF, adaptada e customizada para as regras de negócios da aplicação. O modelo ``UsuarioModel'' estende as classes ``AbstractBaseUser'' e ``PermissionMixin'', além de criar um ``UsuarioManager'' que o DRF utiliza para definir regras de criação, atualização deste Usuário base e também para o ``superuser''. Desta forma foi possível aproveitar funções já implementadas no \textit{framework}, como criptografia de senha, registro de \textit{login} e autenticação via JWT, utilizando o pacote do DRF chamado ``djangorestframework-simplejwt''.
 
@@ -241,9 +241,12 @@ O armazenamento dos \textit{tokens} como \textit{cookies}, utilizando o método 
 \subsection[US20: {Criar Conta}]{US20: Criar Conta}
 \label{sec:us20}
 
-Uma funcionalidade que está relacionada ao \textit{login} e não havia sido listada na Seção \ref{historias-usuario} é a criação de conta, se tornando assim a US20. O desenvolvimento do \textit{backend} iniciou-se com o \textit{endpoint} para criação de usuário em 14 de outubro de 2025, concluindo em 20 de outubro do mesmo ano. Porém, houve refatorações arquiteturais e inclusões posteriores principalmente na semana de 22 a 28 de março de 2026.
+Uma funcionalidade que está relacionada ao \textit{login} e que não havia sido listada na Seção \ref{historias-usuario} é o cadastro de contas, se tornando assim a US20.
+Por não possuir uma estimativa prévia no planejamento inicial, seu desenvolvimento ocorreu de maneira incremental.
+O \textit{backend} teve seu \textit{endpoint} base estruturado e passou por refatorações arquiteturais e expansões em etapas durante o desenvolvimento deste trabalho.
+O \textit{frontend}, por sua vez, estendeu-se de forma intercalada, sendo conduzido em paralelo a outras entregas do sistema.
 
-O \textit{frontend} da criação de conta começou a ser desenvolvido em 16 de março e foi concluído em 10 de junho. O grande período de desenvolvimento se deve ao fato dessa funcionalidade ter sido feita em paralelo com outras US, que foram se tornando mais prioritárias após a criação de um usuário como aprendiz ter sido concluída, e também ao \textit{backend} dessa funcionalidade ter sido completado em partes, em paralelo com outras funcionalidades. 
+O \textit{frontend} da criação de conta. O desenvolvimento dessa funcionalidade foi feito em paralelo com outras US, que foram se tornando mais prioritárias após a criação de um usuário como aprendiz ter sido concluída, e também ao \textit{backend} dessa funcionalidade ter sido completado em partes, em paralelo com outras funcionalidades.
 
 A página possui duas etapas, sendo a primeira o cadastro de informações comuns à aprendiz e tutores, como foto de perfil, e-mail e senha, e a segunda exclusivamente para cadastro de dados para o perfil como tutor. Caso os dados da segunda etapa também sejam preenchidos, o usuário já é registrado como um tutor assim que o processo é concluído. A primeira etapa pode ser observada na Figura \ref{fig:criarConta1}.
 
@@ -330,7 +333,7 @@ O segundo problema é a complexidade da página. Embora simples visualmente, ela
 
 \subsubsection[US02: Recuperar Senha]{US02: Recuperar Senha}
 
-A estimativa inicial para o desenvolvimento da US02 era na Semana 1, em conjunto com a US01, de 08 a 14 de março. O \textit{backend} foi desenvolvido entre 08 e 18 de março simultaneamente com a US01. O \textit{frontend} da página foi desenvolvido em 14 de março, sendo a integração com o \textit{backend} feita em 22 de março e no dia 27 de março sendo feita uma refatoração para utilização das bibliotecas React Hook Form e Zod no formulário.
+A estimativa inicial para o desenvolvimento da US02 era na Semana 1, em conjunto com a US01. O \textit{backend} e o \textit{frontend} da página foram implementados neste prazo. Sendo a integração da aplicação e uma refatoração para utilização das bibliotecas React Hook Form e Zod no formulário, realizados posteriormente.
 
 Durante o desenvolvimento da funcionalidade, outra biblioteca foi adicionada na aplicação: Material UI. Conforme \cite{materialUI}, o Material UI é uma biblioteca React que oferece componentes de elementos visuais prontos para uso e com opções de customização.
 
@@ -425,7 +428,8 @@ Não houve nenhuma dificuldade no desenvolvimento do \textit{frontend}.
 
 \subsubsection[US03: Alterar Senha]{US03: Alterar Senha}
 
-A estimativa inicial para o desenvolvimento da US03 era na Semana 2, de 15 a 21 de março. O \textit{backend} foi desenvolvido junto a US02 e finalizado no dia 18 de março. O \textit{frontend} foi desenvolvido em grande parte no dia 16 de março, com uma refatoração para uso do React Hook Form e Zod e a integração com o \textit{backend} sendo feitas no dia 25 de março.
+A estimativa inicial para o desenvolvimento da US03 era na Semana 2.
+O \textit{backend} e \textit{frontend} foram desenvolvidos neste prazo, com uma refatoração para uso do React Hook Form e Zod e a integração com o \textit{backend} sendo feitas posteriormente.
 
 A página de alteração de senha é uma página com rotas dinâmicas, recebendo dois parâmetros em sua URL: o UID (\textit{User ID}), que é um número identificador do registro do usuário no banco, mas transfigurado, e um \textit{token}, ambos provenientes do \textit{link} enviado por e-mail após o pedido de recuperação de senha ser feito.
 
@@ -480,7 +484,7 @@ Não houveram dificuldades no desenvolvimento do \textit{backend} e \textit{fron
 \subsubsection[US04: Alterar Informações]{US04: Alterar Informações}
 \label{sec:us04}
 
-A estimativa inicial para o desenvolvimento dessa US era na Semana 2, de 15 a 21 de março, juntamente com a US03. O \textit{backend} atrasou o desenvolvimento em uma semana, começando no dia 23 de março e finalizando no dia 27 de março, enquanto que o \textit{frontend} começou a ser desenvolvido em 2 de abril e finalizado em 30 de abril.
+A estimativa inicial para o desenvolvimento dessa US era na Semana 2, de 15 a 21 de março, juntamente com a US03. O \textit{backend} atrasou o desenvolvimento em uma semana. Culminando também ao atraso do \textit{frontend} e atrasos nas US posteriores.
 
 O atraso para o começo do desenvolvimento do \textit{backend} foi ocasionada pela mudança arquitetural do perfil de usuário descrita na Subseção \ref{sec:us20}.
 
@@ -571,7 +575,7 @@ Para resolver isso foi utilizada a técnica \textit{Cache Busting}, que segundo 
 \subsubsection[US05: Definir Agenda e US06: Gerenciar Especialidades]{US05: Definir Agenda e US06: Gerenciar Especialidades}
 \label{sec:us05}
 
-Essas US serão explicadas em uma subseção única por serem muito similares e simples, não havendo necessidade de uma subseção única para cada uma. A estimativa inicial para o desenvolvimento delas era na Semana 3, de 22 a 28 de março. O desenvolvimento do \textit{backend} iniciou-se somente em 27 de abril e encerrou-se no dia 02 de maio, sendo o atraso devido a demandas acumuladas do estágio e disciplinas de um dos autores. O desenvolvimento do \textit{frontend} dessas US começou em 16 de abril e foi pausado em 30 de abril, retomando em 11 de maio para integração dos \textit{endpoints} e finalizando em 15 de maio, sendo que durante esse período de pausa ocorreram o desenvolvimento do \textit{frontend} de outras US.
+Essas US serão explicadas em uma subseção única por serem muito similares e simples, não havendo necessidade de uma subseção única para cada uma. A estimativa inicial para o desenvolvimento delas era na Semana 3, de 22 a 28 de março. O desenvolvimento do \textit{backend} iniciou-se logo após o fim da US04. O desenvolvimento do \textit{frontend} dessas US despendeu mais tempo para integração dos \textit{endpoints}, sendo que durante o período foi desenvolvido em paralelo ao de outras US.
 
 Essas funcionalidades são disponibilizadas ao usuário na página de edição de perfil, onde existe uma seção dedicada para elas. Essa seção pode ser observada nas Figuras \ref{fig:editarAreas} e \ref{fig:areaDisponibilidade}.
 
@@ -672,7 +676,7 @@ Não houveram muitas dificuldades técnicas no \textit{frontend} dessas funciona
 \subsubsection[US07: Solicitar Horário]{US07: Solicitar Horário}
 \label{sec:us07}
 
-A estimativa para o desenvolvimento dessa US era na Semana 4, de 29 de Março a 04 de Abril. O \textit{backend} foi desenvolvido principalmente no período do dia 2 de maio até o dia 8 de maio, havendo refatorações para melhorias de regras de negócios entre os dias 26 de maio e 11 de junho. O \textit{frontend} foi desenvolvido em partes.  No dia 8 de abril foi desenvolvida a \textit{modal} de solicitação de sessão, com dados simulados. Após isso, foi feito o desenvolvimento da página de edição de perfil e das páginas de busca e recomendação de tutores. Em 8 de maio foi feita a página de acompanhamento de solicitações. Novamente, o desenvolvimento foi pausado para priorização de outras US. O desenvolvimento foi retornado em 3 de junho e prosseguiu até 10 de junho. Em 18 de junho essa funcionalidade foi modificada a fim de se realizar melhorias, sendo completada em 29 de junho.
+A estimativa para o desenvolvimento dessa US era na Semana 4, de 29 de Março a 04 de Abril. O \textit{backend} foi desenvolvido logo após a US05 e US06, havendo refatorações para melhorias de regras de negócios posteriormente. O \textit{frontend} foi desenvolvido em partes, primeiramente foi desenvolvida a \textit{modal} de solicitação de sessão, com dados simulados. Após isso, foi feito o desenvolvimento da página de edição de perfil e das páginas de busca e recomendação de tutores. E posteriormente foi feita a página de acompanhamento de solicitações. Novamente, o desenvolvimento dessa funcionalidade foi modificada a fim de se realizar melhorias posteriormente.
 
 A solicitação de sessão de tutoria é feita na página do tutor, a qual é acessada clicando em seu \textit{card} na página de busca ou recomendação de tutores. Uma vez nessa página, o botão ``Solicitar Sessão'' pode ser clicado na sessão de disponibilidades, abrindo uma \textit{modal} em que são exibidos o mês atual e os dois meses seguintes. 
 
@@ -810,7 +814,7 @@ O desenvolvimento do \textit{frontend} dessa US passou por dificuldades. Embora 
 
 \subsubsection[US08: Aceitar e Recusar Solicitação]{US08: Aceitar e Recusar Solicitação}
 
-A estimativa inicial para o desenvolvimento dessas US era na Semana 5, de 05 a 11 de Abril. O \textit{backend} teve o desenvolvimento em paralelo com a Seção \ref{sec:us07}, entre os dias 02 e 08 de maio, e refatorações de regras de negócios futuras entre os dias 26 de maio e 11 de junho. O \textit{frontend} começou a ser desenvolvido em 11 de junho e terminou em 16 de junho.
+A estimativa inicial para o desenvolvimento dessas US era na Semana 5, de 05 a 11 de Abril. O \textit{backend} teve o desenvolvimento em paralelo com a Seção \ref{sec:us07}, e após este período houve refatorações de regras de negócios. O \textit{frontend} desenvolveu durante o período de uma semana.
 
 Quando uma solicitação é feita para um tutor, ela aparece na aba ``Solicitações Pendentes'' da página de solicitações. Nesta aba são exibidas as informações da solicitação, botões para  e também o prazo que o tutor tem para responder à ela, em horas, conforme pode ser observado na Figura \ref{fig:cardSolicitacaoPendente}.
 
