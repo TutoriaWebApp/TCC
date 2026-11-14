@@ -122,7 +122,7 @@ As diferenças entre a arquitetura proposta na Seção \ref{arquitetura} é que 
 \section[Desenvolvimento da Aplicação]{Desenvolvimento da Aplicação}
 \label{sec:desenvolvimento}
 
-No decorrer do desenvolvimento, foi utilizado o Trello para aplicar a metodologia Kanban no gerenciamento visual das atividades. Cada História de Usuário (US) foi dividada em duas frentes de funcionalidades, \textit{backend} e \textit{frontend}, utilizando etiquetas temáticas para sinalizar o avanço de cada frente de trabalho. E o quadro possui a divisão em colunas entre ``MVC'', ``Backlog'', ``Testes'', ``Implementando'', ``Revisão'' e ``Concluído''. Além disso foram adotadas \textit{checklists} nos cartões na coluna ``MVC'' para rastrear o \textit{status} detalhado das implementações, conforme ilustrado na Figura \ref{fig:trello}. 
+No decorrer do desenvolvimento, foi utilizado o Trello para aplicar a metodologia Kanban no gerenciamento visual das atividades. Cada US foi dividada em duas frentes de funcionalidades, \textit{backend} e \textit{frontend}, utilizando etiquetas temáticas para sinalizar o avanço de cada frente de trabalho. O quadro possui uma divisão em colunas entre ``MVC'', ``Backlog'', ``Testes'', ``Implementando'', ``Revisão'' e ``Concluído''. Além disso foram adotadas \textit{checklists} nos cartões na coluna ``MVC'' para rastrear o \textit{status} detalhado das implementações, conforme ilustrado na Figura \ref{fig:trello}. 
 
 \begin{figure}[H]
     \centering
@@ -152,7 +152,7 @@ O quadro do Trello do trabalho exige criação de conta para ser visualizado, po
 
 \subsection[US01: \textit{Login}]{US01: \textit{Login}}
 
-A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02, de 08 a 14 de março. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações sendo realizadas posteriormente para inclusão de responsividade para dispositivos móveis, uso de \textit{Server Actions}, inclusão de um \textit{banner} informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e para mudança no formulário para utilização das bibliotecas React Hook Form e Zod, que serão explicadas na Seção \ref{sec:us20}.
+A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações sendo realizadas posteriormente para inclusão de responsividade para dispositivos móveis, uso de \textit{Server Actions}, inclusão de um \textit{banner} informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e para mudança no formulário para utilização das bibliotecas React Hook Form e Zod.
 
 No \textit{backend} a autenticação se utiliza de uma classe abstrata do modelo de Usuário do DRF, adaptada e customizada para as regras de negócios da aplicação. O modelo ``UsuarioModel'' estende as classes ``AbstractBaseUser'' e ``PermissionMixin'', além de criar um ``UsuarioManager'' que o DRF utiliza para definir regras de criação, atualização deste Usuário base e também para o ``superuser''. Desta forma foi possível aproveitar funções já implementadas no \textit{framework}, como criptografia de senha, registro de \textit{login} e autenticação via JWT, utilizando o pacote do DRF chamado ``djangorestframework-simplejwt''.
 
@@ -244,11 +244,9 @@ O armazenamento dos \textit{tokens} como \textit{cookies}, utilizando o método 
 Uma funcionalidade que está relacionada ao \textit{login} e que não havia sido listada na Seção \ref{historias-usuario} é o cadastro de contas, se tornando assim a US20.
 Por não possuir uma estimativa prévia no planejamento inicial, seu desenvolvimento ocorreu de maneira incremental.
 O \textit{backend} teve seu \textit{endpoint} base estruturado e passou por refatorações arquiteturais e expansões em etapas durante o desenvolvimento deste trabalho.
-O \textit{frontend}, por sua vez, estendeu-se de forma intercalada, sendo conduzido em paralelo a outras entregas do sistema.
+O \textit{frontend}, por sua vez, foi desenvolvido de forma intercalada, sendo conduzido em paralelo a outras entregas do sistema.
 
-O \textit{frontend} da criação de conta. O desenvolvimento dessa funcionalidade foi feito em paralelo com outras US, que foram se tornando mais prioritárias após a criação de um usuário como aprendiz ter sido concluída, e também ao \textit{backend} dessa funcionalidade ter sido completado em partes, em paralelo com outras funcionalidades.
-
-A página possui duas etapas, sendo a primeira o cadastro de informações comuns à aprendiz e tutores, como foto de perfil, e-mail e senha, e a segunda exclusivamente para cadastro de dados para o perfil como tutor. Caso os dados da segunda etapa também sejam preenchidos, o usuário já é registrado como um tutor assim que o processo é concluído. A primeira etapa pode ser observada na Figura \ref{fig:criarConta1}.
+A página possui duas etapas, sendo a primeira o cadastro de informações comuns à aprendiz e tutores, como foto de perfil, e-mail e senha, e a segunda exclusivamente para cadastro de dados para o perfil como tutor. Caso os dados da segunda etapa também sejam preenchidos, o usuário já é registrado como um tutor assim que o processo é concluído. A primeira etapa pode ser observada na Figura \ref{fig:criarConta1}, que exibe os campos de preenchimento obrigatório da primeira etapa.
 
 \begin{figure}[H]
     \centering
@@ -278,7 +276,7 @@ A segunda etapa pode ser parcialmente observada na Figura \ref{fig:criarConta2},
     \label{fig:criarConta2}
 \end{figure}
 
-No preenchimento de dados de tutor, foi implementada a regra de negócio do usuário obrigatoriamente ter que preencher uma área e especialidade de conhecimento, além de uma disponibilidade, devendo ter ao menos uma área e especialidade e uma disponibilidade para se tornar um tutor. A seleção de disponibilidade apresenta os dias da semana e intervalos de tempo de uma hora, abrangendo os horários de um dia inteiro. Tudo isso é feito através de \textit{modais}. A modal de cadastro de área e especialidade pode ser observada na Figura \ref{fig:modalArea}, que mostra a seleção de uma área e especialidade, enquanto a modal de disponibilidade pode ser observada na Figura \ref{fig:modalAgenda}, que mostra a seleção de um dia e um horário.
+No preenchimento de dados de tutor, foi implementada a regra de negócio do usuário obrigatoriamente ter que preencher uma área e especialidade de conhecimento, além de uma disponibilidade, devendo ter ao menos uma área e especialidade e uma disponibilidade para se tornar um tutor. A seleção de disponibilidade apresenta os dias da semana e intervalos de tempo de uma hora, abrangendo os horários de um dia inteiro. Tudo isso é feito através de \textit{modais}. A modal de cadastro de área e especialidade pode ser observada na Figura \ref{fig:modalArea}, que mostra a seleção de uma área e especialidade, enquanto que a modal de disponibilidade pode ser observada na Figura \ref{fig:modalAgenda}, que mostra a seleção de um dia e um horário.
 
 \begin{figure}[H]
     \centering
@@ -331,17 +329,11 @@ O desenvolvimento do \textit{frontend} passou por dois grandes problemas. O prim
 
 O segundo problema é a complexidade da página. Embora simples visualmente, ela é composta por muitos elementos visuais e regras de validação, que consumiram tempo considerável para serem criados.
 
-\subsubsection[US02: Recuperar Senha]{US02: Recuperar Senha}
+\subsection[US02: Recuperar Senha]{US02: Recuperar Senha}
 
-A estimativa inicial para o desenvolvimento da US02 era na Semana 1, em conjunto com a US01. O \textit{backend} e o \textit{frontend} da página foram implementados neste prazo. Sendo a integração da aplicação e uma refatoração para utilização das bibliotecas React Hook Form e Zod no formulário, realizados posteriormente.
+A estimativa inicial para o desenvolvimento da US02 era na Semana 1, em conjunto com a US01. O \textit{backend} e o \textit{frontend} da página foram implementados neste prazo, sendo a integração da aplicação e uma refatoração para utilização das bibliotecas React Hook Form e Zod no formulário, realizados posteriormente.
 
-Durante o desenvolvimento da funcionalidade, outra biblioteca foi adicionada na aplicação: Material UI. Conforme \cite{materialUI}, o Material UI é uma biblioteca React que oferece componentes de elementos visuais prontos para uso e com opções de customização.
-
-Essa adição foi feita para atender ao CA04: exibir uma mensagem na tela após o usuário solicitar a recuperação de senha. Para isso, foi utilizado o componente \textit{Snackbar}, que trata-se de uma notificação visual que surge na tela exibindo uma mensagem, permitindo customização do texto que é exibido e também da cor da notificação. Essa biblioteca foi utilizada em outras funcionalidades da aplicação para informar o usuário sobre o resultado de uma ação, sendo a notificação exibida diferentes cores, como verde para sucesso e vermelho para erro.
-
-A página pode ser observada na Figura \ref{fig:telaRecuperarSenha}. A notificação de sucesso, exibida após o usuário realizar o pedido de recuperação e ser redirecionado para a página de \textit{login}, pode ser observada na Figura \ref{fig:telaRecuperarSenhaErro}. A notificação de erro, caso a requisição seja feita mas não exista conexão com o servidor do \textit{backend}, pode ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}.
-
-\clearpage
+A página pode ser observada na Figura \ref{fig:telaRecuperarSenha}, que exibe o campo de preenchimento de e-mail e um botão para realização do pedido de recuperação de senha. 
 
 \begin{landscape}
     \setlength{\oddsidemargin}{\evensidemargin}
@@ -359,6 +351,12 @@ A página pode ser observada na Figura \ref{fig:telaRecuperarSenha}. A notifica�
         \label{fig:telaRecuperarSenha}
     \end{figure}
 \end{landscape}
+
+Atendendo ao CA04 da US, uma notificação é exibida ao usuário após realizar a solicitação, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. A notoficação, exibida em verde, indica uma ação concluída com sucesso. 
+
+Caso ocorra um erro na solicitação, é exibida uma notificação de erro, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. A notificação é exibida em vermelho. Além desta US, as notificaçṍes foram também utilizadas em outras funcionalidades para indicar sucesso ou falha na realização de uma ação.
+
+
 
 \clearpage
 
