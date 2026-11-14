@@ -486,7 +486,7 @@ Não houveram dificuldades no desenvolvimento do \textit{backend} e \textit{fron
 
 A estimativa inicial para o desenvolvimento dessa US era na Semana 2, de 15 a 21 de março, juntamente com a US03. O \textit{backend} atrasou o desenvolvimento em uma semana. Culminando também ao atraso do \textit{frontend} e atrasos nas US posteriores.
 
-O atraso para o começo do desenvolvimento do \textit{backend} foi ocasionada pela mudança arquitetural do perfil de usuário descrita na Subseção \ref{sec:us20}.
+O atraso para o começo do desenvolvimento do \textit{backend} foi ocasionada pela mudança arquitetural do perfil de usuário descrita na Seção \ref{sec:us20}.
 
 O atraso do \textit{frontend} se deve em grande parte por refatorações em páginas anteriores a fins de otimização e a implementação da página de criação de conta, que se tornou mais prioritária. O grande período de desenvolvimento se deve ao fato dessa US ter exigido a criação de duas páginas: a página de perfil e a página de edição de perfil. Uma vez que a página de perfil estava finalizada, grande parte do código pode ser aproveitado para o desenvolvimento da segunda página, acelerando sua finalização. A página de perfil e a área da página de edição de perfil pertinente a essa US podem ser vistas nas Figuras \ref{fig:telaPerfil1}, \ref{fig:telaPerfil2}, \ref{fig:telaEditarPerfil1} e \ref{fig:telaEditarPerfil2}.
 
@@ -575,13 +575,13 @@ Para resolver isso foi utilizada a técnica \textit{Cache Busting}, que segundo 
 \subsubsection[US05: Definir Agenda e US06: Gerenciar Especialidades]{US05: Definir Agenda e US06: Gerenciar Especialidades}
 \label{sec:us05}
 
-Essas US serão explicadas em uma subseção única por serem muito similares e simples, não havendo necessidade de uma subseção única para cada uma. A estimativa inicial para o desenvolvimento delas era na Semana 3, de 22 a 28 de março. O desenvolvimento do \textit{backend} iniciou-se logo após o fim da US04. O desenvolvimento do \textit{frontend} dessas US despendeu mais tempo para integração dos \textit{endpoints}, sendo que durante o período foi desenvolvido em paralelo ao de outras US.
+Essas US serão explicadas em uma Seção única por serem muito similares e simples, não havendo necessidade de uma Seção única para cada uma. A estimativa inicial para o desenvolvimento delas era na Semana 3, de 22 a 28 de março. O desenvolvimento do \textit{backend} iniciou-se logo após o fim da US04. O desenvolvimento do \textit{frontend} dessas US despendeu mais tempo para integração dos \textit{endpoints}, sendo que durante o período foi desenvolvido em paralelo ao de outras US.
 
 Essas funcionalidades são disponibilizadas ao usuário na página de edição de perfil, onde existe uma seção dedicada para elas. Essa seção pode ser observada nas Figuras \ref{fig:editarAreas} e \ref{fig:areaDisponibilidade}.
 
 As áreas e especialidades de tutoria do usuário são listadas, bem como suas disponibilidades, organizadas em dias da semana e os horários disponíveis neles. Ao lado de cada um desses itens existe o ícone de uma lixeira, que quando clicado, abre uma \textit{modal} que permite ao usuário excluí-lo de seu perfil. Como exemplo, a \textit{modal} de deleção de disponibilidade pode ser observada na Figura \ref{fig:modalApagarDisponibilidade}.
 
-Ao clicar no botão ``Adicionar Área'', abre-se uma \textit{modal} de seleção tanto da área quanto da especialidade, sendo inseridos ambos no perfil. A inserção de disponibilidades através da mesma forma, utilizando uma \textit{modal} permitindo selecionar um dia e um intervalo de 1 hora, abrangendo todas as 24 horas de um dia. Ambas as \textit{modais} já foram apresentadas anteriormente nas Figuras \ref{fig:modalArea} e \ref{fig:modalAgenda} da Subseção \ref{sec:us20}.
+Ao clicar no botão ``Adicionar Área'', abre-se uma \textit{modal} de seleção tanto da área quanto da especialidade, sendo inseridos ambos no perfil. A inserção de disponibilidades através da mesma forma, utilizando uma \textit{modal} permitindo selecionar um dia e um intervalo de 1 hora, abrangendo todas as 24 horas de um dia. Ambas as \textit{modais} já foram apresentadas anteriormente nas Figuras \ref{fig:modalArea} e \ref{fig:modalAgenda} da Seção \ref{sec:us20}.
 
 Essas alterações, bem como as alterações em informações de perfil da US04, só são efetuadas se o usuário clica no botão ``Salvar'' na página. Quando isso é feito, é feita uma verificação nas mudanças feitas nas áreas de tutor.
 
@@ -791,7 +791,7 @@ Uma melhoria pensada e realizada durante o desenvolvimento foi a adição de sol
 
 Durante o desenvolvimento desta funcionalidade foram feitas alterações no banco de dados. Foram acrescentados os atributos ``agendaId'', ``areaId'', ``especialidadeId'', ``recorrente'', ``dataPretendida'' e ``estado'' (que é um ENUM que aceita os valores ``ACEITO'', ``PENDENTE'', ``RECUSADO'' e ``RECORRENTE''). Isso foi feito para exibição de informações no \textit{card} de solicitação (área de conhecimento, especialidade, data pretendida e horário da solicitação), para possibilidade da funcionalidade de recorrência e para gerenciamento de estado da solicitação.
 
-O desenvolvimento do \textit{backend} enfrentou obstáculos principalmente para estabelecer a nova modelagem do banco de dados, como descrito na Subseção \ref{sec:us05}.
+O desenvolvimento do \textit{backend} enfrentou obstáculos principalmente para estabelecer a nova modelagem do banco de dados, como descrito na Seção \ref{sec:us05}.
 
 O desenvolvimento do \textit{frontend} dessa US passou por dificuldades. Embora a tela de gerenciamento de solicitações e sessões tenha sido simples, a \textit{modal} de solicitações foi consideravelmente difícil de se fazer, desde o desafio de se exibir os meses e seus dias até a complexidade da verificação de solicitações e sessões na solicitação de uma sessão, sendo o componente visual mais complexo em termos de lógica de toda a aplicação. 
 
@@ -926,7 +926,7 @@ Houve uma dificuldade no desenvolvimento dessa US. No \textit{frontend} o horár
 
 \subsubsection[US10: Avaliar Tutor e US11: Avaliar Aprendiz]{US10: Avaliar Tutor e US11: Avaliar Aprendiz}
 
-Essas US serão descritas na mesma subseção, visto que são funcionalmente idênticas. A estimativa inicial para o desenvolvimento da US10 era na Semana 7, de 19 a 25 de abril, enquanto que a US11 seria desenvolvida na Semana 8, de 26 a 02 de maio. O \textit{backend} foi desenvolvido no período de entre 18 e 20 de maio, havendo refatorações de 20 de julho a 10 de agosto. O desenvolvimento do \textit{frontend} começou em 01 de maio, com a criação da \textit{modal}, finalizada em 02 de maio. A integração com o \textit{backend} foi feita em 12 de agosto.
+Essas US serão descritas na mesma Seção, visto que são funcionalmente idênticas. A estimativa inicial para o desenvolvimento da US10 era na Semana 7, de 19 a 25 de abril, enquanto que a US11 seria desenvolvida na Semana 8, de 26 a 02 de maio. O \textit{backend} foi desenvolvido no período de entre 18 e 20 de maio, havendo refatorações de 20 de julho a 10 de agosto. O desenvolvimento do \textit{frontend} começou em 01 de maio, com a criação da \textit{modal}, finalizada em 02 de maio. A integração com o \textit{backend} foi feita em 12 de agosto.
 
 Assim que o usuário faz \textit{login} na aplicação, é feita uma requisição ao \textit{backend} para se obter quais sessões estão pendentes de avaliação por parte do mesmo. Caso existam, são exibidas \textit{modais}, uma por vez, com informações relevantes, como nome e foto do tutor ou do aprendiz, o assunto da sessão e a data e horário em que foi feita. O usuário pode, então, avaliar o outro participante com uma nota de 1 a 5 estrelas, bem como escrever um comentário de até 200 caracteres. O texto muda de acordo com o papel do usuário que está avaliando a sessão (tutor ou aprendiz). Como exemplo, a \textit{modal} de avaliação de um tutor pode ser observada nas Figuras \ref{fig:modalAvaliacao1} e \ref{fig:modalAvaliacao2}.
 
@@ -995,7 +995,7 @@ Não houve dificuldades para \textit{backend} e \textit{frontend} dessas funcion
 
 A estimativa inicial para o desenvolvimento dessa US era na Semana 8 de 26 a 02 de maio, juntamente com a US11. O \textit{frontend} foi desenvolvido em 1 de junho.
 
-A reputação de um usuário como tutor e como aprendiz pode ser visualizada em diferentes partes da aplicação. Na página de perfil são exibidos a avaliação média como aprendiz e como tutor, acompanhada da quantidade de avaliações públicas realizadas por outros usuários nesses papéis, sendo a avaliação como tutor exibida somente se o usuário é considerado um tutor na aplicação, de acordo com os critérios já mencionados na Subseção \ref{sec:us04}. As reputações podem ser observadas na Figura \ref{fig:telaPerfil1}.
+A reputação de um usuário como tutor e como aprendiz pode ser visualizada em diferentes partes da aplicação. Na página de perfil são exibidos a avaliação média como aprendiz e como tutor, acompanhada da quantidade de avaliações públicas realizadas por outros usuários nesses papéis, sendo a avaliação como tutor exibida somente se o usuário é considerado um tutor na aplicação, de acordo com os critérios já mencionados na Seção \ref{sec:us04}. As reputações podem ser observadas na Figura \ref{fig:telaPerfil1}.
 
 Inicialmente ambas as notas inicialmente começam com o valor máximo, 5.0, sendo alteradas conforme as avaliações dos usuários são feitas. A nota somente é alterada após a avaliação se tornar pública. Todas as avaliações são consideradas no cálculo da nota média de avaliação.
 
@@ -1017,7 +1017,7 @@ Na página de mensagens, o usuário pode ver todas as comunicações que possui 
 
 A fim de se carregar as mensagens novas das comunicações que o usuário possui, é feita uma requisição ao \textit{backend} de 2 em 2 segundos, feita somente quando o usuário está na página de mensagens. Caso o usuário tenha mensagens não lidas de outros usuários, um ícone vermelho com a quantidade de mensagens novas é exibido no \textit{card} da respectiva comunicação. Caso sejam mensagens novas da comunicação selecionada, elas são exibidas na tela. Isso pode ser observado na Figura \ref{fig:janelaMensagens}. O ícone só desaparece caso o usuário clique na comunicação e visualize as mensagens. Nesse caso, uma requisição ao \textit{backend} é realizada para alterar o estado delas para lido.
 
-Essa requisição se difere da requisição mencionada na Subseção \ref{sec:us07}, que retorna o total de mensagens não lidas, enquanto a requisição da página de mensagens retorna a quais comunicações cada mensagem pertence.
+Essa requisição se difere da requisição mencionada na Seção \ref{sec:us07}, que retorna o total de mensagens não lidas, enquanto a requisição da página de mensagens retorna a quais comunicações cada mensagem pertence.
 
 A arquitetura inicial do módulo de mensagens passou por reestruturações técnicas relevantes. A principal alteração consistiu na substituição do uso de \textit{Enums} para a identificação do remetente, adotando-se, em seu lugar, o relacionamento direto por meio do \textit{id} do usuário que originou a ação. Além disso, introduziu-se um atributo booleano na entidade de mensagem com o propósito de indicar de forma explícita se o conteúdo já foi visualizado pelo destinatário.
 
@@ -1180,7 +1180,7 @@ Os autores buscaram diversificar os objetivos das conquistas, buscando envolver 
 
 Duas evoluções que os autores pensaram e implementaram para essa US durante o desenvolvimento foram a criação de classificações para as conquistas, cujo critério é a dificuldade de sua obtenção, e a criação de conquistas secretas, cujos \textit{cards}, diferentes das outras conquistas, não possui uma descrição do que deve ser feito para serem obtidas, e sim uma pista sugestiva. Quando são desbloqueadas, o \textit{card} se torna o de uma conquista normal, exibindo o título, classificação, pontuação e descrição. \textit{Cards} de conquistas secretas podem ser observados na Figura \ref{fig:conquistaSecreta}.
 
-A classificação de conquistas foi implementada inspirada no sistema de troféus do PlayStation 3, em que cada conquista, representada por um troféu, é classificada como bronze, prata, ouro ou platina. Essas categorias foram utilizadas na aplicação, apenas trocando-se platina por diamante. Essa ideia é embasada pelos \textit{Core Drives} de Yu-Kai Chou mencionados na Subseção \ref{sec:gamificacao}.
+A classificação de conquistas foi implementada inspirada no sistema de troféus do PlayStation 3, em que cada conquista, representada por um troféu, é classificada como bronze, prata, ouro ou platina. Essas categorias foram utilizadas na aplicação, apenas trocando-se platina por diamante. Essa ideia é embasada pelos \textit{Core Drives} de Yu-Kai Chou mencionados na Seção \ref{sec:gamificacao}.
 
 Ter categorias de conquistas ativa a natureza colecionadora do usuário, incentivando o comportamento de tentar obter a coleção inteira das categorias mais difíceis. Isso é um aplicação do \textit{Core Drive} de Propriedade e Posse. A mudança também é justificada pelo \textit{Core Drive} de Desenvolvimento e Realização. A classificação tangibiliza o esforço do usuário. Uma conquista de categoria ouro ou diamante ser desbloqueada comunica que um objetivo difícil foi alcançado, trazendo uma sensação maior de realização. 
 
@@ -1246,7 +1246,7 @@ Não houve dificuldades técnicas no desenvolvimento dessa US no \textit{fronten
 
 \subsubsection[US17: Níveis e US18: Títulos]{US17: Níveis e US18: Títulos}
 
-Essas US vão ser relatadas em conjunto por serem muito curtas, não havendo necessidade de uma subseção inteira apenas para elas, e também por serem intrinsecamente relacionadas.
+Essas US vão ser relatadas em conjunto por serem muito curtas, não havendo necessidade de uma Seção inteira apenas para elas, e também por serem intrinsecamente relacionadas.
 
 A estimativa inicial para o desenvolvimento delas era na Semana 12, de 24 a 30 de maio. Entretanto, foram adiantadas para 3 de abril, sendo as duas concluídas nesta data. O motivo do adiantamento é devido à página de perfil exibir o nível e o título decorativo do usuário. Sendo assim, quando a página estava sendo desenvolvida, essas US foram feitas antecipadamente a fim de se completá-la totalmente.
 
@@ -1317,7 +1317,11 @@ Não houveram dificuldades no desenvolvimento dessas US.
 
 \section[Mudanças no banco de dados]{Mudanças no banco de dados}
 
-O banco de dados inicialmente planejado para a aplicação passou por alterações durante o desenvolvimento das funcionalidades para melhor adequação às funcionalidades ou para realização de melhorias. Essas mudanças foram mencionadas nas subseções das US, mas para melhor visualização da estrutura final, o DLD foi refeito, podendo ser observado na Figura \ref{fig:DLD_novo}. Para melhor visualização, o arquivo de imagem do DLD pode ser acessado por este \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_tcc2v2.png}.
+O banco de dados inicialmente planejado para a aplicação passou por alterações durante o desenvolvimento das funcionalidades para sua melhor adequação  e aprimoramento. Essas mudanças foram mencionadas mais aprofundadamente detalhadas nas subseções das US. Desta forma, dentre os principais aprimoramento, destacam-se estruturalmente a criação da tabela ``AGENDA'', destinada a armazenar os horários disponíveis de cada ``TUTOR'', e a inclusão do atributo ``notaAvaliacao'' nas entidades ``USUARIO'' e ``TUTOR''. Embora essa média pudesse ser obtida de forma derivada a partir das avaliações de aprendiz e tutor, foi feito a escolha por essa desnormalização controlada para otimizar o desempenho de leitura, visto que a nota de avaliação é exibida em diversas interfaces da aplicação.
+
+Adicionalmente, a tabela ``USUARIO'' recebeu os campos de perfil ``localizacao'', ``aniversario'' e ``sobremim'', além dos atributos estruturais demandados pelo DRF (``is\_active'', ``is\_staff'', ``is\_superuser'', ``data\_joined'' e ``last\_login''). O esquema também foi atualizado com a inclusão de ``dataPretendida'', ``recorrente'' e ``estado'' em ``SOLICITACAO'', pela reestruturação das chaves estrangeiras em ``SOLICITACAO'' e ``SESSAO'' que vinculam estas a ``AREA'' e a ``ESPECIALIDADE'', pela inclusão do campo ``lida'' em ``MENSAGEM'' e os campos de ``dataCriacao'' e chave estrangeira de ``SESSAO'' em ``AVALIACAO\_APRENDIZ'' e ``AVALIACAO\_TUTOR'' e pela expansão da experiência de gamificação, mediante a adição de ``tier'', ``secreta'' e ``pista'' em ``CONQUISTA'' e de ``dataObtido'' em ``consegue''.
+
+Para melhor visualização da estrutura final, o DLD foi refeito, podendo ser observado na Figura \ref{fig:DLD_novo}. Esse diagrama também pode ser visualizado acessando o \textit{link}: \url{https://github.com/TutoriaWebApp/TCC/blob/main/overleaf/figuras/DLD_tcc2v2.png}.
 
 O Dicionário de Dados também foi atualizado para incluir essas alterações, apresentando-as em mais detalhes e podendo ser lido no Apêndice \ref{dicionario-dados}.
 
@@ -1341,7 +1345,7 @@ O Dicionário de Dados também foi atualizado para incluir essas alterações, a
 
 \section[Teste de Software]{Teste de Software}
 
-Conforme a Seção \ref{sec:tcc2}, a estratégia de testes para a aplicação proposta consistiu na implementação de testes unitários, de integração e E2E. Essa prática garantiu que novas atualizações ou adições de funcionalidades não quebraram as regras de negócio já consolidadas, proporcionando um ambiente seguro para o crescimento contínuo do software.
+Conforme a Seção \ref{sec:tcc2}, a estratégia de testes para a aplicação proposta consistiu na implementação de testes unitários, de integração e E2E. Essa prática garantiu que novas atualizações ou adições de funcionalidades não quebrassem as regras de negócio já consolidadas, proporcionando um ambiente seguro para o crescimento contínuo do software.
 
 \subsection[Testes Unitários]{Testes Unitários}
 
@@ -1462,14 +1466,14 @@ Destaca-se que partes críticas do sistema de comunicação da API mantiveram í
 
 As 15 falhas relatadas em testes específicos representam validações isoladas que não retornaram os resultados esperados, concentradas majoritariamente em verificações estritas do estado de \textit{cookies} durante falhas de \textit{login} e \textit{/logout} e no retorno de códigos HTTP divergentes (como erros 400 e 500 ao contrário dos sucessos 200 e 204) nos fluxos de aceitar, recusar e deletar solicitações de sessão. Contudo, o elevado índice geral de sucesso nas requisições demonstra a consistência arquitetural da API e garante que a integração essencial de dados, autenticação básica e listagem de informações operam com confiabilidade e solidez.
 
-O repositório com a coleção dos testes de integração feitos no Postman e a análise do Newman podem ser acessados através desse \textit{link}: \url{https://github.com/TutoriaWebApp/Integracao}
+O repositório com a coleção dos testes de integração feitos no Postman e a análise do Newman podem ser acessados através desse \textit{link}: \url{https://github.com/TutoriaWebApp/Integracao}.
 
 \newpage
 
 \begin{figure}[H]
     \centering
     \caption{Newman Summary Report.} 
-    \includegraphics[width=1.1\textwidth, height=0.7\textheight, keepaspectratio]{figuras/NewmanSummaryReport.png}
+    \includegraphics[width=\textwidth, keepaspectratio]{figuras/NewmanSummaryReport.png}
 
     Fonte: Autoria própria.
 
@@ -1482,7 +1486,7 @@ O repositório com a coleção dos testes de integração feitos no Postman e a 
 
 Para realizar a automação dos testes E2E da aplicação foi utilizado o \textit{framework} Robot Framework em conjunto com a biblioteca \textbf{SeleniumLibrary} e o navegador Firefox (geckodriver). A suíte de testes E2E é composta por 11 suítes funcionais integradas, englobando 38 cenários de teste que simulam fluxos completos de navegação, cadastro, autenticação, busca com geolocalização, agendamento de tutorias, troca de mensagens e gamificação.
 
-A Tabela \ref{tab:robotE2E} apresenta o resumo quantitativo de aprovação e tempo de execução por suíte funcional. Dos 38 cenários executados, todos os 38 foram aprovados com sucesso, atingindo uma taxa de sucesso global de 100\% com tempo total de execução de aproximadamente 22,4 minutos (1.343,9 segundos).
+A Tabela \ref{tab:robotE2E} apresenta o resumo quantitativo de aprovação e tempo de execução por suíte funcional. Dos 38 cenários executados, todos foram aprovados com sucesso, atingindo uma taxa de sucesso global de \textbf{100\%} com tempo total de execução de aproximadamente 22,4 minutos (1.343,9 segundos).
 
 Houveram dificuldades na realização dos testes. O Robot Framework utiliza os atributos ``id'' dos elementos HTML das páginas para permitir a seleção e interação com os mesmos. Entretanto, esses atributos estavam ausentes nas páginas, levando à refatorações para inclusão destes para prosseguimento dos testes.
 
@@ -1551,9 +1555,9 @@ O repositório com os arquivos utilizados nos testes pode se acessado através d
 \subsection{Teste de Usabilidade}
 Esta seção descreve o roteiro estruturado para a execução dos testes de usabilidade com usuários e seus resultados. O objetivo foi validar a interface, a experiência de navegação e a eficácia das funcionalidades da aplicação. Os cenários foram divididos de acordo com as jornadas dos dois principais papéis na aplicação: o aprendiz e o tutor.
 
-Para cada cenário de teste no roteiro foi descrito a ação que o usuário deveria realizar. Ao final, o usuário que realizou o teste de usabilidade preencheu um formulário demonstrando sua experiência ao utilizar a aplicação, respondendo qual foi o nível de dificuldade para a realização de ação em escala de Likert, onde 1 é muito difícil e 5 é muito fácil. Além disso, os participantes também puderam escrever suas opiniões sobre cada atividade e também sobre a experiência em geral.
+Para cada cenário de teste no roteiro foi descrito a ação que o usuário deveria realizar. Ao final, o usuário que realizou o teste de usabilidade preencheu um formulário demonstrando sua experiência ao utilizar a aplicação, respondendo qual foi o nível de dificuldade para a realização de ação em escala de Likert, em que 1 é muito difícil e 5 é muito fácil. Além disso, os participantes também puderam escrever suas opiniões sobre cada atividade e também sobre a experiência em geral.
 
-Os testes envolveram usuários de perfis diferentes, com idades variando entre 25 a 60 anos e com graus diferentes de conforto no uso de dispositivos móveis e computadores. Foram testados tanto a versão \textit{mobile} quanto a versão para computador da aplicação. Vale notar que uma das usuárias que participou dos testes se encaixa relativamente bem no perfil de público-alvo de tutor da aplicação. Trata-se de uma enfermeira que, ocasionalmente, para complementar a renda, fornece aulas como professora de sua área de atuação em faculdades particulares.
+Os testes envolveram usuários de perfis diferentes, com idades variando entre 25 a 60 anos e com graus diferentes de conforto no uso de dispositivos móveis e computadores. Foram testados tanto a versão de navegadores \textit{mobile} quanto a versão para computador da aplicação. Vale notar que uma das usuárias que participou dos testes se encaixa relativamente bem no perfil de público-alvo para tutor da aplicação. Trata-se de uma enfermeira que, ocasionalmente, para complementar a renda, fornece aulas como professora de sua área de atuação em faculdades particulares.
 
 Os testes foram realizados no ambiente de \textit{deploy} da aplicação, cujo acesso e utilização está detalhado no Apêndice \ref{deploy}.
 
@@ -1620,15 +1624,15 @@ Os resultados obtidos no teste de usabilidade podem ser acessados na planilha \u
     Fonte: Autoria Própria.
 \end{table}
 
-Conforme pode ser observado, a maioria dos cenários possuem grau de dificuldade 3, que corresponde à uma dificuldade regular. Logo, a aplicação apresenta uma boa navegabilidade e usabilidade. Vale notar que as participantes mais velhas, na faixa de 50 a 60 anos, tiveram maior dificuldade na realização das atividades, considerando-as difíceis ou no máximo regulares. Entretanto, ambas as participantes admitiram impaciência para lerem as informações nas páginas, o que aumentou a complexidade da realização das atividades, e elogiaram a interface da aplicação.
+Conforme pode ser observado, a maioria dos cenários possuem grau de dificuldade 3, que corresponde à uma dificuldade regular. Logo, a aplicação apresenta uma boa navegabilidade e usabilidade. Vale notar que os participantes mais velhos, na faixa de 50 a 60 anos, tiveram maior dificuldade na realização das atividades, considerando-as difíceis ou no máximo regulares. Entretanto, ambas as participantes admitiram impaciência para lerem as informações nas páginas, o que aumentou a complexidade da realização das atividades, e elogiaram a interface da aplicação.
 
 Não foi elaborado um cenário para teste de conquistas, pois como são desbloqueadas conforme o usuário utiliza a aplicação, algumas delas já foram obtidas com a realização dos cenários. Ainda assim, o formulário de avaliação conteve uma pergunta questionando o que os participantes acharam dessa funcionalidade, obtendo respostas muito positivas.
 
-Uma das participantes, a que possui o perfil mais próximo de um tutor, reagiu muito positivamente a essa funcionalidade, pois, em suas palavras, ``sentiu reconhecimento pelo que fez, e todos são movidos por reconhecimento. Foi o diferencial para a incetivar''.
+Um dos participantes, o que possui o perfil mais próximo de um tutor, reagiu positivamente a essa funcionalidade, pois, em suas palavras, ``sentiu reconhecimento pelo que fez, e todos são movidos por reconhecimento. Foi o diferencial para a incetivar''.
 
-Considerando que as conquistas foram avaliadas positivamente por todos os participantes e que uma participante relatou se sentir ativamente incentivada e reconhecid por suas ações, pode-se considerar que as conquistas e a gamificação da aplicação cumprem bem seu papel de engajamento. Pessoas diferentes são movidas e incentivadas por diferentes motivadores. Logo, o fato de nem todos os participantes relatarem, ao menos explicitamente, serem engajados por elas não é algo negativo.
+Considerando que as conquistas foram avaliadas positivamente por todos os participantes e que um participante relatou se sentir ativamente incentivado e reconhecido por suas ações, pode-se considerar que as conquistas e a gamificação da aplicação cumpriram bem seu papel de engajamento. Pessoas diferentes são movidas e incentivadas por diferentes motivadores. Logo, o fato de nem todos os participantes relatarem, ao menos explicitamente, serem engajados por elas não é algo negativo.
 
-Diante dos resultados e \textit{feedbacks} recebidos, os autores realizaram melhorias na aplicação. Quando o usuário faz \textit{login} pela primeira vez, é exibida uma \textit{modal} informativa sobre o que é possível fazer em cada página, tendo em vista que as participantes mais velhas tiveram dificuldades para se orientar, podendo ser observada na Figura \ref{fig:modal-tour}. Além disso, a \textit{modal} de solicitação de sessão agora apresenta os dias disponíveis na cor verde, devido à participante mais velha ter tido dificuldades em distinguir quais dias estavam disponíveis e quais não possuíam horários, visto que eram exibidos de forma similar. Foi implementado uma rolagem automática da tela na página de criação de conta quando o usuário prossegue para a segunda etapa, a fim de exibir para o usuário que a etapa de tutor é opcional. Por fim, a opção ``Solicitações'' foi alterada para ``Gerenciar Solicitações'', visto que algumas participantes se confundiram e acreditaram que a solicitação de tutoria era realizada nesta página.
+Diante dos resultados e \textit{feedbacks} recebidos, os autores realizaram melhorias na aplicação. Quando o usuário faz \textit{login} pela primeira vez, é exibida uma \textit{modal} informativa sobre o que é possível fazer em cada página, tendo em vista que os participantes mais velhos tiveram dificuldades para se orientar, podendo ser observada na Figura \ref{fig:modal-tour} essa modal orientadora. Além disso, a \textit{modal} de solicitação de sessão agora apresenta os dias disponíveis na cor verde, devido ao participante mais velho ter tido dificuldades em distinguir quais dias estavam disponíveis e quais não possuíam horários, visto que eram exibidos de forma similar. Foi implementado uma rolagem automática da tela na página de criação de conta quando o usuário prossegue para a segunda etapa, a fim de exibir para o usuário que a etapa de tutor é opcional. Por fim, a opção ``Solicitações'' foi alterada para ``Gerenciar Solicitações'', visto que alguns participantes se confundiram e acreditaram que a solicitação de tutoria era realizada nesta página.
 
 \begin{landscape}
     \setlength{\oddsidemargin}{\evensidemargin}
@@ -1648,7 +1652,7 @@ Diante dos resultados e \textit{feedbacks} recebidos, os autores realizaram melh
 
 \subsection[Análise Estática do Código]{Análise Estática do Código}
 
-Análise estática trata-se da análise do código-fonte sem sua execução, permitindo detecção de erros de sintaxe, semântica e estrutura \cite{pressman2021engenharia}.
+A Análise estática trata-se da análise do código-fonte sem sua execução, permitindo detecção de erros de sintaxe, semântica e estrutura \cite{pressman2021engenharia}.
 
 Para assegurar a qualidade, a segurança e a manutenibilidade do código-fonte, a aplicação SonarCloud foi adotada para realizar a análise estática contínua tanto do \textit{backend} quanto do \textit{frontend} da aplicação.
 
@@ -1671,7 +1675,7 @@ A partir da revisão minuciosa dos \textit{logs} e dos relatórios de apontament
 
 Os erros apresentados no \textit{backend} em sua maioria eram em dependências de instalação, tanto no ``requirements.txt'' do Python quanto na inicialização do Docker com perfil \textit{root}. Além disso, também foi reportado que um dos arquivos de \textit{script} \textit{Structured Query Language} (SQL) possuia muitos comandos repetidos.
 
-Os erros apresentados no \textit{frontend} em sua maioria eram a falta do retorno \textit{void} na chamada de funções assíncronas e o uso da tag HTML \textit{label} sem associação com campos de \textit{input} de formulários. O erro de segurança era a falta de uma configuração no arquivo Docker do \textit{frontend}, o que causava a execução de scripts antecipadamente.
+Os erros apresentados no \textit{frontend} em sua maioria eram a falta do retorno \textit{void} na chamada de funções assíncronas e o uso da tag HTML \textit{label} sem associação com campos de \textit{input} de formulários. O erro de segurança era a falta de uma configuração no arquivo Docker do \textit{frontend}, o que causava a execução de \textit{scripts} antecipadamente.
 
 Após as correções, ambos os repositórios atingiram o status de aprovação geral, zerando as vulnerabilidades de segurança e alcançando a classificação máxima ``A'' nos pilares de segurança e confiabilidade.
 
