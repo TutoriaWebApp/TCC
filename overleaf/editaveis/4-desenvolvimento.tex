@@ -304,8 +304,6 @@ No preenchimento de dados de tutor, foi implementada a regra de negócio do usu�
     \label{fig:modalAgenda}
 \end{figure}
 
-\clearpage
-
 Dois campos obrigatórios para preenchimento são Estado e Cidade. Para se obter a lista de estados e cidades do Brasil, foram utilizadas APIs do IBGE (Instituto Brasileiro de Geografia e Estatística). Antes da página ser exibida ao usuário, é feita uma requisição à API de estados para carregamento dos dados no campo de seleção do formulário. Quando o usuário seleciona uma cidade, a requisição à API de cidades acontece, sendo usado um filtro para carregar apenas as cidades do estado selecionado.
 
 % Os parágrafos comentados a seguir não representam alterações de arquitetura não sendo necessário tanto detalhes que documentem a alteração (Recomendação do Orientador)
@@ -333,90 +331,65 @@ O segundo problema é a complexidade da página. Embora simples visualmente, ela
 
 A estimativa inicial para o desenvolvimento da US02 era na Semana 1, em conjunto com a US01. O \textit{backend} e o \textit{frontend} da página foram implementados neste prazo, sendo a integração da aplicação e uma refatoração para utilização das bibliotecas React Hook Form e Zod no formulário, realizados posteriormente.
 
-A página pode ser observada na Figura \ref{fig:telaRecuperarSenha}, que exibe o campo de preenchimento de e-mail e um botão para realização do pedido de recuperação de senha. 
+A página pode ser observada na Figura \ref{fig:telaRecuperarSenha}, que exibe o campo de preenchimento de e-mail e um botão para realização do pedido de recuperação de senha.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de recuperação de senha.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaRecuperarSenha.png}
+\begin{figure}[H]
+    \centering
+    \caption{Página de recuperação de senha.} 
+    \includegraphics[width=0.7\textheight, keepaspectratio]{figuras/telaRecuperarSenha.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:telaRecuperarSenha}
-    \end{figure}
-\end{landscape}
+    \label{fig:fig:telaRecuperarSenha}
+\end{figure}
 
-Atendendo ao CA04 da US, uma notificação é exibida ao usuário após realizar a solicitação, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. A notoficação, exibida em verde, indica uma ação concluída com sucesso. 
+Independente do e-mail de fato estar registrado como pertencente a um usuário, ocorre um redirecionamento para a página de \textit{login}. No caso do registo de fato existir, um e-mail é enviado pelo \textit{backend}, contendo um \textit{link} que, quando clicado, leva para a página de alteração de senha. O e-mail enviado pode ser observado na Figura \ref{fig:emailRecuperacaoSenha}, que exibe o padrão de formato enviado.
 
-Caso ocorra um erro na solicitação, é exibida uma notificação de erro, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. A notificação é exibida em vermelho. Além desta US, as notificaçṍes foram também utilizadas em outras funcionalidades para indicar sucesso ou falha na realização de uma ação.
+\begin{figure}[H]
+    \centering
+    \caption{Página de recuperação de senha.} 
+    \includegraphics[width=0.7\textheight, keepaspectratio]{figuras/emailRecuperacaoSenha.png}
 
 
-
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Notificação de erro na tentativa de requisição.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaRecuperarSenhaErro.png}
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:telaRecuperarSenhaErro}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:fig:emailRecuperacaoSenha}
+\end{figure}
 
-\clearpage
+Atendendo ao CA04 da US, uma notificação é exibida ao usuário após realizar a solicitação, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. A notificação, exibida em verde, indica uma ação concluída com sucesso. 
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Notificação de sucesso após redirecionamento para \textit{login}.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaRecuperarSenhaSucesso.png}
+\begin{figure}[H]
+    \centering
+    \caption{Notificação de sucesso após redirecionamento para \textit{login}.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/telaRecuperarSenhaSucesso.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:telaRecuperarSenhaSucesso}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:fig:telaRecuperarSenhaSucesso}
+\end{figure}
 
-A página consiste de um card informativo com um campo de formulário para um e-mail ser inserido e um botão para submissão. Independente do e-mail de fato estar registrado como pertencente a um usuário, ocorre o mencionado redirecionamento para a página de \textit{login} e a exibição da notificação. No caso do registo de fato existir, um e-mail é enviado pelo \textit{backend}, contendo um \textit{link} que, quando clicado, leva para a página de alteração de senha. O e-mail enviado pode ser observado na Figura \ref{fig:emailRecuperacaoSenha}.
+Caso ocorra um erro na solicitação, é exibida uma notificação de erro com a cor vermelha, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. Além desta US, as notificaçṍes foram também utilizadas em outras funcionalidades para indicar sucesso ou falha na realização de uma ação.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{E-mail com link para alteração de senha.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/emailRecuperacaoSenha.png}
+\begin{figure}[H]
+    \centering
+    \caption{Notificação de erro na tentativa de solicitação.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/telaRecuperarSenhaErro.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:emailRecuperacaoSenha}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:fig:telaRecuperarSenhaErro}
+\end{figure}
 
 No desenvolvimento do \textit{backend}, um dos desafios encontrados foi garantir que o \textit{token} de recuperação de senha fosse de uso único. Após pesquisas na documentação do \textit{framework}, constatou-se que a função \textit{default\_token\_generator} utiliza o campo \textit{last\_update} como um dos parâmetros para a geração de seu \textit{hash}. Consequentemente, ao validar a requisição, a aplicação força a atualização desse campo, o que altera os parâmetros base da criptografia e invalida automaticamente o \textit{token} recém-utilizado, impedindo acessos subsequentes.
 
@@ -424,7 +397,8 @@ Outro obstáculo enfrentado no desenvolvimento foi a seleção de um serviço de
 
 Não houve nenhuma dificuldade no desenvolvimento do \textit{frontend}.
 
-\subsubsection[US03: Alterar Senha]{US03: Alterar Senha}
+\subsection[US03: Alterar Senha]{US03: Alterar Senha}
+\label{sec:US03}
 
 A estimativa inicial para o desenvolvimento da US03 era na Semana 2.
 O \textit{backend} e \textit{frontend} foram desenvolvidos neste prazo, com uma refatoração para uso do React Hook Form e Zod e a integração com o \textit{backend} sendo feitas posteriormente.
@@ -435,58 +409,106 @@ Devido à forma com que rotas dinâmicas são feitas no Next.js, onde apenas é 
 
 A página em si consiste de um formulário de dois campos, onde a nova senha deve ser inserida duas vezes. A senha deve atender aos critérios de possuir mais de 10 caracteres, possuir um número e possuir um caractere especial. Essas exigências possuem a finalidade de fazer o usuário criar uma senha mais complexa, de forma a evitar ataques maliciosos à sua conta. Os critérios são usados tanto na alteração quanto na criação da senha na página de criação de conta. São exibidas mensagens de erro em casos de senhas inválidas ou desiguais.
 
-Caso a requisição seja bem-sucedida, é exibida uma notificação informativa para o usuário e é feito um redirecionamento para a tela de \textit{login}. A página pode ser observada na Figura \ref{fig:paginaRedefinicaoSenha}.
+Caso a requisição seja bem-sucedida, é exibida uma notificação informativa para o usuário e é feito um redirecionamento para a tela de \textit{login}. A página pode ser observada na Figura \ref{fig:paginaRedefinicaoSenha}, em que é exibido o campo de preenchimento da nova senha e da repetição da mesma para confirmação, além do botão para realizar a redefinição.
 
-Durante o desenvolvimento da US04, os autores pensaram em ser uma boa ideia se um usuário já conectado à aplicação pudesse alterar a senha de sua conta através da edição de perfil. Sendo assim, essa funcionalidade foi também implementada nessa página. Clicando no botão ``Alterar Senha'', é exibida uma \textit{modal} na tela para essa finalidade. Essa \textit{modal} utiliza uma requisição diferente no \textit{backend}, e exige que o usuário informe sua senha atual e a senha nova, sendo usado um novo critério de validação, que é a senha atual informada no campo ser de fato a senha do usuário. Essa \textit{modal} pode ser vista na Figura \ref{fig:modalAlteracaoSenha}.
+\begin{figure}[H]
+    \centering
+    \caption{Página de alteração de senha} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/paginaRedefinicaoSenha.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:paginaRedefinicaoSenha}
+\end{figure}
+
+Durante o desenvolvimento da US04, os autores pensaram em ser uma boa ideia se um usuário já conectado à aplicação pudesse alterar a senha de sua conta através da edição de perfil. Sendo assim, essa funcionalidade foi também implementada na página de edição de perfil. Clicando no botão ``Alterar Senha'', é exibida uma \textit{modal} na tela para essa finalidade. Essa \textit{modal} utiliza uma requisição diferente no \textit{backend}, e exige que o usuário informe sua senha atual e a senha nova, sendo usado um novo critério de validação, que é a senha atual informada no campo ser de fato a senha do usuário. Essa \textit{modal} pode ser vista na Figura \ref{fig:modalAlteracaoSenha}, em que são exibidos os três campos mencionados para preenchimento dessas inforamações.
+
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Modal} de alteração de senha.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/modalAlteracaoSenha.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:modalAlteracaoSenha}
+\end{figure}
 
 Não houveram dificuldades no desenvolvimento do \textit{backend} e \textit{frontend} dessa US.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de alteração de senha.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaRedefinicaoSenha.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:paginaRedefinicaoSenha}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} de alteração de senha.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalAlteracaoSenha.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:modalAlteracaoSenha}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\subsection[Funcionalidade 2: Gerenciamento de Perfil]{Funcionalidade 2: Gerenciamento de Perfil}
-
-\subsubsection[US04: Alterar Informações]{US04: Alterar Informações}
+\subsection[US04: Alterar Informações]{US04: Alterar Informações}
 \label{sec:us04}
 
-A estimativa inicial para o desenvolvimento dessa US era na Semana 2, de 15 a 21 de março, juntamente com a US03. O \textit{backend} atrasou o desenvolvimento em uma semana. Culminando também ao atraso do \textit{frontend} e atrasos nas US posteriores.
+A estimativa inicial para o desenvolvimento dessa US era na Semana 2, juntamente com a US03. O \textit{backend} atrasou o desenvolvimento em uma semana, culminando também no atraso do \textit{frontend} e atrasos nas US posteriores.
 
 O atraso para o começo do desenvolvimento do \textit{backend} foi ocasionada pela mudança arquitetural do perfil de usuário descrita na Seção \ref{sec:us20}.
 
-O atraso do \textit{frontend} se deve em grande parte por refatorações em páginas anteriores a fins de otimização e a implementação da página de criação de conta, que se tornou mais prioritária. O grande período de desenvolvimento se deve ao fato dessa US ter exigido a criação de duas páginas: a página de perfil e a página de edição de perfil. Uma vez que a página de perfil estava finalizada, grande parte do código pode ser aproveitado para o desenvolvimento da segunda página, acelerando sua finalização. A página de perfil e a área da página de edição de perfil pertinente a essa US podem ser vistas nas Figuras \ref{fig:telaPerfil1}, \ref{fig:telaPerfil2}, \ref{fig:telaEditarPerfil1} e \ref{fig:telaEditarPerfil2}.
+O atraso do \textit{frontend} se deve em grande parte por refatorações em páginas anteriores a fins de otimização e a implementação da página de criação de conta, que se tornou mais prioritária. Esta US também exigiu a criação de duas páginas: a página de perfil e a página de edição de perfil. Uma vez que a página de perfil estava finalizada, grande parte do código pode ser aproveitado para o desenvolvimento da segunda página, acelerando sua finalização. 
+
+A página de perfil pode ser parcialmente vista na Figura \ref{fig:telaPerfil1}, que exibe as informações de perfil de um usuário: foto, nome, nota de avaliação. Como o usuário em questão é um tutor, são exibidas também as áreas de conhecimento que pode fornecer sessões de tutoria, bem como suas especialidades.
+
+\begin{figure}[H]
+    \centering
+    \caption{Informações do perfil de usuário na página de perfil.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/telaPerfil1.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:telaPerfil1}
+\end{figure}
+
+O resto da página de perfil pode ser observada na Figura \ref{fig:telaEditarPerfil2}, que exibe as disponibilidades, lembrando que o usuário em questão é um tutor, e também a área de avaliações, em que são exibidas as avaliações feitas sobre o usuário como aprendiz e como tutor.
+
+\begin{figure}[H]
+    \centering
+    \caption{Disponibilidades e área de avaliações na página de perfil.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/telaPerfil2.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:telaPerfil2}
+\end{figure}
+
+A página de edição de perfil pode ser parcialmente observada na Figura \ref{telaEditarPerfil1}, que exibe principalmente o componente de \textit{upload} de foto de perfil. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Componente de \textit{upload} de foto na página de edição de perfil.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/telaEditarPerfil1.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:telaEditarPerfil1}
+\end{figure}
+
+A Figura \ref{telaEditarPerfil2} apresenta mais uma parte da página, com os campos de edição de informações sendo exibidos, além do botão ``Alterar Senha'', que já foi explicado na Seção \ref{sec:US03}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Campos de edição de informações e botão ``Alterar Senha'' na página de edição de perfil.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/telaEditarPerfil2.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:telaEditarPerfil2}
+\end{figure}
 
 Antes da página ser apresentada ao usuário, é feita uma requisição ao \textit{backend} para se obter as informações do perfil do usuário, sendo utilizado um ícone giratório (\textit{spinner}) para indicar carregamento de dados. Esse \textit{feedback} visual também foi utilizado em todas as outras páginas que solicitam dados do \textit{backend} para exibição na tela, como a página de conquistas ou a página de perfil de outros usuários.
 
@@ -498,88 +520,58 @@ Houve uma dificuldade no desenvolvimento do \textit{frontend} dessa funcionalida
 
 Para resolver isso foi utilizada a técnica \textit{Cache Busting}, que segundo \citeonline{cacheBusting}, trata-se de forçar o navegador a fazer o \textit{download} da última versão de um arquivo, ao invés de utilizar uma versão ultrapassada armazenada em \textit{cache}. Isso foi feito adicionando o horário exato que a página é acessada à fonte da imagem no componente visual que exibe a foto de perfil, dessa maneira sempre alterando o nome e prevenindo o uso da versão em \textit{cache}.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de perfil.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaPerfil1.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:telaPerfil1}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Continuação da página de perfil.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaPerfil2.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:telaPerfil2}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de edição de perfil.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaEditarPerfil1.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:telaEditarPerfil1}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Continuação da página de edição de perfil} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/telaEditarPerfil2.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:telaEditarPerfil2}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\subsubsection[US05: Definir Agenda e US06: Gerenciar Especialidades]{US05: Definir Agenda e US06: Gerenciar Especialidades}
+\subsection[US05: Definir Agenda e US06: Gerenciar Especialidades]{US05: Definir Agenda e US06: Gerenciar Especialidades}
 \label{sec:us05}
 
-Essas US serão explicadas em uma Seção única por serem muito similares e simples, não havendo necessidade de uma Seção única para cada uma. A estimativa inicial para o desenvolvimento delas era na Semana 3, de 22 a 28 de março. O desenvolvimento do \textit{backend} iniciou-se logo após o fim da US04. O desenvolvimento do \textit{frontend} dessas US despendeu mais tempo para integração dos \textit{endpoints}, sendo que durante o período foi desenvolvido em paralelo ao de outras US.
+Essas US serão explicadas em uma Seção única por serem muito similares e simples. A estimativa inicial para o desenvolvimento delas era na Semana 3. O desenvolvimento do \textit{backend} iniciou-se logo após o fim da US04. O desenvolvimento do \textit{frontend} dessas US despendeu mais tempo para integração dos \textit{endpoints}, sendo que durante o período foi desenvolvido em paralelo ao de outras US.
 
-Essas funcionalidades são disponibilizadas ao usuário na página de edição de perfil, onde existe uma seção dedicada para elas. Essa seção pode ser observada nas Figuras \ref{fig:editarAreas} e \ref{fig:areaDisponibilidade}.
+Essas funcionalidades são disponibilizadas ao usuário na página de edição de perfil, onde existe uma seção dedicada para elas. A parte da seção dedicada ao gerencimaneto de áreas de conhecimento e disponibilidade pode ser observada na Figura \ref{fig:editarAreas}, que exibe a lista de áreas e especialidades e o botão para realizar adições à lista.
 
-As áreas e especialidades de tutoria do usuário são listadas, bem como suas disponibilidades, organizadas em dias da semana e os horários disponíveis neles. Ao lado de cada um desses itens existe o ícone de uma lixeira, que quando clicado, abre uma \textit{modal} que permite ao usuário excluí-lo de seu perfil. Como exemplo, a \textit{modal} de deleção de disponibilidade pode ser observada na Figura \ref{fig:modalApagarDisponibilidade}.
+\begin{figure}[H]
+    \centering
+    \caption{Seção de gerenciamento de áreas e especialidades.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/editarAreas.png}
 
-Ao clicar no botão ``Adicionar Área'', abre-se uma \textit{modal} de seleção tanto da área quanto da especialidade, sendo inseridos ambos no perfil. A inserção de disponibilidades através da mesma forma, utilizando uma \textit{modal} permitindo selecionar um dia e um intervalo de 1 hora, abrangendo todas as 24 horas de um dia. Ambas as \textit{modais} já foram apresentadas anteriormente nas Figuras \ref{fig:modalArea} e \ref{fig:modalAgenda} da Seção \ref{sec:us20}.
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:editarAreas}
+\end{figure}
+
+
+A parte da seção dedicada ao gerenciamento de disponibilidades pode ser observada na Figura \ref{fig:areaDisponibilidade}, que exibe as disponiblidades, organizadas em dias e horários, e o botão para adicionar disponibilidades ao perfil.
+
+\begin{figure}[H]
+    \centering
+    \caption{Seção de gerenciamento de disponibilidades.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/areaDisponibilidade.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:areaDisponibilidade}
+\end{figure}
+
+Ao lado de cada um desses itens existe o ícone de uma lixeira, que quando clicado, abre uma \textit{modal} que permite ao usuário excluí-lo de seu perfil. Como exemplo, a \textit{modal} de deleção de disponibilidade pode ser observada na Figura \ref{fig:modalApagarDisponibilidade}, em que é exibido a disponibilidade que está sendo excluída, e botões para cancelar e confirmar a exclusão.
+
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Modal} de deleção de disponibilidade.} 
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/modalApagarDisponibilidade.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:modalApagarDisponibilidade}
+\end{figure}
+
+A adição de novas áreas de conhecimento, especialidades e disponibilidades são feitas por \textit{modais}. Ambas as \textit{modais} já foram apresentadas anteriormente nas Figuras \ref{fig:modalArea} e \ref{fig:modalAgenda} da Seção \ref{sec:us20}.
 
 Essas alterações, bem como as alterações em informações de perfil da US04, só são efetuadas se o usuário clica no botão ``Salvar'' na página. Quando isso é feito, é feita uma verificação nas mudanças feitas nas áreas de tutor.
 
@@ -587,62 +579,20 @@ Caso um usuário não possua nenhuma área, especialidade e disponibilidade, mas
 
 Se o usuário possuía áreas, especialidades e disponibilidades mas optou por apagar todas elas, ele não é mais visível nos resultados de pesquisa de tutores. Entretanto, continua registrado como tutor no banco de dados, a fim de se manter o histórico de sessões que outros aprendizes tiveram com ele. Destaca-se novamente que, para ser um tutor, um usuário deve possuir ao menos uma disponibilidade, uma área de conhecimento e uma especialidade.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Seção de gerenciamento de áreas e especialidades.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/editarAreas.png}
+Durante o desenvolvimento dessa US, os autores implementaram uma melhoria importante: não permitir que um tutor apague uma disponibilidade que possua solicitações pendentes ou sessões confirmadas. Nessa situação, o tutor deve cancelar a solicitação ou esperar um horário após a sessão para então prosseguir com a deleção. Uma mensagem de aviso é exibida ao usuário informando-o isso quando um dia em que alguma disponibilidade possua pendência é clicada. A mensagem pode ser observada na Figura \ref{fig:avisoDelecao}, em que tanto a mensagem quanto a disponibilidade com pendência são exibidas em vermelho.
+
+\begin{figure}[H]
+    \centering
+    \caption{Mensagem de aviso sobre deleção de disponibilidade.}
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/avisoDelecao.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:editarAreas}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Seção de gerenciamento de disponibilidades.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/areaDisponibilidade.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:areaDisponibilidade}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} de deleção de disponibilidade.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalApagarDisponibilidade.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:modalApagarDisponibilidade}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-Durante o desenvolvimento dessa US, os autores implementaram uma melhoria importante: não permitir que um tutor apague uma disponibilidade que possua solicitações pendentes ou sessões confirmadas. Nessa situação, o tutor deve cancelar a solicitação ou esperar um horário após a sessão para então prosseguir com a deleção. Uma mensagem de aviso é exibida ao usuário informando-o isso quando um dia em que alguma disponibilidade possua pendência é clicada. A mensagem pode ser observada na Figura \ref{fig:avisoDelecao}.
+    \label{fig:avisoDelecao}
+\end{figure}
 
 Nessa situação o tutor também não consegue apagar todas as áreas e especialidades que possui registradas, pois a aplicação não permite dados parciais como tutor, como ter somente disponibilidade ou ter somente área e especialidade. Portanto, ele continua como tutor até lidar com a solicitação ou até a sessão de tutoria ser feita.
 
@@ -650,136 +600,112 @@ Durante o desenvolvimento desta funcionalidade, foi notado pelos autores a neces
 
 Não houveram muitas dificuldades técnicas no \textit{frontend} dessas funcionalidades. O maior empecilho foi a criação do elemento visual de disponibilidade, que é um elemento com maior grau de complexidade em questão de lógica, visto que precisa mostrar os sete dias da semana e as disponibilidades de cada dia separadamente.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Mensagem de aviso sobre deleção de disponibilidade.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/avisoDelecao.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:avisoDelecao}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-
-\subsection[Funcionalidade 3: Agendamento de Tutorias]{Funcionalidade 3: Agendamento de Tutorias}
-
-\subsubsection[US07: Solicitar Horário]{US07: Solicitar Horário}
+\subsection[US07: Solicitar Horário]{US07: Solicitar Horário}
 \label{sec:us07}
 
-A estimativa para o desenvolvimento dessa US era na Semana 4, de 29 de Março a 04 de Abril. O \textit{backend} foi desenvolvido logo após a US05 e US06, havendo refatorações para melhorias de regras de negócios posteriormente. O \textit{frontend} foi desenvolvido em partes, primeiramente foi desenvolvida a \textit{modal} de solicitação de sessão, com dados simulados. Após isso, foi feito o desenvolvimento da página de edição de perfil e das páginas de busca e recomendação de tutores. E posteriormente foi feita a página de acompanhamento de solicitações. Novamente, o desenvolvimento dessa funcionalidade foi modificada a fim de se realizar melhorias posteriormente.
+A estimativa para o desenvolvimento dessa US era na Semana 4. O \textit{backend} foi desenvolvido logo após a US05 e US06, havendo refatorações para melhorias de regras de negócios posteriormente. O \textit{frontend} foi desenvolvido em partes, gradualmente, e com modificações posteriores a fim de se realizar melhorias posteriormente. 
 
 A solicitação de sessão de tutoria é feita na página do tutor, a qual é acessada clicando em seu \textit{card} na página de busca ou recomendação de tutores. Uma vez nessa página, o botão ``Solicitar Sessão'' pode ser clicado na sessão de disponibilidades, abrindo uma \textit{modal} em que são exibidos o mês atual e os dois meses seguintes. 
 
-Dias em que o tutor possui disponibilidade podem ser clicados. Quando isso ocorre, o usuário pode selecionar uma área de conhecimento e uma especialidade dentre as que o tutor possui registradas, assim como um horário disponível naquele dia. Pode-se também marcar se a solicitação é recorrente. Uma solicitação recorrente, ao ser aceita pelo tutor, cria uma nova solicitação para o mesmo dia da semana e horário na semana seguinte. A \textit{modal} pode ser observada nas Figuras \ref{fig:modalSolicitacao} e \ref{fig:modalSolicitacao2}.
+Dias em que o tutor possui disponibilidade podem ser clicados. Quando isso ocorre, o usuário pode selecionar uma área de conhecimento e uma especialidade dentre as que o tutor possui registradas, assim como um horário disponível naquele dia. Pode-se também marcar se a solicitação é recorrente. Uma solicitação recorrente, ao ser aceita pelo tutor, cria uma nova solicitação para o mesmo dia da semana e horário na semana seguinte. 
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} de solicitação de sessão.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalSolicitacao.png}
+A \textit{modal} pode ser observada parcialmente na Figura \ref{fig:modalSolicitacao}, em que pode ser visto um mês e seus dias, com dias indisponíveis possuindo o número em tom cinza e dias disponíveis possuindo o número em preto.
+
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Modal} de solicitação de sessão.}
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/modalSolicitacao.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:modalSolicitacao}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:modalSolicitacao}
+\end{figure}
+
+O restante da \textit{modal} pode ser observado na Figura \ref{modalSolicitacao2}, que exibe o campo de seleção de área de conhecimento, especialidade, os horários livres disponíveis, exibidos em branco, além da caixa de seleção de recorrência.
+
+\begin{figure}[H]
+    \centering
+    \caption{Continuação da \textit{modal} de solicitação de sessão.}
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/modalSolicitacao2.png}
 
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Continuação da \textit{modal} de solicitação de sessão.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalSolicitacao2.png}
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:modalSolicitacao2}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:modalSolicitacao2}
+\end{figure}
 
-O usuário pode então verificar o estado de sua solicitação na página de solicitações e sessões, acessível clicando no item ``Solicitações'' no menu do cabeçalho. Nessa página, ao clicar na aba ``Minhas Solicitações'', o usuário pode ver \textit{cards} com as informações da solicitação realizada. Solicitações em estado de pendência são exibidas nessa seção, enquanto que solicitações aceitas pelo tutor são exibidas na aba ``Sessões Aceitas como Aprendiz'', onde são exibidas as mesmas informações que o \textit{card} de ``Minhas Solicitações'', apenas mudando o valor do campo \textit{Status} para ``ACEITO''. Ambas as páginas podem ser observadas nas Figuras \ref{fig:paginaSolicitacao1}, \ref{fig:paginaSolicitacao2} e \ref{fig:paginaSolicitacao3}.
+O usuário pode então verificar o estado de sua solicitação na página de solicitações e sessões, acessível clicando no item ``Solicitações'' no menu do cabeçalho. Nessa página, ao clicar na aba ``Minhas Solicitações'', o usuário pode ver \textit{cards} com as informações da solicitação realizada. Solicitações em estado de pendência são exibidas nessa seção, enquanto que solicitações aceitas pelo tutor são exibidas na aba ``Sessões Aceitas como Aprendiz'', onde são exibidas as mesmas informações que o \textit{card} de ``Minhas Solicitações'', apenas mudando o valor do campo \textit{Status} para ``ACEITO''. 
+
+O menu de cabeçalho da página pode ser observado na Figura \ref{fig:paginaSolicitacao1}, sendo exibidas as absa para visualizar as sessões aceitas como aprendiz e como tutor, solicitações pendentes de aprovação por parte do usuário (opção ``SOLICITAÇÕES PENDENTES'') e a citada aba ``Minhas Solicitacoes'', que está selecionada.
+
+\begin{figure}[H]
+    \centering
+    \caption{Menu da página de Gerenciamento de Sessões e Solicitações.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/paginaSolicitacao1.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:paginaSolicitacao1}
+\end{figure}
+
+A Figura \ref{fig:paginaSolicitacao2} apresenta solicitações exibidas na aba ``Minhas Solicitações'', sendo exibidos os \textit{cards} de duas soliticações.
+
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Cards} de solicitações de ``Minhas Solicitações''.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/paginaSolicitacao2.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:paginaSolicitacao2}
+\end{figure}
+
+A Figura \ref{fig:paginaSolicitacao3} apresenta um \textit{card} de uma sessão aceita como aprendiz, sendo exibido as informações da sessão e o \textit{Status} com o valor ``ACEITO''.
+
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Card} de sessão aceita em ``Sessões Aceitas como Aprendiz''.}
+    \includegraphics[width=0.45\textheight, keepaspectratio]{figuras/paginaSolicitacao3.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:paginaSolicitacao3}
+\end{figure}
 
 São feitas verificações de solicitações pendentes e das sessões confirmadas, tanto do usuário como tutor e aprendiz, quanto do tutor também nos papéis de tutor e aprendiz na \textit{modal} de solicitação de sessão.
 
 O objetivo dessas verificações é impedir que um usuário solicite uma sessão em um dia e horário que já solicitou anteriormente com esse tutor e cuja solicitação ainda está pendente. Além disso, também impedir que um usuário solicite uma sessão em um dia e horário em que ele ou o tutor já possuem uma sessão. Caso um dia esteja totalmente ocupado na agenda de um tutor, ele é exibido em vermelho. Caso um horário possua uma solicitação pendente por parte do usuário, ele é colorido em amarelo. Por fim, caso um horário possua uma sessão confirmada, seja do lado do usuário ou do tutor, ele é exibido em vermelho. Em todos os casos, o usuário não consegue realizar a solicitação.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de Gerenciamento de Sessões e Solicitações.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaSolicitacao1.png}
+Para atender ao CA04 dessa US (o tutor ser notificado de que recebeu uma nova solicitação de agendamento), e o tutor está navegando na aplicação e um usuário realiza uma solicitação de sessão, uma notificação com uma mensagem informativa aparece em sua tela informando-o que uma nova solicitação foi feita para ele.
+
+Além disso, uma notificação visual é realizada no menu de cabeçalho, exibindo-se um ícone vermelho com a quantidade de solicitações pendentes do tutor. Ambas as notificações podem ser observadas na Figura \ref{fig:notificacoesSolicitacao}, sendo a notificação com mensagem informativa exibida em azul e a notificação do cabeçalho sendo exibida ao lado da opção ``Solicitações''.
+
+\begin{figure}[H]
+    \centering
+    \caption{Notificações de solicitação exibidas para o tutor.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/notificacoesSolicitacao.png}
+
+
+    Fonte: Autoria própria.
     
-    
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:paginaSolicitacao1}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Cards} de solicitações de ``Minhas Solicitações''.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaSolicitacao2.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:paginaSolicitacao2}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Cards} de solicitações de ``Sessões Aceitas como Aprendiz''.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaSolicitacao3.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:paginaSolicitacao3}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-Para atender ao CA04 dessa US (o tutor ser notificado de que recebeu uma nova solicitação de agendamento), foi utilizada a já mencionada notificação \textit{Snackbar}. Se o tutor está navegando na aplicação e um usuário realiza uma solicitação de sessão, uma \textit{Snackbar} aparece em sua tela informando-o que uma nova solicitação foi feita para ele.
-
-Além disso, uma notificação visual é realizada no menu de cabeçalho, exibindo-se um ícone vermelho com a quantidade de solicitações pendentes do tutor. Ambas as notificações podem ser observadas na Figura \ref{fig:notificacoesSolicitacao}. 
+    \label{fig:notificacoesSolicitacao}
+\end{figure}
 
 A quantidade de solicitações pendentes do tutor é obtida através de uma requisição ao \textit{backend} que ocorre em um intervalo de 2 segundos e que retorna, além da quantidade de solicitações pendentes, a quantidade de sessões confirmadas que o usuário possui, como tutor e como aprendiz, e a quantidade de mensagens novas que possui. A fins de otimização, essa requisição só ocorre caso o usuário esteja com a aba da aplicação aberta no navegador.
 
@@ -791,24 +717,7 @@ Durante o desenvolvimento desta funcionalidade foram feitas alterações no banc
 
 O desenvolvimento do \textit{backend} enfrentou obstáculos principalmente para estabelecer a nova modelagem do banco de dados, como descrito na Seção \ref{sec:us05}.
 
-O desenvolvimento do \textit{frontend} dessa US passou por dificuldades. Embora a tela de gerenciamento de solicitações e sessões tenha sido simples, a \textit{modal} de solicitações foi consideravelmente difícil de se fazer, desde o desafio de se exibir os meses e seus dias até a complexidade da verificação de solicitações e sessões na solicitação de uma sessão, sendo o componente visual mais complexo em termos de lógica de toda a aplicação. 
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Notificações de solicitação exibidas para o tutor.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/notificacoesSolicitacao.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:notificacoesSolicitacao}
-    \end{figure}
-\end{landscape}
-\clearpage
+O desenvolvimento do \textit{frontend} dessa US passou por dificuldades. Embora a tela de gerenciamento de solicitações e sessões tenha sido simples, a \textit{modal} de solicitações foi consideravelmente difícil de se fazer, desde o desafio de se exibir os meses e seus dias até a complexidade da verificação de solicitações e sessões na solicitação de uma sessão, sendo o componente visual mais complexo em termos de lógica de toda a aplicação.  
 
 \subsubsection[US08: Aceitar e Recusar Solicitação]{US08: Aceitar e Recusar Solicitação}
 
