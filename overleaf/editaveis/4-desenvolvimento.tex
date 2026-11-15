@@ -719,82 +719,59 @@ O desenvolvimento do \textit{backend} enfrentou obstáculos principalmente para 
 
 O desenvolvimento do \textit{frontend} dessa US passou por dificuldades. Embora a tela de gerenciamento de solicitações e sessões tenha sido simples, a \textit{modal} de solicitações foi consideravelmente difícil de se fazer, desde o desafio de se exibir os meses e seus dias até a complexidade da verificação de solicitações e sessões na solicitação de uma sessão, sendo o componente visual mais complexo em termos de lógica de toda a aplicação.  
 
-\subsubsection[US08: Aceitar e Recusar Solicitação]{US08: Aceitar e Recusar Solicitação}
+\subsection[US08: Aceitar e Recusar Solicitação]{US08: Aceitar e Recusar Solicitação}
 
-A estimativa inicial para o desenvolvimento dessas US era na Semana 5, de 05 a 11 de Abril. O \textit{backend} teve o desenvolvimento em paralelo com a Seção \ref{sec:us07}, e após este período houve refatorações de regras de negócios. O \textit{frontend} desenvolveu durante o período de uma semana.
+A estimativa inicial para o desenvolvimento dessas US era na Semana 5. O \textit{backend} teve o desenvolvimento em paralelo com a US07, e após este período houve refatorações de regras de negócios. O \textit{frontend} foi desenvolvido durante o período de uma semana.
 
-Quando uma solicitação é feita para um tutor, ela aparece na aba ``Solicitações Pendentes'' da página de solicitações. Nesta aba são exibidas as informações da solicitação, botões para  e também o prazo que o tutor tem para responder à ela, em horas, conforme pode ser observado na Figura \ref{fig:cardSolicitacaoPendente}.
+Quando uma solicitação é feita para um tutor, ela aparece na aba ``Solicitações Pendentes'' da página de solicitações. Nesta aba são exibidas as informações da solicitação, botões para aceitar ou recusar e também o prazo que o tutor tem para responder à ela, em horas, conforme pode ser observado na Figura \ref{fig:cardSolicitacaoPendente}.
 
-Ao clicar em algum dos botões, uma \textit{modal} é exibida na tela para confirmar a ação. Independente da ação do tutor, o resultado é informado ao aprendiz através de uma notificação \textit{Snackbar} em sua tela.
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Card} de solicitação pendentes.}
+    \includegraphics[width=0.25\textheight, keepaspectratio]{figuras/cardSolicitacaoPendente.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:cardSolicitacaoPendente}
+\end{figure}
+
+Ao se clicar em algum dos botões, uma \textit{modal} é exibida na tela para confirmar a ação. Independente da ação do tutor, o resultado é informado ao aprendiz através de uma notificação com texto informativo na tela.
 
 Caso o tutor recuse a solicitação, e não exista sessão confirmada para o dia e horário solicitado, o aprendiz pode ir até a página do perfil do tutor e realizar a solicitação novamente.
 
-Caso o tutor aceite a solicitação, é registrada uma sessão no banco de dados, que pode ser visualizada na aba ``Sessões Aceitas como Tutor'' para o tutor e na aba ``Sessões Aceitas como Aprendiz'' para o aprendiz. É também exibida uma notificação visual no item ``Solicitações'' no menu do cabeçalho na forma de um ícone verde com a quantidade de sessões confirmadas para ambos, seja como tutor ou como aprendiz, que ainda irão acontecer. O \textit{card} de sessão pode ser observado na Figura \ref{fig:cardSessaoAceita}, enquanto que a notificação visual pode ser observada na Figura \ref{fig:notificacaoSessaoConfirmada}.
+Caso o tutor aceite a solicitação, é registrada uma sessão no banco de dados, que pode ser visualizada na aba ``Sessões Aceitas como Tutor'' para o tutor e na aba ``Sessões Aceitas como Aprendiz'' para o aprendiz. É também exibida uma notificação visual no item ``Solicitações'' no menu do cabeçalho na forma de um ícone verde com a quantidade de sessões confirmadas para ambos, seja como tutor ou como aprendiz, que ainda irão acontecer. 
 
-Essa forma de notificação, ao invés de notificação por e-mail, ocorreu pelo mesmo motivo já explicado já explicado anteriormente: um aprendiz ou um tutor regularmente ativo na aplicação poderia receber vários e-mails de recusa ou confirmação de sessão, facilmente se tornando um \textit{spam} e prejudicando a experiência do usuário.
+Um exemplo de \textit{card} de sessão aceita, como aprendiz, já foi apresentado na Figura \ref{fig:paginaSolicitacao3}. A notificação visual no cabeçalho pode ser observada na Figura \ref{fig:notificacaoSessaoConfirmada}, sendo exibida à direita do item ``Solicitações''.
+
+\begin{figure}[H]
+    \centering
+    \caption{Notificação de sessão aceita no menu do cabeçalho.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/notificacaoSessaoConfirmada.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:notificacaoSessaoConfirmada}
+\end{figure}
+
+Essa forma de notificação, ao invés de notificação por e-mail, ocorreu para se evitar \textit{spam}, pois um aprendiz ou um tutor regularmente ativo na aplicação poderia receber vários e-mails de recusa ou confirmação de sessão, prejudicando a experiência do usuário.
 
 Foram realizadas alterações no banco de dados durante o desenvolvimento. A tabela ``SESSAO'' recebeu os atributos ``areaId'', ``especialidadeId'' e ``dataSessao'' para exibição das informações da área de conhecimento, especialidade e a data da sessão no \textit{card} dela.
 
 Não houve dificuldades no desenvolvimento no \textit{backend} e \textit{frontend} dessa US.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Card} de solicitações pendentes.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/cardSolicitacaoPendente.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:cardSolicitacaoPendente}
-    \end{figure}
-\end{landscape}
-\clearpage
+\subsection[US09: Expirar Solicitação]{US09: Expirar Solicitação}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Card} de sessão aceita.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/cardSessaoAceita.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:cardSessaoAceita}
-    \end{figure}
-\end{landscape}
-\clearpage
+A estimativa inicial para o desenvolvimento dessas US era na Semana 5, juntamente com a US08. O \textit{backend} começou a ser desenvolvido após esse período, sendo posteriormente refatorado para implementação de mudanças na regra de negócio. Não houve desenvolvimento de \textit{frontend} para essa funcionalidade.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Notificação de sessão aceita no menu do cabeçalho.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/notificacaoSessaoConfirmada.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:notificacaoSessaoConfirmada}
-    \end{figure}
-\end{landscape}
-\clearpage
+Quando uma solicitação é criada no banco de dados, é feito o cálculo de seu prazo de expiração. Inicialmente, seguiu-se o CA02 da US, com o prazo de validade de uma solicitação sendo de 24 horas após sua criação.
 
-\subsubsection[US09: Expirar Solicitação]{US09: Expirar Solicitação}
-
-A estimativa inicial para o desenvolvimento dessas US era na Semana 5, de 05 a 11 de abril, juntamente com a US08. O \textit{backend} começou a ser desenvolvido em 2 de maio, sendo posteriormente refatorado em 10 e 11 de junho para mudanças na regra de negócio, 24 de agosto para correção no fuso horário do tempo de validade e 26 de agosto para implementar envio de e-mails e deleção de solicitações expiradas do banco de dados. Não houve desenvolvimento de \textit{frontend} para essa funcionalidade.
-
-Quando uma solicitação é criada no banco de dados, é feito o cálculo de seu prazo de expiração. Inicialmente, seguiu-se o CA02 da US, com  o prazo de validade de uma solicitação sendo de 24 horas após sua criação.
-
-Entretanto, os autores pensaram em melhorias que alteraram a regra de negócio. Caso uma solicitação fosse para o dia seguinte, poderia ocorrer de o prazo de validade ultrapassar o horário de início da sessão, tornando-o sem sentido. Além disso, considerou-se também a situação de uma solicitação ser feita na sexta-feira. Nesse caso, com a regra de negócio original, a validade iria até um determinado horário no sábado. Entretanto, os autores consideraram que um tutor poderia não acessar a aplicação nos fins de semana. Dessa maneira, a solicitação iria expirar sem o tutor sequer ter ciência de sua existência.
+Entretanto, os autores pensaram em melhorias que alteraram a regra de negócio. Caso uma solicitação fosse para o dia seguinte, poderia ocorrer de o prazo de validade ultrapassar o horário de início da sessão, tornando-o sem sentido. Além disso, considerou-se também a situação de uma solicitação ser feita na sexta-feira. Nesse caso, com a regra de negócio original, a validade iria até sábado. Entretanto, os autores consideraram que um tutor poderia não acessar a aplicação nos fins de semana. Dessa maneira, a solicitação iria expirar sem o tutor sequer ter ciência de sua existência.
 
 Isso levou à refatorações na funcionalidade, de modo que as regras de negócio para o cálculo da validade passaram a ser essas:
 
@@ -808,99 +785,87 @@ Isso levou à refatorações na funcionalidade, de modo que as regras de negóci
 
 \end{itemize}
 
-Se uma solicitação expira, é enviado um e-mail tanto para o tutor quanto para o aprendiz os notificando dessa ocorrência, cujo texto é diferente para se adequar aos diferentes papéis. Como exemplo, o e-mail enviado para o aprendiz pode ser observado na Figura \ref{fig:emailExpiracaoSolicitacao}.
+Se uma solicitação expira, é enviado um e-mail tanto para o tutor quanto para o aprendiz os notificando dessa ocorrência, cujo texto é diferente para se adequar aos diferentes papéis. Como exemplo, o e-mail enviado para o aprendiz pode ser observado na Figura \ref{fig:emailExpiracaoSolicitacao}, que informa o assunto e a data da solicitação expirada e que o aprendiz pode realizar uma nova solicitação.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{E-mail informativo sobre a expiração de uma solicitação para o aprendiz.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/emailExpiracaoSolicitacao.png}
+\begin{figure}[H]
+    \centering
+    \caption{E-mail informativo sobre a expiração de uma solicitação para o aprendiz.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/emailExpiracaoSolicitacao.png}
+
+
+    Fonte: Autoria própria.
     
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:emailExpiracaoSolicitacao}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:emailExpiracaoSolicitacao}
+\end{figure}
 
 Houve uma dificuldade no desenvolvimento dessa US. No \textit{frontend} o horário de expiração exibido no \textit{card} da solicitação estava incorreto. Após investigação no código, não foram encontradas falhas na lógica do cálculo. A falha na verdade estava no próprio Django. O fuso horário do Django, por padrão, não é o mesmo do Brasil, causando a diferença de horas. Quando isso foi ajustado, os horários foram corrigidos.
 
-\subsection[Funcionalidade 4: Sistema de Avaliação]{Funcionalidade 4: Sistema de Avaliação}
+\subsection[US10: Avaliar Tutor e US11: Avaliar Aprendiz]{US10: Avaliar Tutor e US11: Avaliar Aprendiz}
 
-\subsubsection[US10: Avaliar Tutor e US11: Avaliar Aprendiz]{US10: Avaliar Tutor e US11: Avaliar Aprendiz}
+Essas US serão descritas na mesma Seção, visto que são funcionalmente idênticas. A estimativa inicial para o desenvolvimento da US10 era na Semana 7, enquanto que a US11 seria desenvolvida na Semana 8. O \textit{backend} foi desenvolvido antes da Semana 8, passando por refatorações posteriores. O desenvolvimento do \textit{frontend} foi feito na Semana 8.
 
-Essas US serão descritas na mesma Seção, visto que são funcionalmente idênticas. A estimativa inicial para o desenvolvimento da US10 era na Semana 7, de 19 a 25 de abril, enquanto que a US11 seria desenvolvida na Semana 8, de 26 a 02 de maio. O \textit{backend} foi desenvolvido no período de entre 18 e 20 de maio, havendo refatorações de 20 de julho a 10 de agosto. O desenvolvimento do \textit{frontend} começou em 01 de maio, com a criação da \textit{modal}, finalizada em 02 de maio. A integração com o \textit{backend} foi feita em 12 de agosto.
+Assim que o usuário faz \textit{login} na aplicação, é feita uma requisição ao \textit{backend} para se obter quais sessões estão pendentes de avaliação por parte do mesmo. Caso existam, são exibidas \textit{modais}, uma por vez, com informações relevantes, como nome e foto do tutor ou do aprendiz, o assunto da sessão e a data e horário em que foi feita. O usuário pode, então, avaliar o outro participante com uma nota de 1 a 5 estrelas, bem como escrever um comentário de até 200 caracteres. O texto muda de acordo com o papel do usuário que está avaliando a sessão (tutor ou aprendiz). 
 
-Assim que o usuário faz \textit{login} na aplicação, é feita uma requisição ao \textit{backend} para se obter quais sessões estão pendentes de avaliação por parte do mesmo. Caso existam, são exibidas \textit{modais}, uma por vez, com informações relevantes, como nome e foto do tutor ou do aprendiz, o assunto da sessão e a data e horário em que foi feita. O usuário pode, então, avaliar o outro participante com uma nota de 1 a 5 estrelas, bem como escrever um comentário de até 200 caracteres. O texto muda de acordo com o papel do usuário que está avaliando a sessão (tutor ou aprendiz). Como exemplo, a \textit{modal} de avaliação de um tutor pode ser observada nas Figuras \ref{fig:modalAvaliacao1} e \ref{fig:modalAvaliacao2}.
+Como exemplo, a \textit{modal} de avaliação de uma tutora pode ser observada parcialmente na Figura \ref{fig:modalAvaliacao1}, em que é exibido o componente de foto, o nome dela, o assunto da sessão e o dia e horário que a sessão ocorreu, além das estrelas para avaliação.
+
+\begin{figure}[H]
+    \centering
+    \caption{Parte da \textit{modal} de avaliação de tutor.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/modalAvaliacao1.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:modalAvaliacao1}
+\end{figure}
+
+O restante da \textit{modal} pode ser observada na Figura \ref{fig:modalAvaliacao2}, que exibe campo para registro do comentário da avaliação e também o botão de envio.
+
+\begin{figure}[H]
+    \centering
+    \caption{Continuação da \textit{modal} de avaliação de tutor.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/modalAvaliacao2.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:modalAvaliacao2}
+\end{figure}
 
 Para forçar o usuário a realizar a avaliação, a \textit{modal} não apresenta botão ou ícone para ser fechada, e clicar fora dela também não a fecha. Assim que uma sessão é avaliada, a próxima é exibida para avaliação logo em seguida. O usuário somente consegue utilizar a aplicação após avaliar todas as sessões pendentes.
 
-As avaliações podem ser visualizadas em uma seção dedicada à elas na página de perfil, localizada na parte inferior. Caso um usuário seja tutor na aplicação é possível visualizar tanto avaliações como aprendiz como quanto tutor, sendo possível filtrar e ordenar os resultados. Caso um usuário não tenha redigido um comentário, o texto ``O usuário não escreveu comentário para essa avaliação'' é exibido. A seção de avaliações pode ser observada na Figura \ref{fig:secaoAvaliacoes}. Vale notar que, seguindo o CA05, a avaliação só se torna visível para o outro participante (e no perfil público dele) após ele também ter feito a avaliação sobre o usuário nessa sessão ou após um prazo de 48 horas ter passado (o que ocorrer primeiro).
+As avaliações podem ser visualizadas em uma seção dedicada à elas na página de perfil. Caso um usuário seja tutor na aplicação, é possível visualizar tanto avaliações como aprendiz como quanto tutor, sendo possível filtrar e ordenar os resultados. Caso um usuário não tenha redigido um comentário, o texto ``O usuário não escreveu comentário para essa avaliação'' é exibido. Vale notar que, seguindo o CA05, a avaliação só se torna visível para o outro participante (e no perfil público dele) após ele também ter feito a avaliação sobre o usuário nessa sessão ou após um prazo de 48 horas ter passado (o que ocorrer primeiro).
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} de avaliação de tutor.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalAvaliacao1.png}
+Os \textit{cards} de avaliações realizadas sobre um usuário podem ser observadas na Figura \ref{fig:secaoAvaliacoes}, que exibe duas avaliações com comentários. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Avaliações com comentários sobre um usuário.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/secaoAvaliacoes.png}
+
+
+    Fonte: Autoria própria.
     
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:modalAvaliacao1}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:secaoAvaliacoes}
+\end{figure}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Continuação da \textit{modal} de avaliação de tutor.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalAvaliacao2.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:modalAvaliacao2}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Seção de avaliações na página de perfil.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/secaoAvaliacoes.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:secaoAvaliacoes}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-Visando incentivar o engajamento por meio da gamificação, propôs-se um aprimoramento para esta US: a atribuição automática de 50 pontos ao perfil do usuário sempre que este realizar uma avaliação, independentemente se atua como tutor ou aprendiz na sessão avaliada.
+Visando incentivar o engajamento por meio da gamificação, foi feito um aprimoramento para esta US: a atribuição automática de 50 pontos ao perfil do usuário sempre que este realizar uma avaliação, independentemente se atua como tutor ou aprendiz na sessão avaliada.
 
 Houve uma mudança no banco de dados durante o desenvolvimento dessa funcionalidades: o atributo ``comentario'' nas tabelas ``AVALIACAO\_TUTOR'' e ``AVALIACAO\_APRENDIZ'' teve seu limite de caracteres aumentado para 200. A justificativa para isso é que 100 caracteres poderiam não ser o suficiente para uma crítica mais aprofundada. Além disso, a fim de se implementar as verificações para tornar uma avaliação pública, foram acrescentados o atributos ``sessaoId'' e ``dataCriacao'', sendo o primeiro usado para verificar se existe a avaliação realizada pelo outro participante da sessão, e o segundo usado para verificar se as 48 horas já se passaram. Foi também acrescentado o atributo ``notaAvaliacao'' na tabela ``TUTOR'' para armazenamento da nota média como tutor de um usuário.
 
 Não houve dificuldades para \textit{backend} e \textit{frontend} dessas funcionalidades.
 
-\subsubsection[US12: Ver Reputação]{US12: Ver Reputação}
+\subsection[US12: Ver Reputação]{US12: Ver Reputação}
 
-A estimativa inicial para o desenvolvimento dessa US era na Semana 8 de 26 a 02 de maio, juntamente com a US11. O \textit{frontend} foi desenvolvido em 1 de junho.
+A estimativa inicial para o desenvolvimento dessa US era na Semana 8, juntamente com a US11. O \textit{frontend} foi desenvolvido posterior à essa semana.
 
 A reputação de um usuário como tutor e como aprendiz pode ser visualizada em diferentes partes da aplicação. Na página de perfil são exibidos a avaliação média como aprendiz e como tutor, acompanhada da quantidade de avaliações públicas realizadas por outros usuários nesses papéis, sendo a avaliação como tutor exibida somente se o usuário é considerado um tutor na aplicação, de acordo com os critérios já mencionados na Seção \ref{sec:us04}. As reputações podem ser observadas na Figura \ref{fig:telaPerfil1}.
 
@@ -910,23 +875,49 @@ Os autores pensaram em uma melhoria para essa funcionalidade, que seria exibi-la
 
 Não houve dificuldade no desenvolvimento do \textit{frontend} e do \textit{backend} dessa US.
 
-\subsection[Funcionalidade 5: Comunicação]{Funcionalidade 5: Comunicação}
+\subsection[US13: Enviar Mensagem]{US13: Enviar Mensagem}
 
-\subsubsection[US13: Enviar Mensagem]{US13: Enviar Mensagem}
+A estimativa inicial para o desenvolvimento dessa US era na Semana 9, de 3 a 9 de maio. O \textit{backend} e o \textit{frontend} foram desenvolvidos posteriores à essa estimativa.
 
-A estimativa inicial para o desenvolvimento dessa US era na Semana 9, de 3 a 9 de maio. O \textit{backend} foi desenvolvido principalmente em 24 de maio de 25, porém houve refatorações nos dias 12, 13 e 17 de agosto e uma última modificação no dia 11 de setembro. O \textit{frontend} começou em 12 de agosto e foi completado em 17 de agosto.
+A comunicação por mensagens é iniciada quando um usuário envia uma mensagem para um tutor. Isso é feito é feito navegando até a página do perfil do tutor e clicando no botão ``Enviar Mensagem''. Fazer isso causa a exibição de uma \textit{modal} na tela, permitindo a escrita da mensagem. A \textit{modal} pode ser observada na Figura \ref{fig:modalMensagens}, que exibe o campo de digitação da mensagem.
 
-A comunicação por mensagens é iniciada quando um usuário envia uma mensagem para um tutor. Isso é feito é feito navegando até a página do perfil do tutor e clicando no botão ``Enviar Mensagem''. Fazer isso causa a exibição de uma \textit{modal} na tela, permitindo a escrita da mensagem. A \textit{modal} pode ser observada na Figura \ref{fig:modalMensagens}.
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Modal} de envio de mensagem.}
+    \includegraphics[width=0.55\textheight, keepaspectratio]{figuras/modalMensagens.png}
 
-Após a mensagem ser enviada, uma comunicação entre o tutor e o aprendiz é iniciada, podendo ser acessada na página de mensagens ao se clicar na opção ``Mensagens'' no menu do cabeçalho. Ambos são notificados do recebimento de novas mensagens através de um ícone vermelho na opção do menu de cabeçalho, que contém a quantidade total de mensagens não lidas pelo usuário. Essa notificação pode ser vista na Figura \ref{fig:paginaSolicitacao1}.
 
-Na página de mensagens, o usuário pode ver todas as comunicações que possui com outros usuários. Ao clicar em uma delas, é exibido o histórico de mensagens é exibido, sendo as mais recentes exibidas primeiro. É feita uma distinção visual entre as mensagens, sendo as do usuário logado exibidas à direita e em roxo e as do outro participante exibidas à esquerda e em cinza. Ao se subir a janela de mensagens, as mensagens mais antigas são buscadas do banco de dados e exibidas. A janela de mensagens pode ser observada na Figura \ref{fig:janelaMensagens}.
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:modalMensagens}
+\end{figure}
 
-A fim de se carregar as mensagens novas das comunicações que o usuário possui, é feita uma requisição ao \textit{backend} de 2 em 2 segundos, feita somente quando o usuário está na página de mensagens. Caso o usuário tenha mensagens não lidas de outros usuários, um ícone vermelho com a quantidade de mensagens novas é exibido no \textit{card} da respectiva comunicação. Caso sejam mensagens novas da comunicação selecionada, elas são exibidas na tela. Isso pode ser observado na Figura \ref{fig:janelaMensagens}. O ícone só desaparece caso o usuário clique na comunicação e visualize as mensagens. Nesse caso, uma requisição ao \textit{backend} é realizada para alterar o estado delas para lido.
+Após a mensagem ser enviada, uma comunicação entre o tutor e o aprendiz é iniciada, podendo ser acessada na página de mensagens ao se clicar na opção ``Mensagens'' no menu do cabeçalho. Ambos são notificados do recebimento de novas mensagens através de um ícone vermelho na opção do menu de cabeçalho, que contém a quantidade total de mensagens não lidas pelo usuário. Essa notificação pode ser vista na Figura \ref{fig:paginaSolicitacao1}, no lado direito de ``Mensagens''.
 
-Essa requisição se difere da requisição mencionada na Seção \ref{sec:us07}, que retorna o total de mensagens não lidas, enquanto a requisição da página de mensagens retorna a quais comunicações cada mensagem pertence.
+Na página de mensagens, o usuário pode ver todas as comunicações que possui com outros usuários. Ao clicar em uma delas, é exibido o histórico de mensagens é exibido, sendo as mais recentes exibidas primeiro. É feita uma distinção visual entre as mensagens, sendo as do usuário logado exibidas à direita e em roxo e as do outro participante exibidas à esquerda e em cinza. Ao se subir a janela de mensagens, as mensagens mais antigas são buscadas do banco de dados e exibidas. 
 
-A arquitetura inicial do módulo de mensagens passou por reestruturações técnicas relevantes. A principal alteração consistiu na substituição do uso de \textit{Enums} para a identificação do remetente, adotando-se, em seu lugar, o relacionamento direto por meio do \textit{id} do usuário que originou a ação. Além disso, introduziu-se um atributo booleano na entidade de mensagem com o propósito de indicar de forma explícita se o conteúdo já foi visualizado pelo destinatário.
+A fim de se carregar as mensagens novas das comunicações que o usuário possui, é feita uma requisição ao \textit{backend} de 2 em 2 segundos, feita somente quando o usuário está na página de mensagens. Caso o usuário tenha mensagens não lidas de outros usuários, um ícone vermelho com a quantidade de mensagens novas é exibido no \textit{card} da respectiva comunicação. Caso sejam mensagens novas da comunicação selecionada, elas são exibidas na tela. O ícone só desaparece caso o usuário clique na comunicação e visualize as mensagens. Nesse caso, uma requisição ao \textit{backend} é realizada para alterar o estado delas para lido.
+
+A janela de mensagens pode ser observada na Figura \ref{fig:janelaMensagens}, que exibe uma conversa selecionada e outras conversas com mensagens não lidas.
+
+\begin{figure}[H]
+    \centering
+    \caption{Página de mensagens.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/janelaMensagens.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:janelaMensagens}
+\end{figure}
+
+Essa requisição se difere da requisição mencionada na Seção \ref{sec:us07}, que retorna o total de mensagens não lidas, enquanto que a requisição da página de mensagens retorna a quais comunicações cada mensagem pertence.
+
+A arquitetura inicial do módulo de mensagens na base de dados passou por reestruturações técnicas relevantes. A principal alteração consistiu na substituição do uso de \textit{Enums} para a identificação do remetente, adotando-se, em seu lugar, o relacionamento direto por meio do \textit{id} do usuário que originou a ação. Além disso, introduziu-se um atributo booleano na entidade de mensagem com o propósito de indicar de forma explícita se o conteúdo já foi visualizado pelo destinatário.
 
 Houveram dificuldades no desenvolvimento dessa US, sendo a mais difícil de ser completada de toda a aplicação. Isso se deve ao fato de nenhum dos autores possuírem experiência prévia no desenvolvimento de uma comunicação por mensagens.
 
@@ -940,76 +931,38 @@ No \textit{backend} não houve dificuldades, além das refatorações que ocorre
 
 Vale notar que as notificações de mensagens não lidas trata-se de uma melhoria nessa US, visto que não estava presente nos critérios de aceitação da mesma.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} de envio de mensagem.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modalMensagens.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:modalMensagens}
-    \end{figure}
-\end{landscape}
-\clearpage
+\subsection[US14: Buscar Tutores]{US14: Buscar Tutores}
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página e histórico de mensagens.}
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/janelaMensagens.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:janelaMensagens}
-    \end{figure}
-\end{landscape}
-\clearpage
+A estimativa inicial para o desenvolvimento dessa US era na Semana 6, de 12 a 18 de abril. O desenvolvimento do \textit{backend} e do \textit{frontend} ocorreu posterior à essa estimativa.
 
-\subsection[Funcionalidade 6: Busca e Recomendação de Tutores]{Funcionalidade 6: Busca e Recomendação de Tutores}
-
-\subsubsection[US14: Buscar Tutores]{US14: Buscar Tutores}
-
-A estimativa inicial para o desenvolvimento dessa US era na Semana 6, de 12 a 18 de abril. O desenvolvimento do \textit{backend} ocorreu do dia 18 de março, havendo refatorações na \textit{view} de Tutor para paginação e outras modificações do dia 25 até o dia 29 de maio, e mais uma modificação nos dia 18 e 20 de julho a respeito de adição de atributos de ordenação. O desenvolvimento do \textit{frontend} começou no dia 5 de maio com a criação da página de busca de tutores, sendo pausado até 25 de maio, data em que foi realizada a integração com o \textit{backend}. Em 1 de junho foi realizada a paginação dos resultados, sendo o desenvolvimento pausado novamente até o dia 18 de junho, data em que foi implementada as ordenações dos resultados por nota média de avaliação dos tutores e por quantidade de tutorias realizadas. O \textit{frontend} foi finalizado em 12 de agosto, com a adição do filtro por raio de distância.
-
-A página de busca de tutores apresenta inicialmente apenas as opções de filtros e ordenações. Quando o usuário clica no botão ``Pesquisar'', é feita uma requisição ao \textit{backend} que retorna os tutores que atendem aos critérios definidos nos filtros. Caso nenhum filtro tenha sido definido, os tutores são retornados de acordo com a ordem dos registros no banco de dados. Os resultados são paginados e a quantidade de tutores por página podem ser alterados entre 6, 12, e 18. Caso nenhum tutor tenha sido encontrado, um texto informativo é exibido. A página com resultados pode ser observada na Figura \ref{fig:paginaBuscaTutores}.
+A página de busca de tutores apresenta inicialmente apenas as opções de filtros e ordenações. Quando o usuário clica no botão ``Pesquisar'', é feita uma requisição ao \textit{backend} que retorna os tutores que atendem aos critérios definidos nos filtros. Caso nenhum filtro tenha sido definido, os tutores são retornados de acordo com a ordem dos registros no banco de dados. Os resultados são paginados e a quantidade de tutores por página podem ser alterados entre 6, 12, e 18. Caso nenhum tutor tenha sido encontrado, um texto informativo é exibido. 
 
 Cada tutor é exibido em um \textit{card}, que exibe seu nome, foto, localização, nota média de avaliação (juntamente com a quantidade de avaliações) e as áreas de conhecimento que o mesmo fornece tutorias. Ao se clicar no botão ``Ver Perfil'', o usuário é redirecionado ao perfil do tutor, onde pode realizar as interações já mencionadas anteriormente (solicitar sessão e enviar mensagem).
+
+A página com resultados pode ser observada na Figura \ref{fig:paginaBuscaTutores}, em que são exibidos 3 \textit{cards} de tutores com as informações mencionadas.
+
+\begin{figure}[H]
+    \centering
+    \caption{Página de busca de tutores com resultados.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/paginaBuscaTutores.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:paginaBuscaTutores}
+\end{figure}
 
 Uma melhoria realizada durante o desenvolvimento dessa US foi a possibilidade de, além da filtragem dos resultados por área de conhecimento, ser feita a filtragem por especialidade nessa área, tornando a busca mais precisa.
 
 Não houveram dificuldades no desenvolvimento de ambas as frentes dessa US.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de busca de tutores com resultados.}
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaBuscaTutores.png}
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:paginaBuscaTutores}
-    \end{figure}
-\end{landscape}
-\clearpage
+\subsection[US15: Recomendações]{US15: Recomendações}
 
-\subsubsection[US15: Recomendações]{US15: Recomendações}
+A estimativa inicial para o desenvolvimento dessa US era na Semana 10. O desenvolvimento do \textit{backend} e do \textit{frontend} foi realizado posterior à essa estimativa. 
 
-A estimativa inicial para o desenvolvimento dessa US era na Semana 10, de 10 a 16 de maio. O desenvolvimento do \textit{backend} foi realizado do dia 20 à 26 de maio, havendo modificações de parâmetros futuros nos dias 20 de julho, 20 de agosto e 18 de setembro. O desenvolvimento \textit{frontend} foi adiantado para o dia 5 de maio, juntamente com a página de busca de tutores. Isso ocorreu pois ambas as páginas são muito parecidas, então aproveitou-se grande parte do código da página de busca de tutores. O desenvolvimento foi pausado até o dia 20 de agosto, onde foi realizada a integração com o \textit{backend}.
-
-A solução para o sistema de recomendação executa uma requisição em um \textit{endpoint GET}, o qual executa o sistema de recomendação híbrido proposto pelos autores. Este sistema utiliza bibliotecas matemáticas avançadas do Python:
+A solução para o sistema de recomendação executa uma requisição de um \textit{endpoint GET}, o qual executa o sistema de recomendação híbrido proposto pelos autores. Este sistema utiliza bibliotecas matemáticas avançadas do Python:
 
 \begin{itemize}
     \item \textbf{Pandas e Numpy:} Usados para a criação de \textit{DataFrames} (estruturas de tabelas tabulares) e operações matemáticas vetoriais;
@@ -1027,6 +980,7 @@ O algoritmo busca tutores usando filtros baseados nos parâmetros fornecidos na 
 Após reduzir o número de tutores na consulta ao banco, as informações dos tutores restantes são processadas em massa e montadas em um dicionário focado nas especialidades (\texttt{tutor\_specs\_map}), que finalmente se transforma no \textit{DataFrame} \texttt{df\_tutors}.
 
 Depois começa-se a etapa de filtragem baseada em conteúdo. Esta etapa calcula se o perfil intrínseco do tutor satisfaz os interesses do usuário:
+
 \begin{itemize}
     \item O sistema monta um vetor de interesse partindo do zero. O interesse do usuário ``aumenta'' (ganha \textit{boosts}) conforme ações declaradas: receber peso +10.0 se solicitou a especialidade exata, e +2.0 em todos os subtópicos se pediu apenas a área;
     \item O motor consulta o histórico passado de sessões, atribuindo bônus adicionais caso ele já tenha cursado especialidades específicas;
@@ -1034,6 +988,7 @@ Depois começa-se a etapa de filtragem baseada em conteúdo. Esta etapa calcula 
 \end{itemize}
 
 Logo após essa etapa inicia-se a filtragem colaborativa, em que a lógica infere a nota que o usuário daria ao tutor baseado no que usuários de perfis semelhantes pensam:
+
 \begin{itemize}
     \item Monta-se uma \textbf{Matriz de Correlação Usuário-Item} coletando todas as avaliações (\texttt{AvaliacaoTutorModel}) na aplicação;
     \item Uma Similaridade de Cosseno identifica os "10 usuários mais parecidos" com o aluno. Realiza-se, então, uma média ponderada das avaliações desses ``vizinhos próximos'';
@@ -1044,11 +999,22 @@ Para a unificação das duas etapas, o \textit{score} colaborativo possui maior 
 
 Por último, o algoritmo reordena o \textit{DataFrame} de forma decrescente, remapeia essas notas matemáticas (\textit{final\_score}) dinamicamente na classe \textit{TutorModel} como a propriedade virtual \textit{.score}, e envia a lista ordenada ao paginador \textit{RecomendacaoPagination} e respectivo serializador JSON.
 
-A página de recomendações é acessada clicando-se no botão ``Ver Recomendações'' na página de busca de tutores. Conforme mencionado, essa página é bastante similar à página de busca de tutores
+A página de recomendações é acessada clicando-se no botão ``Ver Recomendações'' na página de busca de tutores. Conforme citado, a página de recomendação de tutores é bastante similar à página de busca de tutores, contendo, entretanto, apenas filtragem por área de conhecimento (que é obrigatória), especialidade e por localização dentro de um raio de distância em quilômetros a partir da localização do usuário.
 
-Conforme citado, a página de recomendação de tutores é bastante similar à página de busca de tutores, contendo, entretanto, apenas filtragem por área de conhecimento (que é obrigatória), especialidade e por localização dentro de um raio de distância em quilômetros a partir da localização do usuário.
+Os resultados são exibidos da mesma maneira que na página de busca de tutores: paginados e com cada tutor sendo exibido em um \textit{card}, que contém as mesmas informações já mencionadas anteriormente e o botão que leva o usuário para o perfil do tutor. A página com resultados pode ser observada na Figura \ref{fig:paginaRecomendacoes}, em que é exibido um \textit{card} de um tutor recomendado.
 
-Os resultados são exibidos da mesma maneira que na página de busca de tutores: paginados e com cada tutor sendo exibido em um \textit{card}, que contém as mesmas informações já mencionadas anteriormente e o botão que leva o usuário para o perfil do tutor. A página com resultados pode ser observada na Figura \ref{fig:paginaRecomendacoes}.
+\begin{figure}[H]
+    \centering
+    \caption{Página de recomendação de tutores com resultados.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/paginaRecomendacoes.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:paginaRecomendacoes}
+\end{figure}
 
 Houve uma mudança nessa funcionalidade durante o desenvolvimento. Inicialmente, a ideia era que o usuário informasse em seu perfil as áreas que possui interesse em receber tutoria, conforme o CA01. Entretanto, os autores notaram que isso prejudicava a experiência do usuário, visto que o usuário teria que adicionar áreas no perfil para obter recomendações, e deletar áreas de interesse para deixar de recebê-las. Ao se remover as áreas de interesse e centralizar toda a funcionalidade de recomendações em uma única página, esta etapa intermediária de gerenciamento no perfil deixou de existir, melhorando a funcionalidade.
 
@@ -1056,36 +1022,58 @@ O desenvolvimento desta funcionalidade no \textit{backend} apresentou obstáculo
 
 Não houveram dificuldades no desenvolvimento do \textit{frontend}.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de busca de tutores com resultados.}
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaRecomendacoes.png}
+\subsection[US16: Conquistas]{US16: Conquistas}
+
+A estimativa inicial para o desenvolvimento dessa US era na Semana 11. O \textit{backend} foi completamente reutilizado da simulação realizada para o TCC1, apenas recebendo alterações nos \textit{endpoints GET} por conta de mudanças na tabela de conquistas no banco de dados, conforme será explicado mais adiante. O desenvolvimento do \textit{frontend} ocorreu posterior à estimativa.
+
+A página de conquistas exibe todas as conquistas da aplicação em forma de \textit{cards} que contém o título, pontuação fornecida, imagem e descrição da conquista, sendo exibidos em tons de cinzas as que o usuário não desbloqueou e sendo exibidos em cores as que conseguiu obter. A página pode ser observada na Figura \ref{fig:paginaConquistas}, que exibe \textit{cards} de conquistas obtidas.
+
+\begin{figure}[H]
+    \centering
+    \caption{Página de conquistas.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/paginaConquistas.png}
+
+
+    Fonte: Autoria própria.
     
-        Fonte: Autoria própria.
+    \vspace{0.2cm}
         
-        \vspace{0.2cm}
-            
-        \label{fig:paginaRecomendacoes}
-    \end{figure}
-\end{landscape}
-\clearpage
+    \label{fig:paginaConquistas}
+\end{figure}
 
-\subsection[Funcionalidade 7: Sistema de Gamificação]{Funcionalidade 7: Sistema de Gamificação}
+Quando uma conquista é obtida, é exibida uma notificação visual com a imagem, pontuação fornecida, título da conquista e sua descrição, que é acompanhada de um efeito sonoro tocado pelo navegador. A notificação pode ser observada na Figura \ref{fig:notificacaoConquista}, que exibe as informações mencionadas.
 
-\subsubsection[US16: Conquistas]{US16: Conquistas}
+\begin{figure}[H]
+    \centering
+    \caption{Notificação de conquista desbloqueada.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/notificacaoConquista.png}
 
-A estimativa inicial para o desenvolvimento dessa US era na Semana 11, de 17 a 23 de maio. O desenvolvimento do \textit{frontend} começou em 28 de agosto, sendo pausado até 10 de setembro e finalizado em 19 de setembro. O \textit{backend} foi completamente reutilizado da simulação, feito nos dias 20 e 23 de outubro, apenas recebendo alterações em \textit{endpoints GET} no dia 11 de setembro por conta de mudanças na tabela de conquistas no banco de dados, conforme será explicado mais adiante.
 
-O desenvolvimento do \textit{frontend} começou com a página de conquistas e os \textit{cards} delas, mas foi pausado pois foi necessário gerar as imagens que serviriam de ícones no card. As imagens foram geradas por \textit{prompts} no Google Gemini, um \textit{chatbot} de inteligência artificial da Google. Esse processo foi demorado devido à quantidade considerável de conquistas, sendo 31 ao todo. Além disso, por vezes foi necessário repetir ou refinar os \textit{prompts} para se obter um resultado satisfatório.
-
-Após todas as imagens serem geradas e redimensionadas para uma resolução menor, o desenvolvimento foi retomado, sendo implementado o evento de desbloqueio das conquistas, bem como uma notificação visual para quando esse evento ocorre, que é acompanhado de um efeito sonoro tocado pelo navegador. A página de conquistas e a notificação podem ser observadas nas Figuras \ref{fig:paginaConquistas} e \ref{fig:notificacaoConquista}.
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:notificacaoConquista}
+\end{figure}
 
 Os autores buscaram diversificar os objetivos das conquistas, buscando envolver todas as atividades possíveis dentro da aplicação e tanto no papel de tutor como no papel de aprendiz. Como exemplos, pode-se citar conquistas cujo desbloqueio são enviar mensagem para tutores, conseguir alcançar determinados níveis, conseguir uma avaliação nota 5 como tutor e aprendiz e realizar um determinado número de sessões.
 
-Duas evoluções que os autores pensaram e implementaram para essa US durante o desenvolvimento foram a criação de classificações para as conquistas, cujo critério é a dificuldade de sua obtenção, e a criação de conquistas secretas, cujos \textit{cards}, diferentes das outras conquistas, não possui uma descrição do que deve ser feito para serem obtidas, e sim uma pista sugestiva. Quando são desbloqueadas, o \textit{card} se torna o de uma conquista normal, exibindo o título, classificação, pontuação e descrição. \textit{Cards} de conquistas secretas podem ser observados na Figura \ref{fig:conquistaSecreta}.
+Duas evoluções que os autores pensaram e implementaram para essa US durante o desenvolvimento foram a criação de classificações para as conquistas, cujo critério é a dificuldade de sua obtenção, e a criação de conquistas secretas, cujos \textit{cards}, diferentes das outras conquistas, não possui uma descrição do que deve ser feito para serem obtidas, e sim uma pista sugestiva. Quando são desbloqueadas, o \textit{card} se torna o de uma conquista normal, exibindo o título, classificação, pontuação e descrição. 
+
+\textit{Cards} de conquistas secretas podem ser observados na Figura \ref{fig:conquistaSecreta}, que exibe três conquistas secretas não obtidas, com o ícone de cadeado no lugar da imagem.
+
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Cards} de conquistas secretas.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/conquistaSecreta.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:conquistaSecreta}
+\end{figure}
 
 A classificação de conquistas foi implementada inspirada no sistema de troféus do PlayStation 3, em que cada conquista, representada por um troféu, é classificada como bronze, prata, ouro ou platina. Essas categorias foram utilizadas na aplicação, apenas trocando-se platina por diamante. Essa ideia é embasada pelos \textit{Core Drives} de Yu-Kai Chou mencionados na Seção \ref{sec:gamificacao}.
 
@@ -1095,75 +1083,19 @@ A ideia de conquistas secretas também foi inspirada no sistema do PlayStation, 
 
 Isso é justamente o conceito do \textit{Core Drive} de Empoderamento da Criatividade e \textit{Feedback}: engajar o usuário em um processo criativo onde precisa descobrir novas estratégias. Além disso, essa mudança também é embasada pelo \textit{Core Drive} de Escassez e Impaciência: o impulso de desejar algo simplesmente porque é raro, exclusivo ou difícil de obter imediatamente. Pelo fato de serem secretas, essas conquistas se tornam mais raras de se ter, gerando um desejo de obtê-las.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Página de conquistas.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/paginaConquistas.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:paginaConquistas}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{Notificação de conquista desbloqueada.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/notificacaoConquista.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:notificacaoConquista}
-    \end{figure}
-\end{landscape}
-\clearpage
-
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Cards} de conquistas secretas.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/conquistaSecreta.png}
-    
-    
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:conquistaSecreta}
-    \end{figure}
-\end{landscape}
-\clearpage
-
 Não houve dificuldades técnicas no desenvolvimento dessa US no \textit{frontend}. O maior empecilho foi a quantidade considerável de conquistas, demandando bastante tempo para a geração de todas as imagens e codificação dos gatilhos de desbloqueio na aplicação.
 
 \subsubsection[US17: Níveis e US18: Títulos]{US17: Níveis e US18: Títulos}
 
 Essas US vão ser relatadas em conjunto por serem muito curtas, não havendo necessidade de uma Seção inteira apenas para elas, e também por serem intrinsecamente relacionadas.
 
-A estimativa inicial para o desenvolvimento delas era na Semana 12, de 24 a 30 de maio. Entretanto, foram adiantadas para 3 de abril, sendo as duas concluídas nesta data. O motivo do adiantamento é devido à página de perfil exibir o nível e o título decorativo do usuário. Sendo assim, quando a página estava sendo desenvolvida, essas US foram feitas antecipadamente a fim de se completá-la totalmente.
+A estimativa inicial para o desenvolvimento delas era na Semana 12. Entretanto, foram adiantadas para a Semana 4, sendo as duas concluídas neste período. O motivo do adiantamento é devido à página de perfil exibir o nível e o título decorativo do usuário. Sendo assim, quando a página estava sendo desenvolvida, essas US foram feitas antecipadamente a fim de se completá-la totalmente.
 
-Essas duas funcionalidades não tiveram nenhum desenvolvimento no \textit{backend}, sendo feitas inteiramente no \textit{frontend}. Foi criado um arquivo que contém os limites de pontos de cada nível, com valores que determinam a faixa de pontuação de cada nível. Esse arquivo foi posteriormente refatorado em 7 de setembro pois os valores iniciais dificultavam demasiadamente a obtenção de níveis mais altos. Além dos limites, o arquivo também contém uma função que recebe uma pontuação e retorna qual é o nível correspondente à ela.
+Essas duas funcionalidades não tiveram nenhum desenvolvimento no \textit{backend}, sendo feitas inteiramente no \textit{frontend}. Foi criado um arquivo que contém os limites de pontos de cada nível, com valores que determinam a faixa de pontuação de cada nível. Além dos limites, o arquivo também contém uma função que recebe uma pontuação e retorna qual é o nível correspondente à ela.
 
-Os títulos foram criados em um arquivo separado, que contém uma lista dos pares de níveis e títulos correspondentes e também uma função que recebe um nível e retorna o título equivalente a ele. Dessa maneira, quando os dados de um usuário são obtidos na página do perfil dele, a função de nível retorna o nível do usuário de acordo com sua pontuação, e o retorno dela usado como parâmetro da função de título. O resultado de ambas as funções é exibido na página. A relação entre as faixas de pontuação, nível e título pode ser observada na Tabela \ref{tab:niveis-titulos}.
+Os títulos foram criados em um arquivo separado, que contém uma lista dos pares de níveis e títulos correspondentes e também uma função que recebe um nível e retorna o título equivalente a ele. Dessa maneira, quando os dados de um usuário são obtidos na página do perfil dele, a função de nível retorna o nível do usuário de acordo com sua pontuação, e o retorno dela usado como parâmetro da função de título. O resultado de ambas as funções é exibido na página. 
 
-Não houveram dificuldades no desenvolvimento dessas US.
-
-\newpage
+O nível e o título de um usuário podem ser vistos na Figura \ref{fig:telaPerfil1}, que exibe o nível 1 e seu respectivo título. A relação entre as faixas de pontuação, nível e título pode ser observada na Tabela \ref{tab:niveis-titulos}.
 
 \begin{table}
     \centering
@@ -1221,6 +1153,8 @@ Não houveram dificuldades no desenvolvimento dessas US.
     
     Fonte: Autoria Própria.
 \end{table}
+
+Não houveram dificuldades no desenvolvimento dessas US.
 
 \section[Mudanças no banco de dados]{Mudanças no banco de dados}
 
