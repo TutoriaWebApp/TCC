@@ -151,6 +151,7 @@ O quadro do Trello do trabalho exige criação de conta para ser visualizado, po
 %\subsubsection[US01: \textit{Login}]{US01: \textit{Login}}
 
 \subsection[US01: \textit{Login}]{US01: \textit{Login}}
+\label{sec:us01}
 
 A estimativa inicial para o desenvolvimento da US01 era na Semana 1, em conjunto com a US02. Tanto o \textit{backend} quanto o \textit{frontend} foram em sua grande parte desenvolvidos nesse prazo, com refatorações sendo realizadas posteriormente para inclusão de responsividade para dispositivos móveis, uso de \textit{Server Actions}, inclusão de um \textit{banner} informativo sobre o uso de \textit{cookies} na aplicação, em conformidade com a Lei Geral de Proteção de Dados (LGPD) e para mudança no formulário para utilização das bibliotecas React Hook Form e Zod.
 
@@ -1183,6 +1184,88 @@ O Dicionário de Dados também foi atualizado para incluir essas alterações, a
     \end{figure}
 \end{landscape}
 \clearpage
+
+\section [Satisfação de Requisitos Não Funcionais]{Satisfação de Requisitos Não Funcionais}
+
+Conforme a Seção \ref{requisitosNaoFuncionais}, foram elicitados oito RNFs para a aplicação, os quais foram todos satisfeitos. A Tabela \ref{tab:satisfacao-rnf} apresenta a análise de atendimento a esses requisitos, relacionando suas descrições às soluções e evidências registradas durante o desenvolvimento.
+
+\begin{longtable}{p{1.35cm}p{4.75cm}p{8.1cm}}
+\caption{Atendimento aos requisitos não funcionais.\label{tab:satisfacao-rnf}} \\
+\toprule
+\textbf{RNF} & \textbf{Descrição} & \textbf{Atendimento} \\
+\midrule
+\endfirsthead
+
+\multicolumn{3}{c}{\textbf{Continuação da Tabela \ref{tab:satisfacao-rnf}}} \\
+\toprule
+\textbf{RNF} & \textbf{Descrição} & \textbf{Atendimento} \\
+\midrule
+\endhead
+
+\bottomrule
+\endfoot
+
+\textbf{RNF01} & O software deve utilizar um conjunto de ícones e \textit{assets} padronizados. &
+Foram adotadas convenções visuais recorrentes na interface da aplicação, como ícones de lixeira para ações de exclusão e notificações em verde e vermelho para indicar sucesso e erro, respectivamente. Exemplos dessas convenções podem ser observados nas Figuras \ref{fig:editarAreas}, \ref{fig:fig:telaRecuperarSenhaSucesso} e \ref{fig:fig:telaRecuperarSenhaErro}. \\
+\midrule
+
+\textbf{RNF02} & O software deve realizar a validação dos formulários, impedindo a submissão de dados inválidos e fornecendo \textit{feedback} visual imediato nos campos incorretos. &
+Os formulários foram desenvolvidos com o apoio das bibliotecas React Hook Form e Zod para validação dos campos, fornecendo \textit{feedback} de erros assim que ocorrem. Na US01, descrita na Seção \ref{sec:us01}, é apresentado um exemplo de mensagem de erro durante o preenchimento, como no caso de um e-mail em formato inválido, ilustrado pela Figura \ref{fig:loginErroEmail}. \\
+\midrule
+
+\textbf{RNF03} & O software deve reutilizar os componentes já criados que se encaixem na tarefa necessária. &
+Componentes de formulário, como \textit{label} e \textit{input}, inicialmente construídos na US01, foram reutilizados na US20. Além disso, parte do código desenvolvido para a página de perfil foi reaproveitada na página de edição de perfil da US04. A arquitetura do \textit{frontend} também prevê o compartilhamento de componentes por meio de um pacote de interface de usuário (UI), conforme a Seção \ref{arquitetura-frontend} e a representação arquitetural da Figura \ref{fig:ArquiteturaFinal}. \\
+\midrule
+
+\textbf{RNF04} & O software deve criptografar a senha dos usuários com algoritmos de \textit{hash}. &
+Na US01, o \textit{backend} utiliza o modelo de usuário baseado em ``AbstractBaseUser'' do Django e seu mecanismo de proteção de senhas. Durante a autenticação, a senha informada é verificada em relação ao \textit{hash} armazenado para o usuário, conforme descrito na subseção de desenvolvimento da US01. \\
+\midrule
+
+\textbf{RNF05} & O software deve utilizar o padrão OAuth2 / \textit{JSON Web Tokens} (JWT) para autenticação na API. &
+A autenticação escolhida foi o JWT, que foi implementada com tokens, utilizando o pacote \textit{djangorestframework-simplejwt}, conforme descrito na US01. Após a validação das credenciais, são emitidos um \textit{token} de acesso e outro de renovação, armazenados em \textit{cookies HttpOnly}. \\
+\midrule
+
+\textbf{RNF06} & O \textit{token} deve ter tempo de expiração curto. &
+Foi estabelecida uma validade de 20 minutos para o \textit{token} de acesso e de 2 horas para o \textit{token} de renovação, conforme descrito na US01. Quando o \textit{token} de acesso expira, a aplicação tenta renová-lo automaticamente. Caso o de renovação também tenha expirado, o usuário é redirecionado para a página de \textit{login}, com a apresentação do aviso ilustrado na Figura \ref{fig:modalTokenExpirado}. \\
+\midrule
+
+\textbf{RNF07} & Toda a comunicação entre o \textit{frontend} e o \textit{backend} deve ser realizada exclusivamente via protocolo \textit{HyperText Transfer Protocol Secure} (HTTPS) para garantir a confidencialidade dos dados em tráfego. &
+A comunicação HTTPS foi estabelecida no \textit{deploy} da aplicação, sendo que no \textit{frontend} isso foi automaticamente feito pela plataforma Vercel (em que está sendo hospedado), enquanto que no \textit{backend} isso é atendido pela a imagem oficial do servidor web Caddy em contêiner Docker, atuando como proxy reverso na borda da rede. Essa escolha arquitetural permite que o Caddy gerencie de forma automatizada a emissão e a renovação de certificados digitais TLS/SSL, realizando a criptografia necessária antes de encaminhar as requisições pela rede interna isolada do Docker aos contêineres do \textit{frontend} e do \textit{backend}. \\
+\midrule
+
+\textbf{RNF08} & A API deve exportar automaticamente sua documentação técnica seguindo o padrão OpenAPI 3.0 (\textit{Swagger}). &
+A geração automática da documentação no padrão OpenAPI 3.0 foi implementada no \textit{backend} por meio da biblioteca \textit{drf-spectacular}. Nos arquivos de controle da API, armazenados na pasta \textit{views}, os \textit{endpoints} são anotados com o decorador ``@extend\_schema'', especificando resumos, descrições detalhadas, parâmetros de consulta (via ``OpenApiParameter''), esquemas de requisição e respostas por código de status HTTP, além do agrupamento em \textit{tags} temáticas. A interface interativa do \textit{Swagger} pode ser acessada pela rota \texttt{/docs/} da URL base do \textit{backend}. \\ \\
+\end{longtable}
+
+A página do \textit{Swagger} pode ser observada na Figura \ref{fig:Swagger1}, que mostra alguns \textit{endpoints} do grupo de autenticação, sendo possível ver suas rotas, seus títulos e seus métodos.
+
+\begin{figure}[H]
+    \centering
+    \caption{Página do Swagger.}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/Swagger1.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:Swagger1}
+\end{figure}
+
+A Figura \ref{fig:Swagger1} apresenta um \textit{endpoint} detalhado na página, em que é exibido sua descrição código de resposta HTTP e a estrutura dos dados retornados.
+
+\begin{figure}[H]
+    \centering
+    \caption{Detalhamento de um \textit{endpoint} na paǵina}
+    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/Swagger2.png}
+
+
+    Fonte: Autoria própria.
+    
+    \vspace{0.2cm}
+        
+    \label{fig:Swagger2}
+\end{figure}
 
 \section[Teste de Software]{Teste de Software}
 
