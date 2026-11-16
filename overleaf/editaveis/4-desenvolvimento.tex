@@ -1158,7 +1158,7 @@ Não houveram dificuldades no desenvolvimento dessas US.
 
 \section[Mudanças no banco de dados]{Mudanças no banco de dados}
 
-O banco de dados inicialmente planejado para a aplicação passou por alterações durante o desenvolvimento das funcionalidades para sua melhor adequação  e aprimoramento. Essas mudanças foram mencionadas mais aprofundadamente detalhadas nas subseções das US. Desta forma, dentre os principais aprimoramento, destacam-se estruturalmente a criação da tabela ``AGENDA'', destinada a armazenar os horários disponíveis de cada ``TUTOR'', e a inclusão do atributo ``notaAvaliacao'' nas entidades ``USUARIO'' e ``TUTOR''. Embora essa média pudesse ser obtida de forma derivada a partir das avaliações de aprendiz e tutor, foi feito a escolha por essa desnormalização controlada para otimizar o desempenho de leitura, visto que a nota de avaliação é exibida em diversas interfaces da aplicação.
+O banco de dados inicialmente planejado para a aplicação passou por alterações durante o desenvolvimento das funcionalidades para sua melhor adequação e aprimoramento. Essas mudanças foram mencionadas mais aprofundadamente detalhadas nas Seções das US. Desta forma, dentre os principais aprimoramentos, destacam-se a criação da tabela ``AGENDA'', destinada a armazenar os horários disponíveis de cada ``TUTOR'', e a inclusão do atributo ``notaAvaliacao'' nas entidades ``USUARIO'' e ``TUTOR''. Embora essa média pudesse ser obtida de forma derivada a partir das avaliações de aprendiz e tutor, foi feito a escolha por essa desnormalização controlada para otimizar o desempenho de leitura, visto que a nota de avaliação é exibida em diversas interfaces da aplicação.
 
 Adicionalmente, a tabela ``USUARIO'' recebeu os campos de perfil ``localizacao'', ``aniversario'' e ``sobremim'', além dos atributos estruturais demandados pelo DRF (``is\_active'', ``is\_staff'', ``is\_superuser'', ``data\_joined'' e ``last\_login''). O esquema também foi atualizado com a inclusão de ``dataPretendida'', ``recorrente'' e ``estado'' em ``SOLICITACAO'', pela reestruturação das chaves estrangeiras em ``SOLICITACAO'' e ``SESSAO'' que vinculam estas a ``AREA'' e a ``ESPECIALIDADE'', pela inclusão do campo ``lida'' em ``MENSAGEM'' e os campos de ``dataCriacao'' e chave estrangeira de ``SESSAO'' em ``AVALIACAO\_APRENDIZ'' e ``AVALIACAO\_TUTOR'' e pela expansão da experiência de gamificação, mediante a adição de ``tier'', ``secreta'' e ``pista'' em ``CONQUISTA'' e de ``dataObtido'' em ``consegue''.
 
@@ -1194,11 +1194,13 @@ Para o desenvolvimento dos testes unitários foram utilizadas ferramentas nativa
 
 Os testes desenvolvidos cobriram as principais camadas da arquitetura do sistema, englobando as lógicas do modelo de banco de dados (\textit{Models}), regras de roteamento e requisições HTTP (\textit{Views} e \textit{ViewSet}), serialização de dados (\textit{Serializers}) e utilitários (\textit{Utils}).
 
-Conforme os dados gerados pelo relatório de cobertura de testes, que podem ser observado na Tabela \ref{tab:coverageUnit}, a aplicação atingiu um índice global de \textbf{88\%} de cobertura de código, abrangendo um total de 3.367 linhas lógicas (\textit{statements}), superando os 75\% que haviam sido estabelecidos como meta.
+Conforme os dados gerados pelo relatório de cobertura de testes, a aplicação atingiu um índice global de \textbf{88\%} de cobertura de código, abrangendo um total de 3.367 linhas lógicas (\textit{statements}), superando os 75\% que haviam sido estabelecidos como meta.
 
 Destaca-se que partes críticas do sistema mantiveram índices de aprovação, como por exemplo, os testes desenvolvidos para as classes de entidade (como \textit{UsuarioModelTest}, \textit{AvaliacaoModelTest}, \textit{ChatModelTest} e \textit{SessaoSolicitacaoModelTest}) e para as regras de serialização alcançaram, em sua grande maioria, \textbf{100\%} de cobertura.
 
 As taxas de cobertura reduzidas em arquivos específicos, como certas \textit{Views} ou gerenciadores de configuração, representam trechos de código com tratamentos de exceções isoladas ou rotinas secundárias que não foram invocadas diretamente durante o ambiente simulado. Contudo, o alto percentual geral obtido (88\%) evidencia a robustez arquitetural da aplicação e garante que os fluxos principais de agendamento de sessões, gamificação (conquistas) e interação entre tutor e aprendiz funcionam conforme o planejado.
+
+O relatório de cobertura de testes pode ser observado na Tabela \ref{tab:coverageUnit}. A coluna ``Arquivo / Módulo'' identifica os arquivos analisados. A coluna ``Instruções'' representa a quantidade de instruções executáveis presentes em cada arquivo. A coluna ``Faltantes'' indica o número de instruções que não foram executadas durante os testes, evidenciando trechos do código que não foram contemplados pela execução dos cenários testados.  A coluna ``Excluídos'' corresponde às instruções desconsideradas no cálculo da cobertura, conforme os critérios de exclusão da ferramenta utilizada. Por fim, a coluna ``Cobertura (\%)'' indica o percentual de instruções executadas em relação ao total considerado na análise.
 
 \begin{landscape}
     \setlength{\oddsidemargin}{\evensidemargin}
@@ -1301,19 +1303,19 @@ Para a elaboração e execução dos testes de integração foi utilizada a plat
 
 Os testes desenvolvidos abrangeram as principais rotas da API da aplicação, simulando fluxos práticos de interação do usuário e englobando funcionalidades de autenticação (\textit{Login}, \textit{Logout} e Redefinição de Senha), gerenciamento de cadastros (Cadastrar Usuário e Perfil Logado), além das lógicas de negócio associadas à interação na aplicação, como fluxos de Sessão e Solicitar Sessão.
 
-Conforme os dados gerados pelo \textit{dashboard} do relatório Newman na Figura \ref{fig:newman}, a coleção efetuou um total de 74 requisições HTTP, avaliando um total de 147 asserções (\textit{assertions}) globais. O ambiente de testes simulado também demonstrou um tempo total de execução de 16,3 segundos, com um excelente tempo médio de resposta de 145ms por requisição.
+A coleção de testes efetuou um total de 74 requisições HTTP, avaliando um total de 147 asserções globais. O ambiente de testes simulado também demonstrou um tempo total de execução de 16,3 segundos, com um excelente tempo médio de resposta de 145ms por requisição.
 
 Destaca-se que partes críticas do sistema de comunicação da API mantiveram índices totais de aprovação. Por exemplo, os testes desenvolvidos para o fluxo de cadastro, listagem de usuários, obtenção e alteração do perfil logado, além da renovação de credenciais (\textit{Log in Refresh com Sucesso}), alcançaram \textbf{100\%} de aprovação em todas as suas validações.
 
-As 15 falhas relatadas em testes específicos representam validações isoladas que não retornaram os resultados esperados, concentradas majoritariamente em verificações estritas do estado de \textit{cookies} durante falhas de \textit{login} e \textit{/logout} e no retorno de códigos HTTP divergentes (como erros 400 e 500 ao contrário dos sucessos 200 e 204) nos fluxos de aceitar, recusar e deletar solicitações de sessão. Contudo, o elevado índice geral de sucesso nas requisições demonstra a consistência arquitetural da API e garante que a integração essencial de dados, autenticação básica e listagem de informações operam com confiabilidade e solidez.
+15 falhas relatadas em testes específicos representam validações isoladas que não retornaram os resultados esperados, concentradas majoritariamente em verificações estritas do estado de \textit{cookies} durante falhas de \textit{login} e \textit{/logout} e no retorno de códigos HTTP divergentes (como erros 400 e 500 ao contrário dos sucessos 200 e 204) nos fluxos de aceitar, recusar e deletar solicitações de sessão. Contudo, o elevado índice geral de sucesso nas requisições demonstra a consistência arquitetural da API e garante que a integração essencial de dados, autenticação básica e listagem de informações operam com confiabilidade e solidez.
 
 O repositório com a coleção dos testes de integração feitos no Postman e a análise do Newman podem ser acessados através desse \textit{link}: \url{https://github.com/TutoriaWebApp/Integracao}.
 
-\newpage
+Um \textit{dashboard} com os resultados da coleção dos testes pode ser observado na Figura \ref{fig:newman}, gerado pelo Newman, em que pode ser observado principalmente o total de iterações da coleção realizadas (\textit{total iterations}), a quantidade de asserções (\textit{total assertions}) e o total de testes com falhas, sendo as 15 falhas já explicadas (\textit{total failed tests}).
 
 \begin{figure}[H]
     \centering
-    \caption{Newman Summary Report.} 
+    \caption{\textit{Dashboard} gerado pelo Newman.} 
     \includegraphics[width=\textwidth, keepaspectratio]{figuras/NewmanSummaryReport.png}
 
     Fonte: Autoria própria.
@@ -1327,11 +1329,13 @@ O repositório com a coleção dos testes de integração feitos no Postman e a 
 
 Para realizar a automação dos testes E2E da aplicação foi utilizado o \textit{framework} Robot Framework em conjunto com a biblioteca \textbf{SeleniumLibrary} e o navegador Firefox (geckodriver). A suíte de testes E2E é composta por 11 suítes funcionais integradas, englobando 38 cenários de teste que simulam fluxos completos de navegação, cadastro, autenticação, busca com geolocalização, agendamento de tutorias, troca de mensagens e gamificação.
 
-A Tabela \ref{tab:robotE2E} apresenta o resumo quantitativo de aprovação e tempo de execução por suíte funcional. Dos 38 cenários executados, todos foram aprovados com sucesso, atingindo uma taxa de sucesso global de \textbf{100\%} com tempo total de execução de aproximadamente 22,4 minutos (1.343,9 segundos).
+Dos 38 cenários executados, todos foram aprovados com sucesso, atingindo uma taxa de sucesso global de \textbf{100\%} com tempo total de execução de aproximadamente 22,4 minutos (1.343,9 segundos).
 
 Houveram dificuldades na realização dos testes. O Robot Framework utiliza os atributos ``id'' dos elementos HTML das páginas para permitir a seleção e interação com os mesmos. Entretanto, esses atributos estavam ausentes nas páginas, levando à refatorações para inclusão destes para prosseguimento dos testes.
 
 O repositório com os arquivos utilizados nos testes pode se acessado através desse \textit{link}: \url{https://github.com/TutoriaWebApp/End2End}.
+
+A Tabela \ref{tab:robotE2E} apresenta o resumo quantitativo de aprovação e tempo de execução por suíte funcional. A coluna ``Suíte'' indica o conjunto de teste a qual o cenário pertence, a coluna ``Cenário / Caso de Teste E2E'' indica o cenário testado, ``Status'' indica o resultado do teste, sendo PASS indicativo de sucesso, e ``Duração (s)'' indica o tempo, em segundos, decorrido para a execução completa do teste do cenário.
 
 \begin{landscape}
     \setlength{\oddsidemargin}{\evensidemargin}
@@ -1398,13 +1402,9 @@ Esta seção descreve o roteiro estruturado para a execução dos testes de usab
 
 Para cada cenário de teste no roteiro foi descrito a ação que o usuário deveria realizar. Ao final, o usuário que realizou o teste de usabilidade preencheu um formulário demonstrando sua experiência ao utilizar a aplicação, respondendo qual foi o nível de dificuldade para a realização de ação em escala de Likert, em que 1 é muito difícil e 5 é muito fácil. Além disso, os participantes também puderam escrever suas opiniões sobre cada atividade e também sobre a experiência em geral.
 
-Os testes envolveram usuários de perfis diferentes, com idades variando entre 25 a 60 anos e com graus diferentes de conforto no uso de dispositivos móveis e computadores. Foram testados tanto a versão de navegadores \textit{mobile} quanto a versão para computador da aplicação. Vale notar que uma das usuárias que participou dos testes se encaixa relativamente bem no perfil de público-alvo para tutor da aplicação. Trata-se de uma enfermeira que, ocasionalmente, para complementar a renda, fornece aulas como professora de sua área de atuação em faculdades particulares.
+Os testes envolveram usuários de perfis diferentes, com idades variando entre 25 a 60 anos e com graus diferentes de conforto no uso de dispositivos móveis e computadores. Foram testados tanto a versão para navegadores \textit{mobile} quanto a versão para navegadores em computador da aplicação. Vale notar que uma das usuárias que participou dos testes se encaixa relativamente bem no perfil de público-alvo para tutor da aplicação. Trata-se de uma enfermeira que, ocasionalmente, para complementar a renda, fornece aulas como professora de sua área de atuação em faculdades particulares.
 
 Os testes foram realizados no ambiente de \textit{deploy} da aplicação, cujo acesso e utilização está detalhado no Apêndice \ref{deploy}.
-
-\vspace{1cm}
-
-\subsubsection{Roteiro de Testes}
 
 \begin{itemize}[label=\textbullet]
     \item \textbf{Cenário 1 - Criação de Conta}:\\Acessar a página inicial da aplicação e realizar a criação de uma conta como Aprendiz, preenchendo os dados obrigatórios;
@@ -1418,11 +1418,7 @@ Os testes foram realizados no ambiente de \textit{deploy} da aplicação, cujo a
     \item \textbf{Cenário 9 - Avaliar um Tutor ou Aprendiz}:\\Após o horário de uma sessão de tutoria, o usuário deverá avaliar a o tutor ou o aprendiz da sessão.
 \end{itemize}
 
-\subsubsection{Resultados}
-
 Os resultados obtidos no teste de usabilidade podem ser acessados na planilha \url{https://docs.google.com/spreadsheets/d/1-73uolTNyJ7tUU6MZw_W3RiTKJKs0r3aSjvvVR3ttgM/edit?usp=sharing}. A média aritmética de dificuldade para realização de cada cenário pode ser observada na Tabela \ref{tab:resultados-usabilidade}.
-
-\newpage
 
 \begin{table}
     \centering
@@ -1465,35 +1461,33 @@ Os resultados obtidos no teste de usabilidade podem ser acessados na planilha \u
     Fonte: Autoria Própria.
 \end{table}
 
-Conforme pode ser observado, a maioria dos cenários possuem grau de dificuldade 3, que corresponde à uma dificuldade regular. Logo, a aplicação apresenta uma boa navegabilidade e usabilidade. Vale notar que os participantes mais velhos, na faixa de 50 a 60 anos, tiveram maior dificuldade na realização das atividades, considerando-as difíceis ou no máximo regulares. Entretanto, ambas as participantes admitiram impaciência para lerem as informações nas páginas, o que aumentou a complexidade da realização das atividades, e elogiaram a interface da aplicação.
+Conforme pode ser observado, a maioria dos cenários possuem grau de dificuldade 3, que corresponde à uma dificuldade regular. Logo, a aplicação apresenta uma boa navegabilidade e usabilidade. Vale notar que os participantes mais velhos, na faixa de 50 a 60 anos, tiveram maior dificuldade na realização das atividades, considerando-as difíceis ou no máximo regulares. Entretanto, ambos os participantes admitiram impaciência para lerem as informações nas páginas, o que aumentou a complexidade da realização das atividades, e elogiaram a interface da aplicação.
 
 Não foi elaborado um cenário para teste de conquistas, pois como são desbloqueadas conforme o usuário utiliza a aplicação, algumas delas já foram obtidas com a realização dos cenários. Ainda assim, o formulário de avaliação conteve uma pergunta questionando o que os participantes acharam dessa funcionalidade, obtendo respostas muito positivas.
 
 Um dos participantes, o que possui o perfil mais próximo de um tutor, reagiu positivamente a essa funcionalidade, pois, em suas palavras, ``sentiu reconhecimento pelo que fez, e todos são movidos por reconhecimento. Foi o diferencial para a incetivar''.
 
-Considerando que as conquistas foram avaliadas positivamente por todos os participantes e que um participante relatou se sentir ativamente incentivado e reconhecido por suas ações, pode-se considerar que as conquistas e a gamificação da aplicação cumpriram bem seu papel de engajamento. Pessoas diferentes são movidas e incentivadas por diferentes motivadores. Logo, o fato de nem todos os participantes relatarem, ao menos explicitamente, serem engajados por elas não é algo negativo.
+Considerando que as conquistas foram avaliadas positivamente por todos os participantes, e que um participante relatou se sentir ativamente incentivado e reconhecido por suas ações, pode-se considerar que as conquistas e a gamificação da aplicação cumpriram bem seu papel de engajamento. Pessoas diferentes são movidas e incentivadas por diferentes motivadores. Logo, o fato de nem todos os participantes relatarem, ao menos explicitamente, serem engajados por elas não é algo negativo.
 
-Diante dos resultados e \textit{feedbacks} recebidos, os autores realizaram melhorias na aplicação. Quando o usuário faz \textit{login} pela primeira vez, é exibida uma \textit{modal} informativa sobre o que é possível fazer em cada página, tendo em vista que os participantes mais velhos tiveram dificuldades para se orientar, podendo ser observada na Figura \ref{fig:modal-tour} essa modal orientadora. Além disso, a \textit{modal} de solicitação de sessão agora apresenta os dias disponíveis na cor verde, devido ao participante mais velho ter tido dificuldades em distinguir quais dias estavam disponíveis e quais não possuíam horários, visto que eram exibidos de forma similar. Foi implementado uma rolagem automática da tela na página de criação de conta quando o usuário prossegue para a segunda etapa, a fim de exibir para o usuário que a etapa de tutor é opcional. Por fim, a opção ``Solicitações'' foi alterada para ``Gerenciar Solicitações'', visto que alguns participantes se confundiram e acreditaram que a solicitação de tutoria era realizada nesta página.
+Diante dos resultados e \textit{feedbacks} recebidos, os autores realizaram melhorias na aplicação. Quando o usuário faz \textit{login} pela primeira vez, é exibida uma \textit{modal} informativa sobre o que é possível fazer em cada página, tendo em vista que os participantes mais velhos tiveram dificuldades para se orientar, podendo ser observada na Figura \ref{fig:modal-tour} essa modal orientadora. A modal consiste de uma série de fotos de páginas da aplicação acompanhadas do título da página e uma descrição do que o usuário pode fazer nela. Através de botões, é possível avançar, retroceder ou encerrar a exibição.
 
-\begin{landscape}
-    \setlength{\oddsidemargin}{\evensidemargin}
-    \numeracaoPaisagem
-    \begin{figure}[H]
-        \centering
-        \caption{\textit{Modal} informativa sobre as páginas.} 
-        \includegraphics[width=1.9\textwidth, height=0.90\textheight, keepaspectratio]{figuras/modal-tour.png}
+\begin{figure}[H]
+    \centering
+    \caption{\textit{Modal} informativa sobre as páginas.} 
+    \includegraphics[width=0.65\textwidth, keepaspectratio]{figuras/modal-tour.png}
+
+    Fonte: Autoria própria.
+
+    \vspace{0.2cm}
     
-        Fonte: Autoria própria.
-        
-        \vspace{0.2cm}
-            
-        \label{fig:modal-tour}
-    \end{figure}
-\end{landscape}
+    \label{fig:modal-tour}
+\end{figure}
+
+Além disso, a \textit{modal} de solicitação de sessão agora apresenta os dias disponíveis na cor verde, devido ao participante mais velho ter tido dificuldades em distinguir quais dias estavam disponíveis e quais não possuíam horários, visto que eram exibidos de forma similar. Foi implementado uma rolagem automática da tela na página de criação de conta quando o usuário prossegue para a segunda etapa, a fim de exibir para o usuário que a etapa de tutor é opcional. Por fim, a opção ``Solicitações'' foi alterada para ``Gerenciar Solicitações'', visto que alguns participantes se confundiram e acreditaram que a solicitação de tutoria era realizada nesta página.
 
 \subsection[Análise Estática do Código]{Análise Estática do Código}
 
-A Análise estática trata-se da análise do código-fonte sem sua execução, permitindo detecção de erros de sintaxe, semântica e estrutura \cite{pressman2021engenharia}.
+A análise estática trata-se da análise do código-fonte sem sua execução, permitindo detecção de erros de sintaxe, semântica e estrutura \cite{pressman2021engenharia}.
 
 Para assegurar a qualidade, a segurança e a manutenibilidade do código-fonte, a aplicação SonarCloud foi adotada para realizar a análise estática contínua tanto do \textit{backend} quanto do \textit{frontend} da aplicação.
 
@@ -1512,18 +1506,11 @@ Destacaram-se, neste momento inicial, a classificação "E" no quesito de segura
     \label{fig:analise-1}
 \end{figure}
 
-A partir da revisão minuciosa dos \textit{logs} e dos relatórios de apontamentos gerados pelo SonarCloud, foi feita uma refatoração dos pontos críticos indicados na base de código. Essa intervenção corretiva resultou em uma melhoria significativa no código do projeto, culminando nos indicadores exibidos na Figura \ref{fig:analise-2}.
-
-Os erros apresentados no \textit{backend} em sua maioria eram em dependências de instalação, tanto no ``requirements.txt'' do Python quanto na inicialização do Docker com perfil \textit{root}. Além disso, também foi reportado que um dos arquivos de \textit{script} \textit{Structured Query Language} (SQL) possuia muitos comandos repetidos.
+A partir da revisão minuciosa dos \textit{logs} e dos relatórios de apontamentos gerados pelo SonarCloud, foi feita uma refatoração dos pontos críticos indicados na base de código.  Os erros apresentados no \textit{backend} em sua maioria eram em dependências de instalação, tanto no ``requirements.txt'' do Python quanto na inicialização do Docker com perfil \textit{root}. Além disso, também foi reportado que um dos arquivos de \textit{script} \textit{Structured Query Language} (SQL) possuia muitos comandos repetidos.
 
 Os erros apresentados no \textit{frontend} em sua maioria eram a falta do retorno \textit{void} na chamada de funções assíncronas e o uso da tag HTML \textit{label} sem associação com campos de \textit{input} de formulários. O erro de segurança era a falta de uma configuração no arquivo Docker do \textit{frontend}, o que causava a execução de \textit{scripts} antecipadamente.
 
-Após as correções, ambos os repositórios atingiram o status de aprovação geral, zerando as vulnerabilidades de segurança e alcançando a classificação máxima ``A'' nos pilares de segurança e confiabilidade.
-
-A classificação ``C'' em riscos de dependências no \textit{backend} se deve à versão utilizada do DRF, que era a versão estável mais recente no início do desenvolvimento. Entretanto foi verificado que para se instalar versões mais recentes, seria necessário realizar uma série de refatorações no código.
-
-A classificação ``D'' em riscos de dependências no \textit{frontend} se deve à versão do Next.js utilizada, também a mais estável e recente na época de início do desenvolvimento. Entretanto, versões posteriores foram lançadas com otimizações e correções, sendo a falta delas os riscos apontados. Atualizar a versão do \textit{framework} poderia causar quebras de compatibilidade com bibliotecas, falhas inesperadas e comportamento inconsistente na aplicação, não sendo assim feita a atualização.
-
+Essas intervenções corretivas resultaram em uma melhoria significativa no código do projeto, culminando nos indicadores exibidos na Figura \ref{fig:analise-2}, em que destacam-se, principalmente, as classificações máximas ``A'' nos critérios de segurança e confiabilidade.
 
 \begin{figure}[H]
     \centering
@@ -1536,3 +1523,7 @@ A classificação ``D'' em riscos de dependências no \textit{frontend} se deve 
         
     \label{fig:analise-2}
 \end{figure}
+
+A classificação ``C'' em riscos de dependências no \textit{backend} se deve à versão utilizada do DRF, que era a versão estável mais recente no início do desenvolvimento. Entretanto foi verificado que para se instalar versões mais recentes, seria necessário realizar uma série de refatorações no código. Diante disso, o código foi mantido como estava, sem nenhuma alteração realizada.
+
+A classificação ``D'' em riscos de dependências no \textit{frontend} se deve à versão do Next.js utilizada, também a mais estável e recente na época de início do desenvolvimento. Entretanto, versões posteriores foram lançadas com otimizações e correções, sendo a falta delas os riscos apontados. Atualizar a versão do \textit{framework} poderia causar quebras de compatibilidade com bibliotecas, falhas inesperadas e comportamento inconsistente na aplicação, não sendo assim feita a atualização.
