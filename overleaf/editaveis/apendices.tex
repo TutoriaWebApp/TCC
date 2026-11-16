@@ -5,7 +5,7 @@
 \chapter[\textit{Lean Inception}]{\textit{Lean Inception}}
 \label{lean-inception}
 
-O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do template disponível em \href{caroli.org}{caroli.org}, podendo ser acessado pelo \href{https://www.figma.com/board/xXIvddv95LAyy0uTLGtEIc/TCC-Vandor?node-id=0-1&t=AienmrKhFTuCnwu8-1}{link}.
+O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do template disponível através deste \textit{link}: \url{caroli.org}, podendo ser acessado por esse \textit{link} \url{https://www.figma.com/board/xXIvddv95LAyy0uTLGtEIc/TCC-Vandor?node-id=0-1&t=AienmrKhFTuCnwu8-1}.
 
 \begin{figure}[h!]
     \centering
@@ -226,7 +226,7 @@ violão).
 
 \item \textbf{Flexibilidade de Horários}: Por ter uma agenda muito ocupada, precisa que suas aulas possam ser marcadas em horários específicos, geralmente à noite.
 
-\item \textbf{Indicação de Confiança}: Precisa de uma fonte confiável para encontrar um professor confiável e competente, pois não possui indicações de amigos ou familiares.
+\item \textbf{Indicação de Confiança}: Precisa de uma fonte confiável para encontrar um professor responsável e competente, pois não possui indicações de amigos ou familiares.
 
 \end{itemize}
 
@@ -234,7 +234,7 @@ violão).
 
 \textbf{Frustrações}
 
-Carlos se frustra muito com a falta de interação humana durante seu aprendizado de violão. No pouco tempo livre que possui à noite, ele tenta se dedicar ao \textit{hobby} através de cursos e vídeos online, mas não sente que está progredindo, se sentindo paralisado por dúvidas simples que os materiais gravados não conseguem sanar, como o posicionamento correto das mãos no instrumento musical.
+Carlos se frustra muito com a falta de interação humana durante seu aprendizado de violão. No pouco tempo livre que possui à noite, ele tenta se dedicar ao \textit{hobby} através de cursos e vídeos online, mas não sente que está progredindo, se sentindo paralisado por dúvidas simples que os materiais gravados não conseguem sanar, como o posicionamento correto das mãos no instrumento musical e o melhor uso da palheta.
 
 Ele sente falta de ter alguém para tirar dúvidas pontuais e receber orientação personalizada, mas não conhece pessoalmente ninguém que possa ensiná-lo e não tem indicações de escolas de música ou tutores particulares em sua região.
 
@@ -281,7 +281,7 @@ Ele sabe que é um bom professor, mas sente que não consegue a visibilidade que
 
 \textbf{Familiaridade com Tecnologia}
 
-Ricardo é familiarizado com aplicativos e redes sociais, usando constantemente o WhatsApp e o Instagram para comunicação. Utiliza o Zoom e Google Meets para realizar suas aulas online. Sua dificuldade não está em usar essas ferramentas, mas em utilizá-las para marketing e obtenção de novos clientes de forma eficaz.
+Ricardo é familiarizado com aplicativos e redes sociais, usando constantemente o WhatsApp e o Instagram para comunicação. Utiliza o Zoom e Google Meets para realizar suas aulas online. Sua dificuldade não está em usar essas ferramentas, mas em utilizá-las para marketing e obtenção de novos clientes de forma mais eficiente.
 
 
 \chapter{Simulação da Arquitetura}
@@ -369,8 +369,6 @@ Ao clicar no botão para solicitar uma sessão, abre-se uma janela em que são e
 
 Ao clicar em um horário, a solicitação de tutoria é realizada, a qual o tutor deve aceitar para que seja de fato confirmada. O usuário é notificado da realização da solicitação, conforme a Figura \ref{fig:notificacao-sessao}. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura \ref{fig:notificacao-solitacao}. 
 
-Como esta ação desbloqueia uma conquista, é exibida outra notificação, apresentada pela Figura \ref{fig:notificacao-conquista}. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura \ref{fig:notificacao-conquista-isolada}. 
-
 \newpage
 
 \begin{figure}[h!]
@@ -401,6 +399,8 @@ Como esta ação desbloqueia uma conquista, é exibida outra notificação, apre
 
 \newpage
 
+Como esta ação desbloqueia uma conquista, é exibida outra notificação, apresentada pela Figura 73. Para melhor visualização, a janela de notificação pode ser vista isoladamente na Figura 74.
+
 \begin{figure}[h!]
     \centering
 
@@ -427,7 +427,7 @@ Como esta ação desbloqueia uma conquista, é exibida outra notificação, apre
     \label{fig:notificacao-conquista-isolada}
 \end{figure}
 
-Ao voltar para a tela de conquistas, a conquista desbloqueada é apresentada em cores, conforme mostra a Figura \ref{fig:conquista-liberada}.
+Ao voltar para a tela de conquistas, a conquista desbloqueada é apresentada em cores, conforme mostra a Figura \ref{fig:conquista-liberada}, que exibe uma conquista desbloqueada (``O primeiro passo!''), com imagem e pontuação em cores, e quatro conquistas bloqueadas, cujas fotos e pontuação são exibidas em tons de cinza.
 
 \newpage
 
@@ -679,7 +679,7 @@ pista & optativo & varchar & 64 & Frase sugestiva do que deve ser feito para con
 
 \section*{CHAT}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
-\textbf{Descrição:} Define os dados de um chat de mensagens entre um tutor e um aprendiz que será cadastrado.
+\textbf{Descrição:} Define os dados de uma conversa de mensagens entre um tutor e um aprendiz que será cadastrado.
 
 \begin{table}[h!]
 \centering
@@ -689,7 +689,7 @@ pista & optativo & varchar & 64 & Frase sugestiva do que deve ser feito para con
 \hline
 \textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
 \hline
-chatId & chave primária, obrigatório, autoincremento & int & & Número identificador do chat. \\
+chatId & chave primária, obrigatório, autoincremento & int & & Número identificador da conversa. \\
 \hline
 tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor. \\
 \hline
@@ -713,7 +713,7 @@ usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Nú
 \hline
 mensagemId & chave primária, obrigatório, autoincremento & int & & Número identificador da mensagem. \\
 \hline
-chatId & chave estrangeira, obrigatório & int & & Número identificador do chat. \\
+chatId & chave estrangeira, obrigatório & int & & Número identificador da conversa. \\
 \hline
 usuarioId & chave estrangeira, obrigatório & int & & Número identificador do usuário que enviou a mensagem. \\
 \hline
@@ -856,6 +856,9 @@ dataObtido & obrigatório & datetime & & Data e horário em que a conquista foi 
 \newpage
 
 \section*{django\_migrations}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define quais arquivos \textit{migrations} já foram aplicados na base de dados pelo Django.
 
@@ -880,6 +883,9 @@ applied & obrigatório & datetime & 6 & Define em que data foi aplicado o \texti
 \end{table}
 
 \section*{django\_sessions}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define dados relacionado ao \textit{login} de sessão do USUARIO.
 
@@ -904,6 +910,9 @@ expire\_date & obrigatória & datetime & 6 & Define quando expira a sessão\\
 \newpage
 
 \section*{django\_content\_type}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os índices dos \textit{models}, que foram definidos na aplicação Django.
 
@@ -926,6 +935,9 @@ model & obrigatório & varchar & 100 & Define qual o nome do modelo da aplicaç�
 \end{table}
 
 \section*{auth\_permission}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define permissão para um USUARIO autenticado em relação à um \textit{model}.
 
@@ -952,6 +964,9 @@ codename & obrigatório & datetime & 6 & Define um nome curto para esta permiss�
 \newpage
 
 \section*{django\_admin\_log}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e django\_content\_type com cardinalidade \textbf{n:m}. É um registro de ações do usuário na página de admin, registra ações do usuário logado com algum \textit{model} da aplicação Django.
 
@@ -985,6 +1000,9 @@ change\_message & opcional & longtext & & Define uma mensagem para este registro
 
 
 \section*{auth\_group}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define grupos para USUARIO. Estes grupos podem separar USUARIO por cargo, função ou papel.
 
@@ -1007,6 +1025,9 @@ name & obrigatório & varchar & 150 & Define o nome do grupo\\
 \newpage
 
 \section*{auth\_group\_permissions}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre auth\_group e auth\_permission com cardinalidade \textbf{n:m}.
 
@@ -1029,6 +1050,9 @@ auth\_group\_id & chave estrangeira, obrigatório & int & & Número identificado
 \end{table}
 
 \section*{USUARIO\_groups}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e auth\_group com cardinalidade \textbf{n:m}.
 
@@ -1051,6 +1075,9 @@ auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificado
 \end{table}
 
 \section*{USUARIO\_permissions}
+
+Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e auth\_group com cardinalidade \textbf{n:m}.
 
@@ -1074,11 +1101,11 @@ auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificado
 
 \end{apendicesenv}
 
-\chapter{Deploy}
+\chapter{\textit{Deploy}}
 \label{deploy}
 
 Após a conclusão do desenvolvimento e validação de toda a aplicação por parte dos autores, foi realizado o \textit{deploy} tanto do \textit{backend} quanto do \textit{frontend}, possibilitando sua utilização através de navegadores de Internet.
 
 O \textit{deploy} do \textit{frontend} foi realizado na plataforma Vercel, enquanto que o do \textit{backend} foi realizado na plataforma Oracle Cloud, sendo ambas as opções escolhidas por serem gratuitas e sem limite de uso.
 
-A aplicação pode ser acessada através deste \textit{link}: \url{https://frontend-tan-psi-widf390s11.vercel.app/}. Pode-se criar uma conta como aprendiz ou como tutor. Entretanto, até o momento da escrita deste trabalho, não há usuários reais. Logo, para se exercitar todas as atividades da aplicação, é necessário criar tanto uma conta como aprendiz quanto uma conta como tutor e interagir uma com a outra.
+A aplicação pode ser acessada através deste \textit{link}: \url{https://frontend-tan-psi-widf390s11.vercel.app/}. Pode-se criar uma conta como aprendiz ou como tutor. Entretanto, até o momento da escrita deste trabalho, não há usuários reais. Logo, para se exercitar todas as atividades da aplicação, é necessário criar tanto uma conta como aprendiz quanto uma conta como tutor e interagir uma com a outra, a fim de testá-las ou manipulá-las.
