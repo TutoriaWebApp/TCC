@@ -10,7 +10,7 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do \texti
 \begin{figure}[H]
     \centering
     \caption{Visão do Produto.} 
-    \includegraphics[height=0.90\textheight, keepaspectratio]{figuras/Lean01VisaoProduto.png}
+    \includegraphics[width=0.7\textwidth, keepaspectratio]{figuras/Lean01VisaoProduto.png}
 
     Fonte: Adaptado a partir de caroli.org
     
@@ -129,24 +129,37 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do \texti
     \begin{figure}[H]
         \centering
         \caption{\textit{Brainstorm} de Funcionalidades.} 
-        \includegraphics[width=1.4\textwidth]{figuras/Lean05Funcionalidades.png}
+        \includegraphics[width=1.4\textwidth, keepaspectratio]{figuras/Lean05Funcionalidades.png}
     
         Fonte: Adaptado a partir de caroli.org
         
         \vspace{0.2cm}
     \end{figure}
+\end{landscape}
 
+\newpage
+
+\begin{landscape}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
     \begin{figure}[H]
         \centering
-        \caption{Revisão técnica de negócio e de experiência de usuário (Gamificação, Social e Perfil).} 
-        \includegraphics[width=1.4\textwidth]{figuras/Lean06Custos.png}
+        \caption{Revisão técnica de negócio e de experiência de usuário.} 
+        \includegraphics[width=1.1\textwidth, keepaspectratio]{figuras/Lean06Custos.png}
     
         Fonte: Adaptado a partir de caroli.org
         
         \vspace{0.2cm}
     \end{figure}
+\end{landscape}
 
+\newpage
+
+\begin{landscape}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
     \begin{figure}[H]
+        \setlength{\oddsidemargin}{\evensidemargin}
         \centering
         \caption{Sequenciador.} 
         \includegraphics[width=1.4\textwidth]{figuras/Lean07Sequenciador.png}
@@ -155,7 +168,13 @@ O \textit{Lean Inception} foi desenvolvido no Figma, adaptado a partir do \texti
         
         \vspace{0.2cm}
     \end{figure}
-    
+\end{landscape}
+
+\newpage
+
+\begin{landscape}
+    \setlength{\oddsidemargin}{\evensidemargin}
+    \numeracaoPaisagem
     \begin{figure}[H]
         \centering
         \caption{Canvas MVP.} 
@@ -463,7 +482,7 @@ necessidades da proposta e é viável para o desenvolvimento do projeto.
     notaAvaliacao & derivado de valores na tabela AVALIACAO\_APRENDIZ e não é armazenado por 3ª Forma Normal &  &  & Média das avaliações do usuário como aprendiz. \\
     \hline
 \end{xltabular}
-\clearpage
+
 \section*{TUTOR}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de um Tutor que será cadastrado. 
@@ -481,6 +500,8 @@ necessidades da proposta e é viável para o desenvolvimento do projeto.
     notaAvaliacao & derivado de valores na tabela AVALIACAO\_TUTOR e não é armazenado por 3ª Forma Normal &  &  & Média das avaliações do usuário como tutor. \\
         \hline
 \end{xltabular}
+
+\clearpage
 
 \section*{AVALIACAO\_APRENDIZ}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -510,8 +531,6 @@ necessidades da proposta e é viável para o desenvolvimento do projeto.
     }
 \end{table}
 
-\clearpage
-
 \section*{AVALIACAO\_TUTOR}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de uma avaliação de um tutor que será cadastrada.
@@ -540,6 +559,8 @@ necessidades da proposta e é viável para o desenvolvimento do projeto.
     }
 \end{table}
 
+\clearpage
+
 \section*{AREA}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade.\\
 \textbf{Descrição:} Define os dados de uma área de conhecimento que será cadastrada. 
@@ -558,8 +579,6 @@ necessidades da proposta e é viável para o desenvolvimento do projeto.
     \end{tabular}
     }
 \end{table}
-
-\clearpage
 
 \section*{ESPECIALIDADE}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -583,6 +602,8 @@ nomeEspecialidade & chave única composta, obrigatório & varchar & 100 & Nome d
 }
 \end{table}
 
+\clearpage
+
 \section*{AGENDA}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os dados de uma agenda disponível de um tutor para fornecer sessões de tutoria.
@@ -604,6 +625,28 @@ horarioInicio &  chave única composta, obrigatório & time & & Horário de iní
 horarioFim & obrigatório & time & & Horário de fim da sessão de tutoria na agenda. \\
 \hline
 dia &  chave única composta, obrigatório & enum('SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB', 'DOM') & & Dia de disponibilidade para uma sessão de tutoria da agenda. \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\section*{CHAT}
+\noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
+\textbf{Descrição:} Define os dados de uma conversa de mensagens entre um tutor e um aprendiz que será cadastrado.
+
+\begin{table}[h!]
+\centering
+\label{tab:chat}
+\resizebox{\linewidth}{!}{% Redimensiona a tabela para caber na largura da página
+\begin{tabular}{|l|L{3cm}|l|l|l|}
+\hline
+\textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
+\hline
+chatId & chave primária, obrigatório, autoincremento & int & & Número identificador da conversa. \\
+\hline
+tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor. \\
+\hline
+usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do aprendiz. \\
 \hline
 \end{tabular}
 }
@@ -644,28 +687,6 @@ pista & optativo & varchar & 64 & Frase sugestiva do que deve ser feito para con
 \end{table}
 
 \clearpage
-
-\section*{CHAT}
-\noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
-\textbf{Descrição:} Define os dados de uma conversa de mensagens entre um tutor e um aprendiz que será cadastrado.
-
-\begin{table}[h!]
-\centering
-\label{tab:chat}
-\resizebox{\linewidth}{!}{% Redimensiona a tabela para caber na largura da página
-\begin{tabular}{|l|L{3cm}|l|l|l|}
-\hline
-\textbf{Atributo} & \textbf{Propriedades do atributo} & \textbf{Tipo de dado} & \textbf{Tamanho} & \textbf{Descrição} \\
-\hline
-chatId & chave primária, obrigatório, autoincremento & int & & Número identificador da conversa. \\
-\hline
-tutorId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do tutor. \\
-\hline
-usuarioId & chave estrangeira, chave única composta, obrigatório & int & & Número identificador do aprendiz. \\
-\hline
-\end{tabular}
-}
-\end{table}
 
 \section*{MENSAGEM}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
@@ -771,7 +792,7 @@ estado & obrigatório & enum('ACEITO', 'PENDENTE', 'RECUSADO', 'RECORRENTE') & &
 
 \clearpage
 
-\section*{CONTEM}
+\section*{contem}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento.  \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre TUTOR e ESPECIALIDADE com cardinalidade \textbf{n:m}.
 
@@ -793,7 +814,7 @@ tutorId & chave estrangeira, chave única composta, obrigatório & int & & Núme
 }
 \end{table}
 
-\section*{CONSEGUE}
+\section*{consegue}
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e CONQUISTA com cardinalidade \textbf{n:m}.
 
@@ -823,9 +844,9 @@ dataObtido & obrigatório & datetime & & Data e horário em que a conquista foi 
 
 \newpage
 
-\section*{django\_migrations}
+As tabelas a partir daqui não fazem parte da solução de base de dados necessária para a aplicação, mas foram inseridas na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
 
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
+\section*{django\_migrations}
 
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define quais arquivos \textit{migrations} já foram aplicados na base de dados pelo Django.
@@ -852,8 +873,6 @@ applied & obrigatório & datetime & 6 & Define em que data foi aplicado o \texti
 
 \section*{django\_sessions}
 
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
-
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define dados relacionado ao \textit{login} de sessão do USUARIO.
 
@@ -879,8 +898,6 @@ expire\_date & obrigatória & datetime & 6 & Define quando expira a sessão\\
 
 \section*{django\_content\_type}
 
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
-
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define os índices dos \textit{models}, que foram definidos na aplicação Django.
 
@@ -903,8 +920,6 @@ model & obrigatório & varchar & 100 & Define qual o nome do modelo da aplicaç�
 \end{table}
 
 \section*{auth\_permission}
-
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
 
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define permissão para um USUARIO autenticado em relação à um \textit{model}.
@@ -932,8 +947,6 @@ codename & obrigatório & datetime & 6 & Define um nome curto para esta permiss�
 \newpage
 
 \section*{django\_admin\_log}
-
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
 
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e django\_content\_type com cardinalidade \textbf{n:m}. É um registro de ações do usuário na página de admin, registra ações do usuário logado com algum \textit{model} da aplicação Django.
@@ -966,10 +979,9 @@ change\_message & opcional & longtext & & Define uma mensagem para este registro
 }
 \end{table}
 
+\newpage
 
 \section*{auth\_group}
-
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
 
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de uma Entidade. \\
 \textbf{Descrição:} Define grupos para USUARIO. Estes grupos podem separar USUARIO por cargo, função ou papel.
@@ -990,11 +1002,7 @@ name & obrigatório & varchar & 150 & Define o nome do grupo\\
 }
 \end{table}
 
-\newpage
-
 \section*{auth\_group\_permissions}
-
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
 
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre auth\_group e auth\_permission com cardinalidade \textbf{n:m}.
@@ -1019,8 +1027,6 @@ auth\_group\_id & chave estrangeira, obrigatório & int & & Número identificado
 
 \section*{USUARIO\_groups}
 
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
-
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e auth\_group com cardinalidade \textbf{n:m}.
 
@@ -1044,8 +1050,6 @@ auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificado
 
 \section*{USUARIO\_permissions}
 
-Esta tabela não faz parte da solução de base de dados necessária para a aplicação, mas foi inserida na base por exigência do Django para permitir que a implementação funcionasse em seu ambiente.
-
 \noindent\textbf{Esclarecimento Técnico:} Tabela proveniente de um Relacionamento. \\
 \textbf{Descrição:} Define relacionamento que corresponde a um relacionamento entre USUARIO e auth\_group com cardinalidade \textbf{n:m}.
 
@@ -1067,8 +1071,6 @@ auth\_group\_id & chave estrangeira, obrigatória & int & & Número identificado
 }
 \end{table}
 
-\end{apendicesenv}
-
 \chapter{\textit{Deploy}}
 \label{deploy}
 
@@ -1077,3 +1079,6 @@ Após a conclusão do desenvolvimento e validação de toda a aplicação por pa
 O \textit{deploy} do \textit{frontend} foi realizado na plataforma Vercel, enquanto que o do \textit{backend} foi realizado na plataforma Oracle Cloud, sendo ambas as opções escolhidas por serem gratuitas e sem limite de uso.
 
 A aplicação pode ser acessada através deste \textit{link}: \url{https://frontend-tan-psi-widf390s11.vercel.app/}. Pode-se criar uma conta como aprendiz ou como tutor. Entretanto, até o momento da escrita deste trabalho, não há usuários reais. Logo, para se exercitar todas as atividades da aplicação, é necessário criar tanto uma conta como aprendiz quanto uma conta como tutor e interagir uma com a outra, a fim de testá-las ou manipulá-las.
+
+% Isso deve sempre ficar ao final do documento, para que o índice de apêndices seja gerado corretamente.
+\end{apendicesenv}

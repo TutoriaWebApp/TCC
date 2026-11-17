@@ -117,7 +117,7 @@ Essa mudança na arquitetura causou a criação da pasta \textit{actions} dentro
     \label{fig:ArquiteturaFinal}
 \end{figure}
 
-As diferenças entre a arquitetura proposta na Seção \ref{arquitetura} é que a antiga arquitetura centralizada todas as funções de chamada ao \textit{backend} na pasta \textit{services}, e não considerava a utilização de Server Actions para a realização de requisições, além de não considerar a criação de uma pasta para armazenamento dos arquivos de interfaces. O restante permaneceu sem alterações.
+As diferenças entre a arquitetura proposta na Seção \ref{arquitetura} é que a antiga arquitetura centralizava todas as funções de chamada ao \textit{backend} na pasta \textit{services}, e não considerava a utilização de Server Actions para a realização de requisições, além de não considerar a criação de uma pasta para armazenamento dos arquivos de interfaces. O restante permaneceu sem alterações.
 
 \section[Desenvolvimento da Aplicação]{Desenvolvimento da Aplicação}
 \label{sec:desenvolvimento}
@@ -344,7 +344,7 @@ A página pode ser observada na Figura \ref{fig:telaRecuperarSenha}, que exibe o
     
     \vspace{0.2cm}
         
-    \label{fig:fig:telaRecuperarSenha}
+    \label{fig:telaRecuperarSenha}
 \end{figure}
 
 Independente do e-mail de fato estar registrado como pertencente a um usuário, ocorre um redirecionamento para a página de \textit{login}. No caso do registo de fato existir, um e-mail é enviado pelo \textit{backend}, contendo um \textit{link} que, quando clicado, leva para a página de alteração de senha. O e-mail enviado pode ser observado na Figura \ref{fig:emailRecuperacaoSenha}, que exibe o padrão de formato enviado.
@@ -359,7 +359,7 @@ Independente do e-mail de fato estar registrado como pertencente a um usuário, 
     
     \vspace{0.2cm}
         
-    \label{fig:fig:emailRecuperacaoSenha}
+    \label{fig:emailRecuperacaoSenha}
 \end{figure}
 
 Atendendo ao CA04 da US, uma notificação é exibida ao usuário após realizar a solicitação, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. A notificação, exibida em verde, indica uma ação concluída com sucesso. 
@@ -374,7 +374,7 @@ Atendendo ao CA04 da US, uma notificação é exibida ao usuário após realizar
     
     \vspace{0.2cm}
         
-    \label{fig:fig:telaRecuperarSenhaSucesso}
+    \label{fig:telaRecuperarSenhaSucesso}
 \end{figure}
 
 Caso ocorra um erro na solicitação, é exibida uma notificação de erro com a cor vermelha, podendo ser observada na Figura \ref{fig:telaRecuperarSenhaSucesso}. Além desta US, as notificaçṍes foram também utilizadas em outras funcionalidades para indicar sucesso ou falha na realização de uma ação.
@@ -389,7 +389,7 @@ Caso ocorra um erro na solicitação, é exibida uma notificação de erro com a
     
     \vspace{0.2cm}
         
-    \label{fig:fig:telaRecuperarSenhaErro}
+    \label{fig:telaRecuperarSenhaErro}
 \end{figure}
 
 No desenvolvimento do \textit{backend}, um dos desafios encontrados foi garantir que o \textit{token} de recuperação de senha fosse de uso único. Após pesquisas na documentação do \textit{framework}, constatou-se que a função \textit{default\_token\_generator} utiliza o campo \textit{last\_update} como um dos parâmetros para a geração de seu \textit{hash}. Consequentemente, ao validar a requisição, a aplicação força a atualização desse campo, o que altera os parâmetros base da criptografia e invalida automaticamente o \textit{token} recém-utilizado, impedindo acessos subsequentes.
@@ -481,7 +481,7 @@ O resto da página de perfil pode ser observada na Figura \ref{fig:telaEditarPer
     \label{fig:telaPerfil2}
 \end{figure}
 
-A página de edição de perfil pode ser parcialmente observada na Figura \ref{telaEditarPerfil1}, que exibe principalmente o componente de \textit{upload} de foto de perfil. 
+A página de edição de perfil pode ser parcialmente observada na Figura \ref{fig:telaEditarPerfil1}, que exibe principalmente o componente de \textit{upload} de foto de perfil. 
 
 \begin{figure}[H]
     \centering
@@ -496,7 +496,7 @@ A página de edição de perfil pode ser parcialmente observada na Figura \ref{t
     \label{fig:telaEditarPerfil1}
 \end{figure}
 
-A Figura \ref{telaEditarPerfil2} apresenta mais uma parte da página, com os campos de edição de informações sendo exibidos, além do botão ``Alterar Senha'', que já foi explicado na Seção \ref{sec:US03}.
+A Figura \ref{fig:telaEditarPerfil2} apresenta mais uma parte da página, com os campos de edição de informações sendo exibidos, além do botão ``Alterar Senha'', que já foi explicado na Seção \ref{sec:US03}.
 
 \begin{figure}[H]
     \centering
@@ -625,7 +625,7 @@ A \textit{modal} pode ser observada parcialmente na Figura \ref{fig:modalSolicit
     \label{fig:modalSolicitacao}
 \end{figure}
 
-O restante da \textit{modal} pode ser observado na Figura \ref{modalSolicitacao2}, que exibe o campo de seleção de área de conhecimento, especialidade, os horários livres disponíveis, exibidos em branco, além da caixa de seleção de recorrência.
+O restante da \textit{modal} pode ser observado na Figura \ref{fig:modalSolicitacao2}, que exibe o campo de seleção de área de conhecimento, especialidade, os horários livres disponíveis, exibidos em branco, além da caixa de seleção de recorrência.
 
 \begin{figure}[H]
     \centering
@@ -814,7 +814,7 @@ Como exemplo, a \textit{modal} de avaliação de uma tutora pode ser observada p
 \begin{figure}[H]
     \centering
     \caption{Parte da \textit{modal} de avaliação de tutor.}
-    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/modalAvaliacao1.png}
+    \includegraphics[width=0.45\textheight, keepaspectratio]{figuras/modalAvaliacao1.png}
 
 
     Fonte: Autoria própria.
@@ -829,7 +829,7 @@ O restante da \textit{modal} pode ser observada na Figura \ref{fig:modalAvaliaca
 \begin{figure}[H]
     \centering
     \caption{Continuação da \textit{modal} de avaliação de tutor.}
-    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/modalAvaliacao2.png}
+    \includegraphics[width=0.45\textheight, keepaspectratio]{figuras/modalAvaliacao2.png}
 
 
     Fonte: Autoria própria.
@@ -967,7 +967,7 @@ A solução para o sistema de recomendação executa uma requisição de um \tex
 
 \begin{itemize}
     \item \textbf{Pandas e Numpy:} Usados para a criação de \textit{DataFrames} (estruturas de tabelas tabulares) e operações matemáticas vetoriais;
-    \item \textbf{Scikit-learn:} Emprega o método \textit{cosine\_similarity} para calcular distâncias entre vetores, e \texttt{MultiLabelBinarizer} para realizar a transformação \textit{One-Hot Encoding} (binarização de classes textuais/id) das especialidades.
+    \item \textbf{Scikit-learn:} Emprega o método \textit{cosine\_similarity} para calcular distâncias entre vetores, e ``MultiLabelBinarizer'' para realizar a transformação \textit{One-Hot Encoding} (binarização de classes textuais/id) das especialidades.
 \end{itemize}
 
 O algoritmo busca tutores usando filtros baseados nos parâmetros fornecidos na URL:
@@ -975,30 +975,30 @@ O algoritmo busca tutores usando filtros baseados nos parâmetros fornecidos na 
 \begin{itemize}
     \item \textbf{Área:} É obrigatório fornecer pelo menos a área de conhecimento que se deseja uma tutoria;
     \item \textbf{Especialidade:} A especialidade, caso enviada, tem prevalência sobre a área;
-    \item \textbf{Geolocalização:} Se um \texttt{raio} for fornecido, a distância em quilômetros é conferida. O código traz suporte nativo ao PostGIS (\textit{distance\_lte}) e inclui um método de tolerância (\textit{fallback}) por cálculo de \textit{Haversine} via código puramente matemático, caso não haja extensão espacial no banco de dados.
+    \item \textbf{Geolocalização:} Se um raio for fornecido, a distância em quilômetros é conferida. O código traz suporte nativo ao PostGIS (\textit{distance\_lte}) e inclui um método de tolerância (\textit{fallback}) por cálculo de \textit{Haversine} via código puramente matemático, caso não haja extensão espacial no banco de dados.
 \end{itemize}
 
-Após reduzir o número de tutores na consulta ao banco, as informações dos tutores restantes são processadas em massa e montadas em um dicionário focado nas especialidades (\texttt{tutor\_specs\_map}), que finalmente se transforma no \textit{DataFrame} \texttt{df\_tutors}.
+Após reduzir o número de tutores na consulta ao banco, as informações dos tutores restantes são processadas em massa e montadas em um dicionário focado nas especialidades (``tutor\_specs\_map''), que finalmente se transforma no \textit{DataFrame} ``df\_tutors''.
 
 Depois começa-se a etapa de filtragem baseada em conteúdo. Esta etapa calcula se o perfil intrínseco do tutor satisfaz os interesses do usuário:
 
 \begin{itemize}
     \item O sistema monta um vetor de interesse partindo do zero. O interesse do usuário ``aumenta'' (ganha \textit{boosts}) conforme ações declaradas: receber peso +10.0 se solicitou a especialidade exata, e +2.0 em todos os subtópicos se pediu apenas a área;
     \item O motor consulta o histórico passado de sessões, atribuindo bônus adicionais caso ele já tenha cursado especialidades específicas;
-    \item A \textbf{Similaridade de Cosseno} cruza esse vetor de interesse com as características \textit{One-Hot} do tutor, gerando uma nota inicial (\texttt{content\_score}). Ela ainda recebe um incremento caso o tutor resida na mesma cidade (+3.0) ou estado (+1.0), além de bônus atrelados às pontuações nativas da aplicação.
+    \item A \textbf{Similaridade de Cosseno} cruza esse vetor de interesse com as características \textit{One-Hot} do tutor, gerando uma nota inicial (``content\_score''). Ela ainda recebe um incremento caso o tutor resida na mesma cidade (+3.0) ou estado (+1.0), além de bônus atrelados às pontuações nativas da aplicação.
 \end{itemize}
 
 Logo após essa etapa inicia-se a filtragem colaborativa, em que a lógica infere a nota que o usuário daria ao tutor baseado no que usuários de perfis semelhantes pensam:
 
 \begin{itemize}
-    \item Monta-se uma \textbf{Matriz de Correlação Usuário-Item} coletando todas as avaliações (\texttt{AvaliacaoTutorModel}) na aplicação;
+    \item Monta-se uma \textbf{Matriz de Correlação Usuário-Item} coletando todas as avaliações (``AvaliacaoTutorModel'') na aplicação;
     \item Uma Similaridade de Cosseno identifica os "10 usuários mais parecidos" com o aluno. Realiza-se, então, uma média ponderada das avaliações desses ``vizinhos próximos'';
     \item Há tratamento de ``Início Frio`'' (\textit{Cold Start}): se for um usuário recém-criado, a predição adota a média universal daquele tutor.
 \end{itemize}
 
-Para a unificação das duas etapas, o \textit{score} colaborativo possui maior peso em comparação ao de conteúdo. A nota final (\texttt{final\_score}) se torna igual ao dobro da nota colaborativa somada ao da nota de conteúdo.
+Para a unificação das duas etapas, o \textit{score} colaborativo possui maior peso em comparação ao de conteúdo. A nota final (``final\_score'') se torna igual ao dobro da nota colaborativa somada ao da nota de conteúdo.
 
-Por último, o algoritmo reordena o \textit{DataFrame} de forma decrescente, remapeia essas notas matemáticas (\textit{final\_score}) dinamicamente na classe \textit{TutorModel} como a propriedade virtual \textit{.score}, e envia a lista ordenada ao paginador \textit{RecomendacaoPagination} e respectivo serializador JSON.
+Por último, o algoritmo reordena o \textit{DataFrame} de forma decrescente, remapeia essas notas matemáticas (``final\_score'') dinamicamente na classe ``TutorModel'' como a propriedade virtual ``.score'', e envia a lista ordenada ao paginador ``RecomendacaoPagination'' e respectivo serializador JSON.
 
 A página de recomendações é acessada clicando-se no botão ``Ver Recomendações'' na página de busca de tutores. Conforme citado, a página de recomendação de tutores é bastante similar à página de busca de tutores, contendo, entretanto, apenas filtragem por área de conhecimento (que é obrigatória), especialidade e por localização dentro de um raio de distância em quilômetros a partir da localização do usuário.
 
@@ -1047,7 +1047,7 @@ Quando uma conquista é obtida, é exibida uma notificação visual com a imagem
 \begin{figure}[H]
     \centering
     \caption{Notificação de conquista desbloqueada.}
-    \includegraphics[width=0.65\textheight, keepaspectratio]{figuras/notificacaoConquista.png}
+    \includegraphics[width=0.45\textheight, keepaspectratio]{figuras/notificacaoConquista.png}
 
 
     Fonte: Autoria própria.
@@ -1086,7 +1086,7 @@ Isso é justamente o conceito do \textit{Core Drive} de Empoderamento da Criativ
 
 Não houve dificuldades técnicas no desenvolvimento dessa US no \textit{frontend}. O maior empecilho foi a quantidade considerável de conquistas, demandando bastante tempo para a geração de todas as imagens e codificação dos gatilhos de desbloqueio na aplicação.
 
-\subsubsection[US17: Níveis e US18: Títulos]{US17: Níveis e US18: Títulos}
+\subsection[US17: Níveis e US18: Títulos]{US17: Níveis e US18: Títulos}
 
 Essas US vão ser relatadas em conjunto por serem muito curtas, não havendo necessidade de uma Seção inteira apenas para elas, e também por serem intrinsecamente relacionadas.
 
@@ -1097,6 +1097,8 @@ Essas duas funcionalidades não tiveram nenhum desenvolvimento no \textit{backen
 Os títulos foram criados em um arquivo separado, que contém uma lista dos pares de níveis e títulos correspondentes e também uma função que recebe um nível e retorna o título equivalente a ele. Dessa maneira, quando os dados de um usuário são obtidos na página do perfil dele, a função de nível retorna o nível do usuário de acordo com sua pontuação, e o retorno dela usado como parâmetro da função de título. O resultado de ambas as funções é exibido na página. 
 
 O nível e o título de um usuário podem ser vistos na Figura \ref{fig:telaPerfil1}, que exibe o nível 1 e seu respectivo título. A relação entre as faixas de pontuação, nível e título pode ser observada na Tabela \ref{tab:niveis-titulos}.
+
+\newpage
 
 \begin{table}
     \centering
@@ -1206,7 +1208,7 @@ Conforme a Seção \ref{requisitosNaoFuncionais}, foram elicitados oito RNFs par
 \endfoot
 
 \textbf{RNF01} & O software deve utilizar um conjunto de ícones e \textit{assets} padronizados. &
-Foram adotadas convenções visuais recorrentes na interface da aplicação, como ícones de lixeira para ações de exclusão e notificações em verde e vermelho para indicar sucesso e erro, respectivamente. Exemplos dessas convenções podem ser observados nas Figuras \ref{fig:editarAreas}, \ref{fig:fig:telaRecuperarSenhaSucesso} e \ref{fig:fig:telaRecuperarSenhaErro}. \\
+Foram adotadas convenções visuais recorrentes na interface da aplicação, como ícones de lixeira para ações de exclusão e notificações em verde e vermelho para indicar sucesso e erro, respectivamente. Exemplos dessas convenções podem ser observados nas Figuras \ref{fig:editarAreas}, \ref{fig:telaRecuperarSenhaSucesso} e \ref{fig:telaRecuperarSenhaErro}. \\
 \midrule
 
 \textbf{RNF02} & O software deve realizar a validação dos formulários, impedindo a submissão de dados inválidos e fornecendo \textit{feedback} visual imediato nos campos incorretos. &
@@ -1234,7 +1236,7 @@ A comunicação HTTPS foi estabelecida no \textit{deploy} da aplicação, sendo 
 \midrule
 
 \textbf{RNF08} & A API deve exportar automaticamente sua documentação técnica seguindo o padrão OpenAPI 3.0 (\textit{Swagger}). &
-A geração automática da documentação no padrão OpenAPI 3.0 foi implementada no \textit{backend} por meio da biblioteca \textit{drf-spectacular}. Nos arquivos de controle da API, armazenados na pasta \textit{views}, os \textit{endpoints} são anotados com o decorador ``@extend\_schema'', especificando resumos, descrições detalhadas, parâmetros de consulta (via ``OpenApiParameter''), esquemas de requisição e respostas por código de status HTTP, além do agrupamento em \textit{tags} temáticas. A interface interativa do \textit{Swagger} pode ser acessada pela rota \texttt{/docs/} da URL base do \textit{backend}. \\ \\
+A geração automática da documentação no padrão OpenAPI 3.0 foi implementada no \textit{backend} por meio da biblioteca \textit{drf-spectacular}. Nos arquivos de controle da API, armazenados na pasta \textit{views}, os \textit{endpoints} são anotados com o decorador ``@extend\_schema'', especificando resumos, descrições detalhadas, parâmetros de consulta (via ``OpenApiParameter''), esquemas de requisição e respostas por código de status HTTP, além do agrupamento em \textit{tags} temáticas. A interface interativa do \textit{Swagger} pode ser acessada pela rota ``/docs/'' da URL base do \textit{backend}. \\ \\
 \end{longtable}
 
 A página do \textit{Swagger} pode ser observada na Figura \ref{fig:Swagger1}, que mostra alguns \textit{endpoints} do grupo de autenticação, sendo possível ver suas rotas, seus títulos e seus métodos.
@@ -1279,7 +1281,7 @@ Os testes desenvolvidos cobriram as principais camadas da arquitetura do sistema
 
 Conforme os dados gerados pelo relatório de cobertura de testes, a aplicação atingiu um índice global de \textbf{88\%} de cobertura de código, abrangendo um total de 3.367 linhas lógicas (\textit{statements}), superando os 75\% que haviam sido estabelecidos como meta.
 
-Destaca-se que partes críticas do sistema mantiveram índices de aprovação, como por exemplo, os testes desenvolvidos para as classes de entidade (como \textit{UsuarioModelTest}, \textit{AvaliacaoModelTest}, \textit{ChatModelTest} e \textit{SessaoSolicitacaoModelTest}) e para as regras de serialização alcançaram, em sua grande maioria, \textbf{100\%} de cobertura.
+Destaca-se que partes críticas do sistema mantiveram índices de aprovação, como por exemplo, os testes desenvolvidos para as classes de entidade (como ``UsuarioModelTest'', ``AvaliacaoModelTest'', ``ChatModelTest'' e ``SessaoSolicitacaoModelTest'') e para as regras de serialização alcançaram, em sua grande maioria, \textbf{100\%} de cobertura.
 
 As taxas de cobertura reduzidas em arquivos específicos, como certas \textit{Views} ou gerenciadores de configuração, representam trechos de código com tratamentos de exceções isoladas ou rotinas secundárias que não foram invocadas diretamente durante o ambiente simulado. Contudo, o alto percentual geral obtido (88\%) evidencia a robustez arquitetural da aplicação e garante que os fluxos principais de agendamento de sessões, gamificação (conquistas) e interação entre tutor e aprendiz funcionam conforme o planejado.
 
@@ -1503,7 +1505,7 @@ Os testes foram realizados no ambiente de \textit{deploy} da aplicação, cujo a
 
 Os resultados obtidos no teste de usabilidade podem ser acessados na planilha \url{https://docs.google.com/spreadsheets/d/1-73uolTNyJ7tUU6MZw_W3RiTKJKs0r3aSjvvVR3ttgM/edit?usp=sharing}. A média aritmética de dificuldade para realização de cada cenário pode ser observada na Tabela \ref{tab:resultados-usabilidade}.
 
-\begin{table}
+\begin{table}[H]
     \centering
     \caption{Resultados da dificuldade para realização dos cenários.}
     \label{tab:resultados-usabilidade}
